@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />    <title>Respectful Care - Evidence-Based Maternity & Newborn Information</title>
+    <meta name="description" content="Balanced, evidence-based information for maternal and newborn care decisions. Every claim is sourced, every option is presented, every decision is yours." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      /* ── Static homepage styles (shown before/without React) ── */
+      :root {
+        --brand: #2563eb;
+        --brand-light: #3b82f6;
+        --brand-bg: #eff6ff;
+        --text: #1e293b;
+        --text-muted: #64748b;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --success: #059669;
+        --warm: #f59e0b;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --brand: #60a5fa;
+          --brand-light: #93c5fd;
+          --brand-bg: #1e293b;
+          --text: #f1f5f9;
+          --text-muted: #94a3b8;
+          --surface: #0f172a;
+          --border: #334155;
+          --success: #34d399;
+          --warm: #fbbf24;
+        }
+      }
+      .static-page {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: var(--text);
+        background: var(--surface);
+        margin: 0;
+        line-height: 1.6;
+      }
+      .static-page * { box-sizing: border-box; }
+
+      /* Header */
+      .sp-header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .sp-header-inner {
+        max-width: 72rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .sp-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: var(--brand);
+        text-decoration: none;
+      }
+      .sp-logo svg { flex-shrink: 0; }
+      .sp-nav { display: flex; gap: 1.5rem; align-items: center; }
+      .sp-nav a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .sp-nav a:hover { color: var(--brand); }
+
+      /* Hero */
+      .sp-hero {
+        background: linear-gradient(135deg, var(--brand-bg), var(--surface));
+        padding: 5rem 1.5rem 4rem;
+        text-align: center;
+      }
+      .sp-hero-inner { max-width: 48rem; margin: 0 auto; }
+      .sp-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.375rem 1rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--brand);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        margin-bottom: 1.5rem;
+      }
+      .sp-hero h1 {
+        font-family: 'Source Serif 4', 'Georgia', serif;
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 1.25rem;
+        color: var(--text);
+      }
+      .sp-hero p {
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        max-width: 38rem;
+        margin: 0 auto 2rem;
+      }
+      .sp-cta-group {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .sp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.75rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: all 0.15s;
+        cursor: pointer;
+        border: none;
+      }
+      .sp-btn-primary {
+        background: var(--brand);
+        color: #fff;
+      }
+      .sp-btn-primary:hover { background: var(--brand-light); }
+      .sp-btn-outline {
+        background: transparent;
+        color: var(--brand);
+        border: 1.5px solid var(--brand);
+      }
+      .sp-btn-outline:hover { background: var(--brand-bg); }
+
+      /* Features grid */
+      .sp-features {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+      }
+      .sp-features h2 {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+      }
+      .sp-features > p {
+        text-align: center;
+        color: var(--text-muted);
+        margin: 0 0 3rem;
+        font-size: 1rem;
+      }
+      .sp-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .sp-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.75rem;
+        transition: box-shadow 0.2s, border-color 0.2s;
+      }
+      .sp-card:hover {
+        box-shadow: 0 4px 24px rgba(0,0,0,.06);
+        border-color: var(--brand);
+      }
+      .sp-card-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .sp-card h3 {
+        font-size: 1.0625rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+      }
+      .sp-card p {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin: 0;
+        line-height: 1.65;
+      }
+
+      /* Principles */
+      .sp-principles {
+        background: var(--brand-bg);
+        padding: 4rem 1.5rem;
+      }
+      .sp-principles-inner {
+        max-width: 72rem;
+        margin: 0 auto;
+      }
+      .sp-principles h2 {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin: 0 0 2.5rem;
+      }
+      .sp-principles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+      .sp-principle h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0.75rem 0 0.375rem;
+      }
+      .sp-principle p {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin: 0;
+      }
+      .sp-principle-icon {
+        width: 3rem;
+        height: 3rem;
+        background: var(--surface);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border);
+      }
+
+      /* Stats */
+      .sp-stats {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+      .sp-stat-val {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--brand);
+      }
+      .sp-stat-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+      }
+
+      /* CTA banner */
+      .sp-cta-banner {
+        background: var(--brand);
+        color: #fff;
+        padding: 3.5rem 1.5rem;
+        text-align: center;
+      }
+      .sp-cta-banner h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 0.75rem;
+      }
+      .sp-cta-banner p {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin: 0 0 1.5rem;
+      }
+      .sp-btn-white {
+        background: #fff;
+        color: var(--brand);
+        font-weight: 600;
+      }
+      .sp-btn-white:hover { background: #f0f4ff; }
+
+      /* Footer */
+      .sp-footer {
+        border-top: 1px solid var(--border);
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+      }
+      .sp-footer a { color: var(--brand); text-decoration: none; }
+      .sp-footer a:hover { text-decoration: underline; }
+      .sp-footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 0.75rem; }
+
+      /* Hide static page when React mounts */
+      #root:not(:empty) ~ .static-page,
+      #root:not(:empty) ~ script + .static-page { display: none; }
+      /* Hide static page if #root has content */
+      .static-page { /* shown by default */ }
+
+      @media (max-width: 640px) {
+        .sp-hero { padding: 3rem 1rem 2.5rem; }
+        .sp-nav { gap: 1rem; }
+        .sp-features, .sp-principles { padding: 3rem 1rem; }
+      }
+    </style>
+  <script type="module" crossorigin src="/assets/index-Bqx96AlK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CwYSghvf.css">
+</head>
+
+<body>
+    <!-- SPA redirect intake: capture path from 404.html redirect query-string -->
+    <script>
+      (function(){
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, '', redirect);
+        } else {
+          var q = window.location.search;
+          if (q.length > 1 && q[1] === '/') {
+            var decoded = q.slice(1).split('&').reduce(function(s, v, i) {
+              return i === 0 ? v : s + '?' + v;
+            }, '');
+            window.history.replaceState(null, '',
+              window.location.pathname.replace(/\/$/, '') + decoded + window.location.hash
+            );
+          }
+        }
+      })();
+    </script>
+
+    <!-- React app mount point (used by Spark environment) -->
+    <div id="root"></div>
+
+    <!-- ============================================================
+         STATIC HOMEPAGE — renders when React/Spark is unavailable
+         Hidden automatically when React populates #root
+         ============================================================ -->
+    <div class="static-page" id="static-homepage">
+
+      <!-- Header -->
+      <header class="sp-header">
+        <div class="sp-header-inner">
+          <a href="./" class="sp-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            Respectful Care
+          </a>
+          <nav class="sp-nav">
+            <a href="#features">Features</a>
+            <a href="#principles">Principles</a>
+            <a href="#about">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="sp-hero">
+        <div class="sp-hero-inner">
+          <div class="sp-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            Evidence-Based Care
+          </div>
+          <h1>Informed Decisions for Maternal &amp; Newborn Care</h1>
+          <p>Balanced, transparent information backed by peer-reviewed research. Every claim is sourced, every option is presented, every decision is yours.</p>
+          <div class="sp-cta-group">
+            <a href="#features" class="sp-btn sp-btn-primary">
+              Explore the Library
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#principles" class="sp-btn sp-btn-outline">Our Principles</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <div class="sp-stats">
+        <div>
+          <div class="sp-stat-val">50+</div>
+          <div class="sp-stat-label">Procedures & Interventions</div>
+        </div>
+        <div>
+          <div class="sp-stat-val">200+</div>
+          <div class="sp-stat-label">Peer-Reviewed Citations</div>
+        </div>
+        <div>
+          <div class="sp-stat-val">4</div>
+          <div class="sp-stat-label">Balanced Perspectives per Topic</div>
+        </div>
+        <div>
+          <div class="sp-stat-val">100%</div>
+          <div class="sp-stat-label">Free & Open Source</div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <section class="sp-features" id="features">
+        <h2>Everything You Need to Decide with Confidence</h2>
+        <p>Comprehensive tools designed to support informed, voluntary decision-making.</p>
+        <div class="sp-grid">
+
+          <div class="sp-card">
+            <div class="sp-card-icon" style="background:#eff6ff;color:#2563eb">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            </div>
+            <h3>Procedure Library</h3>
+            <p>Explore 50+ maternal and newborn procedures with balanced benefits, risks, alternatives, and full citations from peer-reviewed sources.</p>
+          </div>
+
+          <div class="sp-card">
+            <div class="sp-card-icon" style="background:#f0fdf4;color:#059669">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Side-by-Side Comparison</h3>
+            <p>Compare procedures and alternatives in aligned columns — benefits, risks, and evidence levels displayed together so you see the full picture.</p>
+          </div>
+
+          <div class="sp-card">
+            <div class="sp-card-icon" style="background:#fef3c7;color:#d97706">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+            </div>
+            <h3>Birth Plan Generator</h3>
+            <p>Create a comprehensive birth plan referencing procedures you've reviewed. Choose templates, customize preferences, and share securely.</p>
+          </div>
+
+          <div class="sp-card">
+            <div class="sp-card-icon" style="background:#fdf2f8;color:#db2777">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <h3>Reflection Notes</h3>
+            <p>Private space to process information at your pace. Set reflection timers, write notes, and build a question list for your care team.</p>
+          </div>
+
+          <div class="sp-card">
+            <div class="sp-card-icon" style="background:#f5f3ff;color:#7c3aed">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            </div>
+            <h3>Decision Export</h3>
+            <p>Generate a summary of procedures reviewed, questions asked, and decisions made — perfect for family discussions and clinician conversations.</p>
+          </div>
+
+          <div class="sp-card">
+            <div class="sp-card-icon" style="background:#ecfdf5;color:#059669">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Vaccine Schedule Comparison</h3>
+            <p>Compare US CDC childhood vaccine schedules with international recommendations. Understand differences in approach with neutral, evidence-based context.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Principles -->
+      <section class="sp-principles" id="principles">
+        <div class="sp-principles-inner">
+          <h2>Our Guiding Principles</h2>
+          <div class="sp-principles-grid">
+            <div class="sp-principle">
+              <div class="sp-principle-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+              </div>
+              <h3>Trustworthy</h3>
+              <p>Every claim is cited, every statistic sourced, and every update logged with transparent review dates.</p>
+            </div>
+            <div class="sp-principle">
+              <div class="sp-principle-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--warm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              </div>
+              <h3>Empowering</h3>
+              <p>Feel informed and capable of asking meaningful questions — no pressure, no judgment, just clarity.</p>
+            </div>
+            <div class="sp-principle">
+              <div class="sp-principle-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <h3>Calming</h3>
+              <p>Design and tone reduce anxiety while promoting thoughtful, unhurried decision-making.</p>
+            </div>
+            <div class="sp-principle">
+              <div class="sp-principle-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3>Transparent</h3>
+              <p>Open-source, non-commercial, and never influenced by industry funding or advertising.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA banner -->
+      <section class="sp-cta-banner" id="about">
+        <h2>Your Body, Your Baby, Your Choice</h2>
+        <p>Informed consent means understanding your options before making a decision. We're here to help.</p>
+        <a href="https://github.com/DTMBX/informed-consent-com" class="sp-btn sp-btn-white" target="_blank" rel="noopener">
+          View on GitHub
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+        </a>
+      </section>
+
+      <!-- Footer -->
+      <footer class="sp-footer">
+        <div class="sp-footer-links">
+          <a href="https://github.com/DTMBX/informed-consent-com">GitHub</a>
+          <a href="https://github.com/DTMBX/informed-consent-com/blob/main/LICENSE">License</a>
+          <a href="https://github.com/DTMBX/informed-consent-com/blob/main/SECURITY.md">Security</a>
+        </div>
+        <p>&copy; 2026 Respectful Care &mdash; Evidence-based information for informed consent. Not medical advice.</p>
+        <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.7">This is an educational resource. Always consult qualified healthcare providers for medical decisions.</p>
+      </footer>
+    </div>
+
+    <!-- Auto-hide static page once React mounts successfully -->
+    <script>
+      (function(){
+        var root = document.getElementById('root');
+        var staticPage = document.getElementById('static-homepage');
+        if (!root || !staticPage) return;
+        var observer = new MutationObserver(function() {
+          if (root.children.length > 0) {
+            staticPage.style.display = 'none';
+            observer.disconnect();
+          }
+        });
+        observer.observe(root, { childList: true });
+      })();
+    </script>
+</body>
+
+</html>
