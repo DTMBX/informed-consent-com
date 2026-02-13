@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useKV } from '@/lib/kv'
 import { UserPreferences, Stage } from '@/lib/types'
 import { Onboarding } from '@/components/Onboarding'
 import { Homepage } from '@/components/Homepage'

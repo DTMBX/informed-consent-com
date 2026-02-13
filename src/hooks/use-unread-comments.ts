@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useKV } from '@/lib/kv'
 import { SharedBirthPlanLink, BirthPlanComment } from '@/lib/types'
 
 export function useUnreadComments() {

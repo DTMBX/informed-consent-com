@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useKV } from '@/lib/kv'
 import { procedures } from '@/lib/proceduresData'
 import { Procedure, Stage, BirthPlanVersion } from '@/lib/types'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
