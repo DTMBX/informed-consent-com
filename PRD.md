@@ -13,11 +13,11 @@ This application requires sophisticated information architecture, role-based acc
 ## Essential Features
 
 ### Procedure Library
-- **Functionality**: Searchable, filterable catalog of 10+ common newborn and maternal procedures (vaccinations, vitamin K, hearing screen, C-section care, etc.) with standardized fact sheets
-- **Purpose**: Provides centralized, balanced education on medical interventions offered during pregnancy, birth, and postpartum
+- **Functionality**: Searchable, filterable catalog of 15+ common newborn and maternal procedures including vaccinations (Hepatitis B, DTaP, MMR, Rotavirus, RSV immunization), vitamin K, hearing screen, C-section care, and more, with standardized fact sheets featuring comprehensive adverse reaction data
+- **Purpose**: Provides centralized, balanced education on medical interventions offered during pregnancy, birth, and postpartum, with detailed risk/benefit information
 - **Trigger**: User selects stage (prenatal/labor/postpartum), searches by name, or filters by urgency/category
 - **Progression**: Browse categories → View procedure cards with summary → Click to full detail → Save for offline
-- **Success criteria**: All procedures display concise summaries, last-reviewed dates, urgency level, and citation count; filtering returns relevant results in <500ms
+- **Success criteria**: All procedures display concise summaries, last-reviewed dates, urgency level, and citation count; filtering returns relevant results in <500ms; vaccine adverse reactions include frequency data in standardized format
 
 ### Procedure Detail Pages
 - **Functionality**: Four-quadrant layout showing Benefits, Risks (with frequency/severity), Alternatives, and "What if we wait?" sections; includes absolute risk numbers, visual risk charts, evidence citations, and contraindications

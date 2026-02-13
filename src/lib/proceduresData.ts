@@ -122,6 +122,90 @@ export const citations: Record<string, EvidenceCitation> = {
     source: 'Pediatrics',
     date: '2022-08',
     evidenceLevel: 'expert-consensus'
+  },
+  'cit-rsv-1': {
+    id: 'cit-rsv-1',
+    title: 'Updated Guidance for Palivizumab Prophylaxis Among Infants and Young Children at Increased Risk of Hospitalization for Respiratory Syncytial Virus Infection',
+    authors: 'American Academy of Pediatrics Committee on Infectious Diseases',
+    source: 'Pediatrics',
+    date: '2014-08',
+    url: 'https://publications.aap.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-rsv-2': {
+    id: 'cit-rsv-2',
+    title: 'Respiratory Syncytial Virus Infection: Epidemiology, Clinical Features, and Diagnosis',
+    authors: 'Hall et al.',
+    source: 'Current Topics in Microbiology and Immunology',
+    date: '2013',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-rsv-3': {
+    id: 'cit-rsv-3',
+    title: 'Nirsevimab for Prevention of RSV in Healthy Late-Preterm and Term Infants',
+    authors: 'Hammitt et al.',
+    source: 'New England Journal of Medicine',
+    date: '2022-09',
+    url: 'https://nejm.org',
+    evidenceLevel: 'rct'
+  },
+  'cit-rsv-4': {
+    id: 'cit-rsv-4',
+    title: 'RSV Disease Burden and Risk Factors for Severe Disease in Infants',
+    authors: 'Shi et al.',
+    source: 'The Lancet',
+    date: '2017-02',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-dtap-1': {
+    id: 'cit-dtap-1',
+    title: 'Diphtheria, Tetanus, and Pertussis: Recommendations for Vaccine Use',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2023-05',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-dtap-2': {
+    id: 'cit-dtap-2',
+    title: 'Safety of Acellular Pertussis Vaccine in Infants and Children',
+    authors: 'Le Saux et al.',
+    source: 'Paediatrics & Child Health',
+    date: '2003',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-mmr-1': {
+    id: 'cit-mmr-1',
+    title: 'Measles, Mumps, and Rubella (MMR) Vaccination: Safety and Effectiveness',
+    authors: 'CDC',
+    source: 'MMWR',
+    date: '2022-11',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-mmr-2': {
+    id: 'cit-mmr-2',
+    title: 'MMR Vaccine and Autism: An Update of the Scientific Evidence',
+    authors: 'DeStefano et al.',
+    source: 'Expert Review of Vaccines',
+    date: '2019-03',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-rotavirus-1': {
+    id: 'cit-rotavirus-1',
+    title: 'Prevention of Rotavirus Gastroenteritis Among Infants and Children',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2021-12',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-rotavirus-2': {
+    id: 'cit-rotavirus-2',
+    title: 'Rotavirus Vaccine Safety and Effectiveness: A Systematic Review',
+    authors: 'Burnett et al.',
+    source: 'Human Vaccines & Immunotherapeutics',
+    date: '2020-06',
+    evidenceLevel: 'systematic-review'
   }
 }
 
@@ -239,15 +323,36 @@ export const procedures: Procedure[] = [
       },
       {
         id: 'hepb-risk-2',
-        description: 'Low-grade fever',
-        frequency: 'Uncommon (1-5 in 100)',
+        description: 'Low-grade fever (less than 99.9°F)',
+        frequency: 'Uncommon (1-6 in 100)',
         severity: 'mild',
         citations: ['cit-hepb-1']
       },
       {
         id: 'hepb-risk-3',
-        description: 'Severe allergic reaction',
-        frequency: 'Very rare (less than 1 in 1,000,000)',
+        description: 'Temporary fatigue or irritability',
+        frequency: 'Occasional (1-5 in 100)',
+        severity: 'mild',
+        citations: ['cit-hepb-1']
+      },
+      {
+        id: 'hepb-risk-4',
+        description: 'Headache or dizziness (primarily in older children and adults)',
+        frequency: 'Uncommon (less than 1 in 100 in infants)',
+        severity: 'mild',
+        citations: ['cit-hepb-1']
+      },
+      {
+        id: 'hepb-risk-5',
+        description: 'Moderate fever (100.4°F or higher)',
+        frequency: 'Rare (less than 1 in 100)',
+        severity: 'mild',
+        citations: ['cit-hepb-2']
+      },
+      {
+        id: 'hepb-risk-6',
+        description: 'Severe allergic reaction (anaphylaxis)',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
         severity: 'severe',
         citations: ['cit-hepb-2']
       }
@@ -1140,5 +1245,715 @@ export const procedures: Procedure[] = [
     lastReviewed: '2024-01-17',
     nextReviewDue: '2025-01-17',
     reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-rsv-immunization',
+    name: 'RSV Immunization (Nirsevimab/Beyfortus)',
+    shortName: 'RSV Prevention',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'A single-dose monoclonal antibody injection given to infants to prevent severe respiratory syncytial virus (RSV) infection during their first RSV season. RSV is the leading cause of hospitalization in infants under 1 year.',
+    indication: 'RSV causes significant illness in infants, with approximately 58,000-80,000 hospitalizations annually in children under 5 in the US. Infants under 6 months are at highest risk for severe disease, including bronchiolitis and pneumonia. RSV season typically runs October through March.',
+    benefits: [
+      {
+        id: 'rsv-ben-1',
+        description: 'Reduces RSV-related hospitalizations by approximately 80% in healthy term infants',
+        citations: ['cit-rsv-3', 'cit-rsv-4']
+      },
+      {
+        id: 'rsv-ben-2',
+        description: 'Reduces medically attended RSV lower respiratory tract infections by 70-75%',
+        citations: ['cit-rsv-3']
+      },
+      {
+        id: 'rsv-ben-3',
+        description: 'Single dose provides protection for entire RSV season (approximately 5 months)',
+        citations: ['cit-rsv-3']
+      },
+      {
+        id: 'rsv-ben-4',
+        description: 'Particularly beneficial for infants born during or entering their first RSV season',
+        citations: ['cit-rsv-1', 'cit-rsv-4']
+      }
+    ],
+    risks: [
+      {
+        id: 'rsv-risk-1',
+        description: 'Mild rash at injection site',
+        frequency: 'Common (1-3 in 100)',
+        severity: 'mild',
+        citations: ['cit-rsv-3']
+      },
+      {
+        id: 'rsv-risk-2',
+        description: 'Low-grade fever (less than 100.4°F)',
+        frequency: 'Uncommon (less than 1 in 100)',
+        severity: 'mild',
+        citations: ['cit-rsv-3']
+      },
+      {
+        id: 'rsv-risk-3',
+        description: 'Injection site pain or swelling',
+        frequency: 'Occasional (1-2 in 100)',
+        severity: 'mild',
+        citations: ['cit-rsv-3']
+      },
+      {
+        id: 'rsv-risk-4',
+        description: 'Allergic reaction (very rare)',
+        frequency: 'Very rare (less than 1 in 10,000)',
+        severity: 'moderate',
+        citations: ['cit-rsv-3']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'rsv-alt-1',
+        name: 'Decline Immunization',
+        description: 'Rely on supportive care if RSV infection occurs',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'rsv-alt-ben-1',
+            description: 'Avoids injection and any potential side effects',
+            citations: ['cit-rsv-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'rsv-alt-risk-1',
+            description: 'Significantly higher risk of severe RSV disease requiring hospitalization. RSV causes approximately 1-2 in 100 healthy term infants to be hospitalized, with higher rates in young infants (under 3 months)',
+            frequency: '1-2 in 100 for hospitalization',
+            severity: 'severe',
+            citations: ['cit-rsv-2', 'cit-rsv-4']
+          },
+          {
+            id: 'rsv-alt-risk-2',
+            description: 'RSV bronchiolitis can cause severe breathing difficulty, oxygen requirement, feeding difficulties, and rarely death (20-500 deaths annually in children under 5 in US)',
+            frequency: 'Variable based on age and risk factors',
+            severity: 'severe',
+            citations: ['cit-rsv-2', 'cit-rsv-4']
+          },
+          {
+            id: 'rsv-alt-risk-3',
+            description: 'RSV infection in infancy is associated with increased risk of childhood asthma and recurrent wheezing',
+            frequency: '20-40 in 100 infants with severe RSV develop recurrent wheeze',
+            severity: 'moderate',
+            citations: ['cit-rsv-4']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-rsv-2', 'cit-rsv-4']
+      },
+      {
+        id: 'rsv-alt-2',
+        name: 'Palivizumab (Synagis) - Monthly Injections',
+        description: 'Older monoclonal antibody requiring monthly injections throughout RSV season. Now primarily reserved for highest-risk infants with specific medical conditions.',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'rsv-alt-ben-2',
+            description: 'Proven track record with 20+ years of use in high-risk infants',
+            citations: ['cit-rsv-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'rsv-alt-risk-4',
+            description: 'Requires 5 monthly injections vs single dose',
+            severity: 'mild',
+            citations: ['cit-rsv-1']
+          },
+          {
+            id: 'rsv-alt-risk-5',
+            description: 'Less effective than nirsevimab (approximately 50-55% reduction in hospitalizations vs 80%)',
+            severity: 'moderate',
+            citations: ['cit-rsv-1', 'cit-rsv-3']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-rsv-1']
+      }
+    ],
+    whatIfWeWait: 'RSV disease is most severe in young infants. Waiting increases risk during peak RSV season (typically November-February). Infants born just before or during RSV season are at highest risk. For infants born in spring/summer, immunization timing should align with upcoming RSV season. Immunization is most effective when given before RSV exposure. Time-sensitive based on birth date and RSV season.',
+    contraindications: [
+      {
+        id: 'rsv-contra-1',
+        condition: 'History of severe allergic reaction to previous dose',
+        severity: 'absolute',
+        explanation: 'Anaphylaxis or severe hypersensitivity to nirsevimab',
+        citations: ['cit-rsv-3']
+      },
+      {
+        id: 'rsv-contra-2',
+        condition: 'Moderate to severe acute illness',
+        severity: 'relative',
+        explanation: 'Defer until illness resolves',
+        citations: ['cit-rsv-3']
+      }
+    ],
+    questionsToAsk: [
+      'When is RSV season in our area?',
+      'What are the signs of severe RSV that would require medical attention?',
+      'Does my insurance cover this immunization?',
+      'Are there any additional preventive measures we should take (handwashing, limiting exposure)?',
+      'What should I do if my baby develops RSV symptoms despite immunization?'
+    ],
+    citations: [citations['cit-rsv-1'], citations['cit-rsv-2'], citations['cit-rsv-3'], citations['cit-rsv-4']],
+    lastReviewed: '2024-01-22',
+    nextReviewDue: '2025-01-22',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-dtap-vaccine',
+    name: 'DTaP Vaccine (Diphtheria, Tetanus, Pertussis)',
+    shortName: 'DTaP Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'A combination vaccine that protects against three serious diseases: diphtheria (severe throat infection), tetanus (lockjaw), and pertussis (whooping cough). Given as a series starting at 2 months of age.',
+    indication: 'Prevents three potentially fatal diseases. Pertussis (whooping cough) is particularly dangerous for infants, causing severe coughing fits, breathing difficulties, and hospitalization in approximately 50% of infected infants under 1 year. Diphtheria and tetanus are rare but life-threatening.',
+    benefits: [
+      {
+        id: 'dtap-ben-1',
+        description: 'Prevents pertussis in approximately 80-85% of cases after full series',
+        citations: ['cit-dtap-1', 'cit-dtap-2']
+      },
+      {
+        id: 'dtap-ben-2',
+        description: 'Provides nearly 100% protection against diphtheria and tetanus after full series',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-ben-3',
+        description: 'Significantly reduces severity of pertussis if infection occurs despite vaccination',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-ben-4',
+        description: 'Prevents infant deaths from pertussis (approximately 1 in 100 infected infants under 2 months die)',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'dtap-risk-1',
+        description: 'Redness, swelling, or pain at injection site',
+        frequency: 'Very common (20-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1', 'cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-2',
+        description: 'Mild fever (under 101°F)',
+        frequency: 'Common (10-15 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1', 'cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-3',
+        description: 'Fussiness, drowsiness, or decreased appetite',
+        frequency: 'Common (10-20 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-4',
+        description: 'Moderate fever (101-103°F)',
+        frequency: 'Uncommon (1-3 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-5',
+        description: 'Swelling of entire arm or leg where shot was given (typically after 4th or 5th dose)',
+        frequency: 'Uncommon (1-2 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1', 'cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-6',
+        description: 'Continuous crying for 3+ hours (now rare with acellular vaccine)',
+        frequency: 'Rare (less than 1 in 1,000)',
+        severity: 'mild',
+        citations: ['cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-7',
+        description: 'High fever over 105°F (now rare with acellular vaccine)',
+        frequency: 'Very rare (less than 1 in 10,000)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1', 'cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-8',
+        description: 'Seizure (usually related to fever, no long-term effects)',
+        frequency: 'Very rare (1 in 14,000 doses)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1', 'cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-9',
+        description: 'Severe allergic reaction (anaphylaxis)',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'dtap-alt-1',
+        name: 'Delay or Decline Vaccination',
+        description: 'Postpone or opt out of DTaP vaccine series',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'dtap-alt-ben-1',
+            description: 'Avoids injection pain and potential vaccine side effects',
+            citations: ['cit-dtap-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'dtap-alt-risk-1',
+            description: 'Leaves infant vulnerable to pertussis, which hospitalizes 50% of infected infants under 1 year and causes death in approximately 1% of infected infants',
+            frequency: '50 in 100 infants hospitalized; 1 in 100 die',
+            severity: 'severe',
+            citations: ['cit-dtap-1']
+          },
+          {
+            id: 'dtap-alt-risk-2',
+            description: 'Risk of tetanus from contaminated wounds (mortality rate 10-20% even with treatment)',
+            severity: 'severe',
+            citations: ['cit-dtap-1']
+          },
+          {
+            id: 'dtap-alt-risk-3',
+            description: 'Risk of diphtheria, which has a mortality rate of 5-10% despite treatment',
+            severity: 'severe',
+            citations: ['cit-dtap-1']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-alt-2',
+        name: 'Alternative Schedule',
+        description: 'Spread out vaccine doses on a delayed schedule',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'dtap-alt-ben-2',
+            description: 'May reduce anxiety about multiple vaccines at once',
+            citations: ['cit-dtap-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'dtap-alt-risk-4',
+            description: 'Leaves infant unprotected or under-protected for longer period during highest-risk age',
+            severity: 'severe',
+            citations: ['cit-dtap-1']
+          },
+          {
+            id: 'dtap-alt-risk-5',
+            description: 'No evidence of safety benefit; increases number of clinic visits and injections over time',
+            severity: 'mild',
+            citations: ['cit-dtap-1', 'cit-dtap-2']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    whatIfWeWait: 'Delaying DTaP vaccination leaves infants vulnerable during the period of highest risk for severe pertussis complications. Infants under 6 months account for majority of pertussis deaths. The recommended schedule (2, 4, 6 months) is designed to provide protection as early as safely possible. Pertussis outbreaks continue to occur in communities with lower vaccination rates. Time-sensitive: protection is critical during vulnerable first months of life.',
+    contraindications: [
+      {
+        id: 'dtap-contra-1',
+        condition: 'Severe allergic reaction to previous dose',
+        severity: 'absolute',
+        explanation: 'History of anaphylaxis to vaccine or component',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-contra-2',
+        condition: 'Encephalopathy within 7 days of previous dose (not due to another cause)',
+        severity: 'absolute',
+        explanation: 'Severe brain reaction to previous pertussis-containing vaccine',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-contra-3',
+        condition: 'Progressive neurological disorder',
+        severity: 'relative',
+        explanation: 'Defer until condition stabilized',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-contra-4',
+        condition: 'Moderate to severe acute illness',
+        severity: 'relative',
+        explanation: 'Defer until illness resolves',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    questionsToAsk: [
+      'What are the specific ingredients in the DTaP vaccine?',
+      'Can it be given at the same time as other vaccines?',
+      'What should I do if my baby develops a fever after vaccination?',
+      'What symptoms would require me to call the doctor after vaccination?',
+      'How can I help reduce pain from the injection?'
+    ],
+    citations: [citations['cit-dtap-1'], citations['cit-dtap-2']],
+    lastReviewed: '2024-01-23',
+    nextReviewDue: '2025-01-23',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-mmr-vaccine',
+    name: 'MMR Vaccine (Measles, Mumps, Rubella)',
+    shortName: 'MMR Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'A combination vaccine protecting against measles, mumps, and rubella. First dose typically given at 12-15 months of age, with a second dose at 4-6 years.',
+    indication: 'Prevents three viral diseases that can cause serious complications. Measles is highly contagious and can lead to pneumonia, brain damage, and death. Mumps can cause meningitis, deafness, and testicular inflammation. Rubella is particularly dangerous during pregnancy, causing severe birth defects.',
+    benefits: [
+      {
+        id: 'mmr-ben-1',
+        description: 'Provides approximately 97% protection against measles after two doses',
+        citations: ['cit-mmr-1', 'cit-mmr-2']
+      },
+      {
+        id: 'mmr-ben-2',
+        description: 'Provides approximately 88% protection against mumps after two doses',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-ben-3',
+        description: 'Provides approximately 97% protection against rubella after one dose',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-ben-4',
+        description: 'Prevents serious complications: measles causes death in approximately 1-2 per 1,000 infected children in developed countries',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-ben-5',
+        description: 'Protects against subacute sclerosing panencephalitis (SSPE), a rare but fatal brain disease caused by measles (occurs in 4-11 per 100,000 measles cases)',
+        citations: ['cit-mmr-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'mmr-risk-1',
+        description: 'Mild fever (less than 103°F)',
+        frequency: 'Common (10-15 in 100)',
+        severity: 'mild',
+        citations: ['cit-mmr-1', 'cit-mmr-2']
+      },
+      {
+        id: 'mmr-risk-2',
+        description: 'Mild rash',
+        frequency: 'Common (5-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-risk-3',
+        description: 'Swelling of glands in cheeks or neck',
+        frequency: 'Uncommon (less than 1 in 100)',
+        severity: 'mild',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-risk-4',
+        description: 'Temporary joint pain or stiffness (mainly in adolescents and adults, particularly females)',
+        frequency: 'Occasional in adults (up to 25 in 100 adult women)',
+        severity: 'mild',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-risk-5',
+        description: 'Temporary low platelet count (may cause unusual bruising or bleeding)',
+        frequency: 'Rare (1 in 30,000 doses)',
+        severity: 'moderate',
+        citations: ['cit-mmr-1', 'cit-mmr-2']
+      },
+      {
+        id: 'mmr-risk-6',
+        description: 'Seizure related to fever (no long-term effects)',
+        frequency: 'Rare (1 in 3,000 doses)',
+        severity: 'moderate',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-risk-7',
+        description: 'Severe allergic reaction (anaphylaxis)',
+        frequency: 'Very rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-mmr-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'mmr-alt-1',
+        name: 'Decline Vaccination',
+        description: 'Opt out of MMR vaccine',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'mmr-alt-ben-1',
+            description: 'Avoids injection and potential vaccine side effects',
+            citations: ['cit-mmr-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'mmr-alt-risk-1',
+            description: 'Risk of measles, which is highly contagious (90% of unvaccinated people exposed will contract it). Measles causes hospitalization in 20-25% of cases, death in 1-2 per 1,000, and permanent brain damage in approximately 1 per 1,000 infected children',
+            frequency: '20-25 in 100 hospitalized; 1-2 in 1,000 die',
+            severity: 'severe',
+            citations: ['cit-mmr-1']
+          },
+          {
+            id: 'mmr-alt-risk-2',
+            description: 'Risk of mumps complications including meningitis (15% of cases), permanent deafness (5 in 10,000 cases), and testicular inflammation in post-pubertal males',
+            severity: 'moderate',
+            citations: ['cit-mmr-1']
+          },
+          {
+            id: 'mmr-alt-risk-3',
+            description: 'Risk of rubella, which can cause severe birth defects if contracted during future pregnancy (up to 85% risk of congenital rubella syndrome if infected in first trimester)',
+            severity: 'severe',
+            citations: ['cit-mmr-1']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-alt-2',
+        name: 'Separate Vaccines',
+        description: 'Request individual measles, mumps, and rubella vaccines given separately',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'mmr-alt-ben-2',
+            description: 'None identified; separate vaccines no longer routinely available in US',
+            citations: ['cit-mmr-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'mmr-alt-risk-4',
+            description: 'Individual vaccines not readily available; no safety advantage demonstrated',
+            severity: 'mild',
+            citations: ['cit-mmr-1', 'cit-mmr-2']
+          },
+          {
+            id: 'mmr-alt-risk-5',
+            description: 'Delays complete protection; requires multiple visits and additional injections',
+            severity: 'mild',
+            citations: ['cit-mmr-1']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-mmr-1']
+      }
+    ],
+    whatIfWeWait: 'Delaying MMR vaccine increases risk during measles outbreaks, which continue to occur in undervaccinated communities. Measles is extremely contagious and spreads through air. Infants are too young for vaccine until 12 months and rely on community immunity. The standard 12-15 month timing balances maternal antibody waning with immune system maturity. In outbreak situations, vaccine may be given as early as 6 months. Time-sensitive during outbreaks.',
+    contraindications: [
+      {
+        id: 'mmr-contra-1',
+        condition: 'Severe allergic reaction to previous dose or vaccine component (e.g., gelatin, neomycin)',
+        severity: 'absolute',
+        explanation: 'History of anaphylaxis to vaccine or component',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-contra-2',
+        condition: 'Pregnancy',
+        severity: 'absolute',
+        explanation: 'Live virus vaccine; avoid pregnancy for 28 days after vaccination',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-contra-3',
+        condition: 'Severe immunodeficiency',
+        severity: 'absolute',
+        explanation: 'Conditions such as severe combined immunodeficiency, leukemia, lymphoma, or immunosuppressive therapy',
+        citations: ['cit-mmr-1']
+      },
+      {
+        id: 'mmr-contra-4',
+        condition: 'Recent receipt of blood products or immune globulin',
+        severity: 'relative',
+        explanation: 'Defer vaccine for 3-11 months depending on product (may interfere with vaccine effectiveness)',
+        citations: ['cit-mmr-1']
+      }
+    ],
+    questionsToAsk: [
+      'Is there currently a measles outbreak in our community?',
+      'What are the ingredients in the MMR vaccine?',
+      'What should I watch for after vaccination?',
+      'Is there any connection between MMR vaccine and autism? (Answer: No. This has been extensively studied and conclusively disproven in multiple large studies)',
+      'Can my child get MMR if they have an egg allergy? (Answer: Yes, MMR is safe for children with egg allergy)'
+    ],
+    citations: [citations['cit-mmr-1'], citations['cit-mmr-2']],
+    lastReviewed: '2024-01-24',
+    nextReviewDue: '2025-01-24',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-rotavirus-vaccine',
+    name: 'Rotavirus Vaccine (Oral)',
+    shortName: 'Rotavirus Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'An oral (not injected) vaccine that protects against rotavirus, the most common cause of severe diarrhea in infants and young children. Given as 2 or 3 doses starting at 2 months, depending on the brand.',
+    indication: 'Rotavirus causes severe, watery diarrhea and vomiting in infants and young children, leading to dehydration that requires hospitalization. Before the vaccine, rotavirus caused approximately 55,000-70,000 hospitalizations annually in the US.',
+    benefits: [
+      {
+        id: 'rota-ben-1',
+        description: 'Prevents approximately 85-98% of severe rotavirus disease',
+        citations: ['cit-rotavirus-1', 'cit-rotavirus-2']
+      },
+      {
+        id: 'rota-ben-2',
+        description: 'Prevents approximately 74-87% of any rotavirus gastroenteritis',
+        citations: ['cit-rotavirus-2']
+      },
+      {
+        id: 'rota-ben-3',
+        description: 'Significantly reduces rotavirus-related hospitalizations and emergency department visits',
+        citations: ['cit-rotavirus-1']
+      },
+      {
+        id: 'rota-ben-4',
+        description: 'Oral administration (no injection)',
+        citations: ['cit-rotavirus-1']
+      },
+      {
+        id: 'rota-ben-5',
+        description: 'Has dramatically reduced rotavirus disease burden since introduction in 2006',
+        citations: ['cit-rotavirus-1', 'cit-rotavirus-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'rota-risk-1',
+        description: 'Mild, temporary diarrhea or vomiting',
+        frequency: 'Occasional (3-5 in 100)',
+        severity: 'mild',
+        citations: ['cit-rotavirus-1', 'cit-rotavirus-2']
+      },
+      {
+        id: 'rota-risk-2',
+        description: 'Irritability or fussiness',
+        frequency: 'Occasional (3-7 in 100)',
+        severity: 'mild',
+        citations: ['cit-rotavirus-1']
+      },
+      {
+        id: 'rota-risk-3',
+        description: 'Intussusception (intestinal blockage requiring emergency treatment). Risk is very small and occurs mainly within first week after first dose',
+        frequency: 'Very rare (approximately 1-5 in 100,000 vaccinated infants)',
+        severity: 'severe',
+        citations: ['cit-rotavirus-1', 'cit-rotavirus-2']
+      },
+      {
+        id: 'rota-risk-4',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-rotavirus-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'rota-alt-1',
+        name: 'Decline Vaccination',
+        description: 'Opt out of rotavirus vaccine',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'rota-alt-ben-1',
+            description: 'Avoids very small risk of intussusception associated with vaccine',
+            citations: ['cit-rotavirus-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'rota-alt-risk-1',
+            description: 'Significantly higher risk of severe rotavirus gastroenteritis requiring hospitalization. Without vaccine, approximately 1 in 70 children will be hospitalized for rotavirus before age 5',
+            frequency: 'Approximately 1 in 70 hospitalized',
+            severity: 'moderate',
+            citations: ['cit-rotavirus-1', 'cit-rotavirus-2']
+          },
+          {
+            id: 'rota-alt-risk-2',
+            description: 'Risk of severe dehydration requiring IV fluids and hospitalization (20-60 per 1,000 unvaccinated children)',
+            frequency: '20-60 in 1,000',
+            severity: 'moderate',
+            citations: ['cit-rotavirus-2']
+          },
+          {
+            id: 'rota-alt-risk-3',
+            description: 'Risk of death from rotavirus, though rare in developed countries (20-60 deaths annually in US before vaccine)',
+            severity: 'severe',
+            citations: ['cit-rotavirus-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-rotavirus-1', 'cit-rotavirus-2']
+      }
+    ],
+    whatIfWeWait: 'Rotavirus vaccine must be started by 14 weeks 6 days of age and completed by 8 months of age. These age restrictions exist because intussusception risk may be higher in older infants. Delaying increases the chance of missing the age window. Rotavirus disease is most severe in young infants, so early protection is important. Time-sensitive: must begin by 15 weeks of age.',
+    contraindications: [
+      {
+        id: 'rota-contra-1',
+        condition: 'Severe allergic reaction to previous dose',
+        severity: 'absolute',
+        explanation: 'History of anaphylaxis to vaccine or component',
+        citations: ['cit-rotavirus-1']
+      },
+      {
+        id: 'rota-contra-2',
+        condition: 'History of intussusception',
+        severity: 'absolute',
+        explanation: 'Previous intussusception increases risk of recurrence',
+        citations: ['cit-rotavirus-1']
+      },
+      {
+        id: 'rota-contra-3',
+        condition: 'Severe combined immunodeficiency (SCID)',
+        severity: 'absolute',
+        explanation: 'Live virus vaccine; risk of vaccine-strain infection in severely immunocompromised',
+        citations: ['cit-rotavirus-1']
+      },
+      {
+        id: 'rota-contra-4',
+        condition: 'Moderate to severe acute gastroenteritis',
+        severity: 'relative',
+        explanation: 'Defer until illness resolves',
+        citations: ['cit-rotavirus-1']
+      }
+    ],
+    questionsToAsk: [
+      'Which brand of rotavirus vaccine will be used (RotaTeq or Rotarix)?',
+      'What are the signs of intussusception I should watch for in the week after vaccination (severe crying, vomiting, blood in stool, lethargy)?',
+      'Can my baby be around immunocompromised people after receiving this live vaccine?',
+      'What should I do if my baby spits up some of the vaccine dose?',
+      'How long should I wait to breastfeed after the oral vaccine?'
+    ],
+    citations: [citations['cit-rotavirus-1'], citations['cit-rotavirus-2']],
+    lastReviewed: '2024-01-25',
+    nextReviewDue: '2025-01-25',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
   }
 ]
