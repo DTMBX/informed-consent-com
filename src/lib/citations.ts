@@ -302,5 +302,103 @@ export const citations: Record<string, EvidenceCitation> = {
     source: 'Biological Psychiatry',
     date: '2007-12',
     evidenceLevel: 'cohort-study'
+  },
+  'cit-dtap-1': {
+    id: 'cit-dtap-1',
+    title: 'Diphtheria, Tetanus, and Pertussis: Vaccine Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2023-01',
+    url: 'https://cdc.gov/mmwr',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-dtap-2': {
+    id: 'cit-dtap-2',
+    title: 'Pertussis Vaccine Effectiveness and Duration of Protection',
+    authors: 'Klein NP et al.',
+    source: 'JAMA',
+    date: '2012-10',
+    url: 'https://jamanetwork.com',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-pcv-1': {
+    id: 'cit-pcv-1',
+    title: 'Pneumococcal Conjugate Vaccine: ACIP Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2022-12',
+    url: 'https://cdc.gov/mmwr',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-pcv-2': {
+    id: 'cit-pcv-2',
+    title: 'Impact of Pneumococcal Conjugate Vaccine on Otitis Media',
+    authors: 'Fireman B et al.',
+    source: 'Pediatric Infectious Disease Journal',
+    date: '2003-03',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-rotavirus-1': {
+    id: 'cit-rotavirus-1',
+    title: 'Rotavirus Vaccines: ACIP Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2021-04',
+    url: 'https://cdc.gov/mmwr',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-rotavirus-2': {
+    id: 'cit-rotavirus-2',
+    title: 'Real-World Effectiveness of Rotavirus Vaccines',
+    authors: 'Burnett E et al.',
+    source: 'The Lancet Infectious Diseases',
+    date: '2017-11',
+    url: 'https://thelancet.com',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-rotavirus-3': {
+    id: 'cit-rotavirus-3',
+    title: 'Intussusception Risk After Rotavirus Vaccination',
+    authors: 'Yih WK et al.',
+    source: 'New England Journal of Medicine',
+    date: '2014-02',
+    url: 'https://nejm.org',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-tdap-maternal-1': {
+    id: 'cit-tdap-maternal-1',
+    title: 'Updated Recommendations for Use of Tdap During Pregnancy',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2013-02',
+    url: 'https://cdc.gov/mmwr',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-tdap-maternal-2': {
+    id: 'cit-tdap-maternal-2',
+    title: 'Maternal Immunization With Tdap: Protection of Young Infants',
+    authors: 'Amirthalingam G et al.',
+    source: 'The Lancet',
+    date: '2014-09',
+    url: 'https://thelancet.com',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-flu-maternal-1': {
+    id: 'cit-flu-maternal-1',
+    title: 'Prevention and Control of Seasonal Influenza with Vaccines',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2023-08',
+    url: 'https://cdc.gov/mmwr',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-flu-maternal-2': {
+    id: 'cit-flu-maternal-2',
+    title: 'Maternal Influenza Immunization and Protection of the Infant',
+    authors: 'Zaman K et al.',
+    source: 'New England Journal of Medicine',
+    date: '2008-10',
+    url: 'https://nejm.org',
+    evidenceLevel: 'rct'
   }
 }

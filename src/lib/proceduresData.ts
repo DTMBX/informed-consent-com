@@ -1,6 +1,7 @@
 import { Procedure } from './types'
 import { additionalVaccines } from './additionalVaccines'
 import { childVaccinesContinued } from './childVaccinesContinued'
+import { enhancedVaccineData } from './enhancedVaccineData'
 import { citations } from './citations'
 
 export { citations }
@@ -5296,5 +5297,6 @@ export const procedures: Procedure[] = [
     }
   },
   ...additionalVaccines,
-  ...childVaccinesContinued
+  ...childVaccinesContinued,
+  ...enhancedVaccineData
 ]
