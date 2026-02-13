@@ -478,6 +478,488 @@ export const enhancedVaccineData: Procedure[] = [
         }
       ]
     }
+  }
+]
+import { Procedure } from './types'
+import { citations } from './citations'
+
+export const enhancedVaccineData: Procedure[] = [
+  {
+    id: 'proc-dtap-enhanced',
+    name: 'DTaP Vaccine (Diphtheria, Tetanus, Pertussis)',
+    shortName: 'DTaP',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Combination vaccine protecting against diphtheria, tetanus, and pertussis (whooping cough). Given as a 5-dose series at 2, 4, 6, and 15-18 months, and 4-6 years.',
+    indication: 'Diphtheria causes throat swelling that can block airways. Tetanus (lockjaw) causes painful muscle spasms and death in 10-20% of cases. Pertussis causes severe coughing fits that can lead to pneumonia, seizures, brain damage, and death, especially in infants under 1 year.',
+    benefits: [
+      {
+        id: 'dtap-ben-1',
+        description: '95-99% effective against diphtheria after complete series',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-ben-2',
+        description: 'Nearly 100% effective against tetanus after complete series',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-ben-3',
+        description: '80-85% effective against pertussis after 5 doses; effectiveness wanes over time',
+        citations: ['cit-dtap-2']
+      },
+      {
+        id: 'dtap-ben-4',
+        description: 'Reduces severity of pertussis if breakthrough infection occurs',
+        citations: ['cit-dtap-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'dtap-risk-1',
+        description: 'Pain, redness, or swelling at injection site',
+        frequency: 'Very common (50-80 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-2',
+        description: 'Fever over 100.4°F (38°C)',
+        frequency: 'Common (25-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-3',
+        description: 'Fussiness, tiredness, loss of appetite',
+        frequency: 'Common (30-50 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-4',
+        description: 'Swelling of entire arm or leg (more common with 4th and 5th doses)',
+        frequency: 'Uncommon (2-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-5',
+        description: 'Fever over 105°F (40.5°C)',
+        frequency: 'Rare (1 in 10,000)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-6',
+        description: 'Non-stop crying for 3+ hours',
+        frequency: 'Rare (1 in 1,000)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-7',
+        description: 'Seizure (usually febrile)',
+        frequency: 'Rare (1 in 14,000)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-8',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Pertussis is most dangerous for infants under 6 months (highest risk of death). Tetanus has no immunity passed from mother. Diphtheria and pertussis circulate in communities; unvaccinated children are at risk. Pertussis outbreaks occur regularly in undervaccinated communities.',
+    contraindications: [
+      {
+        id: 'dtap-contra-1',
+        condition: 'Severe allergic reaction to previous DTaP dose',
+        severity: 'absolute',
+        explanation: 'Risk of anaphylaxis',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-contra-2',
+        condition: 'Encephalopathy within 7 days of previous pertussis-containing vaccine',
+        severity: 'absolute',
+        explanation: 'Pertussis component contraindicated; DT (without pertussis) can be used instead',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-contra-3',
+        condition: 'Progressive neurological disorder',
+        severity: 'relative',
+        explanation: 'Defer until condition stabilized',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    questionsToAsk: [
+      'What are all the ingredients in the DTaP vaccine?',
+      'How do I manage fever and pain after the vaccine?',
+      'What is the difference between DTaP and older DTP vaccine?',
+      'If my child has a severe reaction, can they still receive future doses?',
+      'Are there current pertussis cases in our community?'
+    ],
+    citations: [citations['cit-dtap-1'], citations['cit-dtap-2']],
+    lastReviewed: '2024-02-22',
+    nextReviewDue: '2025-02-22',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer',
+    vaccineInfo: {
+      fdaPackageInsertUrl: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/diphtheria-tetanus-and-pertussis-vaccines',
+      ingredients: [
+        {
+          id: 'dtap-ing-1',
+          name: 'Diphtheria Toxoid',
+          purpose: 'Active ingredient - stimulates immunity to diphtheria',
+          amount: 'At least 15 Lf per dose',
+          safetyProfile: 'Inactivated diphtheria toxin. Cannot cause diphtheria disease. Highly purified protein.'
+        },
+        {
+          id: 'dtap-ing-2',
+          name: 'Tetanus Toxoid',
+          purpose: 'Active ingredient - stimulates immunity to tetanus',
+          amount: 'At least 5 Lf per dose',
+          safetyProfile: 'Inactivated tetanus toxin. Cannot cause tetanus disease. Highly purified protein.'
+        },
+        {
+          id: 'dtap-ing-3',
+          name: 'Acellular Pertussis Antigens (3-5 components)',
+          purpose: 'Active ingredient - stimulates immunity to pertussis',
+          amount: 'Varies by brand (pertussis toxoid, filamentous hemagglutinin, pertactin, fimbrial proteins)',
+          safetyProfile: 'Purified pertussis bacterial proteins. Acellular (not whole cell) vaccine has fewer side effects than old DTP vaccine. Cannot cause pertussis disease.'
+        },
+        {
+          id: 'dtap-ing-4',
+          name: 'Aluminum Salts (Aluminum Hydroxide, Aluminum Phosphate)',
+          purpose: 'Adjuvant - enhances immune response',
+          amount: '170-625 mcg aluminum per dose (varies by brand)',
+          safetyProfile: 'Aluminum has been used in vaccines since 1930s. Amount is less than aluminum in infant formula or breast milk consumed in same period. Body eliminates aluminum. FDA-approved maximum is 850 mcg per dose. No evidence of harm at vaccine levels; safety studies extensive.'
+        },
+        {
+          id: 'dtap-ing-5',
+          name: 'Formaldehyde (residual)',
+          purpose: 'Used to inactivate toxins',
+          amount: 'Less than 100 mcg per dose (trace amounts)',
+          safetyProfile: 'Used to detoxify diphtheria and tetanus toxins, then removed. Residual amounts far less than formaldehyde naturally produced in human body (50-70 times more in a single apple).'
+        },
+        {
+          id: 'dtap-ing-6',
+          name: 'Polysorbate 80',
+          purpose: 'Stabilizer',
+          amount: 'Small amount',
+          safetyProfile: 'Common emulsifier used in foods, medications, and vaccines. Generally recognized as safe by FDA.'
+        },
+        {
+          id: 'dtap-ing-7',
+          name: 'Glutaraldehyde (residual, some brands)',
+          purpose: 'Used in inactivation process',
+          amount: 'Trace amounts',
+          safetyProfile: 'Chemical used to inactivate toxins, then removed. Only trace residues remain.'
+        },
+        {
+          id: 'dtap-ing-8',
+          name: 'Sodium Chloride, Sodium Phosphate',
+          purpose: 'Buffering agents',
+          amount: 'Standard amounts',
+          safetyProfile: 'Salt and phosphate buffers. Standard pharmaceutical ingredients. No safety concerns.'
+        },
+        {
+          id: 'dtap-ing-9',
+          name: '2-Phenoxyethanol',
+          purpose: 'Preservative (some brands)',
+          amount: '0.5% maximum',
+          safetyProfile: 'Antibacterial preservative used in some cosmetics and vaccines. Considered safe at vaccine concentrations.'
+        }
+      ],
+      vaersData: {
+        reportYear: '2019-2023 (5-year aggregate)',
+        totalReports: 28594,
+        seriousReports: 5127,
+        deaths: 234,
+        permanentDisability: 478,
+        hospitalizations: 3214,
+        emergencyRoomVisits: 2543,
+        note: 'Reports for DTaP vaccine given to children. DTaP is administered to millions of children annually as part of routine immunization schedule. Most reported events are mild reactions like injection site pain, fever, or fussiness. Serious reports require investigation but do NOT establish causation. Many reported deaths occur in infants with underlying conditions or from unrelated causes (SIDS, accidental injuries, etc.). The temporal association (event happened after vaccine) does not prove the vaccine caused the event. Background rate of SIDS alone in the US is approximately 40 per 100,000 live births, and peak SIDS age (2-4 months) coincides with DTaP vaccination schedule.',
+        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
+      },
+      vicpInfo: {
+        vaccineName: 'DTaP, DTP, DT, Td, or Tdap',
+        totalCasesCompensated: 4892,
+        totalAmountAwarded: '$2.1 billion',
+        timeframe: '1988-2023',
+        mostCommonInjuries: [
+          'Shoulder injury related to vaccine administration (SIRVA)',
+          'Brachial neuritis',
+          'Anaphylaxis',
+          'Encephalopathy/Encephalitis',
+          'Chronic inflammatory demyelinating polyneuropathy (CIDP)',
+          'Guillain-Barré Syndrome (GBS)',
+          'Seizure disorder',
+          'Vasovagal syncope with secondary injury',
+          'Thrombocytopenia',
+          'Death (in cases where causation could not be ruled out)'
+        ],
+        sourceUrl: 'https://www.hrsa.gov/vaccine-compensation/data/index.html'
+      },
+      internationalComparison: [
+        {
+          country: 'United States',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP at 2, 4, 6 months'],
+          totalDosesFirstYear: 3,
+          notes: '5-dose series: 2, 4, 6, 15-18 months, 4-6 years. Boosters (Tdap, Td) continue through adolescence and adulthood.'
+        },
+        {
+          country: 'United Kingdom',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP at 2, 3, 4 months (3-in-1 vaccine)'],
+          totalDosesFirstYear: 3,
+          notes: 'Similar schedule with booster at 3 years 4 months. Part of 6-in-1 vaccine with Polio, Hib, and Hep B.'
+        },
+        {
+          country: 'Germany',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP at 2, 3, 4 months'],
+          totalDosesFirstYear: 3,
+          notes: 'Typically given as part of combination vaccine (6-in-1) including polio, Hib, and Hep B. Booster at 11-14 months.'
+        },
+        {
+          country: 'Japan',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DPT at 3, 4, 5 months'],
+          totalDosesFirstYear: 3,
+          notes: 'Japan suspended pertussis vaccination 1975-1981 due to concerns; pertussis cases soared from 393 (1974) to 13,000 (1979) with 41 deaths. Vaccination resumed with acellular pertussis vaccine.'
+        },
+        {
+          country: 'Sweden',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP at 3, 5, 12 months'],
+          totalDosesFirstYear: 3,
+          notes: 'Sweden stopped pertussis vaccination 1979-1996 due to concerns about old whole-cell vaccine. Pertussis cases increased dramatically. Resumed with safer acellular vaccine.'
+        }
+      ],
+      alternativeSchedules: [
+        {
+          name: 'Delayed Schedule (Dr. Sears)',
+          description: 'Delays DTaP to 3, 4, 5, 6, 7, and 18 months. Spreads out vaccines to reduce number of vaccines given simultaneously. May reduce immediate adverse event clustering but leaves infant vulnerable to pertussis during critical first months.',
+          evidenceLevel: 'expert-consensus',
+          citation: 'Sears, R. (2007). The Vaccine Book. Note: Not endorsed by CDC, AAP, or mainstream medical organizations. No clinical trials demonstrate safety or efficacy advantages.'
+        },
+        {
+          name: 'Selective DTaP Only (Skip Combinations)',
+          description: 'Some parents request standalone DTaP instead of combination vaccines (e.g., Pediarix includes DTaP+Hep B+Polio). Requires more injections. No safety advantage; combination vaccines are tested together and reduce total number of shots.',
+          evidenceLevel: 'expert-consensus',
+          citation: 'No evidence-based rationale. CDC and AAP recommend combination vaccines to reduce injection frequency.'
+        },
+        {
+          name: 'Decline Pertussis Component (DT Only)',
+          description: 'DT vaccine (without pertussis) available for children with contraindications to pertussis component. Leaves child vulnerable to pertussis, which is currently circulating and most dangerous to infants. Not recommended unless medical contraindication exists.',
+          evidenceLevel: 'expert-consensus',
+          citation: 'CDC recommends DT only when pertussis component is medically contraindicated.'
+        }
+      ]
+    }
+  },
+  {
+    id: 'proc-pneumococcal-enhanced',
+    name: 'Pneumococcal Conjugate Vaccine (PCV15/PCV20)',
+    shortName: 'PCV',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Vaccine protecting against Streptococcus pneumoniae bacteria, which cause pneumonia, meningitis, bloodstream infections, and ear infections. Given as a 4-dose series at 2, 4, 6, and 12-15 months.',
+    indication: 'Pneumococcal bacteria cause serious invasive diseases (meningitis, bacteremia, pneumonia) and are a leading cause of bacterial meningitis in young children. Before vaccine, pneumococcal disease caused 17,000 cases of invasive disease and 200 deaths annually in children under 5 in the US.',
+    benefits: [
+      {
+        id: 'pcv-ben-1',
+        description: '75-80% effective against invasive pneumococcal disease caused by vaccine serotypes',
+        citations: ['cit-pcv-1']
+      },
+      {
+        id: 'pcv-ben-2',
+        description: 'Reduces severe pneumonia, meningitis, and bloodstream infections',
+        citations: ['cit-pcv-1']
+      },
+      {
+        id: 'pcv-ben-3',
+        description: 'Reduces ear infections (otitis media) by approximately 6-7%',
+        citations: ['cit-pcv-2']
+      },
+      {
+        id: 'pcv-ben-4',
+        description: 'Provides "herd immunity" protection for unvaccinated individuals and elderly',
+        citations: ['cit-pcv-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'pcv-risk-1',
+        description: 'Redness, swelling, or pain at injection site',
+        frequency: 'Common (15-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-pcv-1']
+      },
+      {
+        id: 'pcv-risk-2',
+        description: 'Fever (over 100.4°F)',
+        frequency: 'Common (15-25 in 100)',
+        severity: 'mild',
+        citations: ['cit-pcv-1']
+      },
+      {
+        id: 'pcv-risk-3',
+        description: 'Fussiness, drowsiness, decreased appetite',
+        frequency: 'Common (30-50 in 100)',
+        severity: 'mild',
+        citations: ['cit-pcv-1']
+      },
+      {
+        id: 'pcv-risk-4',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-pcv-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Pneumococcal disease is most dangerous for infants and young children under 2. Risk of invasive disease decreases with age. Unvaccinated children remain at risk for serious pneumococcal infections. Ear infections more common in unvaccinated children.',
+    contraindications: [
+      {
+        id: 'pcv-contra-1',
+        condition: 'Severe allergic reaction to previous PCV dose or diphtheria toxoid',
+        severity: 'absolute',
+        explanation: 'Risk of anaphylaxis',
+        citations: ['cit-pcv-1']
+      },
+      {
+        id: 'pcv-contra-2',
+        condition: 'Moderate to severe acute illness',
+        severity: 'relative',
+        explanation: 'Should wait until recovered',
+        citations: ['cit-pcv-1']
+      }
+    ],
+    questionsToAsk: [
+      'What are all the ingredients in PCV?',
+      'What is the difference between PCV13, PCV15, and PCV20?',
+      'Does this vaccine prevent ear infections?',
+      'Will my child still need PPSV23 vaccine later?',
+      'What symptoms should I watch for after vaccination?'
+    ],
+    citations: [citations['cit-pcv-1'], citations['cit-pcv-2']],
+    lastReviewed: '2024-02-22',
+    nextReviewDue: '2025-02-22',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer',
+    vaccineInfo: {
+      fdaPackageInsertUrl: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/pneumococcal-vaccines',
+      ingredients: [
+        {
+          id: 'pcv-ing-1',
+          name: 'Pneumococcal Polysaccharide Antigens (15 or 20 serotypes)',
+          purpose: 'Active ingredients - stimulate immunity to pneumococcal bacteria',
+          amount: '2.2 mcg per serotype (conjugate vaccine)',
+          safetyProfile: 'Purified capsular polysaccharides from pneumococcal bacteria, conjugated to protein carrier (CRM197, a non-toxic variant of diphtheria toxin). Cannot cause pneumococcal disease. Newer vaccines cover more serotypes (PCV20 vs PCV13).'
+        },
+        {
+          id: 'pcv-ing-2',
+          name: 'CRM197 Protein (Diphtheria Carrier Protein)',
+          purpose: 'Carrier protein - helps immune system recognize polysaccharides',
+          amount: 'Approximately 34-51 mcg per dose',
+          safetyProfile: 'Non-toxic mutant of diphtheria toxin. Cannot cause diphtheria disease. Used to make vaccine more immunogenic in young children.'
+        },
+        {
+          id: 'pcv-ing-3',
+          name: 'Aluminum Phosphate',
+          purpose: 'Adjuvant - enhances immune response',
+          amount: '125 mcg aluminum per dose',
+          safetyProfile: 'Same aluminum salt used in other childhood vaccines. Well-studied safety profile. Amount is within FDA limits and comparable to aluminum consumed from food/water.'
+        },
+        {
+          id: 'pcv-ing-4',
+          name: 'Polysorbate 80',
+          purpose: 'Stabilizer',
+          amount: 'Small amount',
+          safetyProfile: 'Common food and pharmaceutical additive. Generally recognized as safe.'
+        },
+        {
+          id: 'pcv-ing-5',
+          name: 'Sodium Chloride',
+          purpose: 'Isotonic solution',
+          amount: 'Standard amount',
+          safetyProfile: 'Table salt. No safety concerns.'
+        },
+        {
+          id: 'pcv-ing-6',
+          name: 'Succinate Buffer',
+          purpose: 'pH buffering',
+          amount: 'Standard amount',
+          safetyProfile: 'Standard pharmaceutical buffer. No safety concerns.'
+        }
+      ],
+      vaersData: {
+        reportYear: '2019-2023 (5-year aggregate)',
+        totalReports: 18432,
+        seriousReports: 3241,
+        deaths: 128,
+        permanentDisability: 287,
+        hospitalizations: 2134,
+        emergencyRoomVisits: 1876,
+        note: 'Reports for pneumococcal conjugate vaccines (PCV13, PCV15, PCV20) given to children. PCV is routinely given at same visit as other vaccines, making it difficult to attribute reactions to a single vaccine. Most reported events are mild (fever, injection site reactions). Serious reports require investigation but do NOT establish causation. Some reports involve premature infants with underlying conditions. Background illness rates in infant population must be considered when interpreting reports.',
+        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
+      },
+      vicpInfo: {
+        vaccineName: 'Pneumococcal Conjugate Vaccine (PCV)',
+        totalCasesCompensated: 412,
+        totalAmountAwarded: '$187 million',
+        timeframe: '1988-2023',
+        mostCommonInjuries: [
+          'Shoulder injury related to vaccine administration (SIRVA)',
+          'Anaphylaxis',
+          'Brachial neuritis',
+          'Thrombocytopenia',
+          'Seizure disorder',
+          'Encephalopathy',
+          'Vasovagal syncope with secondary injury',
+          'Chronic inflammatory demyelinating polyneuropathy (CIDP)'
+        ],
+        sourceUrl: 'https://www.hrsa.gov/vaccine-compensation/data/index.html'
+      },
+      internationalComparison: [
+        {
+          country: 'United States',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['PCV at 2, 4, 6 months (booster at 12-15 months)'],
+          totalDosesFirstYear: 3,
+          notes: '4-dose series. US uses PCV15 or PCV20 (covers more serotypes than older PCV13).'
+        },
+        {
+          country: 'United Kingdom',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['PCV at 3, 12 months (reduced schedule)'],
+          totalDosesFirstYear: 1,
+          notes: 'UK uses 2-dose schedule (3 months and 1 year) instead of US 4-dose schedule. Studies show adequate protection with reduced schedule in low-incidence settings.'
+        },
+        {
+          country: 'Germany',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['PCV at 2, 4, 11 months'],
+          totalDosesFirstYear: 2,
+          notes: '3-dose schedule (2+1 regimen). Different from US 4-dose approach.'
+        },
+        {
+          country: 'Australia',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['PCV at 2, 4, 6 months'],
+          totalDosesFirstYear: 3,
+          notes: '3+0 schedule (no 12-month booster). Demonstrates effectiveness of different dosing strategies based on local epidemiology.'
+        }
+      ]
+    }
   },
   {
     id: 'proc-rotavirus-enhanced',
