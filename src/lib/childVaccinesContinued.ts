@@ -1,5 +1,5 @@
 import { Procedure } from './types'
-import { citations } from './proceduresData'
+import { citations } from './citations'
 
 export const childVaccinesContinued: Procedure[] = [
   {
