@@ -9,6 +9,7 @@ import { urgencyConfig, evidenceLevelConfig, formatDate, getSeverityColor } from
 import { CesareanVBACComparison } from '@/components/OutcomeComparisonChart'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { RSVExplainer } from '@/components/RSVExplainer'
+import { VaccineInformation } from '@/components/VaccineInformation'
 import { useState } from 'react'
 
 interface ProcedureDetailProps {
@@ -294,6 +295,15 @@ export function ProcedureDetail({
             </ul>
           </CardContent>
         </Card>
+      )}
+
+      {procedure.vaccineInfo && (
+        <div className="mb-8">
+          <VaccineInformation 
+            vaccineInfo={procedure.vaccineInfo} 
+            vaccineName={procedure.name}
+          />
+        </div>
       )}
 
       <Card className="mb-8">

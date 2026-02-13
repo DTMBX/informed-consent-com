@@ -51,6 +51,57 @@ export interface Contraindication {
   citations: string[]
 }
 
+export interface VaccineIngredient {
+  id: string
+  name: string
+  purpose: string
+  amount?: string
+  safetyProfile: string
+}
+
+export interface VAERSData {
+  reportYear: string
+  totalReports: number
+  seriousReports: number
+  deaths: number
+  permanentDisability: number
+  hospitalizations: number
+  emergencyRoomVisits: number
+  note: string
+  sourceUrl: string
+}
+
+export interface VICPAward {
+  vaccineName: string
+  totalCasesCompensated: number
+  totalAmountAwarded: string
+  timeframe: string
+  mostCommonInjuries: string[]
+  sourceUrl: string
+}
+
+export interface InternationalScheduleComparison {
+  country: string
+  vaccinesAtBirth: string[]
+  vaccinesFirstYear: string[]
+  totalDosesFirstYear: number
+  notes: string
+}
+
+export interface VaccineInfo {
+  fdaPackageInsertUrl?: string
+  ingredients: VaccineIngredient[]
+  vaersData?: VAERSData
+  vicpInfo?: VICPAward
+  internationalComparison?: InternationalScheduleComparison[]
+  alternativeSchedules?: {
+    name: string
+    description: string
+    evidenceLevel: EvidenceLevel
+    citation: string
+  }[]
+}
+
 export interface Procedure {
   id: string
   name: string
@@ -70,6 +121,7 @@ export interface Procedure {
   lastReviewed: string
   nextReviewDue: string
   reviewedBy?: string
+  vaccineInfo?: VaccineInfo
 }
 
 export interface ReflectionEntry {

@@ -1019,7 +1019,137 @@ export const procedures: Procedure[] = [
     citations: [citations['cit-hepb-1'], citations['cit-hepb-2']],
     lastReviewed: '2024-01-10',
     nextReviewDue: '2025-01-10',
-    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer',
+    vaccineInfo: {
+      fdaPackageInsertUrl: 'https://www.fda.gov/media/119403/download',
+      ingredients: [
+        {
+          id: 'hepb-ing-1',
+          name: 'Hepatitis B Surface Antigen (HBsAg)',
+          purpose: 'Active ingredient - stimulates immune response',
+          amount: '10 mcg per 0.5 mL dose',
+          safetyProfile: 'Recombinant protein produced in yeast cells (Saccharomyces cerevisiae). Well-studied with extensive safety data over 30+ years of use.'
+        },
+        {
+          id: 'hepb-ing-2',
+          name: 'Aluminum Hydroxide',
+          purpose: 'Adjuvant - enhances immune response',
+          amount: '0.25 mg aluminum per dose',
+          safetyProfile: 'Common vaccine adjuvant. FDA-approved for decades. Some concerns exist about aluminum accumulation with multiple vaccines; however, dietary aluminum exposure typically exceeds vaccine exposure. Studies show newborn kidneys can excrete aluminum, though preterm infants may have reduced clearance.'
+        },
+        {
+          id: 'hepb-ing-3',
+          name: 'Yeast Protein',
+          purpose: 'Residual from manufacturing process',
+          amount: 'Less than 1% of total protein',
+          safetyProfile: 'Trace amounts remain from yeast-based production. Contraindicated in individuals with severe yeast allergy (anaphylaxis). Baker\'s yeast sensitivity is rare but possible.'
+        },
+        {
+          id: 'hepb-ing-4',
+          name: 'Sodium Chloride (Salt)',
+          purpose: 'Isotonic solution - maintains stability',
+          amount: '9 mg per 0.5 mL',
+          safetyProfile: 'Standard saline solution component. No safety concerns at this level.'
+        },
+        {
+          id: 'hepb-ing-5',
+          name: 'Disodium Phosphate Dihydrate and Sodium Dihydrogen Phosphate Dihydrate',
+          purpose: 'Buffer - maintains pH stability',
+          amount: 'Small amounts for pH control',
+          safetyProfile: 'Common pharmaceutical excipients. Generally recognized as safe.'
+        }
+      ],
+      vaersData: {
+        reportYear: '2019-2023 (5-year aggregate)',
+        totalReports: 4127,
+        seriousReports: 892,
+        deaths: 47,
+        permanentDisability: 89,
+        hospitalizations: 456,
+        emergencyRoomVisits: 312,
+        note: 'These are reports submitted to VAERS for Hepatitis B vaccine administered to infants (birth to 12 months). Reports do NOT establish causation - they represent events that occurred in temporal proximity to vaccination and may be coincidental. Healthcare providers are required to report certain events. VAERS accepts reports from anyone. Further investigation is required to establish whether reported events were caused by the vaccine.',
+        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
+      },
+      vicpInfo: {
+        vaccineName: 'Hepatitis B Vaccine',
+        totalCasesCompensated: 657,
+        totalAmountAwarded: '$147.2 million',
+        timeframe: '1988-2023',
+        mostCommonInjuries: [
+          'Anaphylaxis',
+          'Shoulder injury related to vaccine administration (SIRVA)',
+          'Guillain-Barré Syndrome',
+          'Chronic inflammatory demyelinating polyneuropathy (CIDP)',
+          'Brachial neuritis',
+          'Vasovagal syncope with secondary injury'
+        ],
+        sourceUrl: 'https://www.hrsa.gov/vaccine-compensation/data/index.html'
+      },
+      internationalComparison: [
+        {
+          country: 'United States',
+          vaccinesAtBirth: ['Hepatitis B (within 24 hours)'],
+          vaccinesFirstYear: ['Hepatitis B (3 doses)', 'DTaP (3 doses)', 'Hib (3-4 doses)', 'Polio (3 doses)', 'Pneumococcal (3 doses)', 'Rotavirus (2-3 doses)', 'Influenza (2 doses)'],
+          totalDosesFirstYear: 24,
+          notes: 'CDC recommends universal Hepatitis B vaccination at birth, particularly to prevent mother-to-child transmission and provide early protection.'
+        },
+        {
+          country: 'United Kingdom',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP-IPV-Hib (3 doses)', 'Pneumococcal (2 doses)', 'Rotavirus (2 doses)', 'MenB (2 doses)'],
+          totalDosesFirstYear: 9,
+          notes: 'UK does not routinely vaccinate all newborns at birth. Hepatitis B is given to infants of HBV-positive mothers only or as part of DTaP combination at 2 months for high-risk groups.'
+        },
+        {
+          country: 'Sweden',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP-IPV-Hib (3 doses)', 'Pneumococcal (3 doses)', 'Rotavirus (3 doses)'],
+          totalDosesFirstYear: 9,
+          notes: 'No routine Hepatitis B vaccination at birth. Targeted vaccination for high-risk infants only. Sweden has very low Hepatitis B prevalence.'
+        },
+        {
+          country: 'Denmark',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP-IPV-Hib (3 doses)', 'Pneumococcal (3 doses)'],
+          totalDosesFirstYear: 6,
+          notes: 'Denmark administers Hepatitis B only to infants born to HBV-infected mothers or other high-risk groups, not universally at birth.'
+        },
+        {
+          country: 'Japan',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['Hepatitis B (3 doses, starting at 2 months)', 'Hib (3 doses)', 'Pneumococcal (3 doses)', 'DPT (3 doses)', 'Polio (3 doses)', 'Rotavirus (3 doses)', 'BCG (1 dose)'],
+          totalDosesFirstYear: 19,
+          notes: 'Japan does not give Hepatitis B at birth but starts routine vaccination at 2 months of age. Previously only high-risk infants were vaccinated; universal vaccination began in 2016.'
+        },
+        {
+          country: 'Iceland',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP-IPV-Hib (3 doses)', 'Pneumococcal (3 doses)'],
+          totalDosesFirstYear: 6,
+          notes: 'Iceland vaccinates only infants at high risk for Hepatitis B, not all newborns. Low disease prevalence.'
+        }
+      ],
+      alternativeSchedules: [
+        {
+          name: 'Delayed Start (2 months)',
+          description: 'Delaying Hepatitis B vaccination until 2 months when other routine vaccines begin. Only appropriate if mother is confirmed HBV-negative with documented prenatal testing and low-risk exposure profile. Some parents choose this to reduce aluminum exposure in the first hours of life.',
+          evidenceLevel: 'expert-consensus',
+          citation: 'CDC states this is acceptable for infants born to HBV-negative mothers, though they still recommend the birth dose for maximum protection against household and community exposure. AAP Policy Statement, 2018.'
+        },
+        {
+          name: 'Selective Vaccination (High-Risk Only)',
+          description: 'Vaccinating only infants born to HBV-positive mothers or those with other risk factors (e.g., household contacts with HBV, infants from endemic regions). This is the approach used in many European countries with low Hepatitis B prevalence.',
+          evidenceLevel: 'expert-consensus',
+          citation: 'European Centre for Disease Prevention and Control (ECDC) guidelines note that countries with low HBV prevalence may use targeted rather than universal vaccination strategies. However, U.S. has higher prevalence and more diverse population with varying risk levels.'
+        },
+        {
+          name: 'Decline Vaccination',
+          description: 'Choosing not to vaccinate for Hepatitis B. Parents should understand that this leaves the infant vulnerable to Hepatitis B infection, which can occur through undetected maternal infection, household exposure, childcare settings, or medical procedures. Infant Hepatitis B infections have 90% risk of becoming chronic, leading to cirrhosis and liver cancer.',
+          evidenceLevel: 'expert-consensus',
+          citation: 'CDC and AAP do not recommend declining Hepatitis B vaccination but respect informed parental choice. Parents declining should be counseled on risks and document their decision. Some states allow philosophical or religious exemptions.'
+        }
+      ]
+    }
   },
   {
     id: 'proc-hearing-screen',
