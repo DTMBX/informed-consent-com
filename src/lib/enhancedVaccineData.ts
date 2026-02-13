@@ -1,5 +1,6 @@
 import { Procedure } from './types'
 import { citations } from './citations'
+import { vaersRealData } from './vaersRealData'
 
 export const enhancedVaccineData: Procedure[] = [
   {
@@ -194,17 +195,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Antibacterial preservative used in some cosmetics and vaccines. Considered safe at vaccine concentrations.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 28594,
-        seriousReports: 5127,
-        deaths: 234,
-        permanentDisability: 478,
-        hospitalizations: 3214,
-        emergencyRoomVisits: 2543,
-        note: 'Reports for DTaP vaccine given to children. DTaP is administered to millions of children annually as part of routine immunization schedule. Most reported events are mild reactions like injection site pain, fever, or fussiness. Serious reports require investigation but do NOT establish causation. Many reported deaths occur in infants with underlying conditions or from unrelated causes (SIDS, accidental injuries, etc.). The temporal association (event happened after vaccine) does not prove the vaccine caused the event. Background rate of SIDS alone in the US is approximately 40 per 100,000 live births, and peak SIDS age (2-4 months) coincides with DTaP vaccination schedule.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['dtap'],
       vicpInfo: {
         vaccineName: 'DTaP, DTP, DT, Td, or Tdap',
         totalCasesCompensated: 4892,
@@ -419,17 +410,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Standard pharmaceutical buffer. No safety concerns.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 18432,
-        seriousReports: 3241,
-        deaths: 128,
-        permanentDisability: 287,
-        hospitalizations: 2134,
-        emergencyRoomVisits: 1876,
-        note: 'Reports for pneumococcal conjugate vaccines (PCV13, PCV15, PCV20) given to children. PCV is routinely given at same visit as other vaccines, making it difficult to attribute reactions to a single vaccine. Most reported events are mild (fever, injection site reactions). Serious reports require investigation but do NOT establish causation. Some reports involve premature infants with underlying conditions. Background illness rates in infant population must be considered when interpreting reports.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['pcv'],
       vicpInfo: {
         vaccineName: 'Pneumococcal Conjugate Vaccine (PCV)',
         totalCasesCompensated: 412,
@@ -671,17 +652,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Antibacterial preservative used in some cosmetics and vaccines. Considered safe at vaccine concentrations.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 28594,
-        seriousReports: 5127,
-        deaths: 234,
-        permanentDisability: 478,
-        hospitalizations: 3214,
-        emergencyRoomVisits: 2543,
-        note: 'Reports for DTaP vaccine given to children. DTaP is administered to millions of children annually as part of routine immunization schedule. Most reported events are mild reactions like injection site pain, fever, or fussiness. Serious reports require investigation but do NOT establish causation. Many reported deaths occur in infants with underlying conditions or from unrelated causes (SIDS, accidental injuries, etc.). The temporal association (event happened after vaccine) does not prove the vaccine caused the event. Background rate of SIDS alone in the US is approximately 40 per 100,000 live births, and peak SIDS age (2-4 months) coincides with DTaP vaccination schedule.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['dtap'],
       vicpInfo: {
         vaccineName: 'DTaP, DTP, DT, Td, or Tdap',
         totalCasesCompensated: 4892,
@@ -896,17 +867,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Standard pharmaceutical buffer. No safety concerns.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 18432,
-        seriousReports: 3241,
-        deaths: 128,
-        permanentDisability: 287,
-        hospitalizations: 2134,
-        emergencyRoomVisits: 1876,
-        note: 'Reports for pneumococcal conjugate vaccines (PCV13, PCV15, PCV20) given to children. PCV is routinely given at same visit as other vaccines, making it difficult to attribute reactions to a single vaccine. Most reported events are mild (fever, injection site reactions). Serious reports require investigation but do NOT establish causation. Some reports involve premature infants with underlying conditions. Background illness rates in infant population must be considered when interpreting reports.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['pcv'],
       vicpInfo: {
         vaccineName: 'Pneumococcal Conjugate Vaccine (PCV)',
         totalCasesCompensated: 412,
@@ -1113,17 +1074,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Used in cell culture during manufacturing. Trace amounts remain after purification. No safety concerns at these levels.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 9247,
-        seriousReports: 1834,
-        deaths: 78,
-        permanentDisability: 143,
-        hospitalizations: 1287,
-        emergencyRoomVisits: 892,
-        note: 'Reports for rotavirus vaccines (RV1-Rotarix, RV5-RotaTeq). Intussusception is the most significant known risk, occurring in approximately 1-5 per 100,000 infants within 7 days of first dose. This represents a small increase over background rate (approximately 1 additional case per 20,000-100,000 vaccinated infants). Post-marketing surveillance carefully monitors for intussusception. Most other reported events are mild. Death reports require thorough investigation; many occur in premature infants with complex medical histories or from unrelated causes. Reports do NOT establish causation.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['rotavirus'],
       vicpInfo: {
         vaccineName: 'Rotavirus Vaccine',
         totalCasesCompensated: 187,
@@ -1320,17 +1271,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Salt and phosphate buffers. Standard pharmaceutical ingredients. No pregnancy concerns.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 7834,
-        seriousReports: 1423,
-        deaths: 34,
-        permanentDisability: 89,
-        hospitalizations: 876,
-        emergencyRoomVisits: 634,
-        note: 'Reports for Tdap vaccine given during pregnancy. Tdap in pregnancy has been extensively studied and recommended by CDC since 2012. Large studies including hundreds of thousands of pregnant individuals show no increased risk of adverse pregnancy outcomes. Most reported events are mild injection site reactions or temporary body aches. Serious reports require investigation but do NOT establish causation. Death reports are rare and typically involve unrelated causes or pregnancy complications. Background rates of pregnancy complications and fetal loss must be considered when interpreting reports.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['dtap'],
       vicpInfo: {
         vaccineName: 'Tdap (Tetanus, Diphtheria, acellular Pertussis)',
         totalCasesCompensated: 1847,
@@ -1507,17 +1448,7 @@ export const enhancedVaccineData: Procedure[] = [
           safetyProfile: 'Common pharmaceutical ingredients. No pregnancy concerns.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 12453,
-        seriousReports: 2134,
-        deaths: 87,
-        permanentDisability: 156,
-        hospitalizations: 1432,
-        emergencyRoomVisits: 987,
-        note: 'Reports for influenza vaccine given during pregnancy. Flu vaccine in pregnancy has been extensively studied in millions of pregnant individuals worldwide. Large safety studies show no increased risk of adverse pregnancy outcomes, miscarriage, or birth defects. Most reported events are mild injection site reactions. Serious reports require investigation but do NOT establish causation. Background rates of pregnancy complications (miscarriage 10-20%, stillbirth 0.6%, preterm birth 10%) must be considered. Temporal association does not prove causation. Death reports are very rare and typically involve unrelated causes or pregnancy complications.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['flu'],
       vicpInfo: {
         vaccineName: 'Influenza Vaccine',
         totalCasesCompensated: 2341,

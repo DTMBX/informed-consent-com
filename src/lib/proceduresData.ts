@@ -3,6 +3,7 @@ import { additionalVaccines } from './additionalVaccines'
 import { childVaccinesContinued } from './childVaccinesContinued'
 import { enhancedVaccineData } from './enhancedVaccineData'
 import { citations } from './citations'
+import { vaersRealData } from './vaersRealData'
 
 export { citations }
 
@@ -244,17 +245,7 @@ export const procedures: Procedure[] = [
           safetyProfile: 'Common pharmaceutical excipients. Generally recognized as safe.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 4127,
-        seriousReports: 892,
-        deaths: 47,
-        permanentDisability: 89,
-        hospitalizations: 456,
-        emergencyRoomVisits: 312,
-        note: 'These are reports submitted to VAERS for Hepatitis B vaccine administered to infants (birth to 12 months). Reports do NOT establish causation - they represent events that occurred in temporal proximity to vaccination and may be coincidental. Healthcare providers are required to report certain events. VAERS accepts reports from anyone. Further investigation is required to establish whether reported events were caused by the vaccine.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['hepb'],
       vicpInfo: {
         vaccineName: 'Hepatitis B Vaccine',
         totalCasesCompensated: 657,
@@ -5243,17 +5234,7 @@ export const procedures: Procedure[] = [
           safetyProfile: 'Standard pharmaceutical ingredients. No safety concerns.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 18453,
-        seriousReports: 3721,
-        deaths: 194,
-        permanentDisability: 412,
-        hospitalizations: 2156,
-        emergencyRoomVisits: 1847,
-        note: 'Reports for DTaP vaccine given to children under 7 years. These reports do NOT establish causation. Events may be coincidental. VAERS is a passive reporting system accepting reports from anyone. Healthcare providers are required to report certain events. Many reports involve fever and local reactions that resolved without lasting effects.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['dtap'],
       vicpInfo: {
         vaccineName: 'DTaP/DTP/Td/Tdap (all tetanus-containing vaccines)',
         totalCasesCompensated: 4892,

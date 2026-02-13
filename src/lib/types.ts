@@ -59,16 +59,39 @@ export interface VaccineIngredient {
   safetyProfile: string
 }
 
+export interface VAERSSymptomCount {
+  symptom: string
+  count: number
+}
+
+export interface VAERSAgeBreakdown {
+  group: string
+  count: number
+}
+
+export interface VAERSYearlyDataPoint {
+  year: string
+  reports: number
+  deaths: number
+  serious: number
+}
+
 export interface VAERSData {
   reportYear: string
   totalReports: number
   seriousReports: number
   deaths: number
+  lifeThreatening: number
   permanentDisability: number
   hospitalizations: number
   emergencyRoomVisits: number
+  birthDefects: number
+  topReportedSymptoms: VAERSSymptomCount[]
+  ageBreakdown: VAERSAgeBreakdown[]
+  yearlyTrend: VAERSYearlyDataPoint[]
   note: string
   sourceUrl: string
+  dataAsOf: string
 }
 
 export interface VICPAward {

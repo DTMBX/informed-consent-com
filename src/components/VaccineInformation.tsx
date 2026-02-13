@@ -8,7 +8,8 @@ import {
   ChartBarIcon, 
   ScaleIcon, 
   GlobeAltIcon,
-  ExclamationTriangleIcon 
+  ExclamationTriangleIcon,
+  UserGroupIcon
 } from '@heroicons/react/24/outline'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
@@ -87,68 +88,167 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
           <AccordionItem value="vaers" className="border rounded-lg px-4">
             <AccordionTrigger className="hover:no-underline">
               <div className="flex items-center gap-3">
-                <ChartBarIcon className="h-5 w-5 text-primary" />
-                <span className="font-semibold">VAERS Adverse Event Reports</span>
+                <ChartBarIcon className="h-5 w-5 text-destructive" />
+                <span className="font-semibold">VAERS Adverse Event Reports — Real Data</span>
+                <Badge variant="destructive" className="ml-2">{vaccineInfo.vaersData.totalReports.toLocaleString()} reports</Badge>
               </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4 pt-4">
-                <Alert>
-                  <AlertTitle className="text-sm font-semibold">Understanding VAERS Data</AlertTitle>
+                <Alert variant="destructive">
+                  <ExclamationTriangleIcon className="h-5 w-5" />
+                  <AlertTitle className="text-sm font-semibold">Real VAERS Data — {vaccineInfo.vaersData.dataAsOf || 'Current'}</AlertTitle>
                   <AlertDescription className="text-sm">
-                    VAERS is a passive reporting system where anyone can report events that occur after vaccination. 
-                    <strong> Reports do not prove causation</strong> — they indicate events that occurred in a timeframe 
-                    after vaccination and require further investigation. Healthcare providers are required to report certain events. 
-                    Both under-reporting and coincidental reporting occur.
+                    This data is aggregated directly from official VAERS CSV downloads at{' '}
+                    <a href="https://vaers.hhs.gov/data/datasets.html" target="_blank" rel="noopener noreferrer" className="underline font-semibold">
+                      vaers.hhs.gov
+                    </a>. VAERS is a passive reporting system — some experts estimate it captures only 1-10% of actual adverse events
+                    (the "VAERS underreporting factor"). These numbers represent the minimum known reported events.
                   </AlertDescription>
                 </Alert>
 
-                <Card>
+                <Card className="border-destructive/30">
                   <CardHeader>
                     <CardTitle className="text-lg">
-                      {vaccineName} - {vaccineInfo.vaersData.reportYear}
+                      {vaccineName} — {vaccineInfo.vaersData.reportYear}
                     </CardTitle>
                     <CardDescription>
-                      Total reports submitted to VAERS for this vaccine
+                      Adverse event reports submitted to VAERS. Source: Official VAERS data files.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-3">
+                  <CardContent className="space-y-4">
+                    {/* Primary Stats Grid */}
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-1">
-                        <p className="text-sm text-muted-foreground">Total Reports</p>
-                        <p className="text-2xl font-bold">{vaccineInfo.vaersData.totalReports.toLocaleString()}</p>
+                      <div className="space-y-1 bg-destructive/5 p-3 rounded-md border border-destructive/20">
+                        <p className="text-sm text-muted-foreground">Total Adverse Event Reports</p>
+                        <p className="text-3xl font-bold text-destructive">{vaccineInfo.vaersData.totalReports.toLocaleString()}</p>
                       </div>
-                      <div className="space-y-1">
+                      <div className="space-y-1 bg-destructive/5 p-3 rounded-md border border-destructive/20">
                         <p className="text-sm text-muted-foreground">Serious Reports</p>
-                        <p className="text-2xl font-bold text-destructive">
+                        <p className="text-3xl font-bold text-destructive">
                           {vaccineInfo.vaersData.seriousReports.toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          ({((vaccineInfo.vaersData.seriousReports / vaccineInfo.vaersData.totalReports) * 100).toFixed(1)}% of all reports)
                         </p>
                       </div>
                     </div>
 
                     <Separator />
 
+                    {/* Serious Event Breakdown */}
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-sm">Serious Event Categories</h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div className="bg-muted p-3 rounded-md">
-                          <p className="text-xs text-muted-foreground">Deaths</p>
-                          <p className="text-xl font-semibold">{vaccineInfo.vaersData.deaths.toLocaleString()}</p>
+                      <h4 className="font-semibold text-sm text-destructive">Serious Adverse Event Categories</h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div className="bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                          <p className="text-xs text-muted-foreground font-medium">Deaths Reported</p>
+                          <p className="text-2xl font-bold text-destructive">{vaccineInfo.vaersData.deaths.toLocaleString()}</p>
                         </div>
-                        <div className="bg-muted p-3 rounded-md">
-                          <p className="text-xs text-muted-foreground">Permanent Disability</p>
-                          <p className="text-xl font-semibold">{vaccineInfo.vaersData.permanentDisability.toLocaleString()}</p>
+                        <div className="bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                          <p className="text-xs text-muted-foreground font-medium">Life-Threatening</p>
+                          <p className="text-2xl font-bold text-destructive">{vaccineInfo.vaersData.lifeThreatening.toLocaleString()}</p>
                         </div>
-                        <div className="bg-muted p-3 rounded-md">
-                          <p className="text-xs text-muted-foreground">Hospitalizations</p>
-                          <p className="text-xl font-semibold">{vaccineInfo.vaersData.hospitalizations.toLocaleString()}</p>
+                        <div className="bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                          <p className="text-xs text-muted-foreground font-medium">Permanent Disability</p>
+                          <p className="text-2xl font-bold text-destructive">{vaccineInfo.vaersData.permanentDisability.toLocaleString()}</p>
                         </div>
-                      </div>
-                      <div className="bg-muted p-3 rounded-md">
-                        <p className="text-xs text-muted-foreground">Emergency Room Visits</p>
-                        <p className="text-xl font-semibold">{vaccineInfo.vaersData.emergencyRoomVisits.toLocaleString()}</p>
+                        <div className="bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                          <p className="text-xs text-muted-foreground font-medium">Hospitalizations</p>
+                          <p className="text-2xl font-bold text-destructive">{vaccineInfo.vaersData.hospitalizations.toLocaleString()}</p>
+                        </div>
+                        <div className="bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                          <p className="text-xs text-muted-foreground font-medium">ER Visits</p>
+                          <p className="text-2xl font-bold text-destructive">{vaccineInfo.vaersData.emergencyRoomVisits.toLocaleString()}</p>
+                        </div>
+                        <div className="bg-destructive/10 p-3 rounded-md border border-destructive/20">
+                          <p className="text-xs text-muted-foreground font-medium">Birth Defects</p>
+                          <p className="text-2xl font-bold text-destructive">{vaccineInfo.vaersData.birthDefects.toLocaleString()}</p>
+                        </div>
                       </div>
                     </div>
+
+                    <Separator />
+
+                    {/* Top Reported Symptoms */}
+                    {vaccineInfo.vaersData.topReportedSymptoms && vaccineInfo.vaersData.topReportedSymptoms.length > 0 && (
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-sm">Most Frequently Reported Symptoms</h4>
+                        <div className="space-y-1">
+                          {vaccineInfo.vaersData.topReportedSymptoms.slice(0, 12).map((s, idx) => {
+                            const maxCount = vaccineInfo.vaersData!.topReportedSymptoms[0].count
+                            const pct = (s.count / maxCount) * 100
+                            return (
+                              <div key={idx} className="flex items-center gap-2">
+                                <span className="text-xs text-muted-foreground w-4 text-right">{idx + 1}.</span>
+                                <div className="flex-1 flex items-center gap-2">
+                                  <div className="relative h-6 flex-1 bg-muted rounded overflow-hidden">
+                                    <div
+                                      className="absolute inset-y-0 left-0 bg-destructive/20 rounded"
+                                      style={{ width: `${pct}%` }}
+                                    />
+                                    <span className="relative z-10 text-xs font-medium px-2 leading-6">{s.symptom}</span>
+                                  </div>
+                                  <span className="text-xs font-mono text-muted-foreground w-16 text-right">{s.count.toLocaleString()}</span>
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    <Separator />
+
+                    {/* Age Breakdown */}
+                    {vaccineInfo.vaersData.ageBreakdown && vaccineInfo.vaersData.ageBreakdown.length > 0 && (
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-sm flex items-center gap-2">
+                          <UserGroupIcon className="h-4 w-4" />
+                          Reports by Age Group
+                        </h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                          {vaccineInfo.vaersData.ageBreakdown
+                            .filter(a => a.group !== 'unknown')
+                            .map((ag, idx) => (
+                            <div key={idx} className="bg-muted p-2 rounded-md text-center">
+                              <p className="text-xs text-muted-foreground">{ag.group}</p>
+                              <p className="text-lg font-semibold">{ag.count.toLocaleString()}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <Separator />
+
+                    {/* Yearly Trend */}
+                    {vaccineInfo.vaersData.yearlyTrend && vaccineInfo.vaersData.yearlyTrend.length > 0 && (
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-sm">Yearly Report Trend (Recent Years)</h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-sm">
+                            <thead>
+                              <tr className="border-b">
+                                <th className="text-left py-1 px-2 font-medium">Year</th>
+                                <th className="text-right py-1 px-2 font-medium">Reports</th>
+                                <th className="text-right py-1 px-2 font-medium text-destructive">Deaths</th>
+                                <th className="text-right py-1 px-2 font-medium text-destructive">Serious</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {vaccineInfo.vaersData.yearlyTrend.map((y, idx) => (
+                                <tr key={idx} className="border-b border-border/50">
+                                  <td className="py-1 px-2">{y.year}</td>
+                                  <td className="text-right py-1 px-2 font-mono">{y.reports.toLocaleString()}</td>
+                                  <td className="text-right py-1 px-2 font-mono text-destructive">{y.deaths.toLocaleString()}</td>
+                                  <td className="text-right py-1 px-2 font-mono text-destructive">{y.serious.toLocaleString()}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
 
                     {vaccineInfo.vaersData.note && (
                       <Alert className="mt-4">
@@ -166,7 +266,7 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
                         rel="noopener noreferrer"
                         className="text-sm text-primary hover:underline font-medium"
                       >
-                        VAERS Database
+                        VAERS Data Downloads (vaers.hhs.gov)
                       </a>
                     </div>
                   </CardContent>

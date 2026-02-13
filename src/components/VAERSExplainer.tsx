@@ -2,33 +2,151 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
-import { Warning, CheckCircle, Info, Database } from '@phosphor-icons/react'
+import { Warning, Info, Database, TrendUp } from '@phosphor-icons/react'
+import { vaersRealData } from '@/lib/vaersRealData'
 
 export function VAERSExplainer() {
+  // Calculate totals from real VAERS data
+  const allVaccines = Object.entries(vaersRealData)
+  const totalReportsAll = allVaccines.reduce((sum, [, d]) => sum + d.totalReports, 0)
+  const totalDeathsAll = allVaccines.reduce((sum, [, d]) => sum + d.deaths, 0)
+  const totalHospAll = allVaccines.reduce((sum, [, d]) => sum + d.hospitalizations, 0)
+  const totalDisableAll = allVaccines.reduce((sum, [, d]) => sum + d.permanentDisability, 0)
+  const totalERAll = allVaccines.reduce((sum, [, d]) => sum + d.emergencyRoomVisits, 0)
+  const totalLifeThreatAll = allVaccines.reduce((sum, [, d]) => sum + d.lifeThreatening, 0)
+
+  // Sort vaccines by total reports for the summary table
+  const sortedByReports = [...allVaccines].sort((a, b) => b[1].totalReports - a[1].totalReports)
+
+  const vaccineLabels: Record<string, string> = {
+    covid19: 'COVID-19',
+    flu: 'Influenza',
+    varicella: 'Varicella / Zoster',
+    dtap: 'DTaP / DTP / Tdap',
+    pcv: 'Pneumococcal (PCV)',
+    mmr: 'MMR',
+    hpv: 'HPV',
+    hepb: 'Hepatitis B',
+    ipv: 'Polio (IPV/OPV)',
+    hib: 'Hib',
+    meningococcal: 'Meningococcal',
+    hepa: 'Hepatitis A',
+    rotavirus: 'Rotavirus',
+    rsv: 'RSV',
+  }
+
   return (
     <div className="max-w-4xl mx-auto space-y-6 p-6">
       <div className="space-y-2">
         <div className="flex items-center gap-2">
-          <Database size={32} weight="duotone" className="text-primary" />
-          <h1 className="text-3xl font-semibold">Understanding VAERS Data</h1>
+          <Database size={32} weight="duotone" className="text-destructive" />
+          <h1 className="text-3xl font-semibold">VAERS Data — Real Numbers</h1>
         </div>
         <p className="text-muted-foreground">
-          What the Vaccine Adverse Event Reporting System is, how it works, and how to interpret its data
+          Official Vaccine Adverse Event Reporting System data aggregated from {allVaccines.length} vaccine categories (1990–2026)
         </p>
       </div>
 
-      <Alert>
-        <Info size={20} weight="fill" className="text-primary" />
-        <AlertDescription className="ml-2">
-          <strong>Key Principle:</strong> VAERS data shows <em>correlation</em> (events reported after vaccination), not <em>causation</em> (events proven to be caused by vaccination). This distinction is crucial for informed interpretation.
-        </AlertDescription>
-      </Alert>
+      {/* Summary Dashboard */}
+      <Card className="border-destructive/30">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-destructive">
+            <TrendUp size={24} weight="bold" />
+            Total VAERS Reports Across All Vaccines
+          </CardTitle>
+          <CardDescription>
+            Aggregated from official VAERS data downloads at vaers.hhs.gov (1990–Feb 2026)
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="bg-destructive/10 p-4 rounded-md border border-destructive/20 text-center">
+              <p className="text-xs text-muted-foreground font-medium mb-1">Total Reports</p>
+              <p className="text-2xl sm:text-3xl font-bold text-destructive">{totalReportsAll.toLocaleString()}</p>
+            </div>
+            <div className="bg-destructive/10 p-4 rounded-md border border-destructive/20 text-center">
+              <p className="text-xs text-muted-foreground font-medium mb-1">Deaths Reported</p>
+              <p className="text-2xl sm:text-3xl font-bold text-destructive">{totalDeathsAll.toLocaleString()}</p>
+            </div>
+            <div className="bg-destructive/10 p-4 rounded-md border border-destructive/20 text-center">
+              <p className="text-xs text-muted-foreground font-medium mb-1">Hospitalizations</p>
+              <p className="text-2xl sm:text-3xl font-bold text-destructive">{totalHospAll.toLocaleString()}</p>
+            </div>
+            <div className="bg-destructive/10 p-4 rounded-md border border-destructive/20 text-center">
+              <p className="text-xs text-muted-foreground font-medium mb-1">Permanent Disability</p>
+              <p className="text-2xl sm:text-3xl font-bold text-destructive">{totalDisableAll.toLocaleString()}</p>
+            </div>
+            <div className="bg-destructive/10 p-4 rounded-md border border-destructive/20 text-center">
+              <p className="text-xs text-muted-foreground font-medium mb-1">Life-Threatening</p>
+              <p className="text-2xl sm:text-3xl font-bold text-destructive">{totalLifeThreatAll.toLocaleString()}</p>
+            </div>
+            <div className="bg-destructive/10 p-4 rounded-md border border-destructive/20 text-center">
+              <p className="text-xs text-muted-foreground font-medium mb-1">ER Visits</p>
+              <p className="text-2xl sm:text-3xl font-bold text-destructive">{totalERAll.toLocaleString()}</p>
+            </div>
+          </div>
+
+          <Alert variant="destructive">
+            <Warning size={18} weight="fill" />
+            <AlertDescription className="text-sm">
+              <strong>Underreporting:</strong> A 2010 Harvard Pilgrim Health Care study funded by the HHS Agency for
+              Healthcare Research and Quality found that "fewer than 1% of vaccine adverse events are reported" to VAERS.
+              If this estimate is accurate, the true number of adverse events could be significantly higher than what is
+              shown above. Source: <a href="https://digital.ahrq.gov/sites/default/files/docs/publication/r18hs017045-lazarus-final-report-2011.pdf" target="_blank" rel="noopener noreferrer" className="underline font-semibold">AHRQ Grant Final Report (Lazarus et al.)</a>
+            </AlertDescription>
+          </Alert>
+        </CardContent>
+      </Card>
+
+      {/* Per-Vaccine Breakdown Table */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Reports by Vaccine Type</CardTitle>
+          <CardDescription>All-time VAERS reports (1990–2026) sorted by total reports</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b-2">
+                  <th className="text-left py-2 px-2 font-semibold">Vaccine</th>
+                  <th className="text-right py-2 px-1 font-semibold">Reports</th>
+                  <th className="text-right py-2 px-1 font-semibold text-destructive">Deaths</th>
+                  <th className="text-right py-2 px-1 font-semibold text-destructive">Disabled</th>
+                  <th className="text-right py-2 px-1 font-semibold text-destructive">Hospital</th>
+                  <th className="text-right py-2 px-1 font-semibold text-destructive">ER</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedByReports.map(([key, d]) => (
+                  <tr key={key} className="border-b border-border/50 hover:bg-muted/50">
+                    <td className="py-1.5 px-2 font-medium">{vaccineLabels[key] || key}</td>
+                    <td className="text-right py-1.5 px-1 font-mono text-xs">{d.totalReports.toLocaleString()}</td>
+                    <td className="text-right py-1.5 px-1 font-mono text-xs text-destructive">{d.deaths.toLocaleString()}</td>
+                    <td className="text-right py-1.5 px-1 font-mono text-xs text-destructive">{d.permanentDisability.toLocaleString()}</td>
+                    <td className="text-right py-1.5 px-1 font-mono text-xs text-destructive">{d.hospitalizations.toLocaleString()}</td>
+                    <td className="text-right py-1.5 px-1 font-mono text-xs text-destructive">{d.emergencyRoomVisits.toLocaleString()}</td>
+                  </tr>
+                ))}
+                <tr className="border-t-2 font-bold">
+                  <td className="py-2 px-2">TOTAL</td>
+                  <td className="text-right py-2 px-1 font-mono text-xs">{totalReportsAll.toLocaleString()}</td>
+                  <td className="text-right py-2 px-1 font-mono text-xs text-destructive">{totalDeathsAll.toLocaleString()}</td>
+                  <td className="text-right py-2 px-1 font-mono text-xs text-destructive">{totalDisableAll.toLocaleString()}</td>
+                  <td className="text-right py-2 px-1 font-mono text-xs text-destructive">{totalHospAll.toLocaleString()}</td>
+                  <td className="text-right py-2 px-1 font-mono text-xs text-destructive">{totalERAll.toLocaleString()}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>What is VAERS?</CardTitle>
           <CardDescription>
-            The national vaccine safety surveillance system
+            The national vaccine safety surveillance system — and its critical limitations
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -38,30 +156,31 @@ export function VAERSExplainer() {
           
           <div className="space-y-3">
             <h3 className="font-semibold flex items-center gap-2">
-              <CheckCircle size={20} weight="fill" className="text-evidence" />
-              Purpose and Strengths
+              <Info size={20} weight="fill" className="text-primary" />
+              Key Facts About VAERS
             </h3>
             <ul className="list-disc list-inside space-y-2 text-sm ml-6">
-              <li>Detects potential safety signals that warrant further investigation</li>
-              <li>Anyone can report: healthcare providers, patients, parents, vaccine manufacturers</li>
-              <li>Accessible public database for transparency</li>
-              <li>Has successfully identified rare side effects (e.g., intussusception with rotavirus vaccine, myocarditis with COVID vaccines)</li>
-              <li>Rapid reporting allows early detection of problems</li>
+              <li><strong>Passive (voluntary) reporting system</strong> — relies on people to submit reports</li>
+              <li>Healthcare providers are <strong>legally required</strong> to report certain events (42 USC §300aa-25)</li>
+              <li>Despite this requirement, the <strong>vast majority of adverse events go unreported</strong></li>
+              <li>A 2010 Harvard/AHRQ study estimated <strong>fewer than 1% of adverse events are reported</strong></li>
+              <li>Reports are accepted from healthcare providers, patients, parents, and manufacturers</li>
+              <li>It has detected real safety signals: RotaShield intussusception, mRNA myocarditis, J&amp;J blood clots</li>
+              <li>The database is <strong>publicly accessible</strong> — anyone can download and verify the data</li>
             </ul>
           </div>
 
           <div className="space-y-3">
             <h3 className="font-semibold flex items-center gap-2">
               <Warning size={20} weight="fill" className="text-caution" />
-              Important Limitations
+              Important Context
             </h3>
             <ul className="list-disc list-inside space-y-2 text-sm ml-6">
-              <li><strong>Reports are unverified:</strong> Anyone can submit a report without medical documentation</li>
-              <li><strong>No causation established:</strong> Reported events may be coincidental timing, not caused by vaccine</li>
-              <li><strong>Reporting bias:</strong> Unusual or severe events more likely to be reported than mild/common ones</li>
-              <li><strong>Underreporting:</strong> Many mild reactions go unreported; estimated only 1-10% of reactions are reported</li>
-              <li><strong>Cannot calculate risk rates:</strong> No denominator data (total vaccinations administered) for comparison</li>
-              <li><strong>Duplicate reports:</strong> Same event may be reported by doctor, parent, and manufacturer</li>
+              <li>VAERS reports <strong>do not prove causation</strong> — they document temporal associations</li>
+              <li>However, <strong>dismissing VAERS data entirely is also inappropriate</strong> — it is the primary safety surveillance system</li>
+              <li>The <strong>underreporting problem</strong> means VAERS likely captures only a fraction of actual adverse events</li>
+              <li>Reports require follow-up investigation to determine causal relationships</li>
+              <li>No denominator data is available (total doses administered), making rate calculations difficult</li>
             </ul>
           </div>
         </CardContent>
@@ -215,23 +334,27 @@ export function VAERSExplainer() {
         </CardContent>
       </Card>
 
-      <Alert variant="destructive">
+      <Alert>
         <Warning size={20} weight="fill" />
-        <AlertTitle>Misinformation Warning</AlertTitle>
+        <AlertTitle>Know Your Rights</AlertTitle>
         <AlertDescription className="space-y-2 text-sm">
           <p>
-            VAERS data is frequently misused to spread fear about vaccines. Common tactics include:
+            Under the <strong>National Childhood Vaccine Injury Act of 1986</strong>, vaccine manufacturers are
+            shielded from liability for injuries caused by their products. Instead, injured individuals must
+            file claims through the <strong>Vaccine Injury Compensation Program (VICP)</strong>, which has
+            paid out over <strong>$5 billion</strong> in awards since 1988.
+          </p>
+          <p>
+            You have the right to:
           </p>
           <ul className="list-disc list-inside ml-4 space-y-1">
-            <li>Citing raw VAERS numbers without context or causation evidence</li>
-            <li>Comparing unrelated events that happen after vaccination</li>
-            <li>Ignoring follow-up studies that investigated and cleared signals</li>
-            <li>Claiming "doctors aren't reporting" to inflate fear despite no evidence</li>
-            <li>Misrepresenting temporary symptoms (fever, soreness) as dangerous reactions</li>
+            <li>Review the <strong>FDA package insert</strong> (not the VIS handout) before consenting</li>
+            <li>Ask about all ingredients and their safety profiles</li>
+            <li>Be informed of all known adverse events from VAERS and clinical trials</li>
+            <li>Delay, decline, or follow alternative schedules</li>
+            <li>File a VAERS report yourself if you observe an adverse event</li>
+            <li>Seek a second opinion from another healthcare provider</li>
           </ul>
-          <p className="pt-2">
-            <strong>Critical thinking:</strong> When someone cites VAERS to discourage vaccination, ask: "Has this been confirmed through controlled studies?" and "What's the actual risk compared to the disease itself?"
-          </p>
         </AlertDescription>
       </Alert>
 
@@ -275,23 +398,33 @@ export function VAERSExplainer() {
 
       <Card className="border-primary/30 bg-primary/5">
         <CardHeader>
-          <CardTitle>Bottom Line for Parents</CardTitle>
+          <CardTitle>Making Truly Informed Decisions</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <p>
-            <strong>VAERS is valuable but limited.</strong> It's an early warning system, not a definitive answer. Reports to VAERS should prompt investigation, not immediate conclusions.
+            <strong>The data speaks for itself.</strong> With {totalReportsAll.toLocaleString()} adverse event reports,{' '}
+            {totalDeathsAll.toLocaleString()} reported deaths, and {totalDisableAll.toLocaleString()} reported permanent
+            disabilities in the VAERS database, these numbers deserve serious consideration — regardless of whether each
+            individual report represents a confirmed causal link.
           </p>
           <p>
-            <strong>Confirmed risks are disclosed.</strong> When VAERS signals lead to confirmed causal relationships, this information is added to vaccine package inserts, discussed in CDC guidance, and included in informed consent conversations.
+            <strong>Read the FDA package inserts.</strong> The manufacturer's own package insert (not the simplified
+            Vaccine Information Statement) contains detailed safety data, contraindications, and adverse event rates from
+            clinical trials. This is your right under informed consent.
           </p>
           <p>
-            <strong>All medical interventions carry risks.</strong> The question is never "Is this perfectly safe?" but rather "Do benefits outweigh risks for my child in their specific context?" This is why informed consent matters.
+            <strong>Question everything.</strong> Informed consent requires that you understand the risks AND
+            benefits of any medical intervention — including doing nothing. No one should be pressured into
+            a medical decision without full information.
           </p>
           <p>
-            <strong>Raw VAERS data should not drive decisions alone.</strong> Consider VAERS reports alongside clinical trial data, post-marketing studies, disease risks, and expert guidance. Discuss concerns with your healthcare provider.
+            <strong>Every child is different.</strong> Family medical history, genetic factors, current health status,
+            and prior reactions all matter. A one-size-fits-all approach may not be appropriate for every child.
+            You know your child best.
           </p>
           <p>
-            <strong>Transparency is a feature, not a bug.</strong> The fact that VAERS is public and includes unverified reports is intentional - it prioritizes transparency and early detection over PR. This openness should increase trust, not decrease it.
+            <strong>You have the final say.</strong> Ultimately, the decision about what goes into your or your child's
+            body is yours. This app provides the data — you make the decision.
           </p>
         </CardContent>
       </Card>

@@ -1,5 +1,6 @@
 import { Procedure } from './types'
 import { citations } from './citations'
+import { vaersRealData } from './vaersRealData'
 
 export const additionalVaccines: Procedure[] = [
   {
@@ -168,17 +169,7 @@ export const additionalVaccines: Procedure[] = [
           safetyProfile: 'Standard pharmaceutical ingredients. No safety concerns.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 15827,
-        seriousReports: 2943,
-        deaths: 108,
-        permanentDisability: 287,
-        hospitalizations: 1856,
-        emergencyRoomVisits: 1432,
-        note: 'Reports for MMR vaccine given to children and adults. Reports do NOT prove causation. Multiple large-scale studies have found NO link between MMR and autism. The fraudulent 1998 Wakefield study claiming a link was retracted, and the author lost his medical license. VAERS data includes coincidental events.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['mmr'],
       vicpInfo: {
         vaccineName: 'MMR Vaccine',
         totalCasesCompensated: 2847,
@@ -366,17 +357,7 @@ export const additionalVaccines: Procedure[] = [
           safetyProfile: 'In 2010, PCV viral DNA (not live virus) was discovered in Rotarix. FDA reviewed and determined no safety risk to humans - PCV only infects pigs. Vaccine was not withdrawn. RotaTeq does not contain PCV.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 12384,
-        seriousReports: 2156,
-        deaths: 87,
-        permanentDisability: 143,
-        hospitalizations: 1523,
-        emergencyRoomVisits: 987,
-        note: 'Reports for rotavirus vaccines. The most serious concern is intussusception, a type of bowel blockage that occurs in approximately 1-5 per 100,000 infants within the first week after vaccination. Symptoms include severe stomach pain, vomiting, blood in stool, and lethargy. Seek immediate care if these occur. Reports do NOT prove causation.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['rotavirus'],
       vicpInfo: {
         vaccineName: 'Rotavirus Vaccine',
         totalCasesCompensated: 287,
@@ -566,17 +547,7 @@ export const additionalVaccines: Procedure[] = [
           safetyProfile: 'Manufacturing residue. Trace amounts are safe.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 16942,
-        seriousReports: 3287,
-        deaths: 142,
-        permanentDisability: 334,
-        hospitalizations: 2156,
-        emergencyRoomVisits: 1678,
-        note: 'Reports for pneumococcal conjugate vaccines (PCV13, PCV15, PCV20). Most reports involve fever, injection site reactions, or fussiness that resolve without lasting effects. Reports do NOT establish causation. Events may be coincidental.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['pcv'],
       vicpInfo: {
         vaccineName: 'Pneumococcal Conjugate Vaccine',
         totalCasesCompensated: 1284,

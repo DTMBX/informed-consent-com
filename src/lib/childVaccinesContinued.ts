@@ -1,5 +1,6 @@
 import { Procedure } from './types'
 import { citations } from './citations'
+import { vaersRealData } from './vaersRealData'
 
 export const childVaccinesContinued: Procedure[] = [
   {
@@ -161,17 +162,7 @@ export const childVaccinesContinued: Procedure[] = [
           safetyProfile: 'Used in some split-virus vaccines. Small amounts; generally safe.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 34821,
-        seriousReports: 6234,
-        deaths: 287,
-        permanentDisability: 543,
-        hospitalizations: 3892,
-        emergencyRoomVisits: 2987,
-        note: 'Reports for seasonal influenza vaccines given to children. Flu vaccine is given to millions of children annually, and VAERS receives many reports. Most involve mild reactions like fever or injection site pain. Reports do NOT establish causation. Some deaths reported occur in children with serious underlying conditions who contracted flu despite vaccination or died from unrelated causes.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['flu'],
       vicpInfo: {
         vaccineName: 'Influenza Vaccine',
         totalCasesCompensated: 2341,
@@ -413,17 +404,7 @@ export const childVaccinesContinued: Procedure[] = [
           safetyProfile: 'Naturally occurring compound in human body. Small amounts are safe.'
         }
       ],
-      vaersData: {
-        reportYear: '2019-2023 (5-year aggregate)',
-        totalReports: 8942,
-        seriousReports: 1687,
-        deaths: 73,
-        permanentDisability: 156,
-        hospitalizations: 987,
-        emergencyRoomVisits: 765,
-        note: 'Reports for varicella vaccine. Most reports involve mild reactions like fever, injection site reactions, or rash that resolve without complications. Reports do NOT establish causation. Some serious events occur in immunocompromised children who should not have received live virus vaccine.',
-        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
-      },
+      vaersData: vaersRealData['varicella'],
       vicpInfo: {
         vaccineName: 'Varicella Vaccine',
         totalCasesCompensated: 987,
