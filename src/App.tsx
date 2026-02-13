@@ -1,5 +1,174 @@
+import { useState } from 'react'
+import { useKV } from '@github/spark/hooks'
+import { UserPreferences, Stage } from '@/lib/types'
+import { Onboarding } from '@/components/Onboarding'
+import { ProcedureLibrary } from '@/components/ProcedureLibrary'
+import { ProcedureDetail } from '@/components/ProcedureDetail'
+import { CompareView } from '@/components/CompareView'
+import { ReflectionNotes } from '@/components/ReflectionNotes'
+import { DecisionExport } from '@/components/DecisionExport'
+import { Settings } from '@/components/Settings'
+import { BottomNav } from '@/components/BottomNav'
+import { Header } from '@/components/Header'
+import { Toaster } from '@/components/ui/sonner'
+
+type View = 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'settings'
+
 function App() {
-    return <div></div>
+  const [preferences, setPreferences] = useKV<UserPreferences>('user-preferences', {
+    language: 'en',
+    stage: 'postpartum',
+    savedProcedures: [],
+    completedOnboarding: false
+  })
+
+  const [currentView, setCurrentView] = useState<View>('library')
+  const [selectedProcedureId, setSelectedProcedureId] = useState<string | null>(null)
+  const [compareIds, setCompareIds] = useState<string[]>([])
+
+  const prefs = preferences || {
+    language: 'en' as const,
+    stage: 'postpartum' as Stage,
+    savedProcedures: [],
+    completedOnboarding: false
+  }
+
+  const handleOnboardingComplete = (stage: Stage) => {
+    setPreferences((prev) => {
+      const current = prev || prefs
+      return {
+        ...current,
+        stage,
+        completedOnboarding: true
+      }
+    })
+  }
+
+  const navigateToProcedure = (procedureId: string) => {
+    setSelectedProcedureId(procedureId)
+    setCurrentView('procedure-detail')
+  }
+
+  const navigateToCompare = (ids: string[]) => {
+    setCompareIds(ids)
+    setCurrentView('compare')
+  }
+
+  const navigateToView = (view: View) => {
+    setCurrentView(view)
+  }
+
+  const navigateBack = () => {
+    if (currentView === 'procedure-detail' || currentView === 'compare') {
+      setCurrentView('library')
+      setSelectedProcedureId(null)
+      setCompareIds([])
+    }
+  }
+
+  if (!prefs.completedOnboarding) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Onboarding onComplete={handleOnboardingComplete} />
+        <Toaster />
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header 
+        currentView={currentView}
+        onBack={navigateBack}
+        onSettingsClick={() => navigateToView('settings')}
+      />
+      
+      <main className="flex-1 pb-20 md:pb-8">
+        {currentView === 'library' && (
+          <ProcedureLibrary
+            stage={prefs.stage}
+            savedProcedures={prefs.savedProcedures}
+            onProcedureClick={navigateToProcedure}
+            onSaveProcedure={(id) => {
+              setPreferences((prev) => {
+                const current = prev || prefs
+                return {
+                  ...current,
+                  savedProcedures: current.savedProcedures.includes(id)
+                    ? current.savedProcedures.filter(pid => pid !== id)
+                    : [...current.savedProcedures, id]
+                }
+              })
+            }}
+          />
+        )}
+
+        {currentView === 'procedure-detail' && selectedProcedureId && (
+          <ProcedureDetail
+            procedureId={selectedProcedureId}
+            isSaved={prefs.savedProcedures.includes(selectedProcedureId)}
+            onSave={() => {
+              setPreferences((prev) => {
+                const current = prev || prefs
+                return {
+                  ...current,
+                  savedProcedures: current.savedProcedures.includes(selectedProcedureId)
+                    ? current.savedProcedures.filter(pid => pid !== selectedProcedureId)
+                    : [...current.savedProcedures, selectedProcedureId]
+                }
+              })
+            }}
+            onCompare={(ids) => navigateToCompare(ids)}
+            onAddToReflection={() => navigateToView('reflection')}
+          />
+        )}
+
+        {currentView === 'compare' && compareIds.length > 0 && (
+          <CompareView
+            procedureIds={compareIds}
+            onClose={() => setCurrentView('library')}
+          />
+        )}
+
+        {currentView === 'reflection' && (
+          <ReflectionNotes
+            savedProcedures={prefs.savedProcedures}
+            onExport={() => navigateToView('export')}
+          />
+        )}
+
+        {currentView === 'export' && (
+          <DecisionExport
+            savedProcedures={prefs.savedProcedures}
+            onClose={() => navigateToView('reflection')}
+          />
+        )}
+
+        {currentView === 'settings' && (
+          <Settings
+            preferences={prefs}
+            onUpdatePreferences={(updates) => {
+              setPreferences((prev) => {
+                const current = prev || prefs
+                return {
+                  ...current,
+                  ...updates
+                }
+              })
+            }}
+            onClose={() => setCurrentView('library')}
+          />
+        )}
+      </main>
+
+      <BottomNav
+        currentView={currentView}
+        onNavigate={navigateToView}
+      />
+
+      <Toaster />
+    </div>
+  )
 }
 
 export default App
