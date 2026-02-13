@@ -128,6 +128,8 @@ export interface BirthPlanComment {
   resolvedAt?: string
   resolvedBy?: string
   parentCommentId?: string
+  readByOwner?: boolean
+  readByOwnerAt?: string
 }
 
 export interface BirthPlanVersion {

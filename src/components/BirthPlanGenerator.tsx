@@ -18,6 +18,7 @@ import { BirthPlanShare } from '@/components/BirthPlanShare'
 import { BirthPlanHistory } from '@/components/BirthPlanHistory'
 import { ManageSharedLinks } from '@/components/ManageSharedLinks'
 import { BirthPlanComments } from '@/components/BirthPlanComments'
+import { useUnreadComments } from '@/hooks/use-unread-comments'
 
 interface BirthPlanGeneratorProps {
   savedProcedures: string[]
@@ -151,6 +152,7 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
   })
 
   const [versions, setVersions] = useKV<BirthPlanVersion[]>('birth-plan-versions', [])
+  const { unreadCount } = useUnreadComments()
 
   type Section = 'template' | 'basic' | 'labor' | 'delivery' | 'newborn' | 'postpartum' | 'preview'
   const [currentSection, setCurrentSection] = useState<Section>('template')
@@ -1092,10 +1094,18 @@ Provider Signature: ____________________  Date: __________
               <Button
                 onClick={() => setManageLinksOpen(true)}
                 variant="outline"
-                className="gap-2"
+                className="gap-2 relative"
               >
                 <LinkIcon className="h-4 w-4" />
                 Manage Shared Links
+                {unreadCount > 0 && (
+                  <Badge 
+                    variant="default" 
+                    className="absolute -top-2 -right-2 h-5 min-w-5 px-1.5 flex items-center justify-center bg-accent text-accent-foreground"
+                  >
+                    {unreadCount}
+                  </Badge>
+                )}
               </Button>
             </div>
           </div>

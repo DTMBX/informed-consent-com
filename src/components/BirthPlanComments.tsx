@@ -14,9 +14,10 @@ interface BirthPlanCommentsProps {
   shareId: string
   isOwner: boolean
   ownerName?: string
+  onCommentsRead?: () => void
 }
 
-export function BirthPlanComments({ shareId, isOwner, ownerName }: BirthPlanCommentsProps) {
+export function BirthPlanComments({ shareId, isOwner, ownerName, onCommentsRead }: BirthPlanCommentsProps) {
   const [comments, setComments] = useState<BirthPlanComment[]>([])
   const [loading, setLoading] = useState(true)
   const [newComment, setNewComment] = useState('')
@@ -29,6 +30,12 @@ export function BirthPlanComments({ shareId, isOwner, ownerName }: BirthPlanComm
     loadComments()
   }, [shareId])
 
+  useEffect(() => {
+    if (isOwner && comments.length > 0) {
+      markCommentsAsRead()
+    }
+  }, [comments.length, isOwner])
+
   const loadComments = async () => {
     try {
       const data = await window.spark.kv.get<BirthPlanComment[]>(`birth-plan-comments-${shareId}`)
@@ -37,6 +44,28 @@ export function BirthPlanComments({ shareId, isOwner, ownerName }: BirthPlanComm
       console.error('Failed to load comments:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const markCommentsAsRead = async () => {
+    try {
+      const unreadComments = comments.filter(c => !c.readByOwner)
+      if (unreadComments.length === 0) return
+
+      const updatedComments = comments.map(c => ({
+        ...c,
+        readByOwner: true,
+        readByOwnerAt: c.readByOwnerAt || new Date().toISOString()
+      }))
+
+      await window.spark.kv.set(`birth-plan-comments-${shareId}`, updatedComments)
+      setComments(updatedComments)
+      
+      if (onCommentsRead) {
+        onCommentsRead()
+      }
+    } catch (error) {
+      console.error('Failed to mark comments as read:', error)
     }
   }
 

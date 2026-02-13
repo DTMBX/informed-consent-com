@@ -4,12 +4,14 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle } from '@phosphor-icons/react'
+import { Badge } from '@/components/ui/badge'
+import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle, Bell } from '@phosphor-icons/react'
 import { stageConfig, LANGUAGES, DISCLAIMER_TEXT } from '@/lib/constants'
 import { toast } from 'sonner'
 import { BirthPlanHistory } from '@/components/BirthPlanHistory'
 import { ManageSharedLinks } from '@/components/ManageSharedLinks'
 import { ViewAllComments } from '@/components/ViewAllComments'
+import { useUnreadComments } from '@/hooks/use-unread-comments'
 
 interface SettingsProps {
   preferences: UserPreferences
@@ -23,6 +25,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
   const [historyOpen, setHistoryOpen] = useState(false)
   const [manageLinksOpen, setManageLinksOpen] = useState(false)
   const [commentsOpen, setCommentsOpen] = useState(false)
+  const { unreadCount } = useUnreadComments()
 
   const handleStageChange = (stage: Stage) => {
     onUpdatePreferences({ stage })
@@ -168,10 +171,18 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
                 <Button
                   onClick={() => setCommentsOpen(true)}
                   variant="outline"
-                  className="gap-2"
+                  className="gap-2 relative"
                 >
                   <ChatCircle className="h-4 w-4" />
                   View Comments
+                  {unreadCount > 0 && (
+                    <Badge 
+                      variant="default" 
+                      className="absolute -top-2 -right-2 h-5 min-w-5 px-1.5 flex items-center justify-center bg-accent text-accent-foreground"
+                    >
+                      {unreadCount}
+                    </Badge>
+                  )}
                 </Button>
               </div>
 

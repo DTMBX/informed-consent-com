@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { X, ChatCircle, Question, CheckCircle, User, Clock } from '@phosphor-icons/react'
+import { X, ChatCircle, Question, CheckCircle, User, Clock, Bell } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import { BirthPlanComments } from '@/components/BirthPlanComments'
+import { useUnreadComments } from '@/hooks/use-unread-comments'
 
 interface ViewAllCommentsProps {
   onClose: () => void
@@ -20,6 +21,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
   const [allComments, setAllComments] = useState<Record<string, BirthPlanComment[]>>({})
   const [loading, setLoading] = useState(true)
   const [selectedShareId, setSelectedShareId] = useState<string | null>(null)
+  const { refresh } = useUnreadComments()
 
   const links = sharedLinks || []
   const activeLinks = links.filter(link => !link.isRevoked && new Date(link.expiresAt) > new Date())
@@ -42,7 +44,16 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
     setLoading(false)
   }
 
+  const handleCommentsRead = () => {
+    refresh()
+    loadAllComments()
+  }
+
   const totalComments = Object.values(allComments).reduce((sum, comments) => sum + comments.length, 0)
+  const totalUnreadComments = Object.values(allComments).reduce(
+    (sum, comments) => sum + comments.filter(c => !c.readByOwner).length,
+    0
+  )
   const totalQuestions = Object.values(allComments).reduce(
     (sum, comments) => sum + comments.filter(c => c.isQuestion && !c.isResolved).length,
     0
@@ -79,7 +90,12 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
             <X className="h-5 w-5" />
           </Button>
         </div>
-        <BirthPlanComments shareId={selectedShareId} isOwner={true} ownerName={parentName} />
+        <BirthPlanComments 
+          shareId={selectedShareId} 
+          isOwner={true} 
+          ownerName={parentName}
+          onCommentsRead={handleCommentsRead}
+        />
       </div>
     )
   }
@@ -124,7 +140,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
           </Card>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-3">
@@ -134,6 +150,20 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
                     <div>
                       <p className="text-2xl font-bold">{totalComments}</p>
                       <p className="text-sm text-muted-foreground">Total Comments</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className={totalUnreadComments > 0 ? 'border-accent' : ''}>
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 bg-accent/10 rounded-full">
+                      <Bell className="h-6 w-6 text-accent" weight="fill" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">{totalUnreadComments}</p>
+                      <p className="text-sm text-muted-foreground">Unread Comments</p>
                     </div>
                   </div>
                 </CardContent>
@@ -165,6 +195,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
                     if (comments.length === 0) return null
 
                     const questions = comments.filter(c => c.isQuestion && !c.isResolved)
+                    const unreadComments = comments.filter(c => !c.readByOwner)
                     const recentComment = comments.sort((a, b) => 
                       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
                     )[0]
@@ -180,6 +211,12 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
                                     <User className="h-4 w-4 text-muted-foreground" weight="fill" />
                                     <span className="font-semibold">{link.recipientName}</span>
                                   </div>
+                                  {unreadComments.length > 0 && (
+                                    <Badge variant="default" className="gap-1.5 bg-accent">
+                                      <Bell className="h-3 w-3" weight="fill" />
+                                      {unreadComments.length} unread
+                                    </Badge>
+                                  )}
                                   <Badge variant="secondary" className="gap-1.5">
                                     <ChatCircle className="h-3 w-3" />
                                     {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
