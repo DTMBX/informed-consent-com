@@ -616,6 +616,106 @@ export const citations: Record<string, EvidenceCitation> = {
     source: 'Canadian Journal of Clinical Pharmacology',
     date: '2006-03',
     evidenceLevel: 'systematic-review'
+  },
+  'cit-induction-1': {
+    id: 'cit-induction-1',
+    title: 'Labor Induction: ACOG Practice Bulletin',
+    authors: 'ACOG Committee',
+    source: 'Obstetrics & Gynecology',
+    date: '2023-08',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-induction-2': {
+    id: 'cit-induction-2',
+    title: 'Induction of Labour at 39 Weeks in Nulliparous Women: ARRIVE Trial',
+    authors: 'Grobman et al.',
+    source: 'New England Journal of Medicine',
+    date: '2018-08',
+    url: 'https://nejm.org',
+    evidenceLevel: 'rct'
+  },
+  'cit-induction-3': {
+    id: 'cit-induction-3',
+    title: 'Methods of Induction of Labour: A Systematic Review',
+    authors: 'Alfirevic et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2022-07',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-induction-4': {
+    id: 'cit-induction-4',
+    title: 'Risks and Benefits of Labor Induction',
+    authors: 'Mishanina et al.',
+    source: 'BMJ',
+    date: '2014-08',
+    url: 'https://bmj.com',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-cesarean-vbac-1': {
+    id: 'cit-cesarean-vbac-1',
+    title: 'Comparison of Maternal and Neonatal Outcomes: Cesarean vs Vaginal Delivery',
+    authors: 'Liu et al.',
+    source: 'CMAJ',
+    date: '2007-10',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-cesarean-vbac-2': {
+    id: 'cit-cesarean-vbac-2',
+    title: 'Mode of Delivery and Maternal and Neonatal Outcomes',
+    authors: 'Villar et al.',
+    source: 'The Lancet',
+    date: '2007-06',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-cesarean-vbac-3': {
+    id: 'cit-cesarean-vbac-3',
+    title: 'Delivery Outcomes in Women with Previous Cesarean: Planned VBAC vs Elective Repeat Cesarean',
+    authors: 'Knight et al.',
+    source: 'British Journal of Obstetrics and Gynaecology',
+    date: '2008-05',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-epidural-1': {
+    id: 'cit-epidural-1',
+    title: 'Epidural Analgesia for Labor: Evidence-Based Review',
+    authors: 'Anim-Somuah et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2018-05',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-epidural-2': {
+    id: 'cit-epidural-2',
+    title: 'Neuraxial Analgesia for Labor: Safety and Effectiveness',
+    authors: 'ACOG Committee Opinion',
+    source: 'Obstetrics & Gynecology',
+    date: '2019-04',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-spinal-1': {
+    id: 'cit-spinal-1',
+    title: 'Spinal Anesthesia for Cesarean Delivery: A Review',
+    authors: 'Kinsella & Carvalho',
+    source: 'Anesthesia & Analgesia',
+    date: '2020-01',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-spinal-2': {
+    id: 'cit-spinal-2',
+    title: 'Comparison of Regional Anesthetic Techniques for Cesarean Delivery',
+    authors: 'Ng et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2004-07',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-combined-spinal-epidural-1': {
+    id: 'cit-combined-spinal-epidural-1',
+    title: 'Combined Spinal-Epidural Versus Epidural Analgesia in Labour',
+    authors: 'Simmons et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2012-10',
+    evidenceLevel: 'systematic-review'
   }
 }
 
@@ -4473,5 +4573,738 @@ export const procedures: Procedure[] = [
     lastReviewed: '2024-01-30',
     nextReviewDue: '2025-01-30',
     reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-induction-labor',
+    name: 'Induction of Labor',
+    shortName: 'Labor Induction',
+    category: 'surgical',
+    stage: 'labor',
+    urgencyLevel: 'routine',
+    summary: 'Artificially starting labor before it begins spontaneously using medications (prostaglandins, oxytocin) or mechanical methods (Foley catheter, membrane stripping). May be medically indicated or elective.',
+    indication: 'Medical reasons include post-term pregnancy (≥41-42 weeks), prelabor rupture of membranes, maternal conditions (preeclampsia, diabetes, hypertension), fetal concerns (growth restriction, oligohydramnios), or placental problems. Elective induction at 39+ weeks may be offered to reduce cesarean risk in first-time mothers.',
+    benefits: [
+      {
+        id: 'induc-ben-1',
+        description: 'Reduces risk when medical complications make continuing pregnancy riskier than delivery',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-ben-2',
+        description: 'In low-risk first-time mothers at 39 weeks, induction may reduce cesarean rate by ~3% (ARRIVE trial: 19% vs 22%)',
+        citations: ['cit-induction-2']
+      },
+      {
+        id: 'induc-ben-3',
+        description: 'Post-term induction (≥41 weeks) reduces stillbirth risk and meconium aspiration syndrome',
+        citations: ['cit-induction-1', 'cit-induction-3']
+      },
+      {
+        id: 'induc-ben-4',
+        description: 'Allows scheduling and control over timing in certain circumstances',
+        citations: ['cit-induction-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'induc-risk-1',
+        description: 'Stronger, more frequent contractions requiring more pain relief (epidural rate higher)',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-induction-3']
+      },
+      {
+        id: 'induc-risk-2',
+        description: 'Longer labor duration, especially if cervix unfavorable (Bishop score <6)',
+        frequency: 'Common (varies by cervical readiness)',
+        severity: 'mild',
+        citations: ['cit-induction-3']
+      },
+      {
+        id: 'induc-risk-3',
+        description: 'Increased continuous fetal monitoring and restricted mobility',
+        frequency: 'Very common',
+        severity: 'mild',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-risk-4',
+        description: 'Failed induction requiring cesarean (risk increases with unfavorable cervix; ~15-25% for first-time mothers)',
+        frequency: '15-25 in 100 first births, lower in subsequent',
+        severity: 'moderate',
+        citations: ['cit-induction-4']
+      },
+      {
+        id: 'induc-risk-5',
+        description: 'Uterine hyperstimulation (excessively frequent contractions)',
+        frequency: '5-20 in 100 depending on method',
+        severity: 'moderate',
+        citations: ['cit-induction-3']
+      },
+      {
+        id: 'induc-risk-6',
+        description: 'Rare: uterine rupture (increased risk if prior cesarean), cord prolapse, infection',
+        frequency: 'Rare (<1 in 100)',
+        severity: 'severe',
+        citations: ['cit-induction-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'induc-alt-1',
+        name: 'Expectant Management (Wait for Spontaneous Labor)',
+        description: 'Awaiting natural labor onset with close monitoring',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'induc-alt-ben-1',
+            description: 'Avoids medication and intervention cascade',
+            citations: ['cit-induction-4']
+          },
+          {
+            id: 'induc-alt-ben-2',
+            description: 'Labor may progress more smoothly when spontaneous',
+            citations: ['cit-induction-4']
+          },
+          {
+            id: 'induc-alt-ben-3',
+            description: 'Lower epidural and continuous monitoring rates',
+            citations: ['cit-induction-3']
+          }
+        ],
+        risks: [
+          {
+            id: 'induc-alt-risk-1',
+            description: 'If medically indicated induction is declined, may increase risk of stillbirth, meconium, or maternal complications depending on condition',
+            severity: 'severe',
+            citations: ['cit-induction-1']
+          },
+          {
+            id: 'induc-alt-risk-2',
+            description: 'Increased risk past 41-42 weeks (stillbirth risk doubles from 42 to 43 weeks)',
+            frequency: 'Increases with gestational age',
+            severity: 'severe',
+            citations: ['cit-induction-1']
+          },
+          {
+            id: 'induc-alt-risk-3',
+            description: 'Uncertainty about labor timing',
+            severity: 'mild',
+            citations: ['cit-induction-4']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-induction-1', 'cit-induction-4']
+      },
+      {
+        id: 'induc-alt-2',
+        name: 'Membrane Stripping (Sweep)',
+        description: 'Provider manually separates amniotic sac from cervix during exam; may trigger spontaneous labor within 48 hours',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'induc-alt-ben-4',
+            description: 'May reduce need for formal induction by ~40%',
+            citations: ['cit-induction-3']
+          },
+          {
+            id: 'induc-alt-ben-5',
+            description: 'Low-intervention option that can be done in office',
+            citations: ['cit-induction-3']
+          }
+        ],
+        risks: [
+          {
+            id: 'induc-alt-risk-4',
+            description: 'Uncomfortable or painful during procedure',
+            frequency: 'Common',
+            severity: 'mild',
+            citations: ['cit-induction-3']
+          },
+          {
+            id: 'induc-alt-risk-5',
+            description: 'Spotting, cramping, or irregular contractions',
+            frequency: 'Common',
+            severity: 'mild',
+            citations: ['cit-induction-3']
+          },
+          {
+            id: 'induc-alt-risk-6',
+            description: 'Not always effective (may require formal induction anyway)',
+            severity: 'mild',
+            citations: ['cit-induction-3']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-induction-3']
+      }
+    ],
+    whatIfWeWait: 'Depends on indication. For medical reasons (preeclampsia, post-term >41 weeks, ruptured membranes), delaying may increase risk to mother or baby. For elective 39-week induction, waiting for spontaneous labor is safe and may result in shorter labor if cervix becomes more favorable. Discuss individual risks/benefits with provider. Time-sensitive when medically indicated.',
+    contraindications: [
+      {
+        id: 'induc-contra-1',
+        condition: 'Placenta previa or vasa previa',
+        severity: 'absolute',
+        explanation: 'Requires cesarean delivery',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-contra-2',
+        condition: 'Transverse fetal lie or footling breech',
+        severity: 'absolute',
+        explanation: 'Vaginal delivery unsafe',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-contra-3',
+        condition: 'Prior classical (vertical) cesarean or uterine surgery',
+        severity: 'absolute',
+        explanation: 'High rupture risk with labor',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-contra-4',
+        condition: 'Active genital herpes outbreak',
+        severity: 'absolute',
+        explanation: 'Cesarean delivery recommended',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-contra-5',
+        condition: 'Pelvic obstruction or severe cephalopelvic disproportion',
+        severity: 'absolute',
+        explanation: 'Vaginal delivery not possible',
+        citations: ['cit-induction-1']
+      },
+      {
+        id: 'induc-contra-6',
+        condition: 'Prior low-transverse cesarean (for elective induction)',
+        severity: 'relative',
+        explanation: 'Increased rupture risk with induction (especially prostaglandins); spontaneous labor or scheduled cesarean often preferred',
+        citations: ['cit-vbac-1']
+      }
+    ],
+    questionsToAsk: [
+      'What is the medical reason for induction?',
+      'What is my Bishop score (cervical readiness)?',
+      'What induction method will be used (prostaglandin, Foley catheter, oxytocin)?',
+      'How long is the induction process likely to take?',
+      'What happens if induction doesn\'t work?',
+      'Can I eat and move around during induction?',
+      'What pain relief options are available?',
+      'What are the risks of waiting another week?',
+      'If this is elective, can we wait to see if labor starts naturally?'
+    ],
+    citations: [
+      citations['cit-induction-1'],
+      citations['cit-induction-2'],
+      citations['cit-induction-3'],
+      citations['cit-induction-4']
+    ],
+    lastReviewed: '2024-02-05',
+    nextReviewDue: '2025-02-05',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-cesarean-vbac-comparison',
+    name: 'Cesarean Birth vs. Vaginal Birth After Cesarean (VBAC)',
+    shortName: 'Cesarean vs VBAC',
+    category: 'surgical',
+    stage: 'prenatal',
+    urgencyLevel: 'elective',
+    summary: 'For women with a prior cesarean delivery, comparing the options of attempting vaginal birth (VBAC/TOLAC - trial of labor after cesarean) versus scheduling a repeat cesarean delivery. Both options carry different benefits and risks.',
+    indication: 'Decision-making for subsequent births after one or more previous cesarean deliveries. VBAC success rates range from 60-80% depending on individual factors.',
+    benefits: [
+      {
+        id: 'cs-vbac-ben-1',
+        description: 'VBAC: Avoids major abdominal surgery and associated risks',
+        citations: ['cit-vbac-1', 'cit-cesarean-vbac-1']
+      },
+      {
+        id: 'cs-vbac-ben-2',
+        description: 'VBAC: Shorter recovery time (days vs weeks)',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-ben-3',
+        description: 'VBAC: Lower risk of respiratory problems for baby',
+        citations: ['cit-cesarean-vbac-2']
+      },
+      {
+        id: 'cs-vbac-ben-4',
+        description: 'VBAC: Reduced risk for future pregnancies (no cumulative surgical risks)',
+        citations: ['cit-vbac-2']
+      },
+      {
+        id: 'cs-vbac-ben-5',
+        description: 'VBAC: Lower infection risk compared to repeat cesarean',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-ben-6',
+        description: 'Repeat Cesarean: Predictable timing and avoids labor',
+        citations: ['cit-csection-1']
+      },
+      {
+        id: 'cs-vbac-ben-7',
+        description: 'Repeat Cesarean: Avoids risk of emergency cesarean during labor',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-ben-8',
+        description: 'Repeat Cesarean: May be necessary if VBAC contraindicated',
+        citations: ['cit-vbac-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'cs-vbac-risk-1',
+        description: 'VBAC: Uterine rupture risk 0.5-0.9% (approximately 5-9 in 1,000)',
+        frequency: '5-9 in 1,000',
+        severity: 'severe',
+        citations: ['cit-vbac-1', 'cit-vbac-2']
+      },
+      {
+        id: 'cs-vbac-risk-2',
+        description: 'VBAC: If rupture occurs, risk of infant brain injury or death ~6%, maternal hysterectomy possible',
+        frequency: 'Rare but serious',
+        severity: 'severe',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-risk-3',
+        description: 'VBAC: 20-40% chance of needing emergency cesarean during labor (higher stress than planned cesarean)',
+        frequency: '20-40 in 100',
+        severity: 'moderate',
+        citations: ['cit-vbac-2', 'cit-vbac-3']
+      },
+      {
+        id: 'cs-vbac-risk-4',
+        description: 'Repeat Cesarean: Surgical risks (bleeding, infection, blood clots, organ injury)',
+        frequency: 'Infection: 5-10 in 100; major complications: 1-2 in 100',
+        severity: 'moderate',
+        citations: ['cit-csection-1', 'cit-cesarean-recovery-1']
+      },
+      {
+        id: 'cs-vbac-risk-5',
+        description: 'Repeat Cesarean: Increased risks with each subsequent cesarean (placenta problems, hysterectomy, adhesions)',
+        frequency: 'Risk increases: 3rd CS ~1% placenta accreta; 4th CS ~2-3%',
+        severity: 'severe',
+        citations: ['cit-cesarean-risks-1']
+      },
+      {
+        id: 'cs-vbac-risk-6',
+        description: 'Repeat Cesarean: Longer hospital stay and recovery (typically 3-4 days hospital, 6-8 weeks full recovery)',
+        frequency: 'Very common',
+        severity: 'mild',
+        citations: ['cit-cesarean-recovery-1']
+      },
+      {
+        id: 'cs-vbac-risk-7',
+        description: 'Repeat Cesarean: Slightly higher risk of respiratory distress for baby (transient tachypnea)',
+        frequency: '3-4 in 100 vs ~1 in 100 vaginal',
+        severity: 'mild',
+        citations: ['cit-cesarean-vbac-2']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'This is a decision to be made during pregnancy (ideally discussed early). Labor timing cannot always be controlled, so having a plan before labor begins is important. Some facilities require advance notice for VBAC due to staffing needs. If no decision is made and spontaneous labor begins, individual circumstances will guide immediate decisions.',
+    contraindications: [
+      {
+        id: 'cs-vbac-contra-1',
+        condition: 'VBAC: Prior classical (vertical) or T-shaped cesarean incision',
+        severity: 'absolute',
+        explanation: 'Rupture risk too high (4-9%)',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-contra-2',
+        condition: 'VBAC: Previous uterine rupture',
+        severity: 'absolute',
+        explanation: 'Recurrence risk 6-32%',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-contra-3',
+        condition: 'VBAC: Placenta previa or other current contraindication to vaginal birth',
+        severity: 'absolute',
+        explanation: 'Cesarean required regardless of preference',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-contra-4',
+        condition: 'VBAC: Facility without immediate cesarean and transfusion capability',
+        severity: 'absolute',
+        explanation: 'ACOG recommends VBAC only where emergency response available',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'cs-vbac-contra-5',
+        condition: 'VBAC: More than 2 prior cesareans',
+        severity: 'relative',
+        explanation: 'Limited safety data; rupture risk may be higher',
+        citations: ['cit-vbac-1']
+      }
+    ],
+    questionsToAsk: [
+      'What type of uterine incision did I have in my previous cesarean (low transverse vs classical)?',
+      'What are my personal VBAC success factors (prior vaginal birth, reason for previous cesarean, Bishop score)?',
+      'Does this hospital support VBAC? Is immediate surgical capability available 24/7?',
+      'What would happen if I go into labor before my scheduled repeat cesarean?',
+      'Can I use epidural during VBAC attempt?',
+      'Will induction be offered if I choose VBAC, or only spontaneous labor?',
+      'What monitoring is required during VBAC labor?',
+      'How will you monitor for signs of uterine rupture?',
+      'What is your facility\'s VBAC success rate?',
+      'If planning repeat cesarean, when will it be scheduled?',
+      'What are my risks for future pregnancies with another cesarean?'
+    ],
+    citations: [
+      citations['cit-vbac-1'],
+      citations['cit-vbac-2'],
+      citations['cit-vbac-3'],
+      citations['cit-csection-1'],
+      citations['cit-cesarean-recovery-1'],
+      citations['cit-cesarean-risks-1'],
+      citations['cit-cesarean-vbac-1'],
+      citations['cit-cesarean-vbac-2']
+    ],
+    lastReviewed: '2024-02-05',
+    nextReviewDue: '2025-02-05',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-epidural-analgesia',
+    name: 'Epidural Analgesia for Labor Pain',
+    shortName: 'Epidural',
+    category: 'medication',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Regional anesthesia technique where local anesthetic and/or opioid medications are delivered continuously through a catheter placed in the epidural space of the spine, providing pain relief while allowing the mother to remain awake and alert.',
+    indication: 'Labor pain management. Epidural is the most effective pain relief method for labor, reducing pain intensity by 80-100% in most cases.',
+    benefits: [
+      {
+        id: 'epi-ben-1',
+        description: 'Highly effective pain relief while maintaining consciousness and ability to push',
+        citations: ['cit-epidural-1', 'cit-epidural-2']
+      },
+      {
+        id: 'epi-ben-2',
+        description: 'Can be adjusted throughout labor and extended for cesarean if needed',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-ben-3',
+        description: 'May allow rest during long labor, preserving energy for pushing',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-ben-4',
+        description: 'Lower doses ("walking epidural") may preserve some mobility',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-ben-5',
+        description: 'Reduces maternal catecholamine (stress hormone) levels',
+        citations: ['cit-epidural-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'epi-risk-1',
+        description: 'Decreased blood pressure (may require IV fluids and medication)',
+        frequency: 'Common (20-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-2',
+        description: 'Maternal fever (mechanism unclear; does not indicate infection but may trigger infant evaluation)',
+        frequency: 'Common (15-25 in 100)',
+        severity: 'mild',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-3',
+        description: 'Urinary retention requiring catheterization',
+        frequency: 'Very common (>80 in 100)',
+        severity: 'mild',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-risk-4',
+        description: 'Itching (from opioid component)',
+        frequency: 'Common (10-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-5',
+        description: 'Prolonged second stage of labor (pushing phase) by ~15-30 minutes on average',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-6',
+        description: 'Increased use of oxytocin augmentation',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-7',
+        description: 'Increased instrumental vaginal delivery (forceps/vacuum) - older studies showed 40% increase; newer low-dose epidurals show less impact',
+        frequency: 'Variable (10-15 in 100 with modern techniques)',
+        severity: 'moderate',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-8',
+        description: 'Does NOT increase cesarean rate according to high-quality evidence',
+        frequency: 'No increased risk',
+        severity: 'mild',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-risk-9',
+        description: 'Post-dural puncture headache ("spinal headache") if dura accidentally punctured (1-2% of placements)',
+        frequency: '1-2 in 100',
+        severity: 'moderate',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-risk-10',
+        description: 'Severe complications: nerve injury, epidural hematoma, infection (abscess or meningitis), high/total spinal block',
+        frequency: 'Very rare (1 in 10,000 to 1 in 100,000)',
+        severity: 'severe',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-risk-11',
+        description: 'Temporary leg weakness or numbness (resolves as medication wears off)',
+        frequency: 'Very common',
+        severity: 'mild',
+        citations: ['cit-epidural-2']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'epi-alt-1',
+        name: 'Spinal Analgesia (Single-Dose)',
+        description: 'One-time injection into spinal fluid providing rapid, complete pain relief for 1-2 hours',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'epi-alt-ben-1',
+            description: 'Faster onset (5 minutes vs 15-20 for epidural)',
+            citations: ['cit-spinal-1']
+          },
+          {
+            id: 'epi-alt-ben-2',
+            description: 'Very reliable and complete pain relief',
+            citations: ['cit-spinal-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'epi-alt-risk-1',
+            description: 'Limited duration (cannot be extended); typically used for scheduled cesarean',
+            severity: 'moderate',
+            citations: ['cit-spinal-1']
+          },
+          {
+            id: 'epi-alt-risk-2',
+            description: 'Higher incidence of hypotension and post-dural puncture headache',
+            severity: 'mild',
+            citations: ['cit-spinal-2']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-spinal-1', 'cit-spinal-2']
+      },
+      {
+        id: 'epi-alt-2',
+        name: 'Combined Spinal-Epidural (CSE)',
+        description: 'Spinal injection for immediate relief plus epidural catheter for continuous dosing',
+        isEquivalent: true,
+        benefits: [
+          {
+            id: 'epi-alt-ben-3',
+            description: 'Rapid onset like spinal with ongoing relief like epidural',
+            citations: ['cit-combined-spinal-epidural-1']
+          },
+          {
+            id: 'epi-alt-ben-4',
+            description: 'May allow more mobility early on ("walking epidural")',
+            citations: ['cit-combined-spinal-epidural-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'epi-alt-risk-3',
+            description: 'All epidural risks plus slightly higher technical difficulty',
+            severity: 'mild',
+            citations: ['cit-combined-spinal-epidural-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-combined-spinal-epidural-1']
+      },
+      {
+        id: 'epi-alt-3',
+        name: 'IV Opioids (Fentanyl, Morphine)',
+        description: 'Pain medication given through IV; provides moderate pain relief',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'epi-alt-ben-5',
+            description: 'Preserves mobility and sensation',
+            citations: ['cit-epidural-1']
+          },
+          {
+            id: 'epi-alt-ben-6',
+            description: 'No needle in back; quicker to administer',
+            citations: ['cit-epidural-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'epi-alt-risk-4',
+            description: 'Much less effective pain relief (reduces pain ~30-40% vs 80-100% for epidural)',
+            severity: 'moderate',
+            citations: ['cit-epidural-1']
+          },
+          {
+            id: 'epi-alt-risk-5',
+            description: 'Maternal sedation, nausea, dizziness',
+            frequency: 'Common',
+            severity: 'mild',
+            citations: ['cit-epidural-1']
+          },
+          {
+            id: 'epi-alt-risk-6',
+            description: 'Can cross placenta and cause temporary infant respiratory depression if given close to delivery',
+            severity: 'moderate',
+            citations: ['cit-epidural-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-epidural-1']
+      },
+      {
+        id: 'epi-alt-4',
+        name: 'Non-Pharmacological Pain Management',
+        description: 'Movement, positioning, hydrotherapy, breathing, massage, doula support, hypnobirthing',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'epi-alt-ben-7',
+            description: 'No medical risks or side effects',
+            citations: ['cit-doula-1']
+          },
+          {
+            id: 'epi-alt-ben-8',
+            description: 'Preserves full mobility and sensation',
+            citations: ['cit-doula-1']
+          },
+          {
+            id: 'epi-alt-ben-9',
+            description: 'Can be combined with other methods',
+            citations: ['cit-doula-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'epi-alt-risk-7',
+            description: 'Variable effectiveness; some women experience inadequate pain relief',
+            severity: 'moderate',
+            citations: ['cit-doula-1']
+          },
+          {
+            id: 'epi-alt-risk-8',
+            description: 'Requires preparation and continuous support',
+            severity: 'mild',
+            citations: ['cit-doula-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-doula-1']
+      }
+    ],
+    whatIfWeWait: 'Epidural can be placed any time during active labor until very late in second stage (crowning). However, placement becomes more difficult during intense contractions. Many women choose to wait and see how labor progresses, keeping epidural as an option. There may be a 20-30 minute wait for anesthesiologist availability plus 15-20 minutes for the procedure and medication to take effect. No penalty for waiting or changing your mind.',
+    contraindications: [
+      {
+        id: 'epi-contra-1',
+        condition: 'Patient refusal',
+        severity: 'absolute',
+        explanation: 'Informed consent required',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-contra-2',
+        condition: 'Coagulopathy (bleeding disorder) or low platelet count (<70,000-80,000)',
+        severity: 'absolute',
+        explanation: 'Risk of epidural hematoma',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-contra-3',
+        condition: 'Infection at insertion site or systemic sepsis',
+        severity: 'absolute',
+        explanation: 'Risk of meningitis or epidural abscess',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-contra-4',
+        condition: 'Increased intracranial pressure',
+        severity: 'absolute',
+        explanation: 'Risk of brain herniation with dural puncture',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-contra-5',
+        condition: 'True allergy to local anesthetics (extremely rare)',
+        severity: 'absolute',
+        explanation: 'Alternative anesthetics may be available',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-contra-6',
+        condition: 'Hypovolemia or severe hypotension',
+        severity: 'relative',
+        explanation: 'Must be corrected before placement',
+        citations: ['cit-epidural-2']
+      },
+      {
+        id: 'epi-contra-7',
+        condition: 'Certain neurological conditions or prior spinal surgery',
+        severity: 'relative',
+        explanation: 'Requires anesthesiologist evaluation',
+        citations: ['cit-epidural-2']
+      }
+    ],
+    questionsToAsk: [
+      'When can I request an epidural?',
+      'How long will it take to place and take effect?',
+      'What will the procedure feel like?',
+      'Can I still move and change positions?',
+      'Will I be able to feel when to push?',
+      'What if the epidural doesn\'t work completely?',
+      'Can it be removed if I change my mind?',
+      'Will I need a urinary catheter?',
+      'Does it increase my chances of needing a cesarean? (Evidence says no)',
+      'What is your rate of successful epidural placement?',
+      'Can my support person stay with me during placement?',
+      'What happens to the epidural after delivery?'
+    ],
+    citations: [
+      citations['cit-epidural-1'],
+      citations['cit-epidural-2'],
+      citations['cit-combined-spinal-epidural-1']
+    ],
+    lastReviewed: '2024-02-05',
+    nextReviewDue: '2025-02-05',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
   }
 ]

@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { BookmarkSimple, ArrowsLeftRight, NotePencil, Seal, WarningOctagon, CheckCircle, Clock, Info } from '@phosphor-icons/react'
 import { urgencyConfig, evidenceLevelConfig, formatDate, getSeverityColor } from '@/lib/constants'
+import { CesareanVBACComparison } from '@/components/OutcomeComparisonChart'
 
 interface ProcedureDetailProps {
   procedureId: string
@@ -158,6 +159,12 @@ export function ProcedureDetail({
           </CardContent>
         </Card>
       </div>
+
+      {procedure.id === 'proc-cesarean-vbac-comparison' && (
+        <div className="mb-8">
+          <CesareanVBACComparison />
+        </div>
+      )}
 
       <Card className="mb-8">
         <CardHeader>
