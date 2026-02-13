@@ -6,15 +6,17 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent } from '@/components/ui/card'
 import { Check, Copy, ShareNetwork, Link as LinkIcon, UserCircle } from '@phosphor-icons/react'
 import { toast } from 'sonner'
+import { SharedBirthPlanLink } from '@/lib/types'
 
 interface BirthPlanShareProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   birthPlanData: string
   parentName: string
+  birthPlanVersionId?: string
 }
 
-export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName }: BirthPlanShareProps) {
+export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName, birthPlanVersionId }: BirthPlanShareProps) {
   const [shareId, setShareId] = useState<string | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -33,10 +35,27 @@ export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName }
         sharedAt: new Date().toISOString(),
         recipientName: recipientName || 'Partner/Support Person',
         message: message || '',
-        expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
+        expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+        isRevoked: false,
+        viewCount: 0
       }
 
       await window.spark.kv.set(`shared-birth-plan-${id}`, shareData)
+
+      const sharedLink: SharedBirthPlanLink = {
+        id: `link-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+        shareId: id,
+        birthPlanVersionId: birthPlanVersionId || 'current',
+        recipientName: recipientName || 'Partner/Support Person',
+        message: message || '',
+        createdAt: new Date().toISOString(),
+        expiresAt: shareData.expiresAt,
+        isRevoked: false,
+        viewCount: 0
+      }
+
+      const existingLinks = await window.spark.kv.get<SharedBirthPlanLink[]>('shared-birth-plan-links') || []
+      await window.spark.kv.set('shared-birth-plan-links', [...existingLinks, sharedLink])
       
       setShareId(id)
       toast.success('Share link created successfully')

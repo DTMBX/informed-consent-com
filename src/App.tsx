@@ -187,6 +187,7 @@ function App() {
             }}
             onClose={() => setCurrentView('library')}
             onBirthPlan={() => navigateToView('birth-plan')}
+            parentName="Parent"
           />
         )}
       </main>

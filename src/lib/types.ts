@@ -102,6 +102,46 @@ export interface UserPreferences {
   completedOnboarding: boolean
 }
 
+export interface SharedBirthPlanLink {
+  id: string
+  shareId: string
+  birthPlanVersionId: string
+  recipientName: string
+  message: string
+  createdAt: string
+  expiresAt: string
+  revokedAt?: string
+  isRevoked: boolean
+  viewCount: number
+  lastViewedAt?: string
+}
+
+export interface BirthPlanComment {
+  id: string
+  shareId: string
+  commenterName: string
+  commenterEmail?: string
+  content: string
+  isQuestion: boolean
+  isResolved: boolean
+  createdAt: string
+  resolvedAt?: string
+  resolvedBy?: string
+  parentCommentId?: string
+}
+
+export interface BirthPlanVersion {
+  id: string
+  birthPlanDocument: string
+  parentName: string
+  preferences: any
+  version: number
+  createdAt: string
+  createdBy: string
+  changeNotes?: string
+  previousVersionId?: string
+}
+
 export interface AuditEntry {
   id: string
   timestamp: string

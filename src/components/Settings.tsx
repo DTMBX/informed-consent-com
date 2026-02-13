@@ -1,20 +1,29 @@
+import { useState } from 'react'
 import { UserPreferences, Stage } from '@/lib/types'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { X, Info, FirstAid } from '@phosphor-icons/react'
+import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle } from '@phosphor-icons/react'
 import { stageConfig, LANGUAGES, DISCLAIMER_TEXT } from '@/lib/constants'
 import { toast } from 'sonner'
+import { BirthPlanHistory } from '@/components/BirthPlanHistory'
+import { ManageSharedLinks } from '@/components/ManageSharedLinks'
+import { ViewAllComments } from '@/components/ViewAllComments'
 
 interface SettingsProps {
   preferences: UserPreferences
   onUpdatePreferences: (updates: Partial<UserPreferences>) => void
   onClose: () => void
   onBirthPlan?: () => void
+  parentName?: string
 }
 
-export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPlan }: SettingsProps) {
+export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPlan, parentName }: SettingsProps) {
+  const [historyOpen, setHistoryOpen] = useState(false)
+  const [manageLinksOpen, setManageLinksOpen] = useState(false)
+  const [commentsOpen, setCommentsOpen] = useState(false)
+
   const handleStageChange = (stage: Stage) => {
     onUpdatePreferences({ stage })
     toast.success('Stage updated')
@@ -30,6 +39,18 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
       onUpdatePreferences({ savedProcedures: [] })
       toast.success('Saved procedures cleared')
     }
+  }
+
+  if (historyOpen) {
+    return <BirthPlanHistory onClose={() => setHistoryOpen(false)} />
+  }
+
+  if (manageLinksOpen) {
+    return <ManageSharedLinks onClose={() => setManageLinksOpen(false)} />
+  }
+
+  if (commentsOpen) {
+    return <ViewAllComments onClose={() => setCommentsOpen(false)} parentName={parentName || 'Parent'} />
   }
 
   return (
@@ -112,18 +133,51 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FirstAid className="h-5 w-5" />
-                Birth Plan Generator
+                Birth Plan Management
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                Create a comprehensive birth plan based on the procedures you've reviewed. 
-                Document your preferences for labor, delivery, newborn care, and postpartum.
+            <CardContent className="space-y-4">
+              <div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Create a comprehensive birth plan based on the procedures you've reviewed. 
+                  Document your preferences for labor, delivery, newborn care, and postpartum.
+                </p>
+                <Button onClick={onBirthPlan} className="gap-2 w-full">
+                  <FirstAid className="h-4 w-4" />
+                  Create or Edit Birth Plan
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <Button
+                  onClick={() => setHistoryOpen(true)}
+                  variant="outline"
+                  className="gap-2"
+                >
+                  <ClockCounterClockwise className="h-4 w-4" />
+                  Version History
+                </Button>
+                <Button
+                  onClick={() => setManageLinksOpen(true)}
+                  variant="outline"
+                  className="gap-2"
+                >
+                  <LinkIcon className="h-4 w-4" />
+                  Manage Links
+                </Button>
+                <Button
+                  onClick={() => setCommentsOpen(true)}
+                  variant="outline"
+                  className="gap-2"
+                >
+                  <ChatCircle className="h-4 w-4" />
+                  View Comments
+                </Button>
+              </div>
+
+              <p className="text-xs text-muted-foreground">
+                View past versions, manage shared link access, or respond to comments from partners
               </p>
-              <Button onClick={onBirthPlan} className="gap-2">
-                <FirstAid className="h-4 w-4" />
-                Create Birth Plan
-              </Button>
             </CardContent>
           </Card>
         )}

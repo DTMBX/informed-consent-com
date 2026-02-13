@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Printer, Download, ShareNetwork, Heart, Clock, UserCircle } from '@phosphor-icons/react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Printer, Download, ShareNetwork, Heart, Clock, UserCircle, ChatCircle } from '@phosphor-icons/react'
 import { toast } from 'sonner'
+import { BirthPlanComments } from '@/components/BirthPlanComments'
 
 interface SharedBirthPlanData {
   id: string
@@ -13,6 +15,10 @@ interface SharedBirthPlanData {
   recipientName: string
   message: string
   expiresAt: string
+  isRevoked?: boolean
+  revokedAt?: string
+  viewCount?: number
+  lastViewedAt?: string
 }
 
 interface SharedBirthPlanViewProps {
@@ -35,6 +41,12 @@ export function SharedBirthPlanView({ shareId }: SharedBirthPlanViewProps) {
           return
         }
 
+        if (data.isRevoked) {
+          setError('This birth plan link has been revoked by the owner.')
+          setLoading(false)
+          return
+        }
+
         const expiresAt = new Date(data.expiresAt)
         if (expiresAt < new Date()) {
           setError('This birth plan link has expired.')
@@ -42,7 +54,26 @@ export function SharedBirthPlanView({ shareId }: SharedBirthPlanViewProps) {
           return
         }
 
-        setBirthPlanData(data)
+        const updatedData = {
+          ...data,
+          viewCount: (data.viewCount || 0) + 1,
+          lastViewedAt: new Date().toISOString()
+        }
+
+        await window.spark.kv.set(`shared-birth-plan-${shareId}`, updatedData)
+
+        const links = await window.spark.kv.get<any[]>('shared-birth-plan-links') || []
+        const linkIndex = links.findIndex(l => l.shareId === shareId)
+        if (linkIndex >= 0) {
+          links[linkIndex] = {
+            ...links[linkIndex],
+            viewCount: updatedData.viewCount,
+            lastViewedAt: updatedData.lastViewedAt
+          }
+          await window.spark.kv.set('shared-birth-plan-links', links)
+        }
+
+        setBirthPlanData(updatedData)
         setLoading(false)
       } catch (err) {
         setError('Failed to load birth plan. Please check the link and try again.')
@@ -196,52 +227,71 @@ export function SharedBirthPlanView({ shareId }: SharedBirthPlanViewProps) {
           )}
         </div>
 
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle>Birth Plan Document</CardTitle>
-              <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleDownload}
-                  className="gap-2"
-                >
-                  <Download className="h-4 w-4" />
-                  Download
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handlePrint}
-                  className="gap-2"
-                >
-                  <Printer className="h-4 w-4" />
-                  Print
-                </Button>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="bg-muted/50 p-6 rounded-lg font-mono text-xs overflow-x-auto">
-              <pre className="whitespace-pre-wrap">{birthPlanData.birthPlanDocument}</pre>
-            </div>
-          </CardContent>
-        </Card>
+        <Tabs defaultValue="document" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="document" className="gap-2">
+              <Heart className="h-4 w-4" />
+              Birth Plan
+            </TabsTrigger>
+            <TabsTrigger value="comments" className="gap-2">
+              <ChatCircle className="h-4 w-4" />
+              Comments
+            </TabsTrigger>
+          </TabsList>
 
-        <Card className="mt-6 bg-accent/10">
-          <CardContent className="pt-6">
-            <div className="space-y-3 text-sm">
-              <p className="font-medium">About This Birth Plan</p>
-              <p className="text-muted-foreground">
-                This birth plan was created using the Informed Consent Companion, an educational tool that helps expectant parents make informed decisions about medical procedures based on evidence-based information.
-              </p>
-              <p className="text-muted-foreground">
-                Birth plans represent preferences and may need to be adjusted based on medical circumstances. Please discuss any questions with {birthPlanData.parentName} and their healthcare provider.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+          <TabsContent value="document" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle>Birth Plan Document</CardTitle>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleDownload}
+                      className="gap-2"
+                    >
+                      <Download className="h-4 w-4" />
+                      Download
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handlePrint}
+                      className="gap-2"
+                    >
+                      <Printer className="h-4 w-4" />
+                      Print
+                    </Button>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-muted/50 p-6 rounded-lg font-mono text-xs overflow-x-auto">
+                  <pre className="whitespace-pre-wrap">{birthPlanData.birthPlanDocument}</pre>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-accent/10">
+              <CardContent className="pt-6">
+                <div className="space-y-3 text-sm">
+                  <p className="font-medium">About This Birth Plan</p>
+                  <p className="text-muted-foreground">
+                    This birth plan was created using the Informed Consent Companion, an educational tool that helps expectant parents make informed decisions about medical procedures based on evidence-based information.
+                  </p>
+                  <p className="text-muted-foreground">
+                    Birth plans represent preferences and may need to be adjusted based on medical circumstances. Please discuss any questions with {birthPlanData.parentName} and their healthcare provider.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="comments">
+            <BirthPlanComments shareId={shareId} isOwner={false} />
+          </TabsContent>
+        </Tabs>
 
         <div className="mt-8 text-center text-sm text-muted-foreground">
           <p>Created with Informed Consent Companion</p>

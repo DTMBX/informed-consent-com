@@ -48,18 +48,39 @@ This application requires sophisticated information architecture, role-based acc
 - **Success criteria**: Export includes all cited sources, timestamps, disclaimer text, and "I made this decision voluntarily" statement; generates in <3 seconds
 
 ### Birth Plan Generator
-- **Functionality**: Comprehensive birth plan creation tool that references reviewed procedures and documents preferences for labor, delivery, newborn care, and postpartum. Includes template options (natural, medicated, cesarean) for quick start and secure sharing via unique links.
-- **Purpose**: Creates a professional, evidence-based birth plan that healthcare providers can review and that documents informed decisions. Enables collaboration with partners and support persons through secure sharing.
+- **Functionality**: Comprehensive birth plan creation tool that references reviewed procedures and documents preferences for labor, delivery, newborn care, and postpartum. Includes template options (natural, medicated, cesarean) for quick start and secure sharing via unique links. Automatically creates version history with each significant change. Includes full management interface for shared links with revocation capability.
+- **Purpose**: Creates a professional, evidence-based birth plan that healthcare providers can review and that documents informed decisions. Enables collaboration with partners and support persons through secure sharing with commenting functionality. Maintains historical record of changes over time.
 - **Trigger**: User clicks "Create Birth Plan" from Settings or Reflection page
-- **Progression**: Select template → Complete basic info → Set labor preferences → Set delivery preferences → Document procedure decisions → Set postpartum preferences → Preview → Export/Print/Share
-- **Success criteria**: Birth plan includes all procedure decisions with evidence references, generates printable formatted document, includes disclaimer and signature sections, allows for detailed notes and preferences across all birth stages. Share links are valid for 90 days, require no login to view, and can be sent to multiple recipients.
+- **Progression**: Select template → Complete basic info → Set labor preferences → Set delivery preferences → Document procedure decisions → Set postpartum preferences → Preview → Export/Print/Share → Manage versions and comments
+- **Success criteria**: Birth plan includes all procedure decisions with evidence references, generates printable formatted document, includes disclaimer and signature sections, allows for detailed notes and preferences across all birth stages. Share links are valid for 90 days, can be revoked at any time, track view counts, and support partner comments. Version history captures each change with timestamps and change notes.
 
-### Birth Plan Sharing
-- **Functionality**: Generate secure, unique links to share completed birth plans with partners, doulas, family members, or support persons. Recipients can view, download, and print the birth plan without needing an account.
-- **Purpose**: Facilitates collaboration and ensures support persons are informed about birth preferences and evidence-based decisions
-- **Trigger**: User clicks "Share with Partner or Support Person" from birth plan preview
-- **Progression**: Enter recipient name (optional) → Add personal message (optional) → Generate link → Copy link or share via email → Recipient views plan via unique URL
-- **Success criteria**: Links expire after 90 days, display creation date and expiry warning, show personal message if provided, allow recipient to download/print birth plan, require no authentication, support multiple simultaneous share links
+### Birth Plan Sharing & Collaboration
+- **Functionality**: Generate secure, unique links to share completed birth plans with partners, doulas, family members, or support persons. Recipients can view, download, print, and add comments or questions. Owner can manage all shared links, revoke access, and respond to comments from a unified interface.
+- **Purpose**: Facilitates collaboration and ensures support persons are informed about birth preferences and evidence-based decisions. Enables two-way communication through questions and comments while maintaining owner control over access.
+- **Trigger**: User clicks "Share with Partner or Support Person" from birth plan preview, or "Manage Shared Links" from Settings
+- **Progression**: Enter recipient name (optional) → Add personal message (optional) → Generate link → Copy link or share via email → Recipient views plan and adds comments → Owner reviews comments and responds → Owner can revoke link access at any time
+- **Success criteria**: Links expire after 90 days or can be manually revoked, display creation date and expiry warning, show personal message if provided, allow recipient to download/print birth plan and add comments/questions, track view counts and last viewed timestamps, require no authentication, support multiple simultaneous share links with individual management, distinguish between questions needing response and general comments, allow owner to mark questions as resolved
+
+### Birth Plan Version History
+- **Functionality**: Automatic version tracking for all birth plan changes with timestamps, change notes, and ability to view, compare, download, or restore any previous version. Creates new version on export, share, or significant edits.
+- **Purpose**: Provides audit trail of decision evolution, allows recovery from unwanted changes, enables comparison of preferences over time
+- **Trigger**: Automatic on save/export, or user clicks "View Version History" from birth plan preview or Settings
+- **Progression**: View chronological list of versions → Select version to preview → Compare changes → Download historical version → Restore previous version (creates new version with restored content)
+- **Success criteria**: Each version includes full birth plan document, creation timestamp, creator name, change notes, and link to previous version; versions displayed in reverse chronological order with "current" badge; restore function creates new version rather than destructive revert; versions persist even after share link expiration
+
+### Shared Link Management Dashboard
+- **Functionality**: Centralized interface showing all birth plan share links with status (active/revoked/expired), view counts, last viewed timestamps, and bulk management actions. Includes comment overview showing unread questions and total comments per link.
+- **Purpose**: Gives owner full control and visibility into who has access to birth plan and how they're engaging with it
+- **Trigger**: User clicks "Manage Shared Links" from birth plan preview or Settings
+- **Progression**: View all links grouped by status → See view metrics per link → Revoke active links → Delete old/revoked links → Navigate to comments for specific link
+- **Success criteria**: Links grouped into Active/Revoked/Expired sections, display recipient name, creation date, expiry date, view count, last viewed date, and comment count; one-click revoke with confirmation dialog; permanent delete for revoked/expired links with warning about deleting associated comments; filter/search by recipient name
+
+### Partner Comments & Questions
+- **Functionality**: Recipients of shared birth plans can leave comments and mark them as questions requiring response. Owner receives notification of new comments, can respond directly, and mark questions as resolved. Comments are threaded by share link.
+- **Purpose**: Enables asynchronous discussion of birth plan preferences between parents and support persons, captures questions for healthcare provider discussions
+- **Trigger**: Recipient views shared birth plan and clicks Comments tab; Owner clicks "View Comments" from Settings or shared link management
+- **Progression**: Recipient adds name (optional email) → Writes comment → Marks as question if needed → Owner views all comments → Owner responds → Owner marks questions as resolved
+- **Success criteria**: Comments display commenter name, timestamp, and question badge; questions grouped separately from general comments; resolved questions remain visible but dimmed; owner can view all comments across all share links in unified interface; comment counts display on share link cards; supports basic formatting (line breaks)
 
 ### Evidence Citations & Sources
 - **Functionality**: Every claim linked to reputable guideline or peer-reviewed source; full bibliography with links, publication dates, and evidence levels (Systematic Review / RCT / Expert Consensus / etc.)

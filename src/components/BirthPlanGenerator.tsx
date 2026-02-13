@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { procedures } from '@/lib/proceduresData'
-import { Procedure, Stage } from '@/lib/types'
+import { Procedure, Stage, BirthPlanVersion } from '@/lib/types'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -11,10 +11,13 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
-import { Download, Printer, X, Baby, FirstAid, Heartbeat, Clipboard, Sparkle, ShareNetwork } from '@phosphor-icons/react'
+import { Download, Printer, X, Baby, FirstAid, Heartbeat, Clipboard, Sparkle, ShareNetwork, ClockCounterClockwise, Link as LinkIcon, ChatCircle } from '@phosphor-icons/react'
 import { DISCLAIMER_TEXT, formatDate } from '@/lib/constants'
 import { toast } from 'sonner'
 import { BirthPlanShare } from '@/components/BirthPlanShare'
+import { BirthPlanHistory } from '@/components/BirthPlanHistory'
+import { ManageSharedLinks } from '@/components/ManageSharedLinks'
+import { BirthPlanComments } from '@/components/BirthPlanComments'
 
 interface BirthPlanGeneratorProps {
   savedProcedures: string[]
@@ -147,10 +150,15 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
     additionalNotes: ''
   })
 
+  const [versions, setVersions] = useKV<BirthPlanVersion[]>('birth-plan-versions', [])
+
   type Section = 'template' | 'basic' | 'labor' | 'delivery' | 'newborn' | 'postpartum' | 'preview'
   const [currentSection, setCurrentSection] = useState<Section>('template')
   const [selectedTemplate, setSelectedTemplate] = useState<BirthPlanTemplate | null>(null)
   const [shareDialogOpen, setShareDialogOpen] = useState(false)
+  const [historyOpen, setHistoryOpen] = useState(false)
+  const [manageLinksOpen, setManageLinksOpen] = useState(false)
+  const [currentVersionId, setCurrentVersionId] = useState<string | null>(null)
 
   const plan = birthPlan || {
     parentName: '',
@@ -410,6 +418,8 @@ Provider Signature: ____________________  Date: __________
   const handleExport = (format: 'text' | 'print') => {
     const document = generateBirthPlanDocument()
 
+    saveVersion('Exported birth plan')
+
     if (format === 'text') {
       const blob = new Blob([document], { type: 'text/plain' })
       const url = URL.createObjectURL(blob)
@@ -461,6 +471,49 @@ Provider Signature: ____________________  Date: __________
         toast.success('Print dialog opened')
       }
     }
+  }
+
+  const saveVersion = async (changeNotes?: string) => {
+    const document = generateBirthPlanDocument()
+    const currentVersions = versions || []
+    
+    const newVersion: BirthPlanVersion = {
+      id: `version-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+      birthPlanDocument: document,
+      parentName: plan.parentName || 'Parent',
+      preferences: plan,
+      version: currentVersions.length + 1,
+      createdAt: new Date().toISOString(),
+      createdBy: plan.parentName || 'Parent',
+      changeNotes: changeNotes,
+      previousVersionId: currentVersions.length > 0 ? currentVersions[currentVersions.length - 1].id : undefined
+    }
+
+    setVersions((prev) => [...(prev || []), newVersion])
+    setCurrentVersionId(newVersion.id)
+    
+    return newVersion.id
+  }
+
+  const handleRestoreVersion = (version: BirthPlanVersion) => {
+    setBirthPlan((prev) => version.preferences)
+    toast.success(`Restored to version ${version.version}`)
+    saveVersion(`Restored from version ${version.version}`)
+    setHistoryOpen(false)
+  }
+
+  const handleShareWithVersionSave = async () => {
+    const versionId = await saveVersion('Shared birth plan')
+    setCurrentVersionId(versionId)
+    setShareDialogOpen(true)
+  }
+
+  if (historyOpen) {
+    return <BirthPlanHistory onClose={() => setHistoryOpen(false)} onRestoreVersion={handleRestoreVersion} />
+  }
+
+  if (manageLinksOpen) {
+    return <ManageSharedLinks onClose={() => setManageLinksOpen(false)} />
   }
 
   return (
@@ -1000,10 +1053,10 @@ Provider Signature: ____________________  Date: __________
               </CardContent>
             </Card>
 
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Button 
                 onClick={() => handleExport('text')}
-                className="flex-1 gap-2"
+                className="gap-2"
               >
                 <Download className="h-4 w-4" />
                 Download Birth Plan
@@ -1011,7 +1064,7 @@ Provider Signature: ____________________  Date: __________
               <Button 
                 onClick={() => handleExport('print')}
                 variant="outline"
-                className="flex-1 gap-2"
+                className="gap-2"
               >
                 <Printer className="h-4 w-4" />
                 Print Birth Plan
@@ -1019,13 +1072,32 @@ Provider Signature: ____________________  Date: __________
             </div>
 
             <Button
-              onClick={() => setShareDialogOpen(true)}
+              onClick={handleShareWithVersionSave}
               variant="secondary"
               className="w-full gap-2"
             >
               <ShareNetwork className="h-4 w-4" />
               Share with Partner or Support Person
             </Button>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Button
+                onClick={() => setHistoryOpen(true)}
+                variant="outline"
+                className="gap-2"
+              >
+                <ClockCounterClockwise className="h-4 w-4" />
+                View Version History
+              </Button>
+              <Button
+                onClick={() => setManageLinksOpen(true)}
+                variant="outline"
+                className="gap-2"
+              >
+                <LinkIcon className="h-4 w-4" />
+                Manage Shared Links
+              </Button>
+            </div>
           </div>
         )}
 
@@ -1064,6 +1136,7 @@ Provider Signature: ____________________  Date: __________
         onOpenChange={setShareDialogOpen}
         birthPlanData={generateBirthPlanDocument()}
         parentName={plan.parentName || 'Parent'}
+        birthPlanVersionId={currentVersionId || undefined}
       />
     </div>
   )
