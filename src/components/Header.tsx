@@ -11,6 +11,7 @@ interface HeaderProps {
 }
 
 const viewTitles: Record<string, string> = {
+  'home': 'Respectful Maternity & Newborn Care',
   'library': 'Procedure Library',
   'procedure-detail': 'Procedure Details',
   'compare': 'Compare Options',
@@ -22,7 +23,7 @@ const viewTitles: Record<string, string> = {
 
 export function Header({ currentView, onBack, onHome, onSettingsClick }: HeaderProps) {
   const showBackButton = currentView === 'procedure-detail' || currentView === 'compare'
-  const showHomeButton = currentView !== 'library' && !showBackButton
+  const showHomeButton = currentView !== 'home' && currentView !== 'library' && !showBackButton
   const { unreadCount } = useUnreadComments()
 
   return (

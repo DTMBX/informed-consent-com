@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { UserPreferences, Stage } from '@/lib/types'
 import { Onboarding } from '@/components/Onboarding'
+import { Homepage } from '@/components/Homepage'
 import { ProcedureLibrary } from '@/components/ProcedureLibrary'
 import { ProcedureDetail } from '@/components/ProcedureDetail'
 import { CompareView } from '@/components/CompareView'
@@ -15,7 +16,7 @@ import { Header } from '@/components/Header'
 import { SharedBirthPlanView } from '@/components/SharedBirthPlanView'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'birth-plan' | 'settings'
+type View = 'home' | 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'birth-plan' | 'settings'
 
 function App() {
   const [preferences, setPreferences] = useKV<UserPreferences>('user-preferences', {
@@ -26,10 +27,12 @@ function App() {
   })
 
   const [sidebarCollapsed, setSidebarCollapsed] = useKV<boolean>('sidebar-collapsed', false)
-  const [currentView, setCurrentView] = useState<View>('library')
+  const [currentView, setCurrentView] = useState<View>('home')
   const [selectedProcedureId, setSelectedProcedureId] = useState<string | null>(null)
   const [compareIds, setCompareIds] = useState<string[]>([])
   const [sharedBirthPlanId, setSharedBirthPlanId] = useState<string | null>(null)
+  const [reflectionNotes] = useKV<string>('reflection-notes', '')
+  const [birthPlans] = useKV<any[]>('birth-plans', [])
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -78,7 +81,7 @@ function App() {
 
   const navigateToView = (view: View) => {
     setCurrentView(view)
-    if (view === 'library') {
+    if (view === 'library' || view === 'home') {
       setSelectedProcedureId(null)
       setCompareIds([])
     }
@@ -89,6 +92,8 @@ function App() {
       setCurrentView('library')
       setSelectedProcedureId(null)
       setCompareIds([])
+    } else if (currentView !== 'home') {
+      setCurrentView('home')
     }
   }
 
@@ -123,6 +128,15 @@ function App() {
         />
         
         <main className="flex-1 pb-20 md:pb-8">
+          {currentView === 'home' && (
+            <Homepage
+              onNavigate={navigateToView}
+              savedProceduresCount={prefs.savedProcedures.length}
+              hasReflectionNotes={!!reflectionNotes && reflectionNotes.length > 0}
+              hasBirthPlan={!!birthPlans && birthPlans.length > 0}
+            />
+          )}
+
           {currentView === 'library' && (
             <ProcedureLibrary
               stage={prefs.stage}

@@ -4,14 +4,14 @@ import { useUnreadComments } from '@/hooks/use-unread-comments'
 
 interface BottomNavProps {
   currentView: string
-  onNavigate: (view: 'library' | 'reflection' | 'settings' | 'birth-plan') => void
+  onNavigate: (view: 'home' | 'library' | 'reflection' | 'settings' | 'birth-plan') => void
 }
 
 export function BottomNav({ currentView, onNavigate }: BottomNavProps) {
   const { unreadCount } = useUnreadComments()
   
   const navItems = [
-    { id: 'library' as const, icon: House, label: 'Home' },
+    { id: 'home' as const, icon: House, label: 'Home' },
     { id: 'library' as const, icon: List, label: 'Library' },
     { id: 'reflection' as const, icon: NotePencil, label: 'Notes' },
     { id: 'settings' as const, icon: Gear, label: 'Settings', badge: unreadCount }

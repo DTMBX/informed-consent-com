@@ -12,6 +12,13 @@ This application requires sophisticated information architecture, role-based acc
 
 ## Essential Features
 
+### Homepage & Welcome
+- **Functionality**: Entry point that welcomes users, explains the platform's purpose, and provides quick navigation to main sections (Procedure Library, Reflection Notes, Birth Plan). Shows progress indicators for saved procedures, reflection notes, and birth plan creation status.
+- **Purpose**: Orients new users to the platform's mission and provides returning users with a dashboard-style overview of their engagement
+- **Trigger**: First view after completing onboarding; accessible via home icon in navigation
+- **Progression**: Read welcome message → Review platform principles → Navigate to desired section via feature cards → Access quick start guide or disclaimer
+- **Success criteria**: Clear value proposition visible above fold; feature cards display status badges (e.g., "3 saved," "Notes saved," "Plan created"); smooth transitions to any main section; responsive design with gradient background and card-based layout
+
 ### Procedure Library
 - **Functionality**: Searchable, filterable catalog of 50+ maternal and newborn procedures, interventions, and therapies including:
   - **Birth Practices**: Breastfeeding (maternal and infant outcomes), immediate skin-to-skin contact (minimum 1 hour), rooming-in, physiologic birth practices, birth positions (upright, side-lying, hands-and-knees, squatting), water birth (water immersion for labor and delivery with evidence-based benefits and ACOG guidance), mother-baby connection for optimal neural development (responsive caregiving, attachment practices, early bonding experiences that shape infant brain architecture)

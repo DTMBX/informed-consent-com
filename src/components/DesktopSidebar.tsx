@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 
 interface DesktopSidebarProps {
   currentView: string
-  onNavigate: (view: 'library' | 'reflection' | 'settings' | 'birth-plan') => void
+  onNavigate: (view: 'home' | 'library' | 'reflection' | 'settings' | 'birth-plan') => void
   isCollapsed: boolean
   onToggleCollapse: () => void
 }
@@ -16,7 +16,7 @@ export function DesktopSidebar({ currentView, onNavigate, isCollapsed, onToggleC
   const { unreadCount } = useUnreadComments()
   
   const navItems = [
-    { id: 'library' as const, icon: House, label: 'Home', description: 'Browse procedures' },
+    { id: 'home' as const, icon: House, label: 'Home', description: 'Welcome & overview' },
     { id: 'library' as const, icon: List, label: 'Library', description: 'All procedures' },
     { id: 'reflection' as const, icon: NotePencil, label: 'Notes', description: 'Reflections & decisions' },
     { id: 'birth-plan' as const, icon: BookOpen, label: 'Birth Plan', description: 'Create & manage' },
