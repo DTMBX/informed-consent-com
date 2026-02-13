@@ -15,8 +15,13 @@ This application requires sophisticated information architecture, role-based acc
 ### Procedure Library
 - **Functionality**: Searchable, filterable catalog of 50+ maternal and newborn procedures, interventions, and therapies including:
   - **Birth Practices**: Breastfeeding (maternal and infant outcomes), immediate skin-to-skin contact (minimum 1 hour), rooming-in, physiologic birth practices, birth positions (upright, side-lying, hands-and-knees, squatting)
-  - **Delivery Methods**: Cesarean section (emergent and elective indications, absolute and relative risks vs vaginal birth, recovery implications, VBAC evidence), vaginal birth options
-  - **Labor Support**: Continuous labor support evidence (doula care, midwife models), structured birth position overviews with evidence summaries
+  - **Delivery Methods**: 
+    - **Enhanced Cesarean Content**: Comprehensive coverage of cesarean delivery including emergent vs elective indications, absolute and relative risks compared to vaginal birth, detailed recovery implications (6-8 weeks vs 2-4 weeks), surgical risks with frequencies (infection 5-10%, hemorrhage 1-6%, blood clots 0.1-1%), future pregnancy risks (placenta previa, accreta), respiratory impacts on newborns, and implications for breastfeeding initiation
+    - **VBAC Discussion**: Detailed Vaginal Birth After Cesarean content including candidacy criteria, 60-80% success rates, uterine rupture risk (0.5-1%), comparison of successful VBAC outcomes vs repeat cesarean, contraindications (classical incision, multiple previous cesareans, previous rupture), and facility requirements for safe VBAC
+  - **Labor Support & Care Models**: 
+    - **Continuous Labor Support**: Evidence for doula care, reduction in cesarean rates, improved satisfaction
+    - **Midwife-Led Continuity Care Models**: Comprehensive comparison of midwife-led vs physician-led care showing reduced cesarean rates (24% vs 32%), lower instrumental delivery rates, increased spontaneous vaginal birth, higher breastfeeding rates, similar/improved maternal and perinatal outcomes for low-risk women, with structured evidence comparisons across settings (hospital, birth center, home birth)
+    - **Birth Setting Comparisons**: Hospital-based care, birth center outcomes (6% cesarean rate), planned home birth with certified midwives (with transfer rates and safety data), collaborative care models
   - **Newborn Vaccines**: Hepatitis B (birth dose), RSV immunization, DTaP, MMR, Rotavirus, Pneumococcal, Influenza, Varicella, Hepatitis A, Meningococcal (ACWY and B), HPV - each with benefits, known risks with frequency data, contraindications, and citations to CDC/FDA/ACIP guidance; clearly separated reported events from confirmed risks
   - **Maternal Vaccines**: Tdap during pregnancy, Flu shot during pregnancy
   - **Newborn Procedures**: Vitamin K, hearing screen, eye prophylaxis, glucose screening, circumcision, jaundice phototherapy

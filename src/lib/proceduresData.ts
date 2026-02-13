@@ -432,6 +432,73 @@ export const citations: Record<string, EvidenceCitation> = {
     url: 'https://acog.org',
     evidenceLevel: 'expert-consensus'
   },
+  'cit-vbac-2': {
+    id: 'cit-vbac-2',
+    title: 'Success Rates and Outcomes of VBAC',
+    authors: 'Guise et al.',
+    source: 'Obstetrics & Gynecology',
+    date: '2010-03',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-vbac-3': {
+    id: 'cit-vbac-3',
+    title: 'Maternal and Perinatal Outcomes in Women Planning VBAC',
+    authors: 'Fitzpatrick et al.',
+    source: 'BMJ',
+    date: '2012-10',
+    url: 'https://bmj.com',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-cesarean-recovery-1': {
+    id: 'cit-cesarean-recovery-1',
+    title: 'Cesarean Delivery: Recovery and Long-term Implications',
+    authors: 'ACOG Patient Education',
+    source: 'Obstetrics & Gynecology',
+    date: '2023-06',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-cesarean-risks-1': {
+    id: 'cit-cesarean-risks-1',
+    title: 'Maternal Morbidity Associated with Multiple Cesarean Deliveries',
+    authors: 'Silver et al.',
+    source: 'Obstetrics & Gynecology',
+    date: '2006-06',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-midwife-2': {
+    id: 'cit-midwife-2',
+    title: 'Midwifery Care and Maternal-Newborn Outcomes',
+    authors: 'Johantgen et al.',
+    source: 'Journal of Midwifery & Women\'s Health',
+    date: '2012-07',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-midwife-3': {
+    id: 'cit-midwife-3',
+    title: 'The Effect of Midwife-led Care on Labor Interventions',
+    authors: 'Hatem et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2008-10',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-birth-center-1': {
+    id: 'cit-birth-center-1',
+    title: 'Birth Center Outcomes in the United States',
+    authors: 'Stapleton et al.',
+    source: 'Journal of Midwifery & Women\'s Health',
+    date: '2013-01',
+    url: 'https://onlinelibrary.wiley.com',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-home-birth-1': {
+    id: 'cit-home-birth-1',
+    title: 'Planned Home Birth with Certified Professional Midwife',
+    authors: 'Cheyney et al.',
+    source: 'Journal of Midwifery & Women\'s Health',
+    date: '2014-01',
+    evidenceLevel: 'cohort-study'
+  },
   'cit-hepa-1': {
     id: 'cit-hepa-1',
     title: 'Hepatitis A Vaccination: ACIP Recommendations',
@@ -3835,6 +3902,576 @@ export const procedures: Procedure[] = [
     citations: [citations['cit-menacwy-1'], citations['cit-menacwy-2']],
     lastReviewed: '2024-01-28',
     nextReviewDue: '2025-01-28',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-cesarean-enhanced',
+    name: 'Cesarean Section (C-Section)',
+    shortName: 'Cesarean Delivery',
+    category: 'surgical',
+    stage: 'labor',
+    urgencyLevel: 'emergency',
+    summary: 'Surgical delivery of a baby through incisions in the abdomen and uterus. May be planned in advance (elective) or performed urgently during labor. One of the most common major surgeries performed worldwide.',
+    indication: 'Cesarean delivery may be medically necessary when vaginal birth poses risks to mother or baby, or may be chosen electively. Common medical indications include previous cesarean with certain incision types, placenta previa, certain fetal positions (breech, transverse), multiple gestations, fetal distress, labor dystocia (failure to progress), cephalopelvic disproportion, active genital herpes, or maternal medical conditions.',
+    benefits: [
+      {
+        id: 'cs-ben-1',
+        description: 'Life-saving when medically indicated for maternal or fetal emergencies',
+        citations: ['cit-csection-1', 'cit-csection-2']
+      },
+      {
+        id: 'cs-ben-2',
+        description: 'Planned timing can reduce uncertainty for scheduled cesareans',
+        citations: ['cit-csection-1']
+      },
+      {
+        id: 'cs-ben-3',
+        description: 'Avoids risks of prolonged or obstructed labor when indicated',
+        citations: ['cit-csection-2']
+      },
+      {
+        id: 'cs-ben-4',
+        description: 'Lower risk of pelvic floor disorders compared to difficult vaginal delivery',
+        citations: ['cit-csection-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'cs-risk-1',
+        description: 'Major surgery risks: infection (5-10%), hemorrhage requiring transfusion (1-6%), blood clots (0.1-1%)',
+        frequency: 'Infection 5-10 in 100; Hemorrhage 1-6 in 100; Blood clots 1-10 in 1,000',
+        severity: 'moderate',
+        citations: ['cit-csection-1', 'cit-cesarean-recovery-1']
+      },
+      {
+        id: 'cs-risk-2',
+        description: 'Longer recovery time (6-8 weeks vs 2-4 weeks for vaginal birth); pain at incision site',
+        frequency: 'Universal',
+        severity: 'moderate',
+        citations: ['cit-cesarean-recovery-1']
+      },
+      {
+        id: 'cs-risk-3',
+        description: 'Increased risk of respiratory problems in baby (especially if delivered before 39 weeks)',
+        frequency: '3-4 in 100 vs 1-2 in 100 for vaginal birth',
+        severity: 'moderate',
+        citations: ['cit-csection-2']
+      },
+      {
+        id: 'cs-risk-4',
+        description: 'Future pregnancy complications: placenta previa (0.5-1%), placenta accreta (0.3-0.9% after one cesarean, increases with each subsequent cesarean)',
+        frequency: 'Increases with multiple cesareans',
+        severity: 'severe',
+        citations: ['cit-cesarean-risks-1']
+      },
+      {
+        id: 'cs-risk-5',
+        description: 'Injury to bladder or bowel (rare)',
+        frequency: '1-2 in 1,000',
+        severity: 'severe',
+        citations: ['cit-csection-1']
+      },
+      {
+        id: 'cs-risk-6',
+        description: 'Delayed breastfeeding initiation and skin-to-skin contact',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-csection-2']
+      },
+      {
+        id: 'cs-risk-7',
+        description: 'Uterine rupture in future pregnancies (0.5-1% risk during VBAC attempt)',
+        frequency: '5-10 in 1,000 during VBAC',
+        severity: 'severe',
+        citations: ['cit-vbac-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'cs-alt-1',
+        name: 'Vaginal Birth After Cesarean (VBAC)',
+        description: 'For women with one previous cesarean with low transverse incision, attempting vaginal birth in a subsequent pregnancy. Success rate is 60-80% depending on individual factors.',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'vbac-ben-1',
+            description: 'Successful VBAC avoids major surgery and associated risks',
+            citations: ['cit-vbac-1', 'cit-vbac-2']
+          },
+          {
+            id: 'vbac-ben-2',
+            description: 'Shorter recovery time when successful (2-4 weeks)',
+            citations: ['cit-vbac-2']
+          },
+          {
+            id: 'vbac-ben-3',
+            description: 'Lower risk of placental complications in future pregnancies',
+            citations: ['cit-cesarean-risks-1']
+          },
+          {
+            id: 'vbac-ben-4',
+            description: '60-80% success rate for VBAC candidates; higher if previous vaginal birth',
+            citations: ['cit-vbac-2', 'cit-vbac-3']
+          },
+          {
+            id: 'vbac-ben-5',
+            description: 'Lower maternal morbidity when successful compared to repeat cesarean',
+            citations: ['cit-vbac-3']
+          }
+        ],
+        risks: [
+          {
+            id: 'vbac-risk-1',
+            description: 'Uterine rupture risk of 0.5-1% (5-10 per 1,000), which can be life-threatening',
+            frequency: '5-10 in 1,000',
+            severity: 'severe',
+            citations: ['cit-vbac-1', 'cit-vbac-2']
+          },
+          {
+            id: 'vbac-risk-2',
+            description: 'If VBAC attempt fails, emergency cesarean carries higher risk than planned cesarean',
+            frequency: '20-40 in 100 require cesarean',
+            severity: 'moderate',
+            citations: ['cit-vbac-2']
+          },
+          {
+            id: 'vbac-risk-3',
+            description: 'Requires continuous fetal monitoring and immediate surgical capability',
+            severity: 'mild',
+            citations: ['cit-vbac-1']
+          },
+          {
+            id: 'vbac-risk-4',
+            description: 'Not suitable for all facilities (requires surgical team immediately available)',
+            severity: 'mild',
+            citations: ['cit-vbac-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-vbac-1', 'cit-vbac-2', 'cit-vbac-3']
+      },
+      {
+        id: 'cs-alt-2',
+        name: 'Trial of Labor (for first-time cesarean)',
+        description: 'When cesarean is suggested for non-emergent reasons, discussing expectant management or labor support measures before proceeding to surgery.',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'tol-ben-1',
+            description: 'Avoids surgical risks if vaginal birth successful',
+            citations: ['cit-csection-1']
+          },
+          {
+            id: 'tol-ben-2',
+            description: 'Continuous labor support (doula) reduces cesarean rate by 15-30%',
+            citations: ['cit-doula-1']
+          },
+          {
+            id: 'tol-ben-3',
+            description: 'Position changes and mobility may help labor progress',
+            citations: ['cit-birth-position-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'tol-risk-1',
+            description: 'May prolong labor if ultimately cesarean is needed',
+            severity: 'mild',
+            citations: ['cit-csection-1']
+          },
+          {
+            id: 'tol-risk-2',
+            description: 'Not appropriate when cesarean is medically indicated',
+            severity: 'moderate',
+            citations: ['cit-csection-1']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-csection-1', 'cit-doula-1']
+      }
+    ],
+    whatIfWeWait: 'Timing depends on indication. Emergency cesarean (fetal distress, cord prolapse, placental abruption) requires immediate action. Urgent cesarean (failure to progress, concerning fetal heart patterns) may allow brief discussion. Elective cesarean should ideally wait until 39 weeks to reduce respiratory issues in baby. If cesarean is suggested for non-urgent reasons, ask about timeline and whether labor support measures could be tried first. VBAC candidacy depends on multiple factors including previous incision type, facility capabilities, and individual risk factors - discuss with provider.',
+    contraindications: [
+      {
+        id: 'vbac-contra-1',
+        condition: 'Previous classical (vertical) uterine incision or T-shaped incision',
+        severity: 'absolute',
+        explanation: 'High risk of uterine rupture (4-9%); repeat cesarean strongly recommended',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'vbac-contra-2',
+        condition: 'More than two previous cesarean deliveries',
+        severity: 'relative',
+        explanation: 'Increased uterine rupture risk; individualized assessment required',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'vbac-contra-3',
+        condition: 'Previous uterine rupture',
+        severity: 'absolute',
+        explanation: 'Recurrence risk 6-32%; cesarean strongly recommended',
+        citations: ['cit-vbac-1']
+      },
+      {
+        id: 'vbac-contra-4',
+        condition: 'Placenta previa, vasa previa, or placental abruption',
+        severity: 'absolute',
+        explanation: 'Emergency cesarean required to prevent maternal-fetal hemorrhage',
+        citations: ['cit-csection-1']
+      }
+    ],
+    questionsToAsk: [
+      'What is the medical indication for cesarean in my case?',
+      'Is this an emergency or is there time to discuss options?',
+      'If I had a previous cesarean, what type of uterine incision did I have?',
+      'Am I a candidate for VBAC? What are my specific risk factors?',
+      'What is the VBAC success rate at this facility?',
+      'Can I have immediate skin-to-skin contact in the operating room?',
+      'What pain management options are available after surgery?',
+      'When can I expect to breastfeed?',
+      'What are signs of complications I should watch for?',
+      'How will this cesarean affect future pregnancies?'
+    ],
+    citations: [
+      citations['cit-csection-1'], 
+      citations['cit-csection-2'],
+      citations['cit-vbac-1'],
+      citations['cit-vbac-2'],
+      citations['cit-vbac-3'],
+      citations['cit-cesarean-recovery-1'],
+      citations['cit-cesarean-risks-1']
+    ],
+    lastReviewed: '2024-01-30',
+    nextReviewDue: '2025-01-30',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-midwife-care',
+    name: 'Midwife-Led Continuity of Care Model',
+    shortName: 'Midwife-Led Care',
+    category: 'birth-practice',
+    stage: 'prenatal',
+    urgencyLevel: 'elective',
+    summary: 'A model of maternity care where a known midwife or small group of midwives provides continuous care throughout pregnancy, birth, and postpartum. Emphasizes physiologic birth, informed choice, and relationship-based care.',
+    indication: 'Appropriate for low-risk pregnancies. Midwives are trained healthcare professionals specializing in normal pregnancy and birth. Can practice in hospitals, birth centers, or homes. Collaborative relationships with physicians for complications.',
+    benefits: [
+      {
+        id: 'mw-ben-1',
+        description: 'Reduced cesarean rate (24% vs 32% in physician-led care for low-risk women)',
+        citations: ['cit-midwife-1', 'cit-midwife-2']
+      },
+      {
+        id: 'mw-ben-2',
+        description: 'Lower rates of instrumental vaginal delivery (forceps/vacuum)',
+        citations: ['cit-midwife-1']
+      },
+      {
+        id: 'mw-ben-3',
+        description: 'Reduced use of regional analgesia (epidural)',
+        citations: ['cit-midwife-1', 'cit-midwife-3']
+      },
+      {
+        id: 'mw-ben-4',
+        description: 'Increased likelihood of spontaneous vaginal birth',
+        citations: ['cit-midwife-1']
+      },
+      {
+        id: 'mw-ben-5',
+        description: 'Fewer episiotomies performed',
+        citations: ['cit-midwife-1']
+      },
+      {
+        id: 'mw-ben-6',
+        description: 'Higher rates of breastfeeding initiation and duration',
+        citations: ['cit-midwife-2']
+      },
+      {
+        id: 'mw-ben-7',
+        description: 'Greater maternal satisfaction with care and birth experience',
+        citations: ['cit-midwife-1', 'cit-midwife-2']
+      },
+      {
+        id: 'mw-ben-8',
+        description: 'Continuity of caregiver relationship throughout pregnancy and birth',
+        citations: ['cit-midwife-1']
+      },
+      {
+        id: 'mw-ben-9',
+        description: 'Similar or improved maternal and perinatal outcomes for low-risk women',
+        citations: ['cit-midwife-1', 'cit-midwife-3']
+      },
+      {
+        id: 'mw-ben-10',
+        description: 'Reduced preterm birth rates (less than 37 weeks)',
+        citations: ['cit-midwife-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'mw-risk-1',
+        description: 'May require transfer to physician care if complications develop (10-40% of planned home births transfer to hospital)',
+        frequency: 'Varies by setting and risk status',
+        severity: 'mild',
+        citations: ['cit-home-birth-1']
+      },
+      {
+        id: 'mw-risk-2',
+        description: 'Limited availability in some geographic areas',
+        severity: 'mild',
+        citations: ['cit-midwife-2']
+      },
+      {
+        id: 'mw-risk-3',
+        description: 'Insurance coverage varies by state and practice setting',
+        severity: 'mild',
+        citations: ['cit-midwife-2']
+      },
+      {
+        id: 'mw-risk-4',
+        description: 'Not appropriate for high-risk pregnancies requiring specialist care',
+        severity: 'moderate',
+        citations: ['cit-midwife-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'mw-alt-1',
+        name: 'Physician-Led Care (OB/GYN)',
+        description: 'Traditional obstetric care model with physician (obstetrician) as primary provider. May be necessary for high-risk pregnancies.',
+        isEquivalent: true,
+        benefits: [
+          {
+            id: 'obgyn-ben-1',
+            description: 'Immediate surgical capability if complications arise',
+            citations: ['cit-csection-1']
+          },
+          {
+            id: 'obgyn-ben-2',
+            description: 'Required for high-risk conditions (multiple gestations, preeclampsia, placenta previa, etc.)',
+            citations: ['cit-csection-1']
+          },
+          {
+            id: 'obgyn-ben-3',
+            description: 'Widely available and covered by insurance',
+            citations: ['cit-midwife-2']
+          }
+        ],
+        risks: [
+          {
+            id: 'obgyn-risk-1',
+            description: 'Higher rates of medical interventions for low-risk women (cesarean, induction, episiotomy)',
+            frequency: 'See comparison above',
+            severity: 'mild',
+            citations: ['cit-midwife-1', 'cit-midwife-3']
+          },
+          {
+            id: 'obgyn-risk-2',
+            description: 'Less continuity of care; may meet delivering physician for first time in labor',
+            severity: 'mild',
+            citations: ['cit-midwife-2']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-midwife-1', 'cit-csection-1']
+      },
+      {
+        id: 'mw-alt-2',
+        name: 'Collaborative Care Model',
+        description: 'Midwife provides primary prenatal care with physician consultation available; physician takes over if complications develop.',
+        isEquivalent: true,
+        benefits: [
+          {
+            id: 'collab-ben-1',
+            description: 'Combines midwife relationship with immediate physician backup',
+            citations: ['cit-midwife-2']
+          },
+          {
+            id: 'collab-ben-2',
+            description: 'Seamless transition if risk status changes',
+            citations: ['cit-midwife-2']
+          }
+        ],
+        risks: [
+          {
+            id: 'collab-risk-1',
+            description: 'Less widely available; requires integrated practice',
+            severity: 'mild',
+            citations: ['cit-midwife-2']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-midwife-2']
+      },
+      {
+        id: 'mw-alt-3',
+        name: 'Birth Center Care',
+        description: 'Freestanding or hospital-adjacent facility staffed by midwives, designed for low-risk physiologic birth with home-like environment.',
+        isEquivalent: true,
+        benefits: [
+          {
+            id: 'bc-ben-1',
+            description: 'Lower cesarean rates (6% vs 24-33% in hospital)',
+            citations: ['cit-birth-center-1']
+          },
+          {
+            id: 'bc-ben-2',
+            description: 'Home-like environment with freedom of movement',
+            citations: ['cit-birth-center-1']
+          },
+          {
+            id: 'bc-ben-3',
+            description: 'Shorter postpartum stay (6-12 hours typical)',
+            citations: ['cit-birth-center-1']
+          },
+          {
+            id: 'bc-ben-4',
+            description: 'Lower cost than hospital birth',
+            citations: ['cit-birth-center-1']
+          },
+          {
+            id: 'bc-ben-5',
+            description: 'Similar or improved perinatal outcomes for low-risk women',
+            citations: ['cit-birth-center-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'bc-risk-1',
+            description: 'Transfer to hospital if complications (12-16% of first-time mothers)',
+            frequency: '12-16 in 100 for nulliparas',
+            severity: 'mild',
+            citations: ['cit-birth-center-1']
+          },
+          {
+            id: 'bc-risk-2',
+            description: 'Epidural not available; transfer needed if desired',
+            severity: 'mild',
+            citations: ['cit-birth-center-1']
+          }
+        ],
+        evidenceLevel: 'cohort-study',
+        citations: ['cit-birth-center-1']
+      },
+      {
+        id: 'mw-alt-4',
+        name: 'Planned Home Birth with Certified Midwife',
+        description: 'Birth at home with certified professional midwife (CPM) or certified nurse-midwife (CNM). Only appropriate for low-risk pregnancies. Requires transfer plan to hospital.',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'hb-ben-1',
+            description: 'Lowest intervention rates: 5-7% cesarean (after transfer), minimal episiotomy',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-ben-2',
+            description: 'Familiar environment, maximum autonomy and comfort',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-ben-3',
+            description: 'One-on-one continuous midwife support',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-ben-4',
+            description: 'For low-risk women with trained midwife, comparable maternal outcomes to hospital birth',
+            citations: ['cit-home-birth-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'hb-risk-1',
+            description: 'No immediate access to cesarean, blood transfusion, or NICU if emergency develops',
+            severity: 'severe',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-risk-2',
+            description: 'Transfer required in 10-40% of first-time mothers (lower for subsequent births)',
+            frequency: '10-40 in 100 for nulliparas',
+            severity: 'moderate',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-risk-3',
+            description: 'Small increase in perinatal mortality (1-2 per 1,000 vs hospital); absolute risk remains low',
+            frequency: '1-2 in 1,000',
+            severity: 'severe',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-risk-4',
+            description: 'Variable insurance coverage; often paid out-of-pocket',
+            severity: 'mild',
+            citations: ['cit-home-birth-1']
+          },
+          {
+            id: 'hb-risk-5',
+            description: 'Not appropriate for high-risk conditions or if previous cesarean',
+            severity: 'moderate',
+            citations: ['cit-home-birth-1']
+          }
+        ],
+        evidenceLevel: 'cohort-study',
+        citations: ['cit-home-birth-1']
+      }
+    ],
+    whatIfWeWait: 'Midwifery care is most beneficial when started early in pregnancy to establish relationship and continuity. Can transfer to midwifery care at any point if low-risk status maintained. Some midwives accept clients in later pregnancy. If complications develop, transfer to physician care can occur seamlessly in collaborative models.',
+    contraindications: [
+      {
+        id: 'mw-contra-1',
+        condition: 'High-risk medical conditions (insulin-dependent diabetes, chronic hypertension, clotting disorders, heart disease)',
+        severity: 'absolute',
+        explanation: 'Requires physician or maternal-fetal medicine specialist',
+        citations: ['cit-midwife-1']
+      },
+      {
+        id: 'mw-contra-2',
+        condition: 'Multiple gestations (twins, triplets)',
+        severity: 'relative',
+        explanation: 'Some midwives attend twin births in hospital setting with physician backup',
+        citations: ['cit-midwife-1']
+      },
+      {
+        id: 'mw-contra-3',
+        condition: 'Placenta previa or known placental abnormalities',
+        severity: 'absolute',
+        explanation: 'Requires surgical capability and blood bank access',
+        citations: ['cit-csection-1']
+      },
+      {
+        id: 'mw-contra-4',
+        condition: 'Previous cesarean (for home birth)',
+        severity: 'absolute',
+        explanation: 'VBAC at home carries unacceptable risk; hospital VBAC with midwife may be option',
+        citations: ['cit-vbac-1']
+      }
+    ],
+    questionsToAsk: [
+      'What is your training and certification? (CNM vs CPM vs CM)',
+      'How many births have you attended?',
+      'What is your transfer rate to physician care or hospital?',
+      'Do you have hospital privileges or collaborative physician relationships?',
+      'What equipment do you bring for home/birth center births?',
+      'What is your emergency transfer plan?',
+      'Are you available 24/7 when I\'m near my due date?',
+      'What is your cesarean rate for low-risk clients?',
+      'Do you provide postpartum home visits?',
+      'Does my insurance cover your services?',
+      'What pain management options do you offer?',
+      'Under what circumstances would you recommend transfer to physician care?'
+    ],
+    citations: [
+      citations['cit-midwife-1'],
+      citations['cit-midwife-2'],
+      citations['cit-midwife-3'],
+      citations['cit-birth-center-1'],
+      citations['cit-home-birth-1']
+    ],
+    lastReviewed: '2024-01-30',
+    nextReviewDue: '2025-01-30',
     reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
   }
 ]
