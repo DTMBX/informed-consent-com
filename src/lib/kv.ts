@@ -14,7 +14,7 @@
  * A cross-tab StorageEvent listener keeps multiple tabs in sync.
  */
 
-import { useState, useEffect, useCallback, useSyncExternalStore } from 'react'
+import { useCallback, useRef, useSyncExternalStore } from 'react'
 
 // ── Internal helpers ────────────────────────────────────────────────
 
@@ -39,6 +39,24 @@ function writeRaw<T>(key: string, value: T): void {
 
 function deleteRaw(key: string): void {
   localStorage.removeItem(storageKey(key))
+}
+
+// ── Snapshot cache (useSyncExternalStore demands referential stability) ─
+//    getSnapshot MUST return the exact same reference if underlying data
+//    hasn't changed, otherwise React triggers infinite re-renders.
+
+const snapshotCache = new Map<string, { raw: string | null; value: unknown }>()
+
+function readCached<T>(key: string, fallback: T): T {
+  const sKey = storageKey(key)
+  const raw = localStorage.getItem(sKey)
+  const cached = snapshotCache.get(key)
+  if (cached && cached.raw === raw) {
+    return cached.value as T
+  }
+  const value: T = raw !== null ? (JSON.parse(raw) as T) : fallback
+  snapshotCache.set(key, { raw, value })
+  return value
 }
 
 // ── Subscriber bus (cross-component + cross-tab reactivity) ────────
@@ -72,11 +90,13 @@ if (typeof window !== 'undefined') {
  * Returns `[value, setValue]` — reactive across components and tabs.
  */
 export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: T) => T)) => void] {
-  // Use useSyncExternalStore for tear-free reads
-  const getSnapshot = useCallback(() => {
-    const stored = readRaw<T>(key)
-    return stored !== undefined ? stored : defaultValue
-  }, [key, defaultValue])
+  // Stabilise defaultValue so object-literal callers don't bust useCallback
+  const defaultRef = useRef(defaultValue)
+
+  const getSnapshot = useCallback(
+    () => readCached<T>(key, defaultRef.current),
+    [key]
+  )
 
   const subscribeStore = useCallback(
     (onStoreChange: () => void) => subscribe(key, onStoreChange),
@@ -87,12 +107,15 @@ export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: 
 
   const setValue = useCallback(
     (next: T | ((prev: T) => T)) => {
-      const current = readRaw<T>(key) ?? defaultValue
+      const current = readCached<T>(key, defaultRef.current)
       const resolved = typeof next === 'function' ? (next as (prev: T) => T)(current) : next
-      writeRaw(key, resolved)
+      // Write and eagerly update cache so the next getSnapshot sees stable ref
+      const raw = JSON.stringify(resolved)
+      localStorage.setItem(storageKey(key), raw)
+      snapshotCache.set(key, { raw, value: resolved })
       notify(key)
     },
-    [key, defaultValue]
+    [key]
   )
 
   return [value, setValue]

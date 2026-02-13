@@ -2,9 +2,44 @@ import { Stage } from '@/lib/types'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Info } from '@phosphor-icons/react'
+import { Info, Baby, FirstAid, Heartbeat, Users } from '@phosphor-icons/react'
 import { useState } from 'react'
-import { stageConfig, DISCLAIMER_TEXT } from '@/lib/constants'
+import { DISCLAIMER_TEXT } from '@/lib/constants'
+import type { ComponentType } from 'react'
+
+interface JourneyOption {
+  stage: Stage
+  label: string
+  description: string
+  icon: ComponentType<{ className?: string; size?: number; weight?: string }>
+}
+
+const journeyOptions: JourneyOption[] = [
+  {
+    stage: 'prenatal',
+    label: 'Expecting Parent',
+    description: 'Currently pregnant — researching prenatal procedures, birth options, and newborn care decisions ahead',
+    icon: Heartbeat,
+  },
+  {
+    stage: 'labor',
+    label: 'Approaching Labor & Delivery',
+    description: 'Near or in labor — reviewing delivery options, interventions, and immediate newborn procedures',
+    icon: FirstAid,
+  },
+  {
+    stage: 'postpartum',
+    label: 'New Parent (Postpartum)',
+    description: 'Baby has arrived — exploring postpartum care, newborn screenings, and early childhood decisions',
+    icon: Baby,
+  },
+  {
+    stage: 'all',
+    label: 'Partner, Family Member, or Researcher',
+    description: 'Supporting a loved one\'s care decisions or conducting research — access all stages and procedures',
+    icon: Users,
+  },
+]
 
 interface OnboardingProps {
   onComplete: (stage: Stage) => void
@@ -12,7 +47,7 @@ interface OnboardingProps {
 
 export function Onboarding({ onComplete }: OnboardingProps) {
   const [step, setStep] = useState<'welcome' | 'disclaimer' | 'stage'>('welcome')
-  const [selectedStage, setSelectedStage] = useState<Stage>('postpartum')
+  const [selectedStage, setSelectedStage] = useState<Stage>('prenatal')
 
   if (step === 'welcome') {
     return (
@@ -119,32 +154,43 @@ export function Onboarding({ onComplete }: OnboardingProps) {
           This helps us show you the most relevant procedures and information.
         </p>
 
-        <div className="space-y-4 mb-8">
-          {(['prenatal', 'labor', 'postpartum'] as const).map((stage) => (
-            <button
-              key={stage}
-              onClick={() => setSelectedStage(stage)}
-              className={`w-full p-6 text-left border-2 rounded-lg transition-all ${
-                selectedStage === stage
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border hover:border-primary/50'
-              }`}
-            >
-              <div className="font-semibold text-lg mb-1 ui-text">
-                {stageConfig[stage].label}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {stageConfig[stage].description}
-              </div>
-            </button>
-          ))}
+        <div className="grid gap-4 mb-8 sm:grid-cols-2">
+          {journeyOptions.map((option) => {
+            const Icon = option.icon
+            const isSelected = selectedStage === option.stage
+            return (
+              <button
+                key={option.stage}
+                onClick={() => setSelectedStage(option.stage)}
+                className={`w-full p-5 text-left border-2 rounded-lg transition-all flex gap-4 items-start ${
+                  isSelected
+                    ? 'border-primary bg-primary/5 ring-2 ring-primary/20'
+                    : 'border-border hover:border-primary/50'
+                }`}
+              >
+                <div className={`p-2.5 rounded-lg shrink-0 ${
+                  isSelected ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'
+                }`}>
+                  <Icon size={24} weight={isSelected ? 'fill' : 'regular'} />
+                </div>
+                <div>
+                  <div className="font-semibold text-base mb-1">
+                    {option.label}
+                  </div>
+                  <div className="text-sm text-muted-foreground leading-relaxed">
+                    {option.description}
+                  </div>
+                </div>
+              </button>
+            )
+          })}
         </div>
 
         <div className="flex gap-4">
           <Button variant="outline" onClick={() => setStep('disclaimer')}>
             Back
           </Button>
-          <Button onClick={() => onComplete(selectedStage)} className="flex-1">
+          <Button onClick={() => onComplete(selectedStage)} size="lg" className="flex-1">
             Get Started
           </Button>
         </div>
