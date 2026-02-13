@@ -100,6 +100,7 @@ function App() {
       <Header 
         currentView={currentView}
         onBack={navigateBack}
+        onHome={() => navigateToView('library')}
         onSettingsClick={() => navigateToView('settings')}
       />
       
