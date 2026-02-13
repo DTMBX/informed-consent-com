@@ -1,21 +1,20 @@
 import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Badge } from '@/components/ui/badge'
-import { Alert, AlertDescription } from '@/components/ui/alert'
-import { CaretDown, CaretUp, Printer } from '@phosphor-icons/react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectVa
 
 interface VaccineEntry {
-  name: string
   timing: string
-  doses: number
 }
+interface VaccineEntry {
+  name: string
+  name: string
+  doses: number
 
 interface CountrySchedule {
-  code: string
+
   country: string
-  approach: 'comprehensive' | 'balanced' | 'selective'
+  code: string
   totalDoses: number
   philosophy: string
   vaccines: VaccineEntry[]
