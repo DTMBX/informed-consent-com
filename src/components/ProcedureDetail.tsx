@@ -4,9 +4,12 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { BookmarkSimple, ArrowsLeftRight, NotePencil, Seal, WarningOctagon, CheckCircle, Clock, Info } from '@phosphor-icons/react'
+import { BookmarkSimple, ArrowsLeftRight, NotePencil, Seal, WarningOctagon, CheckCircle, Clock, Info, Article } from '@phosphor-icons/react'
 import { urgencyConfig, evidenceLevelConfig, formatDate, getSeverityColor } from '@/lib/constants'
 import { CesareanVBACComparison } from '@/components/OutcomeComparisonChart'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { RSVExplainer } from '@/components/RSVExplainer'
+import { useState } from 'react'
 
 interface ProcedureDetailProps {
   procedureId: string
@@ -24,6 +27,7 @@ export function ProcedureDetail({
   onAddToReflection
 }: ProcedureDetailProps) {
   const procedure = procedures.find(p => p.id === procedureId)
+  const [showRSVExplainer, setShowRSVExplainer] = useState(false)
 
   if (!procedure) {
     return (
@@ -36,6 +40,7 @@ export function ProcedureDetail({
   }
 
   const urgencyStyle = urgencyConfig[procedure.urgencyLevel]
+  const isRSVProcedure = procedureId === 'proc-rsv-prevention'
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -67,13 +72,38 @@ export function ProcedureDetail({
           </AlertDescription>
         </Alert>
 
+        {isRSVProcedure && (
+          <Alert className="mb-6 border-primary bg-primary/5">
+            <Info className="h-5 w-5 text-primary" />
+            <AlertDescription className="ml-2">
+              <strong>Need more information about RSV?</strong> View our comprehensive guide on RSV dangers, hospitalization rates, and prevention strategies.
+            </AlertDescription>
+          </Alert>
+        )}
+
         <p className="text-lg leading-relaxed mb-4">{procedure.summary}</p>
         <p className="text-foreground/90 leading-relaxed mb-6">
           <strong>Why it's offered:</strong> {procedure.indication}
         </p>
 
         <div className="flex flex-wrap gap-3">
-          <Button onClick={onAddToReflection} variant="default" className="gap-2">
+          {isRSVProcedure && (
+            <Dialog open={showRSVExplainer} onOpenChange={setShowRSVExplainer}>
+              <DialogTrigger asChild>
+                <Button variant="default" className="gap-2">
+                  <Article className="h-4 w-4" />
+                  RSV: Detailed Information
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="sr-only">RSV Detailed Information</DialogTitle>
+                </DialogHeader>
+                <RSVExplainer />
+              </DialogContent>
+            </Dialog>
+          )}
+          <Button onClick={onAddToReflection} variant={isRSVProcedure ? "outline" : "default"} className="gap-2">
             <NotePencil className="h-4 w-4" />
             Add to Notes
           </Button>

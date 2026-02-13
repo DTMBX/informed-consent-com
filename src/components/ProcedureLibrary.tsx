@@ -6,8 +6,10 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { BookmarkSimple, MagnifyingGlass } from '@phosphor-icons/react'
+import { BookmarkSimple, MagnifyingGlass, Baby, Article } from '@phosphor-icons/react'
 import { urgencyConfig, categoryConfig, formatDate } from '@/lib/constants'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { RSVExplainer } from '@/components/RSVExplainer'
 
 interface ProcedureLibraryProps {
   stage: Stage
@@ -26,6 +28,7 @@ export function ProcedureLibrary({
   const [categoryFilter, setCategoryFilter] = useState<Category | 'all'>('all')
   const [urgencyFilter, setUrgencyFilter] = useState<UrgencyLevel | 'all'>('all')
   const [showSavedOnly, setShowSavedOnly] = useState(false)
+  const [showRSVExplainer, setShowRSVExplainer] = useState(false)
 
   const filteredProcedures = useMemo(() => {
     return procedures.filter(proc => {
@@ -105,6 +108,49 @@ export function ProcedureLibrary({
           </Button>
         </div>
       </div>
+
+      {(stage === 'prenatal' || stage === 'postpartum' || stage === 'all') && !showSavedOnly && !search && (
+        <Card className="mb-6 border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-secondary/5">
+          <CardHeader className="p-6">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-primary/10 rounded-lg">
+                <Baby size={32} weight="duotone" className="text-primary" />
+              </div>
+              <div className="flex-1">
+                <CardTitle className="text-2xl mb-2 flex items-center gap-2">
+                  Understanding RSV in Newborns
+                  <Badge className="bg-destructive text-destructive-foreground">Important</Badge>
+                </CardTitle>
+                <CardDescription className="text-base leading-relaxed mb-4">
+                  RSV is the leading cause of hospitalization for infants under 1 year. Learn about hospitalization rates, risk factors, warning signs, and evidence-based prevention options including maternal vaccination and infant immunization.
+                </CardDescription>
+                <div className="flex flex-wrap gap-3">
+                  <Dialog open={showRSVExplainer} onOpenChange={setShowRSVExplainer}>
+                    <DialogTrigger asChild>
+                      <Button variant="default" className="gap-2">
+                        <Article className="h-4 w-4" />
+                        Read Detailed RSV Guide
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle className="sr-only">RSV Detailed Information</DialogTitle>
+                      </DialogHeader>
+                      <RSVExplainer />
+                    </DialogContent>
+                  </Dialog>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => onProcedureClick('proc-rsv-prevention')}
+                  >
+                    View RSV Prevention Procedure
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </CardHeader>
+        </Card>
+      )}
 
       {filteredProcedures.length === 0 ? (
         <Card className="p-12 text-center">

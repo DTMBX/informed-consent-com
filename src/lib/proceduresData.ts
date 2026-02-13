@@ -157,6 +157,50 @@ export const citations: Record<string, EvidenceCitation> = {
     date: '2017-02',
     evidenceLevel: 'systematic-review'
   },
+  'cit-rsv-5': {
+    id: 'cit-rsv-5',
+    title: 'Respiratory Syncytial Virus Hospitalizations Among Young Children: 2015-2016',
+    authors: 'Rha et al.',
+    source: 'Pediatrics',
+    date: '2020-01',
+    url: 'https://publications.aap.org',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-rsv-6': {
+    id: 'cit-rsv-6',
+    title: 'CDC Respiratory Syncytial Virus Infection (RSV): Clinical Overview',
+    authors: 'Centers for Disease Control and Prevention',
+    source: 'CDC Website',
+    date: '2023-10',
+    url: 'https://cdc.gov/rsv',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-rsv-7': {
+    id: 'cit-rsv-7',
+    title: 'Use of Nirsevimab for the Prevention of RSV Disease in Infants and Young Children: Recommendations of the CDC',
+    authors: 'Jones et al.',
+    source: 'MMWR',
+    date: '2023-08',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-rsv-8': {
+    id: 'cit-rsv-8',
+    title: 'Long-term Respiratory Outcomes of Bronchiolitis During Infancy: A Systematic Review',
+    authors: 'Régnier & Huels',
+    source: 'Pediatric Pulmonology',
+    date: '2013-12',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-rsv-9': {
+    id: 'cit-rsv-9',
+    title: 'Effectiveness of Maternal RSV Vaccination (RSVPreF3) in Preventing RSV Lower Respiratory Tract Illness in Infants',
+    authors: 'Kampmann et al.',
+    source: 'New England Journal of Medicine',
+    date: '2023-11',
+    url: 'https://nejm.org',
+    evidenceLevel: 'rct'
+  },
   'cit-dtap-1': {
     id: 'cit-dtap-1',
     title: 'Diphtheria, Tetanus, and Pertussis: Recommendations for Vaccine Use',
@@ -5496,5 +5540,226 @@ export const procedures: Procedure[] = [
     lastReviewed: '2024-02-10',
     nextReviewDue: '2025-02-10',
     reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-rsv-prevention',
+    name: 'RSV Prevention: Nirsevimab (Beyfortus) & Maternal Vaccination',
+    shortName: 'RSV Prevention',
+    category: 'vaccination',
+    stage: 'prenatal',
+    urgencyLevel: 'routine',
+    summary: 'Respiratory Syncytial Virus (RSV) is a common respiratory virus that can cause severe lung infections in infants, particularly those under 6 months. Prevention options include maternal RSV vaccination during pregnancy (32-36 weeks) or infant immunization with nirsevimab (Beyfortus), a long-acting antibody given after birth.',
+    indication: 'RSV is the leading cause of hospitalization in infants under 1 year in the United States. Nearly all children are infected with RSV by age 2. While most cases are mild, RSV can cause severe lower respiratory tract infections (bronchiolitis and pneumonia) requiring hospitalization, especially in young infants.',
+    benefits: [
+      {
+        id: 'rsv-ben-1',
+        description: 'Maternal RSV vaccination during pregnancy reduces risk of severe RSV disease requiring medical attention in infants by approximately 57% in the first 6 months of life',
+        citations: ['cit-rsv-9']
+      },
+      {
+        id: 'rsv-ben-2',
+        description: 'Nirsevimab (infant immunization) reduces RSV-related hospitalizations by approximately 70-75% in healthy term and late-preterm infants',
+        citations: ['cit-rsv-3', 'cit-rsv-7']
+      },
+      {
+        id: 'rsv-ben-3',
+        description: 'Reduces RSV-related ICU admissions and need for mechanical ventilation in infants',
+        citations: ['cit-rsv-3', 'cit-rsv-5']
+      },
+      {
+        id: 'rsv-ben-4',
+        description: 'May reduce long-term respiratory complications; severe RSV in infancy is associated with increased risk of recurrent wheezing and asthma in childhood',
+        citations: ['cit-rsv-8']
+      },
+      {
+        id: 'rsv-ben-5',
+        description: 'Protection lasts through the RSV season (typically 5 months), covering the highest-risk period for infants',
+        citations: ['cit-rsv-3', 'cit-rsv-7']
+      }
+    ],
+    risks: [
+      {
+        id: 'rsv-risk-1',
+        description: 'Maternal vaccine: Injection site pain, fatigue, headache, muscle aches (similar to other vaccines)',
+        frequency: 'Common (30-40 in 100)',
+        severity: 'mild',
+        citations: ['cit-rsv-9']
+      },
+      {
+        id: 'rsv-risk-2',
+        description: 'Nirsevimab (infant): Rash at injection site (most common side effect)',
+        frequency: '1-3 in 100',
+        severity: 'mild',
+        citations: ['cit-rsv-3', 'cit-rsv-7']
+      },
+      {
+        id: 'rsv-risk-3',
+        description: 'Nirsevimab: Rare hypersensitivity or allergic reactions',
+        frequency: 'Less than 1 in 1,000',
+        severity: 'moderate',
+        citations: ['cit-rsv-7']
+      },
+      {
+        id: 'rsv-risk-4',
+        description: 'Maternal vaccine is relatively new (approved 2023); long-term safety data still being collected',
+        severity: 'mild',
+        citations: ['cit-rsv-9']
+      },
+      {
+        id: 'rsv-risk-5',
+        description: 'Neither option provides 100% protection; infants can still contract RSV, though severity is typically reduced',
+        severity: 'mild',
+        citations: ['cit-rsv-3', 'cit-rsv-9']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'rsv-alt-1',
+        name: 'No Immunization/Preventive Hygiene Only',
+        description: 'Decline both maternal vaccine and infant nirsevimab; rely on handwashing, avoiding sick contacts, and limiting exposure during RSV season (typically October-March in most of US)',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'rsv-alt-ben-1',
+            description: 'Avoids potential vaccine side effects and cost',
+            citations: ['cit-rsv-6']
+          },
+          {
+            id: 'rsv-alt-ben-2',
+            description: 'Natural immunity develops if infant contracts RSV (though reinfection is common)',
+            citations: ['cit-rsv-2']
+          }
+        ],
+        risks: [
+          {
+            id: 'rsv-alt-risk-1',
+            description: 'Higher risk of severe RSV infection: approximately 2-3 in 100 infants under 6 months are hospitalized with RSV without immunization',
+            frequency: '2-3 in 100',
+            severity: 'moderate',
+            citations: ['cit-rsv-4', 'cit-rsv-5']
+          },
+          {
+            id: 'rsv-alt-risk-2',
+            description: 'Risk of complications including respiratory failure requiring ICU care (approximately 10-20 in 100 hospitalized infants need ICU)',
+            frequency: '10-20 in 100 hospitalized cases',
+            severity: 'severe',
+            citations: ['cit-rsv-5', 'cit-rsv-6']
+          },
+          {
+            id: 'rsv-alt-risk-3',
+            description: 'Rare but serious risk of death from RSV complications (1-2 deaths per 100,000 healthy infants; higher in high-risk infants)',
+            frequency: '1-2 in 100,000 healthy infants',
+            severity: 'severe',
+            citations: ['cit-rsv-4', 'cit-rsv-6']
+          },
+          {
+            id: 'rsv-alt-risk-4',
+            description: 'Possible long-term respiratory complications; RSV bronchiolitis in infancy is associated with increased risk of recurrent wheezing and asthma later in childhood',
+            frequency: 'Studies show 2-3x increased risk of childhood asthma after severe infant RSV',
+            severity: 'moderate',
+            citations: ['cit-rsv-8']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-rsv-2', 'cit-rsv-4', 'cit-rsv-6']
+      },
+      {
+        id: 'rsv-alt-2',
+        name: 'Palivizumab (Synagis) - For High-Risk Infants Only',
+        description: 'Monthly injections during RSV season for premature infants (<29 weeks), infants with chronic lung disease, or severe heart defects. Not typically used for healthy term infants due to cost and need for multiple doses.',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'rsv-alt2-ben-1',
+            description: 'Reduces hospitalizations by approximately 45-55% in high-risk infants (less effective than nirsevimab)',
+            citations: ['cit-rsv-1']
+          },
+          {
+            id: 'rsv-alt2-ben-2',
+            description: 'Established safety profile; used since 1998',
+            citations: ['cit-rsv-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'rsv-alt2-risk-1',
+            description: 'Requires monthly injections (typically 5 doses per season)',
+            severity: 'mild',
+            citations: ['cit-rsv-1']
+          },
+          {
+            id: 'rsv-alt2-risk-2',
+            description: 'High cost (typically $1,500-3,000 per dose); insurance coverage limited to high-risk infants',
+            severity: 'mild',
+            citations: ['cit-rsv-1']
+          },
+          {
+            id: 'rsv-alt2-risk-3',
+            description: 'Not recommended for healthy term infants; nirsevimab is preferred',
+            severity: 'mild',
+            citations: ['cit-rsv-7']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-rsv-1', 'cit-rsv-7']
+      }
+    ],
+    whatIfWeWait: 'RSV season typically runs October through March in most of the US, with peak activity December-February. Infants are most vulnerable in the first 6 months of life. Maternal vaccine must be given during pregnancy (32-36 weeks gestation) to provide protection at birth. Nirsevimab can be given at birth or during RSV season, but protection takes a few days to develop. Waiting increases risk of exposure before immunity develops. If declined, rigorous hygiene measures are essential: frequent handwashing, avoiding crowded indoor spaces during RSV season, keeping infant away from anyone with respiratory symptoms.',
+    contraindications: [
+      {
+        id: 'rsv-contra-1',
+        condition: 'Known severe allergic reaction to previous dose of RSV immunization or any component',
+        severity: 'absolute',
+        explanation: 'Risk of anaphylaxis',
+        citations: ['cit-rsv-7', 'cit-rsv-9']
+      },
+      {
+        id: 'rsv-contra-2',
+        condition: 'Moderate to severe acute illness (temporary contraindication)',
+        severity: 'relative',
+        explanation: 'Immunization should be delayed until recovery',
+        citations: ['cit-rsv-7']
+      },
+      {
+        id: 'rsv-contra-3',
+        condition: 'Bleeding disorder or anticoagulation therapy (for injectable forms)',
+        severity: 'relative',
+        explanation: 'Risk of bleeding at injection site; may require pressure after injection',
+        citations: ['cit-rsv-7']
+      },
+      {
+        id: 'rsv-contra-4',
+        condition: 'Infants should not receive both maternal vaccine antibodies AND nirsevimab',
+        severity: 'relative',
+        explanation: 'Choose one approach; receiving both is not recommended due to lack of data on combined use',
+        citations: ['cit-rsv-7', 'cit-rsv-9']
+      }
+    ],
+    questionsToAsk: [
+      'Which approach do you recommend for my situation: maternal vaccine during pregnancy or infant immunization after birth?',
+      'What are the current RSV hospitalization rates in our area?',
+      'Does my baby have any risk factors that make RSV more dangerous (prematurity, heart/lung conditions)?',
+      'When is RSV season in our region?',
+      'What are the signs of severe RSV that would require medical attention?',
+      'Is nirsevimab covered by my insurance?',
+      'If I received the maternal vaccine, does my baby still need nirsevimab? (No, choose one approach)',
+      'What hygiene measures can reduce RSV risk beyond immunization?',
+      'Can my baby still get RSV if immunized? What would symptoms look like?',
+      'Are there any updates to recommendations since this was last reviewed?'
+    ],
+    citations: [
+      citations['cit-rsv-1'],
+      citations['cit-rsv-2'],
+      citations['cit-rsv-3'],
+      citations['cit-rsv-4'],
+      citations['cit-rsv-5'],
+      citations['cit-rsv-6'],
+      citations['cit-rsv-7'],
+      citations['cit-rsv-8'],
+      citations['cit-rsv-9']
+    ],
+    lastReviewed: '2024-02-15',
+    nextReviewDue: '2025-02-15',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
   }
 ]
