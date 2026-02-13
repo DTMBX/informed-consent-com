@@ -8,16 +8,17 @@ import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Progress } from '@/components/ui/progress'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Timer, Download, Plus } from '@phosphor-icons/react'
+import { Timer, Download, Plus, FirstAid } from '@phosphor-icons/react'
 import { REFLECTION_TIMER_OPTIONS } from '@/lib/constants'
 import { toast } from 'sonner'
 
 interface ReflectionNotesProps {
   savedProcedures: string[]
   onExport: () => void
+  onBirthPlan?: () => void
 }
 
-export function ReflectionNotes({ savedProcedures, onExport }: ReflectionNotesProps) {
+export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: ReflectionNotesProps) {
   const [reflections, setReflections] = useKV<ReflectionEntry[]>('reflection-entries', [])
   const [notes, setNotes] = useState('')
   const [selectedProcedures, setSelectedProcedures] = useState<string[]>([])
@@ -256,6 +257,12 @@ export function ReflectionNotes({ savedProcedures, onExport }: ReflectionNotesPr
             <Download className="h-4 w-4" />
             Export Summary
           </Button>
+          {onBirthPlan && (
+            <Button onClick={onBirthPlan} variant="outline" className="gap-2">
+              <FirstAid className="h-4 w-4" />
+              Birth Plan
+            </Button>
+          )}
         </div>
 
         {reflections && reflections.length > 0 && (

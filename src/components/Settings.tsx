@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { X, Info } from '@phosphor-icons/react'
+import { X, Info, FirstAid } from '@phosphor-icons/react'
 import { stageConfig, LANGUAGES, DISCLAIMER_TEXT } from '@/lib/constants'
 import { toast } from 'sonner'
 
@@ -11,9 +11,10 @@ interface SettingsProps {
   preferences: UserPreferences
   onUpdatePreferences: (updates: Partial<UserPreferences>) => void
   onClose: () => void
+  onBirthPlan?: () => void
 }
 
-export function Settings({ preferences, onUpdatePreferences, onClose }: SettingsProps) {
+export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPlan }: SettingsProps) {
   const handleStageChange = (stage: Stage) => {
     onUpdatePreferences({ stage })
     toast.success('Stage updated')
@@ -105,6 +106,27 @@ export function Settings({ preferences, onUpdatePreferences, onClose }: Settings
             </Button>
           </CardContent>
         </Card>
+
+        {onBirthPlan && (
+          <Card className="bg-accent/10 border-accent/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <FirstAid className="h-5 w-5" />
+                Birth Plan Generator
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                Create a comprehensive birth plan based on the procedures you've reviewed. 
+                Document your preferences for labor, delivery, newborn care, and postpartum.
+              </p>
+              <Button onClick={onBirthPlan} className="gap-2">
+                <FirstAid className="h-4 w-4" />
+                Create Birth Plan
+              </Button>
+            </CardContent>
+          </Card>
+        )}
 
         <Alert>
           <Info className="h-5 w-5" />

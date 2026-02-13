@@ -47,6 +47,13 @@ This application requires sophisticated information architecture, role-based acc
 - **Progression**: Select procedures to include → Review questions/notes → Choose format (PDF/text) → Download or share link
 - **Success criteria**: Export includes all cited sources, timestamps, disclaimer text, and "I made this decision voluntarily" statement; generates in <3 seconds
 
+### Birth Plan Generator
+- **Functionality**: Comprehensive birth plan creation tool that references reviewed procedures and documents preferences for labor, delivery, newborn care, and postpartum
+- **Purpose**: Creates a professional, evidence-based birth plan that healthcare providers can review and that documents informed decisions
+- **Trigger**: User clicks "Create Birth Plan" from Settings or Reflection page
+- **Progression**: Complete basic info → Set labor preferences → Set delivery preferences → Document procedure decisions → Set postpartum preferences → Preview → Export/Print
+- **Success criteria**: Birth plan includes all procedure decisions with evidence references, generates printable formatted document, includes disclaimer and signature sections, allows for detailed notes and preferences across all birth stages
+
 ### Evidence Citations & Sources
 - **Functionality**: Every claim linked to reputable guideline or peer-reviewed source; full bibliography with links, publication dates, and evidence levels (Systematic Review / RCT / Expert Consensus / etc.)
 - **Purpose**: Maintains trustworthiness and allows verification of all content

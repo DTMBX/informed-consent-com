@@ -7,12 +7,13 @@ import { ProcedureDetail } from '@/components/ProcedureDetail'
 import { CompareView } from '@/components/CompareView'
 import { ReflectionNotes } from '@/components/ReflectionNotes'
 import { DecisionExport } from '@/components/DecisionExport'
+import { BirthPlanGenerator } from '@/components/BirthPlanGenerator'
 import { Settings } from '@/components/Settings'
 import { BottomNav } from '@/components/BottomNav'
 import { Header } from '@/components/Header'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'settings'
+type View = 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'birth-plan' | 'settings'
 
 function App() {
   const [preferences, setPreferences] = useKV<UserPreferences>('user-preferences', {
@@ -134,6 +135,7 @@ function App() {
           <ReflectionNotes
             savedProcedures={prefs.savedProcedures}
             onExport={() => navigateToView('export')}
+            onBirthPlan={() => navigateToView('birth-plan')}
           />
         )}
 
@@ -141,6 +143,14 @@ function App() {
           <DecisionExport
             savedProcedures={prefs.savedProcedures}
             onClose={() => navigateToView('reflection')}
+          />
+        )}
+
+        {currentView === 'birth-plan' && (
+          <BirthPlanGenerator
+            savedProcedures={prefs.savedProcedures}
+            currentStage={prefs.stage}
+            onClose={() => navigateToView('library')}
           />
         )}
 
@@ -157,6 +167,7 @@ function App() {
               })
             }}
             onClose={() => setCurrentView('library')}
+            onBirthPlan={() => navigateToView('birth-plan')}
           />
         )}
       </main>
