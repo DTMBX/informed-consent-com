@@ -716,6 +716,64 @@ export const citations: Record<string, EvidenceCitation> = {
     source: 'Cochrane Database of Systematic Reviews',
     date: '2012-10',
     evidenceLevel: 'systematic-review'
+  },
+  'cit-bonding-1': {
+    id: 'cit-bonding-1',
+    title: 'Early Skin-to-Skin Contact for Mothers and Their Healthy Newborn Infants',
+    authors: 'Moore et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2016-11',
+    url: 'https://cochrane.org',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-bonding-2': {
+    id: 'cit-bonding-2',
+    title: 'Mother-Infant Bonding and Brain Development',
+    authors: 'Feldman R.',
+    source: 'Biological Psychiatry',
+    date: '2017-01',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-bonding-3': {
+    id: 'cit-bonding-3',
+    title: 'Maternal Touch and Infant Development',
+    authors: 'Ferber et al.',
+    source: 'Developmental Psychobiology',
+    date: '2008-11',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-neural-1': {
+    id: 'cit-neural-1',
+    title: 'Responsive Parenting and Infant Brain Development',
+    authors: 'Bernier et al.',
+    source: 'Child Development',
+    date: '2016-03',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-neural-2': {
+    id: 'cit-neural-2',
+    title: 'The Impact of Early Experience on Infant Brain Development',
+    authors: 'Fox et al.',
+    source: 'Pediatrics',
+    date: '2010-11',
+    url: 'https://publications.aap.org',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-attachment-1': {
+    id: 'cit-attachment-1',
+    title: 'Attachment and Brain Development in Infancy',
+    authors: 'Schore AN.',
+    source: 'Attachment & Human Development',
+    date: '2001-01',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-oxytocin-1': {
+    id: 'cit-oxytocin-1',
+    title: 'Oxytocin and Mother-Infant Bonding',
+    authors: 'Feldman et al.',
+    source: 'Biological Psychiatry',
+    date: '2007-12',
+    evidenceLevel: 'cohort-study'
   }
 }
 
@@ -5306,5 +5364,137 @@ export const procedures: Procedure[] = [
     lastReviewed: '2024-02-05',
     nextReviewDue: '2025-02-05',
     reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-mother-baby-bonding',
+    name: 'Mother-Baby Connection for Optimal Neural Development',
+    shortName: 'Mother-Baby Bonding',
+    category: 'birth-practice',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Practices that strengthen the mother-infant bond through responsive care, physical touch, skin-to-skin contact, eye contact, and attuned interaction. These early experiences shape infant brain architecture and social-emotional development.',
+    indication: 'All healthy mother-infant pairs. Early bonding experiences activate neural pathways that support emotional regulation, stress response, social development, and cognitive growth during critical periods of brain development.',
+    benefits: [
+      {
+        id: 'bond-ben-1',
+        description: 'Promotes secure attachment, which is associated with better emotional regulation and social competence throughout childhood',
+        citations: ['cit-attachment-1', 'cit-bonding-2']
+      },
+      {
+        id: 'bond-ben-2',
+        description: 'Stimulates oxytocin release in both mother and infant, promoting bonding, reducing stress, and supporting breastfeeding',
+        citations: ['cit-oxytocin-1', 'cit-bonding-1']
+      },
+      {
+        id: 'bond-ben-3',
+        description: 'Skin-to-skin contact regulates infant temperature, heart rate, breathing, and blood sugar while reducing crying',
+        citations: ['cit-bonding-1', 'cit-skintosk-1']
+      },
+      {
+        id: 'bond-ben-4',
+        description: 'Responsive caregiving (recognizing and responding to infant cues) supports development of prefrontal cortex and executive function skills',
+        citations: ['cit-neural-1', 'cit-neural-2']
+      },
+      {
+        id: 'bond-ben-5',
+        description: 'Early maternal touch and holding are associated with improved cognitive development and language skills',
+        citations: ['cit-bonding-3', 'cit-neural-2']
+      },
+      {
+        id: 'bond-ben-6',
+        description: 'Face-to-face interaction and eye contact stimulate neural circuits for social cognition and emotional understanding',
+        citations: ['cit-bonding-2']
+      },
+      {
+        id: 'bond-ben-7',
+        description: 'Reduces infant cortisol (stress hormone) levels, protecting developing brain from toxic stress',
+        citations: ['cit-bonding-1', 'cit-neural-2']
+      },
+      {
+        id: 'bond-ben-8',
+        description: 'Maternal responsiveness buffers effects of adversity on infant brain development',
+        citations: ['cit-neural-2', 'cit-attachment-1']
+      },
+      {
+        id: 'bond-ben-9',
+        description: 'Promotes maternal mental health by reducing postpartum depression and anxiety',
+        citations: ['cit-bonding-1', 'cit-oxytocin-1']
+      },
+      {
+        id: 'bond-ben-10',
+        description: 'Establishes foundation for lifelong relationship patterns and social-emotional health',
+        citations: ['cit-attachment-1', 'cit-bonding-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'bond-risk-1',
+        description: 'Bonding may feel difficult initially for some mothers; this is normal and bonds can strengthen over time with support',
+        frequency: 'Occasional (10-20 in 100 mothers report not feeling immediate bonding)',
+        severity: 'mild',
+        citations: ['cit-bonding-2']
+      },
+      {
+        id: 'bond-risk-2',
+        description: 'Maternal mental health challenges (depression, anxiety, trauma) may interfere with bonding; professional support recommended',
+        frequency: '10-20 in 100 mothers experience postpartum mood disorders',
+        severity: 'moderate',
+        citations: ['cit-bonding-2']
+      },
+      {
+        id: 'bond-risk-3',
+        description: 'Medical complications or NICU separation may delay early bonding; catch-up is possible with support',
+        severity: 'mild',
+        citations: ['cit-bonding-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'While the first hours and days are a sensitive period for bonding, attachment develops over time through repeated responsive interactions. Bonding that is delayed due to medical circumstances can be established successfully. The key is consistent, responsive care whenever possible. Early intervention maximizes benefits but later efforts remain valuable.',
+    contraindications: [
+      {
+        id: 'bond-contra-1',
+        condition: 'Infant requiring immediate medical care or NICU admission',
+        severity: 'absolute',
+        explanation: 'Medical stabilization is priority; bonding practices can begin when infant is medically stable',
+        citations: ['cit-bonding-1']
+      },
+      {
+        id: 'bond-contra-2',
+        condition: 'Maternal medical complications requiring intensive care',
+        severity: 'absolute',
+        explanation: 'Maternal health is priority; bonding can be supported by partner or support person until mother is stable',
+        citations: ['cit-bonding-1']
+      },
+      {
+        id: 'bond-contra-3',
+        condition: 'Severe maternal mental health crisis requiring immediate intervention',
+        severity: 'relative',
+        explanation: 'Professional mental health support should be sought; supervised bonding with therapeutic support',
+        citations: ['cit-bonding-2']
+      }
+    ],
+    questionsToAsk: [
+      'What practices does this facility support to promote early bonding (immediate skin-to-skin, rooming-in, etc.)?',
+      'Can my partner also do skin-to-skin contact?',
+      'What if I don\'t feel an immediate bond with my baby?',
+      'What mental health resources are available if I\'m struggling with bonding?',
+      'How can I recognize and respond to my baby\'s cues?',
+      'What if my baby needs to be in the NICU - how can I still bond?',
+      'Are there lactation consultants or parent educators who can help me learn about infant development?',
+      'What are signs that my baby feels secure and connected?'
+    ],
+    citations: [
+      citations['cit-bonding-1'],
+      citations['cit-bonding-2'],
+      citations['cit-bonding-3'],
+      citations['cit-neural-1'],
+      citations['cit-neural-2'],
+      citations['cit-attachment-1'],
+      citations['cit-oxytocin-1'],
+      citations['cit-skintosk-1']
+    ],
+    lastReviewed: '2024-02-10',
+    nextReviewDue: '2025-02-10',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
   }
 ]
