@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/se
-import { cn } from '@/lib/utils'
-interface VaccineEntry {
-  timing: string
-}
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
+import { Info, Globe, Printer, Funnel, CaretDown, CaretUp } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
 
 interface VaccineEntry {
@@ -255,264 +255,250 @@ export function ComprehensiveVaccineSchedule() {
     })
   }
 
+  const filteredData = filterBy === 'all' 
+    ? scheduleData 
+    : scheduleData.filter(s => s.approach === filterBy)
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    switch (sortBy) {
       case 'country':
-      case 'doses-a
+        return a.country.localeCompare(b.country)
+      case 'doses-asc':
+        return a.totalDoses - b.totalDoses
       case 'doses-desc':
-
+        return b.totalDoses - a.totalDoses
+      case 'approach':
+        return a.approach.localeCompare(b.approach)
       default:
+        return 0
     }
+  })
 
+  const handlePrint = () => {
     window.print()
+  }
 
+  const expandAll = () => {
+    setExpandedCountries(new Set(sortedData.map(s => s.code)))
+  }
+
+  const collapseAll = () => {
     setExpandedCountries(new Set())
+  }
 
-    setExpandedCountries(new Set(sortedDat
+  const approachColors = {
+    comprehensive: 'bg-primary/10 text-primary border-primary/20',
+    balanced: 'bg-secondary/10 text-secondary-foreground border-secondary/20',
+    selective: 'bg-accent/10 text-accent-foreground border-accent/20'
+  }
 
-    comprehensive: 'bg-primary/10 text-primary bord
-    selective:
-
-    c
-    
-
-    <div className="max-w-7xl
-        <div class
-   
-
-            <p className="
-            </p>
+  return (
+    <div className="max-w-7xl mx-auto p-6 space-y-6">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <Globe size={32} weight="duotone" className="text-primary" />
+          <h1 className="text-3xl font-semibold">Global Vaccine Schedule Database</h1>
         </div>
+        <p className="text-muted-foreground">
+          Compare vaccination schedules from 12 countries to understand different evidence-based approaches to childhood immunization
+        </p>
+      </div>
 
-   
-
-          superior or infe
+      <Alert>
+        <Info size={20} weight="fill" className="text-primary" />
+        <AlertDescription className="ml-2">
+          <strong>Important Context:</strong> All schedules shown are evidence-based and developed by respected medical authorities. Differences reflect local disease prevalence, healthcare infrastructure, cultural values, and public health priorities - not superior or inferior safety. Both comprehensive and selective approaches save lives.
+        </AlertDescription>
       </Alert>
-      <Card className="pr
-          <CardTitle class
-   
 
-          
-                Countries prioritize based on local disease 
-            </div>
-              <Badge variant="outline" className
-                Universal healthcare with guaranteed follow-up enables later schedules. Variable a
-            </d
-              <Badge variant="outline" className="mb-1">Risk Philosophy</Badge
-                US maximizes herd immunity and early protection. 
-            </div
-              <Badge variant="outline" className="mb-1">Economic Factors</B
-                Cost-effectiveness calculations vary. Countries weigh vaccine costs against disease tr
-            </di
-        </CardCo
-
-        <div
-
-              <SelectValue />
-            <SelectContent>
-              <SelectItem value="doses-asc">Fewest 
-              <SelectItem value="approach">By approach</SelectItem>
-          </Select>
-
-          <Funnel size={20}
-            <S
-
-              <SelectItem value="all"
-              <Selec
-            </SelectContent>
-        </div>
-        <div classNam
-            Expand Al
-          <Button variant="outline" size="sm" onClick={collapseAll}>
-          </Button>
-
-          <Printer size={18} className="mr-2" />
-        </Button>
-
-        {sortedDat
-          
-            <Card key={schedule.code} className="overflow-hidden print:break-insid
-                onClick={() => toggleCountry(schedu
-              >
-                  
-                  
-                        <Badge variant="s
-                        </Badge>
-                          variant="outline" 
-                        >
-                  
-                  
-                      </CardDescription>
-                        <span>Source: {schedule.source}</span>
-                        <span>Updated: {schedule.la
-                    </div>
-                  
-                  
-                
-                  </di
-             
-
-                  <Separator className="mb-4" />
-                    <h4 className="text-sm font-s
-                    </h4>
-                      {schedule.vaccines.map((vaccine, idx) => (
-                          key={idx}
-                        >
-                            
-                           
-                          </div>
-                            {vaccine.doses} {vaccine.doses === 1 ? 'dose' :
-                        </div>
-                    </div>
-                </CardConten
-            </Card>
-        })}
-
+      <Card className="print:hidden">
         <CardHeader>
-            <Info size={24} weight="duotone" className="text-amb
+          <CardTitle>Why Do Countries Have Different Vaccine Schedules?</CardTitle>
+          <CardDescription>
+            Multiple factors influence national vaccination recommendations
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Badge variant="outline" className="mb-1">Disease Prevalence</Badge>
+              <p className="text-sm text-muted-foreground">
+                Countries prioritize based on local disease burden. The US includes Hepatitis B at birth due to higher prevalence, while Sweden omits it due to very low rates.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Badge variant="outline" className="mb-1">Healthcare System</Badge>
+              <p className="text-sm text-muted-foreground">
+                Universal healthcare with guaranteed follow-up enables later schedules. Variable access may require front-loading protection.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Badge variant="outline" className="mb-1">Risk Philosophy</Badge>
+              <p className="text-sm text-muted-foreground">
+                US maximizes herd immunity and early protection. Nordic countries emphasize individual necessity and minimal intervention.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Badge variant="outline" className="mb-1">Economic Factors</Badge>
+              <p className="text-sm text-muted-foreground">
+                Cost-effectiveness calculations vary. Countries weigh vaccine costs against disease treatment costs and productivity losses differently.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="flex flex-wrap gap-3 items-center print:hidden">
+        <div className="flex items-center gap-2">
+          <Globe size={20} className="text-muted-foreground" />
+          <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortBy)}>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="doses-desc">Most doses first</SelectItem>
+              <SelectItem value="doses-asc">Fewest doses first</SelectItem>
+              <SelectItem value="country">By country</SelectItem>
+              <SelectItem value="approach">By approach</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Funnel size={20} className="text-muted-foreground" />
+          <Select value={filterBy} onValueChange={(v) => setFilterBy(v as FilterBy)}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All approaches</SelectItem>
+              <SelectItem value="comprehensive">Comprehensive</SelectItem>
+              <SelectItem value="balanced">Balanced</SelectItem>
+              <SelectItem value="selective">Selective</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="ml-auto flex gap-2">
+          <Button variant="outline" size="sm" onClick={expandAll}>
+            Expand All
+          </Button>
+          <Button variant="outline" size="sm" onClick={collapseAll}>
+            Collapse All
+          </Button>
+          <Button variant="outline" size="sm" onClick={handlePrint}>
+            <Printer size={18} className="mr-2" />
+            Print
+          </Button>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        {sortedData.map((schedule) => {
+          const isExpanded = expandedCountries.has(schedule.code)
+          
+          return (
+            <Card key={schedule.code} className="overflow-hidden print:break-inside-avoid">
+              <CardHeader 
+                className="cursor-pointer hover:bg-accent/5 transition-colors print:cursor-default"
+                onClick={() => toggleCountry(schedule.code)}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="space-y-2 flex-1">
+                    <div className="flex items-center gap-2">
+                      <CardTitle>{schedule.country}</CardTitle>
+                      <Badge variant="secondary" className={cn('border', approachColors[schedule.approach])}>
+                        {schedule.totalDoses} doses
+                      </Badge>
+                      <Badge 
+                        variant="outline" 
+                        className={cn('capitalize', approachColors[schedule.approach])}
+                      >
+                        {schedule.approach}
+                      </Badge>
+                    </div>
+                    <CardDescription className="max-w-3xl">
+                      {schedule.philosophy}
+                    </CardDescription>
+                    <div className="flex gap-4 text-xs text-muted-foreground">
+                      <span>Source: {schedule.source}</span>
+                      <span>Updated: {schedule.lastUpdated}</span>
+                    </div>
+                  </div>
+                  <div className="print:hidden">
+                    {isExpanded ? <CaretUp size={24} /> : <CaretDown size={24} />}
+                  </div>
+                </div>
+              </CardHeader>
+
+              {(isExpanded || window.matchMedia('print').matches) && (
+                <CardContent className="pt-0">
+                  <Separator className="mb-4" />
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                      Vaccine Schedule
+                    </h4>
+                    <div className="grid gap-2">
+                      {schedule.vaccines.map((vaccine, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start justify-between p-3 rounded-lg border bg-card"
+                        >
+                          <div className="space-y-1 flex-1">
+                            <div className="font-medium">{vaccine.name}</div>
+                            <div className="text-sm text-muted-foreground">{vaccine.timing}</div>
+                          </div>
+                          <Badge variant="outline">
+                            {vaccine.doses} {vaccine.doses === 1 ? 'dose' : 'doses'}
+                          </Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              )}
+            </Card>
+          )
+        })}
+      </div>
+
+      <Card className="border-amber-200 bg-amber-50/50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info size={24} weight="duotone" className="text-amber-600" />
+            What This Means for Parents
           </CardTitle>
-        <CardContent className="space-y-3 text-sm
-            <strong>No schedu
-            reflects excelle
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm">
           <p>
-            attributed to prematurity rates, socioeconomic inequa
+            <strong>No schedule is "wrong."</strong> Each represents different evidence-based approaches and reflects excellent pediatric care in its context.
           </p>
-            <strong>The CDC schedule is not "for profit."</stron
-            program provides vaccines at or below cost through gov
           <p>
-            prevale
+            <strong>Infant mortality differences have nothing to do with vaccines.</strong> Higher US infant mortality is attributed to prematurity rates, socioeconomic inequalities, healthcare access, and birth registration practices - not vaccination.
           </p>
+          <p>
+            <strong>The CDC schedule is not "for profit."</strong> It's developed by independent scientific committees (ACIP). The Vaccines for Children program provides vaccines at or below cost through government negotiation.
+          </p>
+          <p>
+            <strong>Disease prevalence matters.</strong> The US has different disease patterns than Nordic countries. Cherry-picking another country's schedule may leave your child vulnerable to locally prevalent diseases.
+          </p>
+          <p>
+            <strong>International differences validate informed decision-making.</strong> This makes thoughtful, voluntary decision-making with your healthcare provider even more important.
+          </p>
+          <p>
+            <strong>More vaccines don't correlate with worse outcomes.</strong> Countries with higher vaccination rates generally have better child health outcomes overall.
+          </p>
+        </CardContent>
+      </Card>
 
-            This makes thoughtful, voluntary decision-making with your healt
-          <p>
-            correlate with
-          </p>
-      </Card
-
-        <AlertDescription classNa
-          Schedules are subject to chan
+      <Alert className="print:hidden">
+        <AlertDescription className="text-xs text-muted-foreground">
+          Schedules are subject to change. Always consult current official sources and your healthcare provider for the most up-to-date recommendations for your country and child's specific circumstances.
+        </AlertDescription>
       </Alert>
+    </div>
   )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

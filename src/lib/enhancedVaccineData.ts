@@ -480,16 +480,6 @@ export const enhancedVaccineData: Procedure[] = [
     }
   }
 ]
-import { Procedure } from './types'
-import { citations } from './citations'
-
-export const enhancedVaccineData: Procedure[] = [
-  {
-    id: 'proc-dtap-enhanced',
-    name: 'DTaP Vaccine (Diphtheria, Tetanus, Pertussis)',
-    shortName: 'DTaP',
-    category: 'vaccination',
-    stage: 'postpartum',
     urgencyLevel: 'routine',
     summary: 'Combination vaccine protecting against diphtheria, tetanus, and pertussis (whooping cough). Given as a 5-dose series at 2, 4, 6, and 15-18 months, and 4-6 years.',
     indication: 'Diphtheria causes throat swelling that can block airways. Tetanus (lockjaw) causes painful muscle spasms and death in 10-20% of cases. Pertussis causes severe coughing fits that can lead to pneumonia, seizures, brain damage, and death, especially in infants under 1 year.',
