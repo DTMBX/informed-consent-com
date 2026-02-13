@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { procedures } from '@/lib/proceduresData'
 import { Procedure, Stage } from '@/lib/types'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Textarea } from '@/components/ui/textarea'
@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
-import { Download, Printer, X, Baby, FirstAid, Heartbeat } from '@phosphor-icons/react'
+import { Download, Printer, X, Baby, FirstAid, Heartbeat, Clipboard, Sparkle } from '@phosphor-icons/react'
 import { DISCLAIMER_TEXT, formatDate } from '@/lib/constants'
 import { toast } from 'sonner'
 
@@ -21,7 +21,10 @@ interface BirthPlanGeneratorProps {
   onClose: () => void
 }
 
+type BirthPlanTemplate = 'custom' | 'natural' | 'medicated' | 'cesarean'
+
 interface BirthPlanPreferences {
+  template?: BirthPlanTemplate
   parentName: string
   partnerName: string
   dueDate: string
@@ -49,6 +52,70 @@ interface BirthPlanPreferences {
     visitationPreferences: string
   }
   additionalNotes: string
+}
+
+const BIRTH_PLAN_TEMPLATES: Record<BirthPlanTemplate, Partial<BirthPlanPreferences>> = {
+  custom: {},
+  natural: {
+    laborPreferences: {
+      movementDuringLabor: 'I would like freedom to move, walk, and change positions during labor. I prefer to use gravity-friendly positions.',
+      painManagementPreference: 'I plan to use natural pain management techniques including breathing, movement, hydrotherapy (shower/tub), massage, and position changes. I prefer to avoid epidural unless medically necessary or I request it.',
+      environmentPreferences: 'Dim lighting, minimal interruptions, quiet environment, option to play music',
+      supportPersons: ''
+    },
+    deliveryPreferences: {
+      deliveryPosition: 'open',
+      delayedCordClamping: true,
+      skinToSkinImmediate: true,
+      birthPhotography: false
+    },
+    postpartumPreferences: {
+      feedingPlan: 'I plan to breastfeed and would like immediate support from a lactation consultant.',
+      roominIn: true,
+      visitationPreferences: 'Limited visitors in the first 24 hours to support bonding and breastfeeding establishment.'
+    },
+    additionalNotes: 'I am planning an unmedicated birth and would appreciate supportive coaching from my care team. I understand that circumstances may require flexibility.'
+  },
+  medicated: {
+    laborPreferences: {
+      movementDuringLabor: 'I would like to move freely in early labor. Once epidural is placed, I understand movement will be limited.',
+      painManagementPreference: 'I plan to request an epidural for pain management. I am open to discussing timing with my care team. I may use other comfort measures in early labor.',
+      environmentPreferences: 'Comfortable lighting, calm environment',
+      supportPersons: ''
+    },
+    deliveryPreferences: {
+      deliveryPosition: 'lying',
+      delayedCordClamping: true,
+      skinToSkinImmediate: true,
+      birthPhotography: false
+    },
+    postpartumPreferences: {
+      feedingPlan: 'I am open to discussing feeding options and would like support regardless of my choice.',
+      roominIn: true,
+      visitationPreferences: 'Flexible visitation with family after delivery.'
+    },
+    additionalNotes: 'I am planning a medicated birth with epidural and would like clear communication about the process and timing.'
+  },
+  cesarean: {
+    laborPreferences: {
+      movementDuringLabor: 'Planned cesarean section',
+      painManagementPreference: 'Spinal or epidural anesthesia as recommended by anesthesiologist',
+      environmentPreferences: 'Calm operating room environment, option to play music if permitted',
+      supportPersons: ''
+    },
+    deliveryPreferences: {
+      deliveryPosition: 'surgical',
+      delayedCordClamping: true,
+      skinToSkinImmediate: true,
+      birthPhotography: false
+    },
+    postpartumPreferences: {
+      feedingPlan: 'I would like breastfeeding support as soon as I am able after surgery.',
+      roominIn: true,
+      visitationPreferences: 'Limited visitors initially while recovering from surgery.'
+    },
+    additionalNotes: 'Planned cesarean section. I would like the screen lowered briefly to see baby being born if medically appropriate. I request clear communication throughout the procedure.'
+  }
 }
 
 export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: BirthPlanGeneratorProps) {
@@ -79,8 +146,9 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
     additionalNotes: ''
   })
 
-  type Section = 'basic' | 'labor' | 'delivery' | 'newborn' | 'postpartum' | 'preview'
-  const [currentSection, setCurrentSection] = useState<Section>('basic')
+  type Section = 'template' | 'basic' | 'labor' | 'delivery' | 'newborn' | 'postpartum' | 'preview'
+  const [currentSection, setCurrentSection] = useState<Section>('template')
+  const [selectedTemplate, setSelectedTemplate] = useState<BirthPlanTemplate | null>(null)
 
   const plan = birthPlan || {
     parentName: '',
@@ -107,6 +175,40 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
       visitationPreferences: ''
     },
     additionalNotes: ''
+  }
+
+  const applyTemplate = (template: BirthPlanTemplate) => {
+    if (template === 'custom') {
+      setSelectedTemplate('custom')
+      setCurrentSection('basic')
+      toast.success('Starting with blank birth plan')
+      return
+    }
+
+    const templateData = BIRTH_PLAN_TEMPLATES[template]
+    setBirthPlan((prev) => {
+      const current = prev || plan
+      return {
+        ...current,
+        template,
+        ...templateData,
+        laborPreferences: {
+          ...current.laborPreferences,
+          ...templateData.laborPreferences
+        },
+        deliveryPreferences: {
+          ...current.deliveryPreferences,
+          ...templateData.deliveryPreferences
+        },
+        postpartumPreferences: {
+          ...current.postpartumPreferences,
+          ...templateData.postpartumPreferences
+        }
+      }
+    })
+    setSelectedTemplate(template)
+    setCurrentSection('basic')
+    toast.success(`Applied ${template} birth plan template - you can customize all fields`)
   }
 
   const updateBasicInfo = (field: string, value: string) => {
@@ -166,6 +268,7 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
 
   const generateBirthPlanDocument = (): string => {
     const date = new Date().toLocaleDateString()
+    const templateLabel = plan.template ? `Template Used: ${plan.template.charAt(0).toUpperCase() + plan.template.slice(1)} Birth` : ''
     
     let doc = `╔════════════════════════════════════════════════════════╗
 ║                    BIRTH PLAN                          ║
@@ -173,7 +276,7 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
 
 Created with Informed Consent Companion
 Generated: ${date}
-
+${templateLabel ? templateLabel + '\n' : ''}
 ${DISCLAIMER_TEXT}
 
 ════════════════════════════════════════════════════════
@@ -207,7 +310,8 @@ ${plan.laborPreferences.supportPersons || 'Not specified'}
 DELIVERY PREFERENCES
 
 Preferred Delivery Position:
-${plan.deliveryPreferences.deliveryPosition || 'Open to provider guidance'}
+${plan.deliveryPreferences.deliveryPosition === 'surgical' ? 'Cesarean Section' : 
+  plan.deliveryPreferences.deliveryPosition || 'Open to provider guidance'}
 
 Delayed Cord Clamping:
 ${plan.deliveryPreferences.delayedCordClamping ? '✓ YES - I request delayed cord clamping (30-180 seconds) if medically appropriate' : '✗ NO - I prefer immediate cord clamping'}
@@ -371,21 +475,146 @@ Provider Signature: ____________________  Date: __________
         </Button>
       </div>
 
-      <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-        {['basic', 'labor', 'delivery', 'newborn', 'postpartum', 'preview'].map((section) => (
-          <Button
-            key={section}
-            variant={currentSection === section ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setCurrentSection(section as typeof currentSection)}
-            className="capitalize whitespace-nowrap"
-          >
-            {section === 'preview' ? 'Preview & Export' : section}
-          </Button>
-        ))}
-      </div>
+      {currentSection !== 'template' && (
+        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+          {['basic', 'labor', 'delivery', 'newborn', 'postpartum', 'preview'].map((section) => (
+            <Button
+              key={section}
+              variant={currentSection === section ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setCurrentSection(section as typeof currentSection)}
+              className="capitalize whitespace-nowrap"
+            >
+              {section === 'preview' ? 'Preview & Export' : section}
+            </Button>
+          ))}
+        </div>
+      )}
 
       <div className="space-y-6">
+        {currentSection === 'template' && (
+          <div className="space-y-6">
+            <Card className="bg-accent/10">
+              <CardContent className="pt-6">
+                <p className="text-sm">
+                  Choose a template to get started with evidence-based preferences, or start from scratch. All templates can be fully customized to match your preferences.
+                </p>
+              </CardContent>
+            </Card>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card 
+                className="cursor-pointer hover:border-primary transition-colors"
+                onClick={() => applyTemplate('natural')}
+              >
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-evidence/20">
+                      <Sparkle className="h-6 w-6 text-evidence" />
+                    </div>
+                    <CardTitle>Natural Birth</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Unmedicated birth with focus on movement, natural pain management, and minimal interventions
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>✓ Freedom to move and change positions</p>
+                    <p>✓ Natural pain management techniques</p>
+                    <p>✓ Minimal interventions unless necessary</p>
+                    <p>✓ Immediate skin-to-skin and breastfeeding</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="cursor-pointer hover:border-primary transition-colors"
+                onClick={() => applyTemplate('medicated')}
+              >
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-primary/20">
+                      <FirstAid className="h-6 w-6 text-primary" />
+                    </div>
+                    <CardTitle>Medicated Birth</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Birth with epidural pain management and medical support
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>✓ Epidural for pain management</p>
+                    <p>✓ Movement in early labor</p>
+                    <p>✓ Medical interventions as needed</p>
+                    <p>✓ Flexible feeding and recovery options</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="cursor-pointer hover:border-primary transition-colors"
+                onClick={() => applyTemplate('cesarean')}
+              >
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-secondary/30">
+                      <Heartbeat className="h-6 w-6 text-secondary-foreground" />
+                    </div>
+                    <CardTitle>Cesarean Section</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Planned or anticipated cesarean delivery with surgical considerations
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>✓ Surgical birth with spinal/epidural anesthesia</p>
+                    <p>✓ Calm operating room environment</p>
+                    <p>✓ Immediate bonding when safe</p>
+                    <p>✓ Post-surgical recovery support</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="cursor-pointer hover:border-primary transition-colors"
+                onClick={() => applyTemplate('custom')}
+              >
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-accent/30">
+                      <Clipboard className="h-6 w-6 text-accent-foreground" />
+                    </div>
+                    <CardTitle>Start from Scratch</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Build your birth plan from a blank template with complete flexibility
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>✓ Completely customizable</p>
+                    <p>✓ No pre-filled preferences</p>
+                    <p>✓ Full control over all sections</p>
+                    <p>✓ Ideal for unique situations</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="bg-muted/50">
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-3">About Birth Plan Templates</h3>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p>These templates are based on common birth preferences and evidence-based practices. They are starting points only—every field can be modified to match your specific needs and circumstances.</p>
+                  <p>Your healthcare provider will review your completed birth plan and discuss any adjustments based on your medical history and facility policies.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
         {currentSection === 'basic' && (
           <Card>
             <CardHeader>
@@ -393,6 +622,11 @@ Provider Signature: ____________________  Date: __________
                 <Baby className="h-5 w-5" />
                 Basic Information
               </CardTitle>
+              {selectedTemplate && selectedTemplate !== 'custom' && (
+                <CardDescription>
+                  Using {selectedTemplate} birth template - all fields can be customized
+                </CardDescription>
+              )}
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -531,6 +765,7 @@ Provider Signature: ____________________  Date: __________
                     <SelectItem value="side-lying">Side-lying</SelectItem>
                     <SelectItem value="hands-knees">Hands and knees</SelectItem>
                     <SelectItem value="birth-stool">Birth stool</SelectItem>
+                    <SelectItem value="surgical">Cesarean Section</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -782,12 +1017,12 @@ Provider Signature: ____________________  Date: __________
           </div>
         )}
 
-        {currentSection !== 'preview' && (
+        {currentSection !== 'preview' && currentSection !== 'template' && (
           <div className="flex justify-between pt-4">
             <Button
               variant="outline"
               onClick={() => {
-                const sections: Section[] = ['basic', 'labor', 'delivery', 'newborn', 'postpartum', 'preview']
+                const sections: Section[] = ['template', 'basic', 'labor', 'delivery', 'newborn', 'postpartum', 'preview']
                 const currentIndex = sections.indexOf(currentSection)
                 if (currentIndex > 0) {
                   setCurrentSection(sections[currentIndex - 1])
@@ -799,7 +1034,7 @@ Provider Signature: ____________________  Date: __________
             </Button>
             <Button
               onClick={() => {
-                const sections: Section[] = ['basic', 'labor', 'delivery', 'newborn', 'postpartum', 'preview']
+                const sections: Section[] = ['template', 'basic', 'labor', 'delivery', 'newborn', 'postpartum', 'preview']
                 const currentIndex = sections.indexOf(currentSection)
                 if (currentIndex < sections.length - 1) {
                   setCurrentSection(sections[currentIndex + 1])
