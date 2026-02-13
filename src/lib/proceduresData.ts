@@ -206,6 +206,157 @@ export const citations: Record<string, EvidenceCitation> = {
     source: 'Human Vaccines & Immunotherapeutics',
     date: '2020-06',
     evidenceLevel: 'systematic-review'
+  },
+  'cit-pneumo-1': {
+    id: 'cit-pneumo-1',
+    title: 'Pneumococcal Conjugate Vaccine for Childhood Immunization',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2023-01',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-pneumo-2': {
+    id: 'cit-pneumo-2',
+    title: 'Effectiveness of Pneumococcal Conjugate Vaccines in Preventing Disease',
+    authors: 'Hanquet et al.',
+    source: 'Vaccine',
+    date: '2019-06',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-flu-child-1': {
+    id: 'cit-flu-child-1',
+    title: 'Influenza Vaccination in Children: Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2023-08',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-flu-child-2': {
+    id: 'cit-flu-child-2',
+    title: 'Effectiveness of Influenza Vaccines in Children',
+    authors: 'Osterholm et al.',
+    source: 'The Lancet Infectious Diseases',
+    date: '2012-01',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-varicella-1': {
+    id: 'cit-varicella-1',
+    title: 'Varicella Vaccination: United States Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2022-07',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-varicella-2': {
+    id: 'cit-varicella-2',
+    title: 'Prevention of Varicella: Recommendations for Use of Varicella Vaccines in Children',
+    authors: 'Marin et al.',
+    source: 'MMWR Recommendations and Reports',
+    date: '2007-06',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-tdap-preg-1': {
+    id: 'cit-tdap-preg-1',
+    title: 'Tdap Vaccination During Pregnancy: Prevention of Pertussis in Infants',
+    authors: 'ACOG Committee Opinion',
+    source: 'Obstetrics & Gynecology',
+    date: '2023-04',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-tdap-preg-2': {
+    id: 'cit-tdap-preg-2',
+    title: 'Effectiveness of Maternal Tdap Vaccination in Preventing Infant Pertussis',
+    authors: 'Skoff et al.',
+    source: 'Clinical Infectious Diseases',
+    date: '2021-03',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-flu-preg-1': {
+    id: 'cit-flu-preg-1',
+    title: 'Influenza Vaccination During Pregnancy: ACOG Recommendations',
+    authors: 'ACOG Committee Opinion',
+    source: 'Obstetrics & Gynecology',
+    date: '2022-09',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-flu-preg-2': {
+    id: 'cit-flu-preg-2',
+    title: 'Maternal Influenza Vaccination and Infant Outcomes',
+    authors: 'Thompson et al.',
+    source: 'JAMA',
+    date: '2014-05',
+    evidenceLevel: 'cohort-study'
+  },
+  'cit-waterbirth-1': {
+    id: 'cit-waterbirth-1',
+    title: 'Immersion in Water During Labor and Delivery',
+    authors: 'ACOG Committee Opinion',
+    source: 'Obstetrics & Gynecology',
+    date: '2016-11',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-waterbirth-2': {
+    id: 'cit-waterbirth-2',
+    title: 'Effect of Water Immersion During Labour on Maternal and Neonatal Outcomes',
+    authors: 'Cluett et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2018-05',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-delayedcord-1': {
+    id: 'cit-delayedcord-1',
+    title: 'Delayed Umbilical Cord Clamping After Birth',
+    authors: 'ACOG Committee Opinion',
+    source: 'Obstetrics & Gynecology',
+    date: '2020-12',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-delayedcord-2': {
+    id: 'cit-delayedcord-2',
+    title: 'Effect of Timing of Umbilical Cord Clamping on Iron Status and Neurodevelopment',
+    authors: 'McDonald et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2013-07',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-acupuncture-1': {
+    id: 'cit-acupuncture-1',
+    title: 'Acupuncture for Pain Management During Labour',
+    authors: 'Smith et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2020-02',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-hypnobirth-1': {
+    id: 'cit-hypnobirth-1',
+    title: 'Hypnosis for Pain Management During Labour and Childbirth',
+    authors: 'Madden et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2016-05',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-massage-1': {
+    id: 'cit-massage-1',
+    title: 'Massage, Reflexology and Other Manual Methods for Pain Management in Labour',
+    authors: 'Smith et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2018-03',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-aromatherapy-1': {
+    id: 'cit-aromatherapy-1',
+    title: 'Aromatherapy for Pain Management in Labour',
+    authors: 'Smith et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2011-07',
+    evidenceLevel: 'systematic-review'
   }
 }
 
@@ -1955,5 +2106,821 @@ export const procedures: Procedure[] = [
     lastReviewed: '2024-01-25',
     nextReviewDue: '2025-01-25',
     reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-pneumococcal-vaccine',
+    name: 'Pneumococcal Conjugate Vaccine (PCV)',
+    shortName: 'Pneumococcal Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'A vaccine that protects against pneumococcal bacteria, which cause serious infections including meningitis, pneumonia, and bloodstream infections. Given as a series starting at 2 months of age.',
+    indication: 'Pneumococcal disease is a leading cause of serious illness in young children, causing approximately 150 deaths annually in the US before widespread vaccination.',
+    benefits: [
+      {
+        id: 'pneumo-ben-1',
+        description: 'Prevents 75-80% of invasive pneumococcal disease in children under 5',
+        citations: ['cit-pneumo-1', 'cit-pneumo-2']
+      },
+      {
+        id: 'pneumo-ben-2',
+        description: 'Reduces pneumonia hospitalizations by approximately 45%',
+        citations: ['cit-pneumo-2']
+      },
+      {
+        id: 'pneumo-ben-3',
+        description: 'Reduces ear infections (otitis media) by approximately 6-7%',
+        citations: ['cit-pneumo-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'pneumo-risk-1',
+        description: 'Injection site soreness, redness, or swelling',
+        frequency: 'Common (20-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-pneumo-1']
+      },
+      {
+        id: 'pneumo-risk-2',
+        description: 'Mild fever under 101°F',
+        frequency: 'Common (15-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-pneumo-1']
+      },
+      {
+        id: 'pneumo-risk-3',
+        description: 'Irritability or decreased appetite',
+        frequency: 'Common (10-20 in 100)',
+        severity: 'mild',
+        citations: ['cit-pneumo-1']
+      },
+      {
+        id: 'pneumo-risk-4',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-pneumo-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'pneumo-alt-1',
+        name: 'Decline Vaccination',
+        description: 'Opt out of pneumococcal vaccine',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'pneumo-alt-ben-1',
+            description: 'Avoids vaccine reactions',
+            citations: ['cit-pneumo-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'pneumo-alt-risk-1',
+            description: 'Significantly increased risk of pneumococcal meningitis, which has 8% mortality and 15-30% long-term complications',
+            severity: 'severe',
+            citations: ['cit-pneumo-1', 'cit-pneumo-2']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-pneumo-1']
+      }
+    ],
+    whatIfWeWait: 'Children under 2 are at highest risk for serious pneumococcal disease. Delaying increases vulnerability during peak risk period. Can catch up on schedule if delayed.',
+    contraindications: [{
+      id: 'pneumo-contra-1',
+      condition: 'Severe allergic reaction to previous dose',
+      severity: 'absolute',
+      explanation: 'History of anaphylaxis',
+      citations: ['cit-pneumo-1']
+    }],
+    questionsToAsk: [
+      'Which PCV vaccine will be used (PCV13, PCV15, or PCV20)?',
+      'What is the full schedule for this vaccine?',
+      'Can it be given with other vaccines?'
+    ],
+    citations: [citations['cit-pneumo-1'], citations['cit-pneumo-2']],
+    lastReviewed: '2024-01-26',
+    nextReviewDue: '2025-01-26',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-influenza-vaccine-child',
+    name: 'Influenza Vaccine (Children)',
+    shortName: 'Flu Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Annual vaccine protecting against seasonal influenza strains. Recommended for all children 6 months and older, given annually before flu season.',
+    indication: 'Influenza causes 7,000-26,000 hospitalizations in children under 5 annually in the US. Young children are at higher risk for complications.',
+    benefits: [
+      {
+        id: 'flu-child-ben-1',
+        description: 'Reduces risk of flu illness by 40-60% when well-matched to circulating strains',
+        citations: ['cit-flu-child-1', 'cit-flu-child-2']
+      },
+      {
+        id: 'flu-child-ben-2',
+        description: 'Reduces severity of illness if child still gets flu',
+        citations: ['cit-flu-child-1']
+      },
+      {
+        id: 'flu-child-ben-3',
+        description: 'Reduces flu-related hospitalizations by approximately 74% in children',
+        citations: ['cit-flu-child-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'flu-child-risk-1',
+        description: 'Soreness at injection site',
+        frequency: 'Common (20-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-flu-child-1']
+      },
+      {
+        id: 'flu-child-risk-2',
+        description: 'Low-grade fever, mild aches',
+        frequency: 'Occasional (5-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-flu-child-1']
+      },
+      {
+        id: 'flu-child-risk-3',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (approximately 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-flu-child-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'flu-child-alt-1',
+        name: 'Nasal Spray Vaccine (FluMist)',
+        description: 'Live attenuated vaccine given as nasal spray for ages 2-49',
+        isEquivalent: true,
+        benefits: [
+          {
+            id: 'flu-child-alt-ben-1',
+            description: 'No injection required',
+            citations: ['cit-flu-child-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'flu-child-alt-risk-1',
+            description: 'Runny nose, congestion',
+            frequency: 'Common (20-40 in 100)',
+            severity: 'mild',
+            citations: ['cit-flu-child-1']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-flu-child-1']
+      }
+    ],
+    whatIfWeWait: 'Flu season typically peaks December-February. Vaccination 2+ weeks before exposure is ideal. Children under 2 are at higher risk for complications.',
+    contraindications: [{
+      id: 'flu-child-contra-1',
+      condition: 'Severe egg allergy (for some formulations)',
+      severity: 'relative',
+      explanation: 'Egg-free formulations available',
+      citations: ['cit-flu-child-1']
+    }],
+    questionsToAsk: [
+      'Is this an egg-free formulation?',
+      'Does my child need one or two doses this year?',
+      'When is the best time to get vaccinated?'
+    ],
+    citations: [citations['cit-flu-child-1'], citations['cit-flu-child-2']],
+    lastReviewed: '2024-01-26',
+    nextReviewDue: '2025-01-26',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-varicella-vaccine',
+    name: 'Varicella (Chickenpox) Vaccine',
+    shortName: 'Chickenpox Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'A vaccine protecting against varicella (chickenpox) virus. Given as 2 doses: first at 12-15 months, second at 4-6 years.',
+    indication: 'Before vaccine, chickenpox caused 4 million cases, 10,500-13,000 hospitalizations, and 100-150 deaths annually in the US.',
+    benefits: [
+      {
+        id: 'varicella-ben-1',
+        description: 'Prevents chickenpox in approximately 90% of children; breakthrough cases are typically very mild',
+        citations: ['cit-varicella-1', 'cit-varicella-2']
+      },
+      {
+        id: 'varicella-ben-2',
+        description: 'Prevents serious complications including bacterial skin infections, pneumonia, and encephalitis',
+        citations: ['cit-varicella-1']
+      },
+      {
+        id: 'varicella-ben-3',
+        description: 'Prevents shingles later in life (caused by reactivation of chickenpox virus)',
+        citations: ['cit-varicella-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'varicella-risk-1',
+        description: 'Soreness or mild rash at injection site',
+        frequency: 'Common (15-20 in 100)',
+        severity: 'mild',
+        citations: ['cit-varicella-1']
+      },
+      {
+        id: 'varicella-risk-2',
+        description: 'Mild fever',
+        frequency: 'Occasional (10-15 in 100)',
+        severity: 'mild',
+        citations: ['cit-varicella-1']
+      },
+      {
+        id: 'varicella-risk-3',
+        description: 'Mild varicella-like rash (typically 2-5 lesions)',
+        frequency: 'Occasional (3-5 in 100)',
+        severity: 'mild',
+        citations: ['cit-varicella-1']
+      },
+      {
+        id: 'varicella-risk-4',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-varicella-1']
+      }
+    ],
+    alternatives: [{
+      id: 'varicella-alt-1',
+      name: 'Natural Immunity from Infection',
+      description: 'Allow child to contract chickenpox naturally',
+      isEquivalent: false,
+      benefits: [{
+        id: 'varicella-alt-ben-1',
+        description: 'Provides lifelong immunity in most cases',
+        citations: ['cit-varicella-2']
+      }],
+      risks: [{
+        id: 'varicella-alt-risk-1',
+        description: 'Risk of severe disease, hospitalization (2-3 per 1,000 cases), encephalitis, or death (1-2 per 100,000 cases)',
+        frequency: '2-3 hospitalizations per 1,000',
+        severity: 'severe',
+        citations: ['cit-varicella-1', 'cit-varicella-2']
+      }],
+      evidenceLevel: 'systematic-review',
+      citations: ['cit-varicella-1']
+    }],
+    whatIfWeWait: 'Chickenpox can be severe in young children and adults. Vaccine is most effective when given on schedule. Can catch up later if delayed.',
+    contraindications: [{
+      id: 'varicella-contra-1',
+      condition: 'Severely weakened immune system',
+      severity: 'absolute',
+      explanation: 'Live virus vaccine',
+      citations: ['cit-varicella-1']
+    }],
+    questionsToAsk: [
+      'Has my child already had chickenpox?',
+      'Can this be given with MMR vaccine?',
+      'What should I watch for after vaccination?'
+    ],
+    citations: [citations['cit-varicella-1'], citations['cit-varicella-2']],
+    lastReviewed: '2024-01-26',
+    nextReviewDue: '2025-01-26',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-tdap-pregnancy',
+    name: 'Tdap Vaccine During Pregnancy',
+    shortName: 'Tdap (Pregnancy)',
+    category: 'vaccination',
+    stage: 'prenatal',
+    urgencyLevel: 'routine',
+    summary: 'Tetanus, diphtheria, and pertussis (whooping cough) vaccine recommended during each pregnancy, ideally at 27-36 weeks gestation, to protect newborn from pertussis.',
+    indication: 'Pertussis is extremely dangerous in newborns, causing hospitalization in over 50% of infected infants under 2 months. Maternal antibodies protect baby until infant vaccination.',
+    benefits: [
+      {
+        id: 'tdap-preg-ben-1',
+        description: 'Reduces infant pertussis risk by 78-91% in first 2 months of life',
+        citations: ['cit-tdap-preg-1', 'cit-tdap-preg-2']
+      },
+      {
+        id: 'tdap-preg-ben-2',
+        description: 'Protects infant during most vulnerable period before first vaccines',
+        citations: ['cit-tdap-preg-1']
+      },
+      {
+        id: 'tdap-preg-ben-3',
+        description: 'Safe during pregnancy with no increased risk of adverse pregnancy outcomes',
+        citations: ['cit-tdap-preg-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'tdap-preg-risk-1',
+        description: 'Injection site soreness',
+        frequency: 'Very common (50-70 in 100)',
+        severity: 'mild',
+        citations: ['cit-tdap-preg-1']
+      },
+      {
+        id: 'tdap-preg-risk-2',
+        description: 'Mild headache, fatigue',
+        frequency: 'Common (20-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-tdap-preg-1']
+      },
+      {
+        id: 'tdap-preg-risk-3',
+        description: 'Low-grade fever',
+        frequency: 'Occasional (5-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-tdap-preg-1']
+      }
+    ],
+    alternatives: [{
+      id: 'tdap-preg-alt-1',
+      name: 'Postpartum Tdap Only',
+      description: 'Mother receives Tdap after delivery instead',
+      isEquivalent: false,
+      benefits: [{
+        id: 'tdap-preg-alt-ben-1',
+        description: 'Mother protected',
+        citations: ['cit-tdap-preg-1']
+      }],
+      risks: [{
+        id: 'tdap-preg-alt-risk-1',
+        description: 'Infant not protected by maternal antibodies; significantly less effective than prenatal vaccination',
+        severity: 'severe',
+        citations: ['cit-tdap-preg-1', 'cit-tdap-preg-2']
+      }],
+      evidenceLevel: 'expert-consensus',
+      citations: ['cit-tdap-preg-1']
+    }],
+    whatIfWeWait: 'Optimal timing is 27-36 weeks gestation to maximize antibody transfer. Can be given earlier in pregnancy if pertussis outbreak. Not time-sensitive if already postpartum.',
+    contraindications: [{
+      id: 'tdap-preg-contra-1',
+      condition: 'Severe allergic reaction to previous dose',
+      severity: 'absolute',
+      explanation: 'History of anaphylaxis',
+      citations: ['cit-tdap-preg-1']
+    }],
+    questionsToAsk: [
+      'When is the best time in my pregnancy to receive Tdap?',
+      'Will anyone else caring for my baby need Tdap?',
+      'Is pertussis common in our area right now?'
+    ],
+    citations: [citations['cit-tdap-preg-1'], citations['cit-tdap-preg-2']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-flu-pregnancy',
+    name: 'Influenza Vaccine During Pregnancy',
+    shortName: 'Flu Shot (Pregnancy)',
+    category: 'vaccination',
+    stage: 'prenatal',
+    urgencyLevel: 'routine',
+    summary: 'Annual flu vaccine recommended during any trimester of pregnancy to protect mother and infant.',
+    indication: 'Pregnant women are at higher risk for severe flu complications, hospitalization, and death. Flu during pregnancy also increases risk of preterm birth and low birth weight.',
+    benefits: [
+      {
+        id: 'flu-preg-ben-1',
+        description: 'Reduces maternal flu illness by 40-60%',
+        citations: ['cit-flu-preg-1', 'cit-flu-preg-2']
+      },
+      {
+        id: 'flu-preg-ben-2',
+        description: 'Reduces infant flu risk by approximately 72% in first 6 months',
+        citations: ['cit-flu-preg-2']
+      },
+      {
+        id: 'flu-preg-ben-3',
+        description: 'Reduces risk of flu-related hospitalization during pregnancy by approximately 40%',
+        citations: ['cit-flu-preg-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'flu-preg-risk-1',
+        description: 'Soreness at injection site',
+        frequency: 'Common (20-40 in 100)',
+        severity: 'mild',
+        citations: ['cit-flu-preg-1']
+      },
+      {
+        id: 'flu-preg-risk-2',
+        description: 'Mild fever, body aches',
+        frequency: 'Occasional (5-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-flu-preg-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Pregnant women with flu are at increased risk for severe outcomes. Vaccination during pregnancy also protects infant. Can be given any trimester.',
+    contraindications: [{
+      id: 'flu-preg-contra-1',
+      condition: 'Severe egg allergy (for some formulations)',
+      severity: 'relative',
+      explanation: 'Egg-free formulations available',
+      citations: ['cit-flu-preg-1']
+    }],
+    questionsToAsk: [
+      'Which flu vaccine formulation is recommended during pregnancy?',
+      'Can I get this at the same time as Tdap?',
+      'When should I get vaccinated if pregnant during flu season?'
+    ],
+    citations: [citations['cit-flu-preg-1'], citations['cit-flu-preg-2']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-water-birth',
+    name: 'Water Birth (Water Immersion for Labor and Delivery)',
+    shortName: 'Water Birth',
+    category: 'other',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Laboring and/or delivering in a tub of warm water. Water immersion during labor is considered evidence-based; underwater delivery is more controversial.',
+    indication: 'Alternative approach to pain management and comfort during labor.',
+    benefits: [
+      {
+        id: 'water-ben-1',
+        description: 'Water immersion during first stage of labor reduces pain and use of epidural/spinal analgesia',
+        citations: ['cit-waterbirth-2']
+      },
+      {
+        id: 'water-ben-2',
+        description: 'May shorten labor duration by approximately 30 minutes',
+        citations: ['cit-waterbirth-2']
+      },
+      {
+        id: 'water-ben-3',
+        description: 'Increases maternal satisfaction and sense of control',
+        citations: ['cit-waterbirth-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'water-risk-1',
+        description: 'Rare reports of newborn respiratory complications with underwater delivery (data limited)',
+        frequency: 'Rare (data insufficient for precise estimate)',
+        severity: 'severe',
+        citations: ['cit-waterbirth-1']
+      },
+      {
+        id: 'water-risk-2',
+        description: 'Difficulty monitoring fetal heart rate and maternal vital signs',
+        severity: 'moderate',
+        citations: ['cit-waterbirth-1']
+      },
+      {
+        id: 'water-risk-3',
+        description: 'Risk of infection if water not properly maintained',
+        frequency: 'Rare with proper protocols',
+        severity: 'moderate',
+        citations: ['cit-waterbirth-1']
+      }
+    ],
+    alternatives: [{
+      id: 'water-alt-1',
+      name: 'Water Immersion During Labor Only (Not Delivery)',
+      description: 'Use water tub during labor but exit before delivery',
+      isEquivalent: false,
+      benefits: [{
+        id: 'water-alt-ben-1',
+        description: 'Provides pain relief benefits with lower risk profile',
+        citations: ['cit-waterbirth-1', 'cit-waterbirth-2']
+      }],
+      risks: [{
+        id: 'water-alt-risk-1',
+        description: 'Must transition out of tub during pushing phase',
+        severity: 'mild',
+        citations: ['cit-waterbirth-1']
+      }],
+      evidenceLevel: 'systematic-review',
+      citations: ['cit-waterbirth-2']
+    }],
+    whatIfWeWait: 'Water immersion can be started at any point during labor. ACOG recommends limiting underwater delivery due to insufficient safety data but supports water immersion during labor.',
+    contraindications: [{
+      id: 'water-contra-1',
+      condition: 'High-risk pregnancy, fever, heavy bleeding, abnormal fetal heart rate',
+      severity: 'absolute',
+      explanation: 'Need for continuous monitoring and rapid intervention',
+      citations: ['cit-waterbirth-1']
+    }],
+    questionsToAsk: [
+      'Does this facility have experience with water birth?',
+      'What are the protocols for water quality and temperature?',
+      'Under what circumstances would I need to leave the tub?',
+      'Can I labor in water but deliver out of water?'
+    ],
+    citations: [citations['cit-waterbirth-1'], citations['cit-waterbirth-2']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-delayed-cord-clamping',
+    name: 'Delayed Umbilical Cord Clamping',
+    shortName: 'Delayed Cord Clamping',
+    category: 'other',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Waiting at least 30-60 seconds (or until cord stops pulsating) before clamping and cutting the umbilical cord after birth. Now considered standard practice.',
+    indication: 'Allows additional blood to transfer from placenta to newborn, improving iron stores and other outcomes.',
+    benefits: [
+      {
+        id: 'delayed-cord-ben-1',
+        description: 'Increases iron stores at 3-6 months by approximately 50%, reducing anemia risk',
+        citations: ['cit-delayedcord-1', 'cit-delayedcord-2']
+      },
+      {
+        id: 'delayed-cord-ben-2',
+        description: 'Improves hemoglobin levels at birth',
+        citations: ['cit-delayedcord-2']
+      },
+      {
+        id: 'delayed-cord-ben-3',
+        description: 'May improve neurodevelopmental outcomes, particularly in males',
+        citations: ['cit-delayedcord-2']
+      },
+      {
+        id: 'delayed-cord-ben-4',
+        description: 'Reduces need for blood transfusion in preterm infants',
+        citations: ['cit-delayedcord-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'delayed-cord-risk-1',
+        description: 'Small increase in jaundice requiring phototherapy',
+        frequency: 'Slight increase (approximately 2% absolute risk increase)',
+        severity: 'mild',
+        citations: ['cit-delayedcord-2']
+      },
+      {
+        id: 'delayed-cord-risk-2',
+        description: 'Brief delay in initial newborn care (typically 30-60 seconds)',
+        severity: 'mild',
+        citations: ['cit-delayedcord-1']
+      }
+    ],
+    alternatives: [{
+      id: 'delayed-cord-alt-1',
+      name: 'Immediate Cord Clamping',
+      description: 'Clamping cord within 10-15 seconds of birth',
+      isEquivalent: false,
+      benefits: [{
+        id: 'delayed-cord-alt-ben-1',
+        description: 'Slightly lower jaundice rates',
+        citations: ['cit-delayedcord-2']
+      }],
+      risks: [{
+        id: 'delayed-cord-alt-risk-1',
+        description: 'Lower iron stores at 3-6 months, higher anemia risk',
+        severity: 'moderate',
+        citations: ['cit-delayedcord-2']
+      }],
+      evidenceLevel: 'systematic-review',
+      citations: ['cit-delayedcord-2']
+    }],
+    whatIfWeWait: 'Delayed cord clamping IS the recommended standard. Immediate clamping is now considered the alternative approach. Should be performed immediately after birth (30-60 second delay).',
+    contraindications: [{
+      id: 'delayed-cord-contra-1',
+      condition: 'Newborn requires immediate resuscitation',
+      severity: 'absolute',
+      explanation: 'Resuscitation takes priority',
+      citations: ['cit-delayedcord-1']
+    }],
+    questionsToAsk: [
+      'What is your standard protocol for cord clamping timing?',
+      'Can I still have delayed cord clamping if I want cord blood banking?',
+      'What if my baby needs immediate care?',
+      'Who will cut the cord and when?'
+    ],
+    citations: [citations['cit-delayedcord-1'], citations['cit-delayedcord-2']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-acupuncture-labor',
+    name: 'Acupuncture for Labor Pain Management',
+    shortName: 'Acupuncture',
+    category: 'other',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Use of acupuncture needles at specific points to help manage pain during labor. Requires trained practitioner.',
+    indication: 'Complementary therapy for pain management during labor without pharmacological intervention.',
+    benefits: [
+      {
+        id: 'acupuncture-ben-1',
+        description: 'May reduce pain intensity during labor',
+        citations: ['cit-acupuncture-1']
+      },
+      {
+        id: 'acupuncture-ben-2',
+        description: 'May reduce use of pharmacological pain relief',
+        citations: ['cit-acupuncture-1']
+      },
+      {
+        id: 'acupuncture-ben-3',
+        description: 'No known harm to mother or baby when performed by trained practitioner',
+        citations: ['cit-acupuncture-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'acupuncture-risk-1',
+        description: 'Minor discomfort from needle insertion',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-acupuncture-1']
+      },
+      {
+        id: 'acupuncture-risk-2',
+        description: 'Limited evidence; effectiveness varies between individuals',
+        severity: 'mild',
+        citations: ['cit-acupuncture-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Can be initiated at any point during labor if trained practitioner available. Effectiveness depends on individual response.',
+    contraindications: [],
+    questionsToAsk: [
+      'Is there a trained acupuncturist available at this facility?',
+      'What is the cost and is it covered by insurance?',
+      'Can acupuncture be combined with other pain management methods?'
+    ],
+    citations: [citations['cit-acupuncture-1']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-hypnobirthing',
+    name: 'Hypnosis/Hypnobirthing for Labor',
+    shortName: 'Hypnobirthing',
+    category: 'other',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Self-hypnosis techniques including relaxation, visualization, and breathing exercises to manage labor pain. Requires prenatal training.',
+    indication: 'Complementary approach to pain management emphasizing relaxation and mental preparation.',
+    benefits: [
+      {
+        id: 'hypno-ben-1',
+        description: 'May reduce pharmacological pain relief use',
+        citations: ['cit-hypnobirth-1']
+      },
+      {
+        id: 'hypno-ben-2',
+        description: 'May increase satisfaction with pain management',
+        citations: ['cit-hypnobirth-1']
+      },
+      {
+        id: 'hypno-ben-3',
+        description: 'No adverse effects when used alone or with other methods',
+        citations: ['cit-hypnobirth-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'hypno-risk-1',
+        description: 'Limited evidence of pain reduction; effectiveness varies greatly between individuals',
+        severity: 'mild',
+        citations: ['cit-hypnobirth-1']
+      },
+      {
+        id: 'hypno-risk-2',
+        description: 'Requires advance training and practice',
+        severity: 'mild',
+        citations: ['cit-hypnobirth-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Most effective when learned and practiced before labor. Can be combined with other pain management approaches.',
+    contraindications: [],
+    questionsToAsk: [
+      'Are there hypnobirthing classes available in my area?',
+      'How much practice time is typically needed?',
+      'Can I use hypnobirthing techniques along with medical pain relief if needed?'
+    ],
+    citations: [citations['cit-hypnobirth-1']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-massage-labor',
+    name: 'Massage and Touch for Labor Pain',
+    shortName: 'Labor Massage',
+    category: 'other',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Use of massage, counterpressure, and touch techniques during labor to provide comfort and pain relief.',
+    indication: 'Non-pharmacological comfort measure during labor.',
+    benefits: [
+      {
+        id: 'massage-ben-1',
+        description: 'May reduce pain and anxiety during labor',
+        citations: ['cit-massage-1']
+      },
+      {
+        id: 'massage-ben-2',
+        description: 'May reduce need for pharmacological pain relief',
+        citations: ['cit-massage-1']
+      },
+      {
+        id: 'massage-ben-3',
+        description: 'Provides supportive touch and partner involvement',
+        citations: ['cit-massage-1']
+      },
+      {
+        id: 'massage-ben-4',
+        description: 'No known risks or adverse effects',
+        citations: ['cit-massage-1']
+      }
+    ],
+    risks: [],
+    alternatives: [],
+    whatIfWeWait: 'Can be used at any point during labor. Can be combined with any other pain management method.',
+    contraindications: [],
+    questionsToAsk: [
+      'Are there specific massage techniques that are most helpful?',
+      'Can my support person learn these techniques?',
+      'Will staff help with positioning and counterpressure?'
+    ],
+    citations: [citations['cit-massage-1']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-aromatherapy-labor',
+    name: 'Aromatherapy During Labor',
+    shortName: 'Aromatherapy',
+    category: 'other',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Use of essential oils (typically lavender, chamomile, or peppermint) for relaxation and comfort during labor.',
+    indication: 'Complementary comfort measure during labor.',
+    benefits: [
+      {
+        id: 'aroma-ben-1',
+        description: 'May reduce anxiety during labor',
+        citations: ['cit-aromatherapy-1']
+      },
+      {
+        id: 'aroma-ben-2',
+        description: 'May improve relaxation and sense of well-being',
+        citations: ['cit-aromatherapy-1']
+      },
+      {
+        id: 'aroma-ben-3',
+        description: 'No serious adverse effects reported when used appropriately',
+        citations: ['cit-aromatherapy-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'aroma-risk-1',
+        description: 'Limited evidence for pain reduction specifically',
+        severity: 'mild',
+        citations: ['cit-aromatherapy-1']
+      },
+      {
+        id: 'aroma-risk-2',
+        description: 'Possible allergic reaction or skin irritation',
+        frequency: 'Rare',
+        severity: 'mild',
+        citations: ['cit-aromatherapy-1']
+      },
+      {
+        id: 'aroma-risk-3',
+        description: 'Strong scents may cause nausea in some women',
+        frequency: 'Occasional',
+        severity: 'mild',
+        citations: ['cit-aromatherapy-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Can be used at any point during labor. Check facility policies on essential oil use.',
+    contraindications: [],
+    questionsToAsk: [
+      'Does the facility allow essential oils during labor?',
+      'Which essential oils are considered safe during labor?',
+      'Should oils be diffused or applied topically (diluted)?'
+    ],
+    citations: [citations['cit-aromatherapy-1']],
+    lastReviewed: '2024-01-27',
+    nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
   }
 ]
