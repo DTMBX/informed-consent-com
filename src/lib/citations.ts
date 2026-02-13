@@ -28,14 +28,16 @@ export const citations: Record<string, EvidenceCitation> = {
     evidenceLevel: 'expert-consensus'
   },
   'cit-hepb-2': {
-    title: 'Preventio
-    source: 'WHO',
-    source: 'Obstetrics & Gyne
-    source: 'WHO',
+    id: 'cit-hepb-2',
+    title: 'Prevention of Perinatal Hepatitis B Transmission',
+    authors: 'WHO',
+    source: 'WHO Guidelines',
     date: '2018-01',
+    url: 'https://who.int',
+    evidenceLevel: 'expert-consensus'
   },
-  'c
-  'cit-varicella-1': {h-2',
+  'cit-hepa-1': {
+    id: 'cit-hepa-1',
     title: 'Hepatitis A Vaccination: ACIP Recommendations',
     authors: 'CDC Advisory Committee on Immunization Practices',
     source: 'MMWR',
