@@ -1,10 +1,10 @@
-import { ArrowRight, BookOpen, Heart, ShieldCheck, Users, ClipboardText, Lightbulb } from '@phosphor-icons/react'
+import { ArrowRight, BookOpen, Heart, ShieldCheck, Users, ClipboardText, Lightbulb, Globe } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
 interface HomepageProps {
-  onNavigate: (view: 'library' | 'reflection' | 'birth-plan' | 'settings') => void
+  onNavigate: (view: 'library' | 'reflection' | 'birth-plan' | 'settings' | 'vaccine-schedule') => void
   savedProceduresCount: number
   hasReflectionNotes: boolean
   hasBirthPlan: boolean
@@ -37,7 +37,7 @@ export function Homepage({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <Card 
             className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer group border-2 hover:border-primary/20"
             onClick={() => onNavigate('library')}
@@ -106,6 +106,28 @@ export function Homepage({
                     Plan created
                   </Badge>
                 )}
+              </div>
+            </div>
+          </Card>
+
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer group border-2 hover:border-evidence/30"
+            onClick={() => onNavigate('vaccine-schedule')}
+          >
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-evidence/10 rounded-lg group-hover:bg-evidence/20 transition-colors">
+                <Globe className="text-evidence-foreground" size={24} weight="duotone" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-evidence-foreground transition-colors">
+                  Vaccine Schedules
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                  Compare international childhood vaccine schedules
+                </p>
+                <Badge variant="outline" className="text-xs">
+                  12 countries
+                </Badge>
               </div>
             </div>
           </Card>

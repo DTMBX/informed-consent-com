@@ -1,4 +1,4 @@
-import { House, List, NotePencil, Gear, BookOpen, FileText, CaretLeft, CaretRight } from '@phosphor-icons/react'
+import { House, List, NotePencil, Gear, BookOpen, FileText, CaretLeft, CaretRight, Globe } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 
 interface DesktopSidebarProps {
   currentView: string
-  onNavigate: (view: 'home' | 'library' | 'reflection' | 'settings' | 'birth-plan') => void
+  onNavigate: (view: 'home' | 'library' | 'reflection' | 'settings' | 'birth-plan' | 'vaccine-schedule') => void
   isCollapsed: boolean
   onToggleCollapse: () => void
 }
@@ -18,6 +18,7 @@ export function DesktopSidebar({ currentView, onNavigate, isCollapsed, onToggleC
   const navItems = [
     { id: 'home' as const, icon: House, label: 'Home', description: 'Welcome & overview' },
     { id: 'library' as const, icon: List, label: 'Library', description: 'All procedures' },
+    { id: 'vaccine-schedule' as const, icon: Globe, label: 'Vaccine Schedules', description: 'International comparison' },
     { id: 'reflection' as const, icon: NotePencil, label: 'Notes', description: 'Reflections & decisions' },
     { id: 'birth-plan' as const, icon: BookOpen, label: 'Birth Plan', description: 'Create & manage' },
     { id: 'settings' as const, icon: Gear, label: 'Settings', description: 'Preferences & sharing', badge: unreadCount }

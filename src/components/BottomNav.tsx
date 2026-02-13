@@ -1,10 +1,10 @@
-import { House, List, NotePencil, Gear } from '@phosphor-icons/react'
+import { House, List, NotePencil, Gear, Globe } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import { useUnreadComments } from '@/hooks/use-unread-comments'
 
 interface BottomNavProps {
   currentView: string
-  onNavigate: (view: 'home' | 'library' | 'reflection' | 'settings' | 'birth-plan') => void
+  onNavigate: (view: 'home' | 'library' | 'reflection' | 'settings' | 'birth-plan' | 'vaccine-schedule') => void
 }
 
 export function BottomNav({ currentView, onNavigate }: BottomNavProps) {
@@ -13,6 +13,7 @@ export function BottomNav({ currentView, onNavigate }: BottomNavProps) {
   const navItems = [
     { id: 'home' as const, icon: House, label: 'Home' },
     { id: 'library' as const, icon: List, label: 'Library' },
+    { id: 'vaccine-schedule' as const, icon: Globe, label: 'Vaccines' },
     { id: 'reflection' as const, icon: NotePencil, label: 'Notes' },
     { id: 'settings' as const, icon: Gear, label: 'Settings', badge: unreadCount }
   ]

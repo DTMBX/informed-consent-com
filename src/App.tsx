@@ -14,9 +14,10 @@ import { BottomNav } from '@/components/BottomNav'
 import { DesktopSidebar } from '@/components/DesktopSidebar'
 import { Header } from '@/components/Header'
 import { SharedBirthPlanView } from '@/components/SharedBirthPlanView'
+import { ComprehensiveVaccineSchedule } from '@/components/ComprehensiveVaccineSchedule'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'home' | 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'birth-plan' | 'settings'
+type View = 'home' | 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'birth-plan' | 'settings' | 'vaccine-schedule'
 
 function App() {
   const [preferences, setPreferences] = useKV<UserPreferences>('user-preferences', {
@@ -222,6 +223,10 @@ function App() {
               onBirthPlan={() => navigateToView('birth-plan')}
               parentName="Parent"
             />
+          )}
+
+          {currentView === 'vaccine-schedule' && (
+            <ComprehensiveVaccineSchedule />
           )}
         </main>
 
