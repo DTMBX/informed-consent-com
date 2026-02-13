@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { UserPreferences, Stage } from '@/lib/types'
 import { Onboarding } from '@/components/Onboarding'
@@ -11,6 +11,7 @@ import { BirthPlanGenerator } from '@/components/BirthPlanGenerator'
 import { Settings } from '@/components/Settings'
 import { BottomNav } from '@/components/BottomNav'
 import { Header } from '@/components/Header'
+import { SharedBirthPlanView } from '@/components/SharedBirthPlanView'
 import { Toaster } from '@/components/ui/sonner'
 
 type View = 'library' | 'procedure-detail' | 'compare' | 'reflection' | 'export' | 'birth-plan' | 'settings'
@@ -26,12 +27,30 @@ function App() {
   const [currentView, setCurrentView] = useState<View>('library')
   const [selectedProcedureId, setSelectedProcedureId] = useState<string | null>(null)
   const [compareIds, setCompareIds] = useState<string[]>([])
+  const [sharedBirthPlanId, setSharedBirthPlanId] = useState<string | null>(null)
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const shareId = urlParams.get('share')
+    if (shareId) {
+      setSharedBirthPlanId(shareId)
+    }
+  }, [])
 
   const prefs = preferences || {
     language: 'en' as const,
     stage: 'postpartum' as Stage,
     savedProcedures: [],
     completedOnboarding: false
+  }
+
+  if (sharedBirthPlanId) {
+    return (
+      <>
+        <SharedBirthPlanView shareId={sharedBirthPlanId} />
+        <Toaster />
+      </>
+    )
   }
 
   const handleOnboardingComplete = (stage: Stage) => {

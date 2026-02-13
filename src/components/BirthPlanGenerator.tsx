@@ -11,9 +11,10 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
-import { Download, Printer, X, Baby, FirstAid, Heartbeat, Clipboard, Sparkle } from '@phosphor-icons/react'
+import { Download, Printer, X, Baby, FirstAid, Heartbeat, Clipboard, Sparkle, ShareNetwork } from '@phosphor-icons/react'
 import { DISCLAIMER_TEXT, formatDate } from '@/lib/constants'
 import { toast } from 'sonner'
+import { BirthPlanShare } from '@/components/BirthPlanShare'
 
 interface BirthPlanGeneratorProps {
   savedProcedures: string[]
@@ -149,6 +150,7 @@ export function BirthPlanGenerator({ savedProcedures, currentStage, onClose }: B
   type Section = 'template' | 'basic' | 'labor' | 'delivery' | 'newborn' | 'postpartum' | 'preview'
   const [currentSection, setCurrentSection] = useState<Section>('template')
   const [selectedTemplate, setSelectedTemplate] = useState<BirthPlanTemplate | null>(null)
+  const [shareDialogOpen, setShareDialogOpen] = useState(false)
 
   const plan = birthPlan || {
     parentName: '',
@@ -993,6 +995,7 @@ Provider Signature: ____________________  Date: __________
                   <li>Discuss this plan with your healthcare provider before labor</li>
                   <li>Bring copies to the hospital for your medical team</li>
                   <li>All decisions are based on evidence-based information you've reviewed</li>
+                  <li>Share this plan with your partner and support persons so everyone is aligned</li>
                 </ul>
               </CardContent>
             </Card>
@@ -1014,6 +1017,15 @@ Provider Signature: ____________________  Date: __________
                 Print Birth Plan
               </Button>
             </div>
+
+            <Button
+              onClick={() => setShareDialogOpen(true)}
+              variant="secondary"
+              className="w-full gap-2"
+            >
+              <ShareNetwork className="h-4 w-4" />
+              Share with Partner or Support Person
+            </Button>
           </div>
         )}
 
@@ -1046,6 +1058,13 @@ Provider Signature: ____________________  Date: __________
           </div>
         )}
       </div>
+
+      <BirthPlanShare
+        open={shareDialogOpen}
+        onOpenChange={setShareDialogOpen}
+        birthPlanData={generateBirthPlanDocument()}
+        parentName={plan.parentName || 'Parent'}
+      />
     </div>
   )
 }

@@ -48,11 +48,18 @@ This application requires sophisticated information architecture, role-based acc
 - **Success criteria**: Export includes all cited sources, timestamps, disclaimer text, and "I made this decision voluntarily" statement; generates in <3 seconds
 
 ### Birth Plan Generator
-- **Functionality**: Comprehensive birth plan creation tool that references reviewed procedures and documents preferences for labor, delivery, newborn care, and postpartum
-- **Purpose**: Creates a professional, evidence-based birth plan that healthcare providers can review and that documents informed decisions
+- **Functionality**: Comprehensive birth plan creation tool that references reviewed procedures and documents preferences for labor, delivery, newborn care, and postpartum. Includes template options (natural, medicated, cesarean) for quick start and secure sharing via unique links.
+- **Purpose**: Creates a professional, evidence-based birth plan that healthcare providers can review and that documents informed decisions. Enables collaboration with partners and support persons through secure sharing.
 - **Trigger**: User clicks "Create Birth Plan" from Settings or Reflection page
-- **Progression**: Complete basic info → Set labor preferences → Set delivery preferences → Document procedure decisions → Set postpartum preferences → Preview → Export/Print
-- **Success criteria**: Birth plan includes all procedure decisions with evidence references, generates printable formatted document, includes disclaimer and signature sections, allows for detailed notes and preferences across all birth stages
+- **Progression**: Select template → Complete basic info → Set labor preferences → Set delivery preferences → Document procedure decisions → Set postpartum preferences → Preview → Export/Print/Share
+- **Success criteria**: Birth plan includes all procedure decisions with evidence references, generates printable formatted document, includes disclaimer and signature sections, allows for detailed notes and preferences across all birth stages. Share links are valid for 90 days, require no login to view, and can be sent to multiple recipients.
+
+### Birth Plan Sharing
+- **Functionality**: Generate secure, unique links to share completed birth plans with partners, doulas, family members, or support persons. Recipients can view, download, and print the birth plan without needing an account.
+- **Purpose**: Facilitates collaboration and ensures support persons are informed about birth preferences and evidence-based decisions
+- **Trigger**: User clicks "Share with Partner or Support Person" from birth plan preview
+- **Progression**: Enter recipient name (optional) → Add personal message (optional) → Generate link → Copy link or share via email → Recipient views plan via unique URL
+- **Success criteria**: Links expire after 90 days, display creation date and expiry warning, show personal message if provided, allow recipient to download/print birth plan, require no authentication, support multiple simultaneous share links
 
 ### Evidence Citations & Sources
 - **Functionality**: Every claim linked to reputable guideline or peer-reviewed source; full bibliography with links, publication dates, and evidence levels (Systematic Review / RCT / Expert Consensus / etc.)
