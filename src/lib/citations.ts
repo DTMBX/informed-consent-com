@@ -32,19 +32,26 @@ export const citations: Record<string, EvidenceCitation> = {
     title: 'Prevention of Perinatal Hepatitis B Transmission',
     authors: 'WHO',
     source: 'WHO Guidelines',
-    id: 'cit-hepa-1'
+    date: '2021-06',
     url: 'https://who.int',
     evidenceLevel: 'expert-consensus'
-    
+  },
   'cit-hepa-1': {
     id: 'cit-hepa-1',
     title: 'Hepatitis A Vaccine Safety and Effectiveness',
+    authors: 'WHO',
     source: 'Vaccine',
-    evidenceLevel: 
+    date: '2020-06',
+    evidenceLevel: 'systematic-review'
+  },
   'cit-menacwy-1': {
-    title: 'Meningococcal A
+    id: 'cit-menacwy-1',
+    title: 'Meningococcal ACWY Vaccine Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
     source: 'MMWR',
-    
+    date: '2020-02',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
   },
   'cit-menacwy-2': {
     id: 'cit-menacwy-2',
