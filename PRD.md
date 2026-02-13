@@ -1,6 +1,6 @@
-# Informed Consent Companion
+# Respectful Maternity & Newborn Care Platform
 
-A cross-platform educational tool that delivers balanced, evidence-based, non-coercive information about newborn and maternal medical procedures, helping families understand benefits, risks, uncertainties, and reasonable alternatives before making decisions.
+A comprehensive educational platform that delivers balanced, evidence-based, non-coercive information about maternal and newborn care decisions, promoting informed consent through transparent disclosure of benefits, risks, alternatives, and uncertainties while maintaining strict medical accuracy, neutrality, and source transparency.
 
 **Experience Qualities**:
 1. **Trustworthy** - Every claim is cited, every statistic sourced, and every update logged with transparent review dates
@@ -13,11 +13,20 @@ This application requires sophisticated information architecture, role-based acc
 ## Essential Features
 
 ### Procedure Library
-- **Functionality**: Searchable, filterable catalog of 25+ common newborn and maternal procedures including vaccinations (Hepatitis B, DTaP, MMR, Rotavirus, Pneumococcal, Influenza, Varicella, RSV immunization), maternal vaccines (Tdap and Flu during pregnancy), vitamin K, hearing screen, C-section care, delayed cord clamping, water birth, and evidence-based complementary therapies (acupuncture, hypnobirthing, massage, aromatherapy), with standardized fact sheets featuring comprehensive adverse reaction data
-- **Purpose**: Provides centralized, balanced education on medical interventions and alternative approaches offered during pregnancy, birth, and postpartum, with detailed risk/benefit information and evidence levels
-- **Trigger**: User selects stage (prenatal/labor/postpartum), searches by name, or filters by urgency/category
+- **Functionality**: Searchable, filterable catalog of 50+ maternal and newborn procedures, interventions, and therapies including:
+  - **Birth Practices**: Breastfeeding (maternal and infant outcomes), immediate skin-to-skin contact (minimum 1 hour), rooming-in, physiologic birth practices, birth positions (upright, side-lying, hands-and-knees, squatting)
+  - **Delivery Methods**: Cesarean section (emergent and elective indications, absolute and relative risks vs vaginal birth, recovery implications, VBAC evidence), vaginal birth options
+  - **Labor Support**: Continuous labor support evidence (doula care, midwife models), structured birth position overviews with evidence summaries
+  - **Newborn Vaccines**: Hepatitis B (birth dose), RSV immunization, DTaP, MMR, Rotavirus, Pneumococcal, Influenza, Varicella, Hepatitis A, Meningococcal (ACWY and B), HPV - each with benefits, known risks with frequency data, contraindications, and citations to CDC/FDA/ACIP guidance; clearly separated reported events from confirmed risks
+  - **Maternal Vaccines**: Tdap during pregnancy, Flu shot during pregnancy
+  - **Newborn Procedures**: Vitamin K, hearing screen, eye prophylaxis, glucose screening, circumcision, jaundice phototherapy
+  - **Labor Interventions**: GBS antibiotics, delayed cord clamping, water birth
+  - **Postpartum Therapies**: Herbal remedies with safety cautions (strength of evidence clearly labeled), probiotics (maternal and infant gut health evidence), vitamin D supplementation (maternal and infant guidance)
+  - **Complementary Therapies**: Acupuncture, hypnobirthing, massage, aromatherapy (evidence-based with clear labels on evidence quality)
+- **Purpose**: Provides comprehensive, balanced education on all major maternal and newborn care decisions with standardized Benefits/Risks/Alternatives/Evidence Level presentation and source transparency
+- **Trigger**: User selects stage (prenatal/labor/postpartum), searches by name, or filters by urgency/category/intervention type/evidence level
 - **Progression**: Browse categories → View procedure cards with summary → Click to full detail → Save for offline
-- **Success criteria**: All procedures display concise summaries, last-reviewed dates, urgency level, and citation count; filtering returns relevant results in <500ms; vaccine adverse reactions include frequency data in standardized format; alternative/complementary therapies clearly labeled with evidence quality
+- **Success criteria**: All procedures display Benefits/Risks/Alternatives with absolute risk numbers when available; plain-language summaries; last-reviewed dates; full citations; vaccine pages include comprehensive adverse reaction data with frequency; postpartum therapy pages clearly label strength of evidence and safety considerations; cesarean content explains indications without blanket discouragement, emphasizes safety-first context
 
 ### Procedure Detail Pages
 - **Functionality**: Four-quadrant layout showing Benefits, Risks (with frequency/severity), Alternatives, and "What if we wait?" sections; includes absolute risk numbers, visual risk charts, evidence citations, and contraindications

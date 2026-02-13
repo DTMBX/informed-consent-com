@@ -38,7 +38,7 @@ export function Header({ currentView, onBack, onSettingsClick }: HeaderProps) {
               </Button>
             )}
             <h1 className="text-xl md:text-2xl font-semibold text-foreground">
-              {viewTitles[currentView] || 'Informed Consent Companion'}
+              {viewTitles[currentView] || 'Respectful Maternity & Newborn Care'}
             </h1>
           </div>
 

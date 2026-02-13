@@ -6,7 +6,7 @@ export type Stage = 'prenatal' | 'labor' | 'postpartum' | 'all'
 
 export type UserRole = 'parent' | 'clinician' | 'clinical-reviewer' | 'admin'
 
-export type Category = 'vaccination' | 'screening' | 'surgical' | 'medication' | 'monitoring' | 'other'
+export type Category = 'vaccination' | 'screening' | 'surgical' | 'medication' | 'monitoring' | 'birth-practice' | 'labor-support' | 'postpartum-therapy' | 'complementary' | 'other'
 
 export interface EvidenceCitation {
   id: string

@@ -56,6 +56,10 @@ export const categoryConfig: Record<Category, { label: string; icon: string }> =
   'surgical': { label: 'Surgical Procedure', icon: 'FirstAid' },
   'medication': { label: 'Medication', icon: 'Pill' },
   'monitoring': { label: 'Care & Monitoring', icon: 'Heartbeat' },
+  'birth-practice': { label: 'Birth Practice', icon: 'Baby' },
+  'labor-support': { label: 'Labor Support', icon: 'Users' },
+  'postpartum-therapy': { label: 'Postpartum Therapy', icon: 'Leaf' },
+  'complementary': { label: 'Complementary Therapy', icon: 'Flower' },
   'other': { label: 'Other', icon: 'Dot' }
 }
 

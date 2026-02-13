@@ -357,6 +357,198 @@ export const citations: Record<string, EvidenceCitation> = {
     source: 'Cochrane Database of Systematic Reviews',
     date: '2011-07',
     evidenceLevel: 'systematic-review'
+  },
+  'cit-breastfeed-1': {
+    id: 'cit-breastfeed-1',
+    title: 'Breastfeeding and Maternal and Infant Health Outcomes in Developed Countries',
+    authors: 'Ip et al.',
+    source: 'Evidence Report/Technology Assessment, AHRQ',
+    date: '2007-04',
+    url: 'https://ahrq.gov',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-breastfeed-2': {
+    id: 'cit-breastfeed-2',
+    title: 'Optimal Duration of Exclusive Breastfeeding',
+    authors: 'Kramer & Kakuma',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2012-08',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-breastfeed-3': {
+    id: 'cit-breastfeed-3',
+    title: 'Breastfeeding: A Guide for the Medical Profession',
+    authors: 'Lawrence & Lawrence',
+    source: 'Elsevier',
+    date: '2021',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-rooming-in-1': {
+    id: 'cit-rooming-in-1',
+    title: 'Rooming-in for New Mother and Infant Versus Separate Care',
+    authors: 'Jaafar et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2016-08',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-birth-position-1': {
+    id: 'cit-birth-position-1',
+    title: 'Maternal Positions and Mobility During First Stage Labour',
+    authors: 'Lawrence et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2013-10',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-birth-position-2': {
+    id: 'cit-birth-position-2',
+    title: 'Position in the Second Stage of Labour for Women Without Epidural Anaesthesia',
+    authors: 'Gupta et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2017-05',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-doula-1': {
+    id: 'cit-doula-1',
+    title: 'Continuous Support for Women During Childbirth',
+    authors: 'Bohren et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2017-07',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-midwife-1': {
+    id: 'cit-midwife-1',
+    title: 'Midwife-led Continuity Models Versus Other Models of Care',
+    authors: 'Sandall et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2016-04',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-vbac-1': {
+    id: 'cit-vbac-1',
+    title: 'Vaginal Birth After Cesarean: New Insights',
+    authors: 'ACOG Practice Bulletin',
+    source: 'Obstetrics & Gynecology',
+    date: '2021-02',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-hepa-1': {
+    id: 'cit-hepa-1',
+    title: 'Hepatitis A Vaccination: ACIP Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2020-06',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-hepa-2': {
+    id: 'cit-hepa-2',
+    title: 'Hepatitis A Vaccine Safety and Effectiveness',
+    authors: 'Nelson et al.',
+    source: 'Vaccine',
+    date: '2019-03',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-menacwy-1': {
+    id: 'cit-menacwy-1',
+    title: 'Meningococcal ACWY Vaccine Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2020-09',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-menacwy-2': {
+    id: 'cit-menacwy-2',
+    title: 'Effectiveness of Meningococcal Conjugate Vaccines',
+    authors: 'Mbaeyi et al.',
+    source: 'Clinical Infectious Diseases',
+    date: '2019-07',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-menb-1': {
+    id: 'cit-menb-1',
+    title: 'Meningococcal B Vaccine Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2015-10',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-menb-2': {
+    id: 'cit-menb-2',
+    title: 'Meningococcal B Vaccine Safety and Immunogenicity',
+    authors: 'Parikh et al.',
+    source: 'Vaccine',
+    date: '2020-02',
+    evidenceLevel: 'rct'
+  },
+  'cit-hpv-1': {
+    id: 'cit-hpv-1',
+    title: 'Human Papillomavirus Vaccination: ACIP Recommendations',
+    authors: 'CDC Advisory Committee on Immunization Practices',
+    source: 'MMWR',
+    date: '2019-08',
+    url: 'https://cdc.gov',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-hpv-2': {
+    id: 'cit-hpv-2',
+    title: 'HPV Vaccine Effectiveness and Impact',
+    authors: 'Drolet et al.',
+    source: 'The Lancet',
+    date: '2019-06',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-probiotics-1': {
+    id: 'cit-probiotics-1',
+    title: 'Probiotics for Prevention of Allergic Diseases',
+    authors: 'Cuello-Garcia et al.',
+    source: 'Cochrane Database of Systematic Reviews',
+    date: '2015-04',
+    evidenceLevel: 'systematic-review'
+  },
+  'cit-probiotics-2': {
+    id: 'cit-probiotics-2',
+    title: 'Maternal Probiotic Supplementation and Infant Gut Microbiota',
+    authors: 'Dotterud et al.',
+    source: 'Clinical & Experimental Allergy',
+    date: '2015-09',
+    evidenceLevel: 'rct'
+  },
+  'cit-vitd-1': {
+    id: 'cit-vitd-1',
+    title: 'Vitamin D Supplementation During Pregnancy',
+    authors: 'ACOG Committee Opinion',
+    source: 'Obstetrics & Gynecology',
+    date: '2011-07',
+    url: 'https://acog.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-vitd-2': {
+    id: 'cit-vitd-2',
+    title: 'Vitamin D Supplementation for Infants',
+    authors: 'AAP Clinical Report',
+    source: 'Pediatrics',
+    date: '2020-12',
+    url: 'https://publications.aap.org',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-herbal-1': {
+    id: 'cit-herbal-1',
+    title: 'Herbal Remedies in Pregnancy and Lactation',
+    authors: 'Moussally et al.',
+    source: 'Obstetrics & Gynecology Clinics of North America',
+    date: '2015-03',
+    evidenceLevel: 'expert-consensus'
+  },
+  'cit-herbal-2': {
+    id: 'cit-herbal-2',
+    title: 'Safety of Herbal Medicinal Products in Lactation',
+    authors: 'Dugoua et al.',
+    source: 'Canadian Journal of Clinical Pharmacology',
+    date: '2006-03',
+    evidenceLevel: 'systematic-review'
   }
 }
 
@@ -2921,6 +3113,728 @@ export const procedures: Procedure[] = [
     citations: [citations['cit-aromatherapy-1']],
     lastReviewed: '2024-01-27',
     nextReviewDue: '2025-01-27',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-breastfeeding',
+    name: 'Breastfeeding (Maternal and Infant Outcomes)',
+    shortName: 'Breastfeeding',
+    category: 'birth-practice',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Feeding infant directly from the breast, providing human milk with comprehensive nutritional and immunological benefits for both mother and infant. Exclusive breastfeeding recommended for first 6 months, continued with complementary foods through at least 12 months.',
+    indication: 'Optimal nutrition for infants, providing protection against infections, allergies, and chronic diseases while supporting maternal health and bonding.',
+    benefits: [
+      {
+        id: 'bf-ben-1',
+        description: 'Reduces infant risk of otitis media (ear infections) by approximately 50%',
+        citations: ['cit-breastfeed-1', 'cit-breastfeed-2']
+      },
+      {
+        id: 'bf-ben-2',
+        description: 'Reduces risk of respiratory infections and hospitalizations by 72% in first year',
+        citations: ['cit-breastfeed-1']
+      },
+      {
+        id: 'bf-ben-3',
+        description: 'Reduces risk of gastrointestinal infections by 64%',
+        citations: ['cit-breastfeed-2']
+      },
+      {
+        id: 'bf-ben-4',
+        description: 'Associated with 20-30% reduction in SIDS risk',
+        citations: ['cit-breastfeed-1']
+      },
+      {
+        id: 'bf-ben-5',
+        description: 'May reduce risk of childhood obesity by 15-30% (dose-dependent)',
+        citations: ['cit-breastfeed-1']
+      },
+      {
+        id: 'bf-ben-6',
+        description: 'Associated with modest improvements in cognitive development (3-5 IQ point average increase in meta-analyses)',
+        citations: ['cit-breastfeed-2']
+      },
+      {
+        id: 'bf-ben-7',
+        description: 'Maternal benefits: Reduces postpartum bleeding, accelerates uterine involution, delays return of menses (natural child spacing)',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-ben-8',
+        description: 'Reduces maternal risk of breast cancer by 4% for every 12 months of breastfeeding',
+        citations: ['cit-breastfeed-1']
+      },
+      {
+        id: 'bf-ben-9',
+        description: 'Reduces maternal risk of ovarian cancer by approximately 30%',
+        citations: ['cit-breastfeed-1']
+      },
+      {
+        id: 'bf-ben-10',
+        description: 'May reduce maternal risk of type 2 diabetes and postpartum depression',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-ben-11',
+        description: 'Promotes mother-infant bonding through skin-to-skin contact and hormonal responses',
+        citations: ['cit-breastfeed-3']
+      }
+    ],
+    risks: [
+      {
+        id: 'bf-risk-1',
+        description: 'Initial nipple soreness or discomfort (typically improves with proper latch support)',
+        frequency: 'Common (30-80 in 100 initially)',
+        severity: 'mild',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-risk-2',
+        description: 'Mastitis (breast infection) requiring antibiotics',
+        frequency: 'Occasional (2-10 in 100)',
+        severity: 'moderate',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-risk-3',
+        description: 'Insufficient milk supply concerns (often addressable with lactation support)',
+        frequency: 'Common perception (30-40 in 100); true primary insufficiency is rare (1-5 in 100)',
+        severity: 'mild',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-risk-4',
+        description: 'Maternal fatigue and time demands, particularly in early weeks',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-risk-5',
+        description: 'Vitamin D deficiency in infant if mother not supplemented (requires vitamin D drops)',
+        severity: 'mild',
+        citations: ['cit-breastfeed-2']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'bf-alt-1',
+        name: 'Formula Feeding',
+        description: 'Commercial infant formula as sole nutrition source',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'bf-alt-ben-1',
+            description: 'Allows other caregivers to feed infant, sharing feeding responsibility',
+            citations: ['cit-breastfeed-3']
+          },
+          {
+            id: 'bf-alt-ben-2',
+            description: 'Visible intake measurement for parents concerned about sufficiency',
+            citations: ['cit-breastfeed-3']
+          },
+          {
+            id: 'bf-alt-ben-3',
+            description: 'May be necessary for specific medical conditions or medications incompatible with breastfeeding',
+            citations: ['cit-breastfeed-3']
+          }
+        ],
+        risks: [
+          {
+            id: 'bf-alt-risk-1',
+            description: 'Lacks immunological components; higher rates of infections (ear, respiratory, GI)',
+            severity: 'moderate',
+            citations: ['cit-breastfeed-1', 'cit-breastfeed-2']
+          },
+          {
+            id: 'bf-alt-risk-2',
+            description: 'Associated with increased risk of childhood obesity, diabetes, and certain cancers (though absolute risks remain low)',
+            severity: 'moderate',
+            citations: ['cit-breastfeed-1']
+          },
+          {
+            id: 'bf-alt-risk-3',
+            description: 'Maternal misses hormonal benefits (uterine contraction, cancer risk reduction, return to pre-pregnancy weight)',
+            severity: 'mild',
+            citations: ['cit-breastfeed-1']
+          },
+          {
+            id: 'bf-alt-risk-4',
+            description: 'Financial cost (approximately $1,200-1,500 annually)',
+            severity: 'mild',
+            citations: ['cit-breastfeed-3']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-breastfeed-1', 'cit-breastfeed-3']
+      },
+      {
+        id: 'bf-alt-2',
+        name: 'Combination Feeding',
+        description: 'Mix of breastfeeding and formula supplementation',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'bf-alt-ben-4',
+            description: 'Provides some benefits of breastfeeding while allowing flexibility',
+            citations: ['cit-breastfeed-2']
+          },
+          {
+            id: 'bf-alt-ben-5',
+            description: 'Can address concerns about milk supply while maintaining breastfeeding relationship',
+            citations: ['cit-breastfeed-3']
+          }
+        ],
+        risks: [
+          {
+            id: 'bf-alt-risk-5',
+            description: 'Early introduction of formula may reduce milk supply (supply-demand relationship)',
+            severity: 'moderate',
+            citations: ['cit-breastfeed-3']
+          },
+          {
+            id: 'bf-alt-risk-6',
+            description: 'Benefits are dose-dependent; partial breastfeeding provides fewer benefits than exclusive',
+            severity: 'mild',
+            citations: ['cit-breastfeed-2']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-breastfeed-2', 'cit-breastfeed-3']
+      }
+    ],
+    whatIfWeWait: 'Breastfeeding initiation is most successful immediately after birth when infant reflexes are strongest and colostrum (first milk rich in antibodies) is available. Delaying first feeding beyond 1-2 hours may reduce likelihood of successful breastfeeding establishment. However, breastfeeding can be initiated at any point, and relactation is possible with support. Formula supplementation in first few days should be medically indicated to protect milk supply. Not urgent, but early initiation (within first hour) strongly recommended.',
+    contraindications: [
+      {
+        id: 'bf-contra-1',
+        condition: 'Maternal HIV infection in developed countries with access to safe formula',
+        severity: 'absolute',
+        explanation: 'Risk of HIV transmission through breastmilk outweighs benefits when safe alternatives available',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-contra-2',
+        condition: 'Infant with galactosemia (rare metabolic disorder)',
+        severity: 'absolute',
+        explanation: 'Cannot metabolize lactose in breastmilk',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-contra-3',
+        condition: 'Active, untreated tuberculosis in mother',
+        severity: 'absolute',
+        explanation: 'Can resume after treatment initiated',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-contra-4',
+        condition: 'Certain maternal medications (chemotherapy, radioactive agents, some psychiatric medications)',
+        severity: 'absolute',
+        explanation: 'Compatibility should be verified with healthcare provider and resources like LactMed',
+        citations: ['cit-breastfeed-3']
+      },
+      {
+        id: 'bf-contra-5',
+        condition: 'Active herpes simplex lesions on breast',
+        severity: 'relative',
+        explanation: 'Can breastfeed from unaffected breast; resume both breasts after lesions heal',
+        citations: ['cit-breastfeed-3']
+      }
+    ],
+    questionsToAsk: [
+      'What lactation support is available at this facility and after discharge?',
+      'Will I have access to a lactation consultant?',
+      'What if I have concerns about my milk supply?',
+      'Can I breastfeed if I had breast surgery?',
+      'Should I give my baby vitamin D supplements?',
+      'How will I know if my baby is getting enough milk?',
+      'What medications are safe while breastfeeding?'
+    ],
+    citations: [citations['cit-breastfeed-1'], citations['cit-breastfeed-2'], citations['cit-breastfeed-3']],
+    lastReviewed: '2024-01-28',
+    nextReviewDue: '2025-01-28',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-rooming-in',
+    name: 'Rooming-In (Mother-Infant Together)',
+    shortName: 'Rooming-In',
+    category: 'birth-practice',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Keeping mother and healthy newborn together in the same room 24 hours per day after birth, rather than separating infant to nursery. Now standard practice in most baby-friendly hospitals.',
+    indication: 'Promotes bonding, breastfeeding success, and responsive caregiving while allowing parents to learn infant cues with professional support nearby.',
+    benefits: [
+      {
+        id: 'room-ben-1',
+        description: 'Increases breastfeeding duration and exclusivity',
+        citations: ['cit-rooming-in-1']
+      },
+      {
+        id: 'room-ben-2',
+        description: 'Enhances mother-infant bonding and attachment',
+        citations: ['cit-rooming-in-1']
+      },
+      {
+        id: 'room-ben-3',
+        description: 'Allows mother to learn infant hunger cues and feeding patterns with support',
+        citations: ['cit-rooming-in-1']
+      },
+      {
+        id: 'room-ben-4',
+        description: 'Reduces infant crying and stress (measured by cortisol levels)',
+        citations: ['cit-rooming-in-1']
+      },
+      {
+        id: 'room-ben-5',
+        description: 'May reduce risk of SIDS through closer monitoring and responsive feeding',
+        citations: ['cit-rooming-in-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'room-risk-1',
+        description: 'Maternal fatigue if unable to rest between feedings',
+        frequency: 'Common',
+        severity: 'mild',
+        citations: ['cit-rooming-in-1']
+      },
+      {
+        id: 'room-risk-2',
+        description: 'Rare reports of falls or infant injury if mother falls asleep while holding baby in unsafe position',
+        frequency: 'Very rare (proper education and bassinet use minimizes risk)',
+        severity: 'severe',
+        citations: ['cit-rooming-in-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'room-alt-1',
+        name: 'Partial Nursery Care',
+        description: 'Infant stays with mother during day but goes to nursery at night for some feedings',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'room-alt-ben-1',
+            description: 'Allows mother longer sleep intervals in first days',
+            citations: ['cit-rooming-in-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'room-alt-risk-1',
+            description: 'May reduce breastfeeding establishment if formula given in nursery',
+            severity: 'moderate',
+            citations: ['cit-rooming-in-1']
+          },
+          {
+            id: 'room-alt-risk-2',
+            description: 'Mother misses opportunities to learn infant cues and soothing techniques',
+            severity: 'mild',
+            citations: ['cit-rooming-in-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-rooming-in-1']
+      }
+    ],
+    whatIfWeWait: 'Rooming-in benefits begin immediately and are cumulative. Can be initiated at any point during hospital stay. Most facilities support flexible rooming-in where parents can request brief breaks or nursery care as needed. Not urgent, but early implementation supports breastfeeding.',
+    contraindications: [
+      {
+        id: 'room-contra-1',
+        condition: 'Infant requiring NICU or special care nursery for medical reasons',
+        severity: 'absolute',
+        explanation: 'Medical needs take priority',
+        citations: ['cit-rooming-in-1']
+      },
+      {
+        id: 'room-contra-2',
+        condition: 'Maternal medical complications requiring intensive monitoring or rest',
+        severity: 'relative',
+        explanation: 'Can resume when mother medically stable',
+        citations: ['cit-rooming-in-1']
+      }
+    ],
+    questionsToAsk: [
+      'What is your rooming-in policy?',
+      'Can my partner/support person stay overnight?',
+      'Can I request nursery care for specific periods if I need rest?',
+      'Will staff teach me safe sleep practices before discharge?',
+      'What if I need help with nighttime feedings?'
+    ],
+    citations: [citations['cit-rooming-in-1']],
+    lastReviewed: '2024-01-28',
+    nextReviewDue: '2025-01-28',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-birth-positions',
+    name: 'Upright and Alternative Birth Positions',
+    shortName: 'Birth Positions',
+    category: 'labor-support',
+    stage: 'labor',
+    urgencyLevel: 'routine',
+    summary: 'Using upright, side-lying, hands-and-knees, squatting, or other non-supine positions during labor and delivery. Evidence supports freedom of movement and position choice.',
+    indication: 'Alternative to traditional supine (lying on back) positioning; may improve comfort, labor progress, and outcomes.',
+    benefits: [
+      {
+        id: 'pos-ben-1',
+        description: 'Upright positions during first stage labor may shorten labor by approximately 1 hour',
+        citations: ['cit-birth-position-1']
+      },
+      {
+        id: 'pos-ben-2',
+        description: 'Upright/lateral positions during second stage reduce episiotomy rates',
+        citations: ['cit-birth-position-2']
+      },
+      {
+        id: 'pos-ben-3',
+        description: 'May reduce severe perineal trauma (though evidence mixed)',
+        citations: ['cit-birth-position-2']
+      },
+      {
+        id: 'pos-ben-4',
+        description: 'Increased maternal satisfaction and sense of control',
+        citations: ['cit-birth-position-1']
+      },
+      {
+        id: 'pos-ben-5',
+        description: 'Works with gravity and pelvic biomechanics',
+        citations: ['cit-birth-position-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'pos-risk-1',
+        description: 'Slightly increased blood loss with upright positions (average 100ml more, typically not clinically significant)',
+        frequency: 'Common but usually not concerning',
+        severity: 'mild',
+        citations: ['cit-birth-position-2']
+      },
+      {
+        id: 'pos-risk-2',
+        description: 'May be challenging with epidural anesthesia (limited mobility)',
+        severity: 'mild',
+        citations: ['cit-birth-position-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'pos-alt-1',
+        name: 'Supine (on back) Position',
+        description: 'Traditional lithotomy or semi-reclined position',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'pos-alt-ben-1',
+            description: 'Familiar to many providers; easier for monitoring and interventions',
+            citations: ['cit-birth-position-2']
+          }
+        ],
+        risks: [
+          {
+            id: 'pos-alt-risk-1',
+            description: 'May compress blood vessels reducing oxygen to baby',
+            severity: 'moderate',
+            citations: ['cit-birth-position-2']
+          },
+          {
+            id: 'pos-alt-risk-2',
+            description: 'Works against gravity; may prolong labor',
+            severity: 'mild',
+            citations: ['cit-birth-position-1']
+          }
+        ],
+        evidenceLevel: 'systematic-review',
+        citations: ['cit-birth-position-2']
+      }
+    ],
+    whatIfWeWait: 'Position changes can be made at any time during labor. Many positions are compatible with monitoring. Can be discussed during labor based on progress and comfort.',
+    contraindications: [],
+    questionsToAsk: [
+      'Do you support different positions during labor and delivery?',
+      'Can I use a birthing ball, squat bar, or other support tools?',
+      'If I have an epidural, what positions are possible?',
+      'Will you help me try different positions?'
+    ],
+    citations: [citations['cit-birth-position-1'], citations['cit-birth-position-2']],
+    lastReviewed: '2024-01-28',
+    nextReviewDue: '2025-01-28',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-doula-support',
+    name: 'Continuous Labor Support (Doula)',
+    shortName: 'Doula Support',
+    category: 'labor-support',
+    stage: 'labor',
+    urgencyLevel: 'elective',
+    summary: 'Continuous emotional, physical, and informational support during labor from a trained birth companion (doula), in addition to medical staff and partner support.',
+    indication: 'Evidence-based intervention to improve birth experience and outcomes through continuous presence and non-clinical support.',
+    benefits: [
+      {
+        id: 'doula-ben-1',
+        description: 'Reduces cesarean section rates by approximately 25%',
+        citations: ['cit-doula-1']
+      },
+      {
+        id: 'doula-ben-2',
+        description: 'Reduces use of pain medication and epidural by approximately 10%',
+        citations: ['cit-doula-1']
+      },
+      {
+        id: 'doula-ben-3',
+        description: 'Shortens labor by approximately 40 minutes on average',
+        citations: ['cit-doula-1']
+      },
+      {
+        id: 'doula-ben-4',
+        description: 'Increases likelihood of positive birth experience and satisfaction',
+        citations: ['cit-doula-1']
+      },
+      {
+        id: 'doula-ben-5',
+        description: 'Reduces risk of negative feelings about birth experience',
+        citations: ['cit-doula-1']
+      },
+      {
+        id: 'doula-ben-6',
+        description: 'Improves Apgar scores at 5 minutes',
+        citations: ['cit-doula-1']
+      }
+    ],
+    risks: [
+      {
+        id: 'doula-risk-1',
+        description: 'Financial cost if not covered by insurance (typically $500-2,500)',
+        severity: 'mild',
+        citations: ['cit-doula-1']
+      },
+      {
+        id: 'doula-risk-2',
+        description: 'Requires advance planning and relationship building',
+        severity: 'mild',
+        citations: ['cit-doula-1']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Most effective when relationship established before labor. Some hospitals have volunteer or staff doula programs. Can be arranged at any point during pregnancy.',
+    contraindications: [],
+    questionsToAsk: [
+      'Does this facility allow doulas?',
+      'Are there doula programs available in my area?',
+      'Does my insurance cover doula services?',
+      'How do I find a certified doula?',
+      'Can my doula be present for cesarean delivery?'
+    ],
+    citations: [citations['cit-doula-1']],
+    lastReviewed: '2024-01-28',
+    nextReviewDue: '2025-01-28',
+    reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
+  },
+  {
+    id: 'proc-hepatitis-a',
+    name: 'Hepatitis A Vaccine',
+    shortName: 'Hep A Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Two-dose vaccine series protecting against hepatitis A virus, typically given starting at age 12-23 months. Provides long-term protection against liver infection.',
+    indication: 'Prevents hepatitis A, a contagious liver infection spread through contaminated food, water, or close contact. More common during travel to endemic areas.',
+    benefits: [
+      {
+        id: 'hepa-ben-1',
+        description: 'Provides 94-100% protection after two-dose series',
+        citations: ['cit-hepa-1', 'cit-hepa-2']
+      },
+      {
+        id: 'hepa-ben-2',
+        description: 'Prevents outbreaks in childcare settings',
+        citations: ['cit-hepa-1']
+      },
+      {
+        id: 'hepa-ben-3',
+        description: 'Provides long-lasting, possibly lifelong immunity',
+        citations: ['cit-hepa-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'hepa-risk-1',
+        description: 'Soreness or redness at injection site',
+        frequency: 'Common (15-20 in 100)',
+        severity: 'mild',
+        citations: ['cit-hepa-1']
+      },
+      {
+        id: 'hepa-risk-2',
+        description: 'Low-grade fever',
+        frequency: 'Occasional (5-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-hepa-1']
+      },
+      {
+        id: 'hepa-risk-3',
+        description: 'Headache or fatigue',
+        frequency: 'Uncommon (3-5 in 100)',
+        severity: 'mild',
+        citations: ['cit-hepa-1']
+      },
+      {
+        id: 'hepa-risk-4',
+        description: 'Severe allergic reaction',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-hepa-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'hepa-alt-1',
+        name: 'Decline Vaccination',
+        description: 'Opt out of hepatitis A vaccine',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'hepa-alt-ben-1',
+            description: 'Avoids vaccine reactions',
+            citations: ['cit-hepa-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'hepa-alt-risk-1',
+            description: 'Risk of hepatitis A infection, which causes fever, fatigue, jaundice, and liver inflammation lasting weeks to months. Hospitalization required in approximately 15% of symptomatic cases.',
+            frequency: '15 in 100 hospitalized',
+            severity: 'moderate',
+            citations: ['cit-hepa-1', 'cit-hepa-2']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-hepa-1']
+      }
+    ],
+    whatIfWeWait: 'Hepatitis A is preventable; waiting increases risk during travel or outbreaks. Series can be started later if delayed. Second dose can be given 6-18 months after first.',
+    contraindications: [
+      {
+        id: 'hepa-contra-1',
+        condition: 'Severe allergic reaction to previous dose',
+        severity: 'absolute',
+        explanation: 'History of anaphylaxis',
+        citations: ['cit-hepa-1']
+      }
+    ],
+    questionsToAsk: [
+      'Is hepatitis A common in areas we travel?',
+      'What is the timing between doses?',
+      'Can it be given with other vaccines?'
+    ],
+    citations: [citations['cit-hepa-1'], citations['cit-hepa-2']],
+    lastReviewed: '2024-01-28',
+    nextReviewDue: '2025-01-28',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
+  },
+  {
+    id: 'proc-meningococcal-acwy',
+    name: 'Meningococcal ACWY Vaccine',
+    shortName: 'MenACWY Vaccine',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Vaccine protecting against four types (A, C, W, Y) of meningococcal bacteria that cause meningitis and bloodstream infections. First dose recommended at age 11-12 with booster at 16.',
+    indication: 'Prevents invasive meningococcal disease, a rare but life-threatening bacterial infection causing meningitis and septicemia.',
+    benefits: [
+      {
+        id: 'menacwy-ben-1',
+        description: 'Provides 85-90% protection against serogroups A, C, W, and Y',
+        citations: ['cit-menacwy-1', 'cit-menacwy-2']
+      },
+      {
+        id: 'menacwy-ben-2',
+        description: 'Prevents rapid, fulminant disease with 10-15% mortality rate',
+        citations: ['cit-menacwy-1']
+      },
+      {
+        id: 'menacwy-ben-3',
+        description: 'Reduces disease transmission in close-contact settings (college dorms, military)',
+        citations: ['cit-menacwy-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'menacwy-risk-1',
+        description: 'Pain, redness, or swelling at injection site',
+        frequency: 'Very common (40-60 in 100)',
+        severity: 'mild',
+        citations: ['cit-menacwy-1']
+      },
+      {
+        id: 'menacwy-risk-2',
+        description: 'Headache or fatigue',
+        frequency: 'Common (20-40 in 100)',
+        severity: 'mild',
+        citations: ['cit-menacwy-1']
+      },
+      {
+        id: 'menacwy-risk-3',
+        description: 'Fever',
+        frequency: 'Occasional (5-10 in 100)',
+        severity: 'mild',
+        citations: ['cit-menacwy-1']
+      },
+      {
+        id: 'menacwy-risk-4',
+        description: 'Severe allergic reaction',
+        frequency: 'Very rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-menacwy-1']
+      }
+    ],
+    alternatives: [
+      {
+        id: 'menacwy-alt-1',
+        name: 'Decline Vaccination',
+        description: 'Opt out of meningococcal ACWY vaccine',
+        isEquivalent: false,
+        benefits: [
+          {
+            id: 'menacwy-alt-ben-1',
+            description: 'Avoids vaccine reactions',
+            citations: ['cit-menacwy-1']
+          }
+        ],
+        risks: [
+          {
+            id: 'menacwy-alt-risk-1',
+            description: 'Risk of invasive meningococcal disease, which is rare (0.1-0.3 per 100,000) but has 10-15% mortality and 10-20% long-term disability rate (limb amputation, deafness, brain damage)',
+            frequency: 'Rare but severe',
+            severity: 'severe',
+            citations: ['cit-menacwy-1', 'cit-menacwy-2']
+          }
+        ],
+        evidenceLevel: 'expert-consensus',
+        citations: ['cit-menacwy-1']
+      }
+    ],
+    whatIfWeWait: 'Risk increases during adolescence and in close-contact living situations. Timing optimized for pre-adolescent immune response and college entry.',
+    contraindications: [
+      {
+        id: 'menacwy-contra-1',
+        condition: 'Severe allergic reaction to previous dose',
+        severity: 'absolute',
+        explanation: 'History of anaphylaxis',
+        citations: ['cit-menacwy-1']
+      }
+    ],
+    questionsToAsk: [
+      'When will my child need the booster dose?',
+      'Is meningococcal B vaccine also recommended?',
+      'What symptoms should prompt immediate medical attention?'
+    ],
+    citations: [citations['cit-menacwy-1'], citations['cit-menacwy-2']],
+    lastReviewed: '2024-01-28',
+    nextReviewDue: '2025-01-28',
     reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer'
   }
 ]

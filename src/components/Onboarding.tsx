@@ -19,10 +19,10 @@ export function Onboarding({ onComplete }: OnboardingProps) {
       <div className="max-w-2xl mx-auto px-4 py-12 md:py-20">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-primary">
-            Informed Consent Companion
+            Respectful Maternity & Newborn Care
           </h1>
           <p className="text-lg text-muted-foreground">
-            Balanced, evidence-based education for newborn and maternal medical procedures
+            Evidence-based, non-coercive education for confident, informed maternal and newborn care decisions
           </p>
         </div>
 
@@ -30,17 +30,19 @@ export function Onboarding({ onComplete }: OnboardingProps) {
           <h2 className="text-2xl font-semibold mb-6">Welcome</h2>
           <div className="space-y-4 text-foreground mb-8">
             <p>
-              This tool helps you understand the benefits, risks, uncertainties, and alternatives 
-              for common procedures during pregnancy, birth, and early parenthood.
+              This platform helps you understand the benefits, risks, uncertainties, and alternatives 
+              for maternal and newborn care decisions including birth practices, delivery options, 
+              labor support, immunizations, and postpartum therapies.
             </p>
             <p>
-              Our goal is to support <strong>voluntary, informed decision-making</strong> by providing:
+              Our mission is to promote <strong>respectful, informed consent</strong> through balanced disclosure and to support your <strong>voluntary decision-making</strong> by providing:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Balanced information with cited sources</li>
-              <li>Absolute risk numbers when available</li>
-              <li>Clear explanations of alternatives</li>
-              <li>Time to reflect without pressure</li>
+              <li>Balanced information with comprehensive citations from major pediatric, obstetric, and public health bodies</li>
+              <li>Absolute risk numbers and frequency data when available</li>
+              <li>Clear distinction between evidence-based recommendations and personal preferences</li>
+              <li>Transparent presentation of benefits, risks, alternatives, and uncertainties</li>
+              <li>Time to reflect without coercion or fear-based messaging</li>
             </ul>
             <p className="text-sm text-muted-foreground mt-6">
               This is an educational tool, not medical advice. Always consult with your healthcare 
