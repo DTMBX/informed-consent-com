@@ -5,13 +5,15 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
-import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle, Bell } from '@phosphor-icons/react'
+import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle, Bell, Globe, Database, GraduationCap } from '@phosphor-icons/react'
 import { stageConfig, LANGUAGES, DISCLAIMER_TEXT } from '@/lib/constants'
 import { toast } from 'sonner'
 import { BirthPlanHistory } from '@/components/BirthPlanHistory'
 import { ManageSharedLinks } from '@/components/ManageSharedLinks'
 import { ViewAllComments } from '@/components/ViewAllComments'
 import { useUnreadComments } from '@/hooks/use-unread-comments'
+import { VaccineScheduleComparison } from '@/components/VaccineScheduleComparison'
+import { VAERSExplainer } from '@/components/VAERSExplainer'
 
 interface SettingsProps {
   preferences: UserPreferences
@@ -25,6 +27,8 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
   const [historyOpen, setHistoryOpen] = useState(false)
   const [manageLinksOpen, setManageLinksOpen] = useState(false)
   const [commentsOpen, setCommentsOpen] = useState(false)
+  const [vaccineComparisonOpen, setVaccineComparisonOpen] = useState(false)
+  const [vaersExplainerOpen, setVaersExplainerOpen] = useState(false)
   const { unreadCount } = useUnreadComments()
 
   const handleStageChange = (stage: Stage) => {
@@ -54,6 +58,32 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
 
   if (commentsOpen) {
     return <ViewAllComments onClose={() => setCommentsOpen(false)} parentName={parentName || 'Parent'} />
+  }
+
+  if (vaccineComparisonOpen) {
+    return (
+      <div>
+        <div className="mb-4 flex items-center justify-between max-w-5xl mx-auto px-6">
+          <Button variant="outline" size="sm" onClick={() => setVaccineComparisonOpen(false)}>
+            ← Back to Settings
+          </Button>
+        </div>
+        <VaccineScheduleComparison />
+      </div>
+    )
+  }
+
+  if (vaersExplainerOpen) {
+    return (
+      <div>
+        <div className="mb-4 flex items-center justify-between max-w-4xl mx-auto px-6">
+          <Button variant="outline" size="sm" onClick={() => setVaersExplainerOpen(false)}>
+            ← Back to Settings
+          </Button>
+        </div>
+        <VAERSExplainer />
+      </div>
+    )
   }
 
   return (
@@ -192,6 +222,54 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
             </CardContent>
           </Card>
         )}
+
+        <Card className="bg-evidence/10 border-evidence/20">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <GraduationCap className="h-5 w-5" />
+              Educational Resources
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              In-depth guides to help you understand vaccine safety data and international approaches to childhood immunization
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Button
+                onClick={() => setVaersExplainerOpen(true)}
+                variant="outline"
+                className="gap-2 h-auto flex-col items-start p-4 text-left"
+              >
+                <div className="flex items-center gap-2 w-full">
+                  <Database className="h-5 w-5 flex-shrink-0" />
+                  <span className="font-semibold">Understanding VAERS Data</span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Learn how to interpret vaccine adverse event reports, the difference between correlation and causation, and how the safety surveillance system works
+                </p>
+              </Button>
+
+              <Button
+                onClick={() => setVaccineComparisonOpen(true)}
+                variant="outline"
+                className="gap-2 h-auto flex-col items-start p-4 text-left"
+              >
+                <div className="flex items-center gap-2 w-full">
+                  <Globe className="h-5 w-5 flex-shrink-0" />
+                  <span className="font-semibold">International Vaccine Schedules</span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Compare US, UK, German, and Swedish childhood vaccine schedules and understand why evidence-based approaches differ by country
+                </p>
+              </Button>
+            </div>
+
+            <p className="text-xs text-muted-foreground italic pt-2">
+              These resources provide balanced context to help you make informed decisions without fear-based messaging
+            </p>
+          </CardContent>
+        </Card>
 
         <Alert>
           <Info className="h-5 w-5" />
