@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { CaretDown, CaretUp, Printer } from '@phosphor-i
-interface VaccineEntry {
-  timing: string
-}
+import { CaretDown, CaretUp, Printer } from '@phosphor-icons/react'
 
 interface VaccineEntry {
   name: string
@@ -14,41 +14,59 @@ interface VaccineEntry {
 
 interface CountrySchedule {
   code: string
-      { name: 'He
-      { name: 'Hib',
-      { name: 'Polio (IPV)', timing: '2m, 4m, 6-18m', 
-      { name: 'MMR', timin
-    ],
-    source: 'CDC
-  },
- 
+  country: string
+  approach: 'comprehensive' | 'balanced' | 'selective'
+  totalDoses: number
+  philosophy: string
+  vaccines: VaccineEntry[]
+  source: string
+  lastUpdated: string
+}
 
+const scheduleData: CountrySchedule[] = [
+  {
+    code: 'US',
+    country: 'United States',
+    approach: 'comprehensive',
+    totalDoses: 26,
+    philosophy: 'Maximum protection through comprehensive vaccination coverage',
     vaccines: [
-   
-      { name: '
-      { name: 'MMR', timing: 
+      { name: 'Hepatitis B', timing: 'Birth, 1-2m, 6-18m', doses: 3 },
+      { name: 'DTaP', timing: '2m, 4m, 6m, 15-18m, 4-6y', doses: 5 },
+      { name: 'Hib', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
+      { name: 'Polio (IPV)', timing: '2m, 4m, 6-18m, 4-6y', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
+      { name: 'Rotavirus', timing: '2m, 4m, 6m', doses: 3 },
+      { name: 'MMR', timing: '12-15m, 4-6y', doses: 2 },
+      { name: 'Varicella', timing: '12-15m, 4-6y', doses: 2 },
     ],
-    source: 'Public Health Age
-    vaccines: [
-    code: 'NL',
-    totalDoses: 20,
-    vaccines: [
-      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 11m', doses: 3 },
-    ],
-    source: 'RIVM',
+    source: 'CDC',
+    lastUpdated: '2024'
   },
-    code: 'SE',
-    to
-    vaccines: [
-      { name: 'Pne
-    ],
-    
-  }
-    code: 'DK',
+  {
+    code: 'UK',
+    country: 'United Kingdom',
+    approach: 'balanced',
     totalDoses: 19,
+    philosophy: 'Evidence-based schedule prioritizing most significant disease threats',
     vaccines: [
-      { name: 'Pneumococcal (P
+      { name: '6-in-1 (DTaP-IPV-Hib-HepB)', timing: '8w, 12w, 16w', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '12w, 1y', doses: 2 },
+      { name: 'Rotavirus', timing: '8w, 12w', doses: 2 },
+      { name: 'MenB', timing: '8w, 16w, 1y', doses: 3 },
+      { name: 'Hib/MenC', timing: '1y', doses: 1 },
+      { name: 'MMR', timing: '1y, 3y4m', doses: 2 },
     ],
+    source: 'NHS',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'CA',
+    country: 'Canada',
+    approach: 'comprehensive',
+    totalDoses: 24,
+    philosophy: 'Evidence-based schedule balancing early protection with healthcare system capacity',
+    vaccines: [
       { name: 'Hepatitis B', timing: 'Birth, 2m, 6m', doses: 3 },
       { name: 'DTaP-IPV-Hib', timing: '2m, 4m, 6m, 18m', doses: 4 },
       { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 12m', doses: 3 },
@@ -56,101 +74,103 @@ interface CountrySchedule {
       { name: 'Rotavirus', timing: '2m, 4m, 6m', doses: 3 },
       { name: 'MMR', timing: '12m, 4-6y', doses: 2 },
       { name: 'Varicella', timing: '12m, 4-6y', doses: 2 },
-    va
-    philosophy: 'Evidence-based schedule balancing early protection with healthcare system capacity',
+    ],
     source: 'Public Health Agency of Canada',
-    ],
-  },
-   
-    code: 'NL',
-    philosophy: 'Structured
-    totalDoses: 20,
-]
-    vaccines: [
-
-  const [filterBy, setFilterBy] = useState<FilterBy>('all')
-  const [expandedCountries, setExpandedCountries] =
-    ],
-      const next = new Set(prev)
-    source: 'RIVM',
-        next.add(code)
-  },
-  }
-    code: 'SE',
-  }
-    totalDoses: 18,
-  }
-  const filtere
-    return schedule.approach === filterBy
-
-    switch (sortBy) {
-      
-        return b.totalDoses - a.totalDoses
-    source: 'Folkhälsomyndigheten',
-      case 'approach':
+    lastUpdated: '2024'
   },
   {
-  const handleP
-  }
-  return (
-      <div className="spa
-          Inter
-        <p className="text-muted-foreground">
-        </p>
-
+    code: 'NL',
+    country: 'Netherlands',
+    approach: 'selective',
+    totalDoses: 20,
+    philosophy: 'Structured schedule focusing on diseases with highest local burden',
+    vaccines: [
+      { name: 'DTaP-IPV-Hib-HepB', timing: '6w, 3m, 5m, 11m', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 11m', doses: 3 },
+      { name: 'MMR', timing: '14m, 9y', doses: 2 },
+      { name: 'MenC', timing: '14m', doses: 1 },
     ],
-          All schedules are developed by qualified health authorities. Differences
-          for personalized guida
-      </Alert>
+    source: 'RIVM',
+    lastUpdated: '2024'
   },
-   
+  {
+    code: 'SE',
+    country: 'Sweden',
+    approach: 'selective',
+    totalDoses: 18,
+    philosophy: 'Conservative approach prioritizing essential vaccines with proven long-term benefit',
+    vaccines: [
+      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'MMR', timing: '18m, 6-8y', doses: 2 },
+    ],
+    source: 'Folkhälsomyndigheten',
+    lastUpdated: '2024'
+  },
+  {
     code: 'NO',
-          >
+    country: 'Norway',
+    approach: 'selective',
     totalDoses: 17,
-          <Button
+    philosophy: 'Focused approach on diseases with highest risk-benefit ratio',
     vaccines: [
-          >
-            Collapse All
-          <Button
+      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'MMR', timing: '15m, 11-12y', doses: 2 },
+      { name: 'Rotavirus', timing: '6w, 3m, 5m', doses: 3 },
     ],
-          >
     source: 'Folkehelseinstituttet',
-        </div>
+    lastUpdated: '2024'
   },
-   
+  {
     code: 'JP',
-              <Select
+    country: 'Japan',
+    approach: 'balanced',
     totalDoses: 19,
-            </SelectConte
+    philosophy: 'Systematic approach emphasizing disease prevention with cultural acceptance',
     vaccines: [
-            <SelectTrigger className="w-[180px]">
-            </SelectTrigger>
-              <SelectItem value="country">Country (A-Z)</SelectItem>
-              <SelectItem value="doses-asc">Doses (Lo
+      { name: 'Hib', timing: '2m, 3m, 4m, 12m', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
+      { name: 'DPT', timing: '3m, 4m, 5m, 12-18m', doses: 4 },
+      { name: 'Polio (IPV)', timing: '3m, 4m, 5m, 4-6y', doses: 4 },
+      { name: 'MR', timing: '12m, 5-7y', doses: 2 },
     ],
-        </div>
     source: 'MHLW',
     lastUpdated: '2024'
-   
- 
+  },
+  {
+    code: 'DK',
+    country: 'Denmark',
+    approach: 'selective',
+    totalDoses: 19,
+    philosophy: 'Evidence-based minimal schedule with focus on local epidemiology',
+    vaccines: [
+      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'MMR', timing: '15m, 4y', doses: 2 },
+    ],
+    source: 'Statens Serum Institut',
+    lastUpdated: '2024'
+  },
+]
 
-              >
+type FilterBy = 'all' | 'comprehensive' | 'balanced' | 'selective'
 type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
 
-                      </h3>
-                        variant={
-                            ? 'default'
-                            ? 'secondary'
+export function ComprehensiveVaccineSchedule() {
+  const [sortBy, setSortBy] = useState<SortBy>('country')
+  const [filterBy, setFilterBy] = useState<FilterBy>('all')
+  const [expandedCountries, setExpandedCountries] = useState<Set<string>>(new Set())
 
-                        {schedule.approach.
-                    </div>
-                      {schedule.
-                    <div cl
-                      <sp
+  const toggleCountry = (code: string) => {
+    setExpandedCountries(prev => {
+      const next = new Set(prev)
+      if (next.has(code)) {
+        next.delete(code)
       } else {
-                    </
+        next.add(code)
       }
-                 
+      return next
     })
   }
 
@@ -169,17 +189,17 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
 
   const sortedData = [...filteredData].sort((a, b) => {
     switch (sortBy) {
-          )
+      case 'country':
         return a.country.localeCompare(b.country)
-      <Alert>
+      case 'doses-desc':
         return b.totalDoses - a.totalDoses
       case 'doses-asc':
         return a.totalDoses - b.totalDoses
       case 'approach':
         return a.approach.localeCompare(b.approach)
-            • 
+      default:
         return 0
-    <
+    }
   })
 
   const handlePrint = () => {
@@ -204,7 +224,7 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
           healthcare infrastructure, and population health priorities. Always consult your healthcare provider
           for personalized guidance.
         </AlertDescription>
-
+      </Alert>
 
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <div className="flex flex-wrap gap-2">
@@ -270,7 +290,7 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
               <button
                 onClick={() => toggleCountry(schedule.code)}
                 className="w-full text-left p-6 hover:bg-muted/50 transition-colors"
-
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 space-y-2">
                     <div className="flex items-center gap-3">
@@ -288,7 +308,7 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
                       >
                         {schedule.approach.charAt(0).toUpperCase() + schedule.approach.slice(1)}
                       </Badge>
-
+                    </div>
                     <p className="text-sm text-muted-foreground">
                       {schedule.philosophy}
                     </p>
@@ -315,7 +335,7 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
                   <div className="space-y-3 mt-4">
                     <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">
                       Vaccine Schedule
-
+                    </h4>
                     {schedule.vaccines.map((vaccine, idx) => (
                       <div
                         key={idx}
@@ -324,11 +344,11 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
                         <div className="flex-1">
                           <div className="font-medium text-foreground">
                             {vaccine.name}
-
+                          </div>
                           <div className="text-sm text-muted-foreground mt-1">
                             {vaccine.timing}
                           </div>
-
+                        </div>
                         <div className="flex-shrink-0 text-right">
                           <div className="text-sm font-medium text-foreground">
                             {vaccine.doses} {vaccine.doses === 1 ? 'dose' : 'doses'}
@@ -339,27 +359,27 @@ type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach'
                   </div>
                 </CardContent>
               )}
-
+            </Card>
           )
-
+        })}
       </div>
 
       <Alert>
         <AlertDescription className="space-y-2">
-
+          <p>
             <strong>Approach Definitions:</strong>
-
-
+          </p>
+          <p>
             • <strong>Comprehensive:</strong> Extensive protection against many diseases with higher total dose counts
-
-
+          </p>
+          <p>
             • <strong>Balanced:</strong> Moderate approach balancing coverage with practical implementation
-
+          </p>
           <p>
             • <strong>Selective:</strong> Focused on diseases with highest local burden and proven benefit
           </p>
         </AlertDescription>
-
+      </Alert>
     </div>
-
+  )
 }
