@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <script>
+    // ── SPA redirect for GitHub Pages ──────────────────────────
+    // GitHub Pages returns this 404.html for any unknown path.
+    // We convert the path into a query-string and redirect to
+    // index.html so the client-side router can handle it.
+    //
+    // Based on the spa-github-pages technique by Rafael Pedicini.
+    // https://github.com/rafgraph/spa-github-pages
+    (function () {
+      // segmentCount = 1 means keep one path segment (the repo name)
+      // e.g. /informed-consent-com/some/route → /informed-consent-com/?/some/route
+      var segmentCount = 1;
+      var location = window.location;
+      var path = location.pathname
+        .split('/')
+        .filter(Boolean);
+
+      // If we're already at the root, nothing to redirect
+      if (path.length <= segmentCount) return;
+
+      var repo = path.slice(0, segmentCount).join('/');
+      var route = path.slice(segmentCount).join('/');
+      var query = location.search;
+
+      location.replace(
+        location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') +
+        '/' + repo + '/?' +
+        '/' + route +
+        (query ? '&' + query.slice(1) : '') +
+        location.hash
+      );
+    })();
+  </script>
+</head>
+<body>
+  <noscript>
+    <p>This application requires JavaScript. Please enable JavaScript and reload the page.</p>
+  </noscript>
+</body>
+</html>
