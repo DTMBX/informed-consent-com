@@ -4,7 +4,7 @@ import { useUnreadComments } from '@/hooks/use-unread-comments'
 
 interface BottomNavProps {
   currentView: string
-  onNavigate: (view: 'library' | 'reflection' | 'settings') => void
+  onNavigate: (view: 'library' | 'reflection' | 'settings' | 'birth-plan') => void
 }
 
 export function BottomNav({ currentView, onNavigate }: BottomNavProps) {

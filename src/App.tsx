@@ -10,6 +10,7 @@ import { DecisionExport } from '@/components/DecisionExport'
 import { BirthPlanGenerator } from '@/components/BirthPlanGenerator'
 import { Settings } from '@/components/Settings'
 import { BottomNav } from '@/components/BottomNav'
+import { DesktopSidebar } from '@/components/DesktopSidebar'
 import { Header } from '@/components/Header'
 import { SharedBirthPlanView } from '@/components/SharedBirthPlanView'
 import { Toaster } from '@/components/ui/sonner'
@@ -76,6 +77,10 @@ function App() {
 
   const navigateToView = (view: View) => {
     setCurrentView(view)
+    if (view === 'library') {
+      setSelectedProcedureId(null)
+      setCompareIds([])
+    }
   }
 
   const navigateBack = () => {
@@ -96,107 +101,114 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header 
-        currentView={currentView}
-        onBack={navigateBack}
-        onHome={() => navigateToView('library')}
-        onSettingsClick={() => navigateToView('settings')}
-      />
-      
-      <main className="flex-1 pb-20 md:pb-8">
-        {currentView === 'library' && (
-          <ProcedureLibrary
-            stage={prefs.stage}
-            savedProcedures={prefs.savedProcedures}
-            onProcedureClick={navigateToProcedure}
-            onSaveProcedure={(id) => {
-              setPreferences((prev) => {
-                const current = prev || prefs
-                return {
-                  ...current,
-                  savedProcedures: current.savedProcedures.includes(id)
-                    ? current.savedProcedures.filter(pid => pid !== id)
-                    : [...current.savedProcedures, id]
-                }
-              })
-            }}
-          />
-        )}
-
-        {currentView === 'procedure-detail' && selectedProcedureId && (
-          <ProcedureDetail
-            procedureId={selectedProcedureId}
-            isSaved={prefs.savedProcedures.includes(selectedProcedureId)}
-            onSave={() => {
-              setPreferences((prev) => {
-                const current = prev || prefs
-                return {
-                  ...current,
-                  savedProcedures: current.savedProcedures.includes(selectedProcedureId)
-                    ? current.savedProcedures.filter(pid => pid !== selectedProcedureId)
-                    : [...current.savedProcedures, selectedProcedureId]
-                }
-              })
-            }}
-            onCompare={(ids) => navigateToCompare(ids)}
-            onAddToReflection={() => navigateToView('reflection')}
-          />
-        )}
-
-        {currentView === 'compare' && compareIds.length > 0 && (
-          <CompareView
-            procedureIds={compareIds}
-            onClose={() => setCurrentView('library')}
-          />
-        )}
-
-        {currentView === 'reflection' && (
-          <ReflectionNotes
-            savedProcedures={prefs.savedProcedures}
-            onExport={() => navigateToView('export')}
-            onBirthPlan={() => navigateToView('birth-plan')}
-          />
-        )}
-
-        {currentView === 'export' && (
-          <DecisionExport
-            savedProcedures={prefs.savedProcedures}
-            onClose={() => navigateToView('reflection')}
-          />
-        )}
-
-        {currentView === 'birth-plan' && (
-          <BirthPlanGenerator
-            savedProcedures={prefs.savedProcedures}
-            currentStage={prefs.stage}
-            onClose={() => navigateToView('library')}
-          />
-        )}
-
-        {currentView === 'settings' && (
-          <Settings
-            preferences={prefs}
-            onUpdatePreferences={(updates) => {
-              setPreferences((prev) => {
-                const current = prev || prefs
-                return {
-                  ...current,
-                  ...updates
-                }
-              })
-            }}
-            onClose={() => setCurrentView('library')}
-            onBirthPlan={() => navigateToView('birth-plan')}
-            parentName="Parent"
-          />
-        )}
-      </main>
-
-      <BottomNav
+    <div className="min-h-screen bg-background flex">
+      <DesktopSidebar
         currentView={currentView}
         onNavigate={navigateToView}
       />
+      
+      <div className="flex-1 flex flex-col md:ml-64 lg:ml-72">
+        <Header 
+          currentView={currentView}
+          onBack={navigateBack}
+          onHome={() => navigateToView('library')}
+          onSettingsClick={() => navigateToView('settings')}
+        />
+        
+        <main className="flex-1 pb-20 md:pb-8">
+          {currentView === 'library' && (
+            <ProcedureLibrary
+              stage={prefs.stage}
+              savedProcedures={prefs.savedProcedures}
+              onProcedureClick={navigateToProcedure}
+              onSaveProcedure={(id) => {
+                setPreferences((prev) => {
+                  const current = prev || prefs
+                  return {
+                    ...current,
+                    savedProcedures: current.savedProcedures.includes(id)
+                      ? current.savedProcedures.filter(pid => pid !== id)
+                      : [...current.savedProcedures, id]
+                  }
+                })
+              }}
+            />
+          )}
+
+          {currentView === 'procedure-detail' && selectedProcedureId && (
+            <ProcedureDetail
+              procedureId={selectedProcedureId}
+              isSaved={prefs.savedProcedures.includes(selectedProcedureId)}
+              onSave={() => {
+                setPreferences((prev) => {
+                  const current = prev || prefs
+                  return {
+                    ...current,
+                    savedProcedures: current.savedProcedures.includes(selectedProcedureId)
+                      ? current.savedProcedures.filter(pid => pid !== selectedProcedureId)
+                      : [...current.savedProcedures, selectedProcedureId]
+                  }
+                })
+              }}
+              onCompare={(ids) => navigateToCompare(ids)}
+              onAddToReflection={() => navigateToView('reflection')}
+            />
+          )}
+
+          {currentView === 'compare' && compareIds.length > 0 && (
+            <CompareView
+              procedureIds={compareIds}
+              onClose={() => setCurrentView('library')}
+            />
+          )}
+
+          {currentView === 'reflection' && (
+            <ReflectionNotes
+              savedProcedures={prefs.savedProcedures}
+              onExport={() => navigateToView('export')}
+              onBirthPlan={() => navigateToView('birth-plan')}
+            />
+          )}
+
+          {currentView === 'export' && (
+            <DecisionExport
+              savedProcedures={prefs.savedProcedures}
+              onClose={() => navigateToView('reflection')}
+            />
+          )}
+
+          {currentView === 'birth-plan' && (
+            <BirthPlanGenerator
+              savedProcedures={prefs.savedProcedures}
+              currentStage={prefs.stage}
+              onClose={() => navigateToView('library')}
+            />
+          )}
+
+          {currentView === 'settings' && (
+            <Settings
+              preferences={prefs}
+              onUpdatePreferences={(updates) => {
+                setPreferences((prev) => {
+                  const current = prev || prefs
+                  return {
+                    ...current,
+                    ...updates
+                  }
+                })
+              }}
+              onClose={() => setCurrentView('library')}
+              onBirthPlan={() => navigateToView('birth-plan')}
+              parentName="Parent"
+            />
+          )}
+        </main>
+
+        <BottomNav
+          currentView={currentView}
+          onNavigate={navigateToView}
+        />
+      </div>
 
       <Toaster />
     </div>

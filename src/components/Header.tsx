@@ -26,7 +26,7 @@ export function Header({ currentView, onBack, onHome, onSettingsClick }: HeaderP
   const { unreadCount } = useUnreadComments()
 
   return (
-    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
+    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm md:border-l">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
@@ -47,7 +47,7 @@ export function Header({ currentView, onBack, onHome, onSettingsClick }: HeaderP
                 size="icon"
                 onClick={onHome}
                 aria-label="Go to home"
-                className="hover:bg-muted"
+                className="hover:bg-muted md:hidden"
               >
                 <House className="h-5 w-5" />
               </Button>
@@ -62,7 +62,7 @@ export function Header({ currentView, onBack, onHome, onSettingsClick }: HeaderP
             size="icon"
             onClick={onSettingsClick}
             aria-label="Settings"
-            className="relative hover:bg-muted shrink-0"
+            className="relative hover:bg-muted shrink-0 md:hidden"
           >
             <Gear className="h-5 w-5" />
             {unreadCount > 0 && (
