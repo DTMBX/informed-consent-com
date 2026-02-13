@@ -247,10 +247,19 @@ Animations should be **subtle, purposeful, and never delay access to critical in
 - Button padding: px-6 py-3 for primary actions, px-4 py-2 for secondary
 - Grid gap: gap-6 for procedure cards, gap-4 for compact lists
 
+**Desktop Navigation**:
+- Persistent left sidebar (64px collapsed / 256-288px expanded) with smooth 300ms transitions
+- Collapsible sidebar toggle button positioned in header, persists state in local storage for user preference
+- Collapsed state: Icon-only navigation with tooltips on hover (300ms delay) showing full label and description
+- Expanded state: Full navigation labels with icons, descriptions, and notification badges
+- Active route indicator: Vertical accent bar on left edge of active item + filled icon weight + tinted background
+- Responsive content area adjusts margin-left smoothly with sidebar state changes
+- Sidebar includes app branding in header, main navigation items, and footer with last-updated metadata
+
 **Mobile**:
 - Procedure library: Single column cards, full-width touch targets, sticky filter bar at top
 - Procedure detail: Vertical stack (no side-by-side quadrants), expandable sections, sticky action bar at bottom
 - Comparison: Horizontal scroll with snap points for each option column
 - Reflection notes: Floating "Save" button, simplified timer UI
-- Navigation: Bottom tab bar for main sections (Library, Reflection, Settings)
+- Navigation: Bottom tab bar for main sections (Library, Reflection, Settings) - sidebar hidden on mobile
 - Typography: Maintain 16px body for readability, reduce heading sizes by 20%, increase line-height to 1.7 for body

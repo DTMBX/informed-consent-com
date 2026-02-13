@@ -25,6 +25,7 @@ function App() {
     completedOnboarding: false
   })
 
+  const [sidebarCollapsed, setSidebarCollapsed] = useKV<boolean>('sidebar-collapsed', false)
   const [currentView, setCurrentView] = useState<View>('library')
   const [selectedProcedureId, setSelectedProcedureId] = useState<string | null>(null)
   const [compareIds, setCompareIds] = useState<string[]>([])
@@ -100,14 +101,20 @@ function App() {
     )
   }
 
+  const toggleSidebar = () => {
+    setSidebarCollapsed((prev) => !prev)
+  }
+
   return (
     <div className="min-h-screen bg-background flex">
       <DesktopSidebar
         currentView={currentView}
         onNavigate={navigateToView}
+        isCollapsed={sidebarCollapsed || false}
+        onToggleCollapse={toggleSidebar}
       />
       
-      <div className="flex-1 flex flex-col md:ml-64 lg:ml-72">
+      <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarCollapsed ? 'md:ml-16 lg:ml-16' : 'md:ml-64 lg:ml-72'}`}>
         <Header 
           currentView={currentView}
           onBack={navigateBack}
