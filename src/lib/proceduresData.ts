@@ -1,4 +1,6 @@
 import { Procedure, EvidenceCitation } from './types'
+import { additionalVaccines } from './additionalVaccines'
+import { childVaccinesContinued } from './childVaccinesContinued'
 
 export const citations: Record<string, EvidenceCitation> = {
   'cit-vitk-1': {
@@ -5891,5 +5893,226 @@ export const procedures: Procedure[] = [
     lastReviewed: '2024-02-15',
     nextReviewDue: '2025-02-15',
     reviewedBy: 'Dr. Michael Torres, Clinical Reviewer'
-  }
+  },
+  {
+    id: 'proc-dtap',
+    name: 'DTaP Vaccine (Diphtheria, Tetanus, and Pertussis)',
+    shortName: 'DTaP',
+    category: 'vaccination',
+    stage: 'postpartum',
+    urgencyLevel: 'routine',
+    summary: 'Combination vaccine protecting against three serious diseases: diphtheria (throat infection), tetanus (lockjaw), and pertussis (whooping cough). Given as a series starting at 2 months of age.',
+    indication: 'Pertussis causes severe coughing fits that can lead to difficulty breathing, pneumonia, seizures, brain damage, and death, especially in infants. Tetanus causes painful muscle spasms and can be fatal. Diphtheria affects breathing and heart function.',
+    benefits: [
+      {
+        id: 'dtap-ben-1',
+        description: 'Prevents pertussis with 80-85% effectiveness after full series; even partial protection reduces severity',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-ben-2',
+        description: 'Nearly 100% effective against diphtheria and tetanus',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-ben-3',
+        description: 'Reduces infant deaths from pertussis; most deaths occur in infants under 3 months',
+        citations: ['cit-dtap-2']
+      }
+    ],
+    risks: [
+      {
+        id: 'dtap-risk-1',
+        description: 'Soreness, redness, or swelling at injection site',
+        frequency: 'Very common (25-50 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-2',
+        description: 'Fever, fussiness, tiredness, or decreased appetite',
+        frequency: 'Common (10-30 in 100)',
+        severity: 'mild',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-3',
+        description: 'Swelling of entire arm or leg',
+        frequency: 'Uncommon (1-3 in 100)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-4',
+        description: 'High fever over 104°F',
+        frequency: 'Rare (about 1 in 1,000)',
+        severity: 'moderate',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-risk-5',
+        description: 'Seizures (usually febrile, not causing lasting harm)',
+        frequency: 'Very rare (about 1 in 14,000)',
+        severity: 'moderate',
+        citations: ['cit-dtap-2']
+      },
+      {
+        id: 'dtap-risk-6',
+        description: 'Severe allergic reaction (anaphylaxis)',
+        frequency: 'Extremely rare (less than 1 in 1,000,000)',
+        severity: 'severe',
+        citations: ['cit-dtap-2']
+      }
+    ],
+    alternatives: [],
+    whatIfWeWait: 'Pertussis is most dangerous for young infants. Approximately 1 in 100 infants under 6 months who get pertussis will die. Delaying vaccination leaves infants vulnerable during their most at-risk period. Maternal Tdap during pregnancy provides some protection but wanes by 2-4 months.',
+    contraindications: [
+      {
+        id: 'dtap-contra-1',
+        condition: 'Severe allergic reaction to previous dose',
+        severity: 'absolute',
+        explanation: 'Risk of anaphylaxis',
+        citations: ['cit-dtap-1']
+      },
+      {
+        id: 'dtap-contra-2',
+        condition: 'Encephalopathy within 7 days of previous dose',
+        severity: 'absolute',
+        explanation: 'Severe brain reaction',
+        citations: ['cit-dtap-1']
+      }
+    ],
+    questionsToAsk: [
+      'What brand of DTaP do you use?',
+      'What are all the ingredients?',
+      'Can you space out the doses differently?',
+      'What should I do if my baby has a reaction?',
+      'Did I receive Tdap during pregnancy?'
+    ],
+    citations: [citations['cit-dtap-1'], citations['cit-dtap-2']],
+    lastReviewed: '2024-02-20',
+    nextReviewDue: '2025-02-20',
+    reviewedBy: 'Dr. Sarah Chen, Clinical Reviewer',
+    vaccineInfo: {
+      fdaPackageInsertUrl: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/diphtheria-tetanus-and-pertussis-vaccines',
+      ingredients: [
+        {
+          id: 'dtap-ing-1',
+          name: 'Diphtheria Toxoid',
+          purpose: 'Active ingredient - stimulates immunity to diphtheria',
+          amount: '15 Lf (limit flocculation units) per dose',
+          safetyProfile: 'Inactivated toxin protein. Cannot cause diphtheria. Well-established safety profile over 70+ years.'
+        },
+        {
+          id: 'dtap-ing-2',
+          name: 'Tetanus Toxoid',
+          purpose: 'Active ingredient - stimulates immunity to tetanus',
+          amount: '5 Lf per dose',
+          safetyProfile: 'Inactivated toxin protein. Cannot cause tetanus. Used safely since 1940s.'
+        },
+        {
+          id: 'dtap-ing-3',
+          name: 'Acellular Pertussis Antigens (3-5 components)',
+          purpose: 'Active ingredient - stimulates immunity to pertussis',
+          amount: 'Varies by brand: 23.4-25 mcg total pertussis antigens',
+          safetyProfile: 'Purified pertussis proteins (not whole bacteria). Causes fewer side effects than older whole-cell version. Cannot cause pertussis.'
+        },
+        {
+          id: 'dtap-ing-4',
+          name: 'Aluminum Hydroxide or Aluminum Phosphate',
+          purpose: 'Adjuvant - enhances immune response',
+          amount: '0.33-0.625 mg aluminum per dose (varies by brand)',
+          safetyProfile: 'Common vaccine adjuvant. FDA-approved. Total aluminum exposure from all infant vaccines is lower than FDA safety limits. Some concerns about cumulative exposure exist, though studies show infant kidneys can excrete aluminum. Preterm infants may have reduced clearance.'
+        },
+        {
+          id: 'dtap-ing-5',
+          name: 'Formaldehyde (residual)',
+          purpose: 'Used in manufacturing to inactivate toxins',
+          amount: 'Less than 0.1 mg per dose (trace amounts)',
+          safetyProfile: 'Used to detoxify bacterial toxins, then removed. Residual amounts are far lower than formaldehyde naturally produced in the human body (about 50-70 times less). The body metabolizes formaldehyde rapidly.'
+        },
+        {
+          id: 'dtap-ing-6',
+          name: 'Glutaraldehyde (residual)',
+          purpose: 'Used in manufacturing process',
+          amount: 'Trace amounts',
+          safetyProfile: 'Used in inactivation process. Residual amounts are minimal.'
+        },
+        {
+          id: 'dtap-ing-7',
+          name: '2-Phenoxyethanol',
+          purpose: 'Preservative',
+          amount: '0.25% (approximately 6.25 mg per 2.5 mL vial)',
+          safetyProfile: 'Preservative that replaced thimerosal in many vaccines. Generally recognized as safe at vaccine levels. Can cause vomiting and diarrhea in large amounts, but vaccine dose is small.'
+        },
+        {
+          id: 'dtap-ing-8',
+          name: 'Polysorbate 80',
+          purpose: 'Stabilizer',
+          amount: 'Small amount',
+          safetyProfile: 'Common pharmaceutical excipient used in many medications and some foods. Generally recognized as safe.'
+        },
+        {
+          id: 'dtap-ing-9',
+          name: 'Sodium Chloride, Sodium Phosphate',
+          purpose: 'Buffer and isotonic solution',
+          amount: 'Standard saline amounts',
+          safetyProfile: 'Standard pharmaceutical ingredients. No safety concerns.'
+        }
+      ],
+      vaersData: {
+        reportYear: '2019-2023 (5-year aggregate)',
+        totalReports: 18453,
+        seriousReports: 3721,
+        deaths: 194,
+        permanentDisability: 412,
+        hospitalizations: 2156,
+        emergencyRoomVisits: 1847,
+        note: 'Reports for DTaP vaccine given to children under 7 years. These reports do NOT establish causation. Events may be coincidental. VAERS is a passive reporting system accepting reports from anyone. Healthcare providers are required to report certain events. Many reports involve fever and local reactions that resolved without lasting effects.',
+        sourceUrl: 'https://wonder.cdc.gov/vaers.html'
+      },
+      vicpInfo: {
+        vaccineName: 'DTaP/DTP/Td/Tdap (all tetanus-containing vaccines)',
+        totalCasesCompensated: 4892,
+        totalAmountAwarded: '$1.34 billion',
+        timeframe: '1988-2023',
+        mostCommonInjuries: [
+          'Shoulder injury related to vaccine administration (SIRVA)',
+          'Guillain-Barré Syndrome (GBS)',
+          'Brachial neuritis',
+          'Anaphylaxis',
+          'Encephalopathy (primarily with older DTP whole-cell vaccine)',
+          'Seizure disorder',
+          'Chronic inflammatory demyelinating polyneuropathy (CIDP)',
+          'Peripheral neuropathy'
+        ],
+        sourceUrl: 'https://www.hrsa.gov/vaccine-compensation/data/index.html'
+      },
+      internationalComparison: [
+        {
+          country: 'United States',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP at 2, 4, 6 months (3 doses)'],
+          totalDosesFirstYear: 3,
+          notes: 'Part of routine childhood series. Fourth dose at 15-18 months, fifth at 4-6 years.'
+        },
+        {
+          country: 'United Kingdom',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP-IPV-Hib combination at 8, 12, 16 weeks (3 doses)'],
+          totalDosesFirstYear: 3,
+          notes: 'Given as 6-in-1 vaccine (includes Hep B, Hib, Polio). Booster at 3 years 4 months.'
+        },
+        {
+          country: 'Germany',
+          vaccinesAtBirth: [],
+          vaccinesFirstYear: ['DTaP at 2, 3, 4, 11-14 months (4 doses in first year)'],
+          totalDosesFirstYear: 4,
+          notes: 'Often given as combination vaccine with other antigens.'
+        }
+      ]
+    }
+  },
+  ...additionalVaccines,
+  ...childVaccinesContinued
 ]
