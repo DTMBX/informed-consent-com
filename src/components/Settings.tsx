@@ -3,15 +3,18 @@ import { UserPreferences, Stage } from '@/lib/types'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Switch } from '@/components/ui/switch'
+import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
-import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle, Bell, Globe, Database, GraduationCap } from '@phosphor-icons/react'
+import { X, Info, FirstAid, ClockCounterClockwise, Link as LinkIcon, ChatCircle, Bell, Globe, Database, GraduationCap, Eye } from '@phosphor-icons/react'
 import { stageConfig, LANGUAGES, DISCLAIMER_TEXT } from '@/lib/constants'
 import { toast } from 'sonner'
 import { BirthPlanHistory } from '@/components/BirthPlanHistory'
 import { ManageSharedLinks } from '@/components/ManageSharedLinks'
 import { ViewAllComments } from '@/components/ViewAllComments'
 import { useUnreadComments } from '@/hooks/use-unread-comments'
+import { useExtraContrast } from '@/hooks/use-extra-contrast'
 import { VaccineScheduleComparison } from '@/components/VaccineScheduleComparison'
 import { VAERSExplainer } from '@/components/VAERSExplainer'
 
@@ -30,6 +33,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
   const [vaccineComparisonOpen, setVaccineComparisonOpen] = useState(false)
   const [vaersExplainerOpen, setVaersExplainerOpen] = useState(false)
   const { unreadCount } = useUnreadComments()
+  const [extraContrast, setExtraContrast] = useExtraContrast()
 
   const handleStageChange = (stage: Stage) => {
     onUpdatePreferences({ stage })
@@ -144,6 +148,35 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
                 ))}
               </SelectContent>
             </Select>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Eye className="h-5 w-5" />
+              Display Settings
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <Label htmlFor="extra-contrast" className="text-base font-medium">
+                  Extra Contrast Mode
+                </Label>
+                <p className="text-sm text-muted-foreground">
+                  Increase text brightness and reduce transparency for maximum readability
+                </p>
+              </div>
+              <Switch 
+                id="extra-contrast"
+                checked={extraContrast}
+                onCheckedChange={(checked) => {
+                  setExtraContrast(checked)
+                  toast.success(checked ? 'Extra contrast enabled' : 'Extra contrast disabled')
+                }}
+              />
+            </div>
           </CardContent>
         </Card>
 

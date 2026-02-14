@@ -175,55 +175,70 @@ This application requires sophisticated information architecture, role-based acc
 
 ## Design Direction
 
-The design should evoke **trust, clarity, and calm reassurance**. Parents are navigating a vulnerable, high-stakes period—the interface must feel professional yet approachable, serious without being clinical or cold. Visual design should communicate evidence-based reliability (think medical journal meets thoughtful digital product) while remaining warm and human. Use generous whitespace to reduce cognitive load, clear typographic hierarchy to guide comprehension, and subtle color cues to differentiate evidence types without alarm.
+The design should evoke **trust, clarity, and calm reassurance** through **disciplined spacing, high-contrast dark styling, and restrained glassmorphism**. Parents are navigating a vulnerable, high-stakes period—medical information must feel clear, credible, and easy to review under stress on both desktop and mobile. 
+
+**Design North Star**: Clinical clarity over flash. Visual polish must never compete with readability. Motion is subtle, optional, and respectful of reduced-motion settings.
+
+**Spacing System**: 8px-based scale (8/16/24/32/48/64). Section vertical padding: desktop 64–96px, mobile 32–48px. Card internal padding: 24px desktop, 16–20px mobile. Consistent gutters with max content width ~960–1100px.
+
+**Layout Rhythm**: Predictable vertical flow—Section header → brief context paragraph → primary content (cards/tables) → optional notes. Avoid nested boxes. Use whitespace to separate concerns rather than heavy borders.
 
 ## Color Selection
 
-A **professional medical palette with warm human touches**: deep trustworthy blues paired with soft neutrals and organic earth tones to balance clinical authority with empathy.
+A **high-contrast dark theme with deep neutral backgrounds** and slightly elevated surfaces for optimal readability in stressful situations. This is a single-theme application (no light mode) optimized for reduced eye strain and clinical clarity.
 
-- **Primary Color**: Deep Professional Blue `oklch(0.45 0.15 250)` - Conveys trust, medical credibility, and calm authority; used for primary actions and headers
-- **Secondary Colors**: 
-  - Warm Neutral `oklch(0.92 0.01 80)` - Soft background that reduces eye strain and feels approachable
-  - Muted Sage `oklch(0.75 0.06 150)` - Gentle accent for evidence-based content sections
-- **Accent Color**: Warm Coral `oklch(0.70 0.14 30)` - Attention for important actions (export, save, question prompts) without alarm
+- **Primary Color**: Vibrant Blue `oklch(0.62 0.18 250)` - High-contrast accent for primary actions and interactive elements
+- **Background**: Deep Neutral `oklch(0.14 0.015 250)` - Reduces eye strain, creates calm atmosphere
+- **Card/Surface**: Slightly Elevated `oklch(0.18 0.018 250)` - Clear hierarchy without harsh borders
+- **Foreground**: Bright Text `oklch(0.94 0.01 250)` - Excellent contrast for readability
+- **Accent Color**: Warm Amber `oklch(0.58 0.16 35)` - Attention for important actions without alarm
 - **Supporting UI Colors**:
-  - Evidence Green `oklch(0.65 0.12 160)` - For established evidence and positive outcomes
-  - Caution Amber `oklch(0.75 0.12 70)` - For areas of uncertainty or mixed evidence
-  - Risk Red `oklch(0.60 0.18 25)` - For risks and contraindications (used sparingly, with frequency context)
+  - Evidence Green `oklch(0.54 0.14 165)` - For established evidence and positive outcomes
+  - Caution Amber `oklch(0.66 0.14 70)` - For areas of uncertainty or mixed evidence
+  - Risk Red `oklch(0.56 0.20 25)` - For risks and contraindications (used sparingly, with frequency context)
+  - Muted Secondary `oklch(0.28 0.03 180)` - For de-emphasized UI elements
+  - Glass Overlay `oklch(0.20 0.02 250 / 0.4)` - For restrained glassmorphism effects
+
+**Glassmorphism Discipline**: Apply subtle glass panels only to primary containers (header navigation, key summary cards, comparison table headers). Use low-opacity surface + light blur (12px) + 1px border. Never blur large scrolling backgrounds.
+
+**Extra Contrast Mode**: Optional toggle that increases text brightness to `oklch(0.98 0.005 250)` and reduces translucency for users who need maximum readability.
+
 - **Foreground/Background Pairings**:
-  - Primary Blue: White text `oklch(1 0 0)` - Ratio 8.2:1 ✓
-  - Background Neutral: Dark Slate `oklch(0.25 0.02 250)` - Ratio 12.1:1 ✓
-  - Evidence Green: White text `oklch(1 0 0)` - Ratio 5.8:1 ✓
-  - Accent Coral: White text `oklch(1 0 0)` - Ratio 4.9:1 ✓
-  - Caution Amber: Dark Slate `oklch(0.25 0.02 250)` - Ratio 9.8:1 ✓
+  - Primary Blue on Background: `oklch(0.62 0.18 250)` on `oklch(0.14 0.015 250)` - Ratio 8.2:1 ✓
+  - Foreground on Background: `oklch(0.94 0.01 250)` on `oklch(0.14 0.015 250)` - Ratio 14.1:1 ✓
+  - Foreground on Card: `oklch(0.94 0.01 250)` on `oklch(0.18 0.018 250)` - Ratio 12.3:1 ✓
+  - Accent on Background: `oklch(0.58 0.16 35)` on `oklch(0.14 0.015 250)` - Ratio 5.8:1 ✓
+  - Extra Contrast Mode: `oklch(0.98 0.005 250)` on Background - Ratio 16.2:1 ✓
 
 ## Font Selection
 
-Typography should convey **medical precision, readability, and approachability**—clear enough for fatigued postpartum parents to scan, authoritative enough to signal evidence-based content.
+Typography should convey **medical precision, readability, and approachability**—strong, readable headings with generous line-height (1.5-1.7 body) for fatigued postpartum parents. Avoid ultra-thin weights and long dense paragraphs.
 
 - **Primary Font**: Source Serif 4 (serif for body text and procedure content) - Readable, warm, slightly editorial feel that balances authority with approachability
-- **Secondary Font**: Inter (sans-serif for UI, labels, navigation) - Clean, neutral, highly legible for interface elements
+- **Secondary Font**: Inter (sans-serif for UI, labels, navigation, headings) - Clean, neutral, highly legible for interface elements
 
 **Typographic Hierarchy**:
-- **H1 (Page Titles)**: Inter SemiBold / 32px / tight letter-spacing (-0.02em) / line-height 1.2
-- **H2 (Section Headers)**: Inter SemiBold / 24px / normal spacing / line-height 1.3
-- **H3 (Subsections)**: Inter Medium / 18px / normal spacing / line-height 1.4
-- **Body (Content)**: Source Serif 4 Regular / 16px / normal spacing / line-height 1.6
-- **Small (Citations, Metadata)**: Inter Regular / 14px / normal spacing / line-height 1.5
-- **Labels (Form, UI)**: Inter Medium / 14px / wide spacing (0.01em) / line-height 1.4
+- **H1 (Page Titles)**: Inter SemiBold / 36px (2.25rem) / line-height 1.2 / tracking tight
+- **H2 (Section Headers)**: Inter SemiBold / 30px (1.875rem) / line-height 1.3
+- **H3 (Subsections)**: Inter SemiBold / 24px (1.5rem) / line-height 1.4
+- **H4 (Card Titles)**: Inter SemiBold / 20px (1.25rem) / line-height 1.5
+- **Body (Content)**: Source Serif 4 Regular / 16px / line-height 1.7 (generous for readability)
+- **Small (Citations, Metadata)**: Inter Regular / 14px / line-height 1.5
+- **Labels (Form, UI)**: Inter Medium / 14px / line-height 1.4
 - **Data (Risk Frequencies)**: Inter SemiBold / 16px / tabular-nums / line-height 1.5
 
 ## Animations
 
-Animations should be **subtle, purposeful, and never delay access to critical information**. Use micro-interactions to provide feedback and guide attention, while maintaining fast, confident transitions for navigation.
+Animations should be **subtle, purposeful, and never delay access to critical information**. All animations must respect reduced-motion preferences (prefers-reduced-motion: reduce) and disable nonessential transitions.
 
-- **Page transitions**: 250ms ease-out fade with slight vertical shift (8px) to indicate forward/back movement
-- **Accordion expand/collapse**: 200ms ease for content reveal; focus shifts to newly visible content
-- **Citation pop-ups**: 150ms scale + fade (0.95 → 1) with subtle shadow to feel like a floating card
-- **Save/export confirmations**: 300ms gentle bounce on success icon + toast notification
-- **Reflection timer**: Smooth progress ring animation; no sudden movements or pressure-inducing countdowns
-- **Risk chart reveals**: 400ms staggered fade-in for bar chart segments to aid comprehension
-- **Offline sync indicator**: Pulsing subtle glow (2s cycle) for sync status without distraction
+- **Page transitions**: 200ms ease-out fade (no delay)
+- **Accordion expand/collapse**: 180ms cubic-bezier(0.4, 0, 0.2, 1) for smooth reveal; respects reduced-motion
+- **Button interactions**: Slight scale on press (0.98) with 100ms transition
+- **Glass panels**: Subtle hover brightness shift (150ms) without movement
+- **Loading states**: Clean skeleton loaders (no spinners) that match final layout
+- **Focus indicators**: Instant 2px ring appearance for keyboard navigation
+- **Toasts/Notifications**: 250ms slide-in from top, auto-dismiss after 4000ms
+- **Reduced-motion mode**: All animations reduced to <10ms or disabled entirely
 
 ## Component Selection
 
