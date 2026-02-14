@@ -29,7 +29,7 @@ export function DesktopSidebar({ currentView, onNavigate, isCollapsed, onToggleC
       "hidden md:flex md:flex-col bg-card border-r border-border fixed left-0 top-0 h-screen z-30 transition-all duration-300",
       isCollapsed ? "md:w-16 lg:w-16" : "md:w-64 lg:w-72"
     )}>
-      <div className="flex items-center h-16 px-4 border-b border-border bg-background/95 backdrop-blur-sm justify-between">
+      <div className="flex items-center h-16 px-4 border-b border-border glass-subtle justify-between">
         {!isCollapsed ? (
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">

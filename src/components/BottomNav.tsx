@@ -19,7 +19,7 @@ export function BottomNav({ currentView, onNavigate }: BottomNavProps) {
   ]
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border shadow-lg md:hidden z-50">
+    <nav className="fixed bottom-0 left-0 right-0 glass-panel border-t shadow-2xl md:hidden z-50">
       <div className="flex items-center justify-around h-16 max-w-2xl mx-auto">
         {navItems.map((item, index) => {
           const Icon = item.icon
