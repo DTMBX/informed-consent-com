@@ -54,10 +54,10 @@ export function ProcedureLibrary({
   }, [stage, search, categoryFilter, urgencyFilter, showSavedOnly, savedProcedures])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <h2 className="text-3xl font-semibold mb-2">Procedure Library</h2>
-        <p className="text-muted-foreground">
+    <div className="content-max-width px-4 sm:px-6 lg:px-8 section-spacing-mobile md:section-spacing-y">
+      <div className="mb-12">
+        <h2 className="mb-2">Procedure Library</h2>
+        <p className="text-muted-foreground text-lg">
           Explore evidence-based information about common procedures
         </p>
       </div>
@@ -69,13 +69,14 @@ export function ProcedureLibrary({
             placeholder="Search procedures..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10"
+            className="pl-10 h-12"
+            id="procedure-search"
           />
         </div>
 
         <div className="flex flex-wrap gap-3">
           <Select value={categoryFilter} onValueChange={(v) => setCategoryFilter(v as Category | 'all')}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[200px] h-11">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
@@ -87,7 +88,7 @@ export function ProcedureLibrary({
           </Select>
 
           <Select value={urgencyFilter} onValueChange={(v) => setUrgencyFilter(v as UrgencyLevel | 'all')}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[200px] h-11">
               <SelectValue placeholder="Urgency" />
             </SelectTrigger>
             <SelectContent>

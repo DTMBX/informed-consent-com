@@ -179,9 +179,18 @@ The design should evoke **trust, clarity, and calm reassurance** through **disci
 
 **Design North Star**: Clinical clarity over flash. Visual polish must never compete with readability. Motion is subtle, optional, and respectful of reduced-motion settings.
 
-**Spacing System**: 8px-based scale (8/16/24/32/48/64). Section vertical padding: desktop 64–96px, mobile 32–48px. Card internal padding: 24px desktop, 16–20px mobile. Consistent gutters with max content width ~960–1100px.
+**Spacing System**: 
+- 8px-based scale (8/16/24/32/48/64/96)
+- Section vertical padding: desktop 64–96px, mobile 32–48px
+- Card internal padding: 24px desktop, 16–20px mobile
+- Consistent gutters with max content width ~960–1100px
+- Avoid nested boxes inside boxes—use whitespace to separate concerns
 
-**Layout Rhythm**: Predictable vertical flow—Section header → brief context paragraph → primary content (cards/tables) → optional notes. Avoid nested boxes. Use whitespace to separate concerns rather than heavy borders.
+**Layout Rhythm**: 
+- Predictable vertical flow: Section header → brief context paragraph → primary content (cards/tables) → optional notes
+- Strong heading hierarchy (H1/H2/H3) with generous line-height (1.5–1.7)
+- Short, scannable content blocks instead of dense paragraphs
+- Bullet groups for lists to improve scannability
 
 ## Color Selection
 
