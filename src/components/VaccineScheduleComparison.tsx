@@ -110,7 +110,7 @@ const scheduleData: VaccineScheduleData[] = [
 
 export function VaccineScheduleComparison() {
   return (
-    <div className="max-w-5xl mx-auto space-y-6 p-6">
+    <div className="clinical-container space-y-6 card-padding md:card-padding card-padding-mobile">
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Globe size={32} weight="duotone" className="text-primary" />

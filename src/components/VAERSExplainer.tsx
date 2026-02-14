@@ -36,7 +36,7 @@ export function VAERSExplainer() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 p-6">
+    <div className="clinical-container space-y-6 card-padding md:card-padding card-padding-mobile">
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Database size={32} weight="duotone" className="text-destructive" />

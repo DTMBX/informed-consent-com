@@ -78,7 +78,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
   if (selectedShareId) {
     const link = activeLinks.find(l => l.shareId === selectedShareId)
     return (
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="clinical-container card-padding md:card-padding card-padding-mobile md:py-8">
         <div className="mb-6 flex items-center gap-3">
           <Button variant="ghost" size="sm" onClick={() => setSelectedShareId(null)}>
             ← Back to All Comments
@@ -101,7 +101,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="clinical-container card-padding md:card-padding card-padding-mobile md:py-8">
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-semibold mb-2 flex items-center gap-3">
@@ -185,10 +185,10 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
             </div>
 
             <Card>
-              <CardHeader>
+              <CardHeader className="card-padding-mobile md:card-padding">
                 <CardTitle>Comments by Shared Link</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="card-padding-mobile md:card-padding">
                 <div className="space-y-4">
                   {activeLinks.map((link) => {
                     const comments = allComments[link.shareId] || []
@@ -203,7 +203,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
                     return (
                       <div key={link.id}>
                         <Card className="cursor-pointer hover:border-primary transition-colors" onClick={() => setSelectedShareId(link.shareId)}>
-                          <CardContent className="pt-6">
+                          <CardContent className="card-padding-mobile md:card-padding">
                             <div className="flex items-start justify-between gap-4">
                               <div className="flex-1 space-y-3">
                                 <div className="flex items-center gap-3 flex-wrap">

@@ -95,7 +95,7 @@ export function ManageSharedLinks({ onClose }: ManageSharedLinksProps) {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="clinical-container card-padding md:card-padding card-padding-mobile md:py-8">
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-semibold mb-2">Manage Shared Links</h2>
@@ -111,7 +111,7 @@ export function ManageSharedLinks({ onClose }: ManageSharedLinksProps) {
       <div className="space-y-6">
         {links.length === 0 && (
           <Card>
-            <CardContent className="pt-12 pb-12 text-center">
+            <CardContent className="card-padding-mobile md:card-padding text-center">
               <div className="flex justify-center mb-4">
                 <div className="p-4 bg-muted rounded-full">
                   <LinkIcon className="h-8 w-8 text-muted-foreground" />
@@ -134,7 +134,7 @@ export function ManageSharedLinks({ onClose }: ManageSharedLinksProps) {
             <div className="space-y-3">
               {activeLinks.map((link) => (
                 <Card key={link.id}>
-                  <CardContent className="pt-6">
+                  <CardContent className="card-padding-mobile md:card-padding">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 space-y-3">
                         <div className="flex items-center gap-3 flex-wrap">
@@ -206,7 +206,7 @@ export function ManageSharedLinks({ onClose }: ManageSharedLinksProps) {
             <div className="space-y-3">
               {revokedLinks.map((link) => (
                 <Card key={link.id} className="opacity-60">
-                  <CardContent className="pt-6">
+                  <CardContent className="card-padding-mobile md:card-padding">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 space-y-2">
                         <div className="flex items-center gap-3 flex-wrap">
@@ -258,7 +258,7 @@ export function ManageSharedLinks({ onClose }: ManageSharedLinksProps) {
             <div className="space-y-3">
               {expiredLinks.map((link) => (
                 <Card key={link.id} className="opacity-60">
-                  <CardContent className="pt-6">
+                  <CardContent className="card-padding-mobile md:card-padding">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 space-y-2">
                         <div className="flex items-center gap-3 flex-wrap">

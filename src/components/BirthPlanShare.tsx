@@ -111,7 +111,7 @@ export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName, 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl card-padding-mobile md:card-padding">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <ShareNetwork className="h-5 w-5" />

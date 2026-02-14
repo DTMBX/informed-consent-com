@@ -83,7 +83,7 @@ export function BirthPlanHistory({ onClose, onRestoreVersion }: BirthPlanHistory
 
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="clinical-container card-padding md:card-padding card-padding-mobile md:py-8">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h2 className="text-3xl font-semibold mb-2 flex items-center gap-3">
@@ -118,13 +118,13 @@ export function BirthPlanHistory({ onClose, onRestoreVersion }: BirthPlanHistory
 
           {sortedVersions.length > 0 && (
             <Card>
-              <CardHeader>
+              <CardHeader className="card-padding-mobile md:card-padding">
                 <CardTitle>Version History</CardTitle>
                 <CardDescription>
                   {sortedVersions.length} {sortedVersions.length === 1 ? 'version' : 'versions'} saved
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="card-padding-mobile md:card-padding">
                 <div className="space-y-4">
                   {sortedVersions.map((version, index) => {
                     const isLatest = index === 0
@@ -215,7 +215,7 @@ export function BirthPlanHistory({ onClose, onRestoreVersion }: BirthPlanHistory
           )}
 
           <Card className="bg-accent/10">
-            <CardContent className="pt-6">
+            <CardContent className="card-padding-mobile md:card-padding">
               <div className="space-y-3 text-sm">
                 <p className="font-medium">About Version History</p>
                 <ul className="space-y-1.5 text-muted-foreground">
@@ -231,7 +231,7 @@ export function BirthPlanHistory({ onClose, onRestoreVersion }: BirthPlanHistory
       </div>
 
       <Dialog open={viewDialogOpen} onOpenChange={setViewDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto card-padding-mobile md:card-padding">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <FileText className="h-5 w-5" />

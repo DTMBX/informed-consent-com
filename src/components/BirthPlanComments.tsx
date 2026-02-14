@@ -163,13 +163,13 @@ export function BirthPlanComments({ shareId, isOwner, ownerName, onCommentsRead 
   return (
     <div className="space-y-6">
       <Card>
-        <CardHeader>
+        <CardHeader className="card-padding-mobile md:card-padding">
           <CardTitle className="flex items-center gap-2">
             <ChatCircle className="h-5 w-5" weight="fill" />
             Comments & Questions
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="card-padding-mobile md:card-padding space-y-6">
           <div className="space-y-4">
             {!isOwner && (
               <div className="bg-accent/10 p-4 rounded-lg text-sm space-y-2">
