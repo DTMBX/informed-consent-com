@@ -21,8 +21,8 @@ export function Homepage({
 }: HomepageProps) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="content-max-width px-4 sm:px-6 lg:px-8 section-spacing-mobile md:section-spacing-y">
-        <div className="text-center mb-12 md:mb-16">
+      <div className="clinical-container px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+        <div className="text-center section-header-spacing-mobile md:section-header-spacing">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 glass-subtle rounded-full">
             <ShieldCheck className="text-primary" weight="fill" size={18} />
             <span className="text-sm font-medium text-primary ui-text">Evidence-Based Care</span>
@@ -32,7 +32,7 @@ export function Homepage({
             {parentName ? `Welcome back, ${parentName}` : 'Welcome to Respectful Care'}
           </h1>
           
-          <p className="text-lg text-muted-foreground content-narrow leading-relaxed">
+          <p className="text-lg text-muted-foreground content-narrow leading-relaxed mx-auto">
             Balanced, evidence-based information for maternal and newborn care decisions. 
             Every claim is sourced, every option is presented, every decision is yours.
           </p>

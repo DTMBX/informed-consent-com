@@ -25,15 +25,15 @@ export function CompareView({ procedureIds, onClose }: CompareViewProps) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-semibold mb-2">Compare Options</h2>
-          <p className="text-muted-foreground">
+    <div className="content-max-width px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+      <div className="section-header-spacing-mobile md:section-header-spacing flex items-start justify-between gap-4">
+        <div className="flex-1 min-w-0">
+          <h2 className="text-3xl font-semibold mb-4">Compare Options</h2>
+          <p className="text-muted-foreground text-base leading-relaxed">
             Side-by-side comparison of procedures and alternatives
           </p>
         </div>
-        <Button variant="ghost" size="icon" onClick={onClose}>
+        <Button variant="ghost" size="icon" onClick={onClose} className="shrink-0">
           <X className="h-5 w-5" />
         </Button>
       </div>

@@ -44,11 +44,11 @@ export function ProcedureDetail({
   const isRSVProcedure = procedureId === 'proc-rsv-prevention'
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-semibold mb-3">{procedure.name}</h1>
+    <div className="content-reading px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+      <div className="section-header-spacing-mobile md:section-header-spacing">
+        <div className="flex items-start justify-between gap-4 mb-6">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-3xl md:text-4xl font-semibold mb-4">{procedure.name}</h1>
             <div className="flex flex-wrap gap-2">
               <Badge variant={urgencyStyle.color === 'destructive' ? 'destructive' : 'secondary'} className="text-sm">
                 {urgencyStyle.label}

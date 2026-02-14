@@ -96,15 +96,15 @@ export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: Refl
   const secondsRemaining = timeRemaining % 60
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <h2 className="text-3xl font-semibold mb-2">Reflection & Notes</h2>
-        <p className="text-muted-foreground">
-          Take time to process information and document your questions
+    <div className="content-reading px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+      <div className="section-header-spacing-mobile md:section-header-spacing">
+        <h2 className="text-3xl font-semibold mb-4">Reflection & Notes</h2>
+        <p className="text-muted-foreground text-base leading-relaxed">
+          Take time to process information and document your questions. Use the timer to ensure you have adequate time for non-urgent decisions.
         </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="card-stack card-stack-mobile">
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">

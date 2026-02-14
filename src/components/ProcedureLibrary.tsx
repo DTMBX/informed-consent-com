@@ -54,11 +54,11 @@ export function ProcedureLibrary({
   }, [stage, search, categoryFilter, urgencyFilter, showSavedOnly, savedProcedures])
 
   return (
-    <div className="content-max-width px-4 sm:px-6 lg:px-8 section-spacing-mobile md:section-spacing-y">
-      <div className="mb-12">
-        <h2 className="mb-2">Procedure Library</h2>
-        <p className="text-muted-foreground text-lg">
-          Explore evidence-based information about common procedures
+    <div className="clinical-container px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+      <div className="section-header-spacing-mobile md:section-header-spacing">
+        <h2 className="mb-3">Procedure Library</h2>
+        <p className="text-muted-foreground text-base leading-relaxed max-w-2xl">
+          Explore evidence-based information about common procedures. Each entry presents balanced benefits, risks, alternatives, and full citations.
         </p>
       </div>
 
@@ -111,18 +111,18 @@ export function ProcedureLibrary({
       </div>
 
       {(stage === 'prenatal' || stage === 'postpartum' || stage === 'all') && !showSavedOnly && !search && (
-        <Card className="mb-6 border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-secondary/5">
-          <CardHeader className="p-6">
+        <Card className="mb-8 border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-secondary/5">
+          <CardHeader className="card-padding">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-primary/10 rounded-lg">
+              <div className="p-3 bg-primary/10 rounded-lg shrink-0">
                 <Baby size={32} weight="duotone" className="text-primary" />
               </div>
-              <div className="flex-1">
-                <CardTitle className="text-2xl mb-2 flex items-center gap-2">
+              <div className="flex-1 min-w-0">
+                <CardTitle className="text-2xl mb-3 flex items-center gap-2 flex-wrap">
                   Understanding RSV in Newborns
                   <Badge className="bg-destructive text-destructive-foreground">Important</Badge>
                 </CardTitle>
-                <CardDescription className="text-base leading-relaxed mb-4">
+                <CardDescription className="text-base leading-relaxed mb-6">
                   RSV is the leading cause of hospitalization for infants under 1 year. Learn about hospitalization rates, risk factors, warning signs, and evidence-based prevention options including maternal vaccination and infant immunization.
                 </CardDescription>
                 <div className="flex flex-wrap gap-3">
@@ -154,8 +154,8 @@ export function ProcedureLibrary({
       )}
 
       {filteredProcedures.length === 0 ? (
-        <Card className="p-12 text-center">
-          <p className="text-muted-foreground mb-4">No procedures found</p>
+        <Card className="card-padding text-center">
+          <p className="text-muted-foreground mb-3 text-base">No procedures found</p>
           <p className="text-sm text-muted-foreground">
             Try adjusting your filters or search terms
           </p>
@@ -169,11 +169,11 @@ export function ProcedureLibrary({
             return (
               <Card
                 key={proc.id}
-                className="hover:shadow-lg transition-all cursor-pointer group relative"
+                className="hover:shadow-lg transition-all duration-150 cursor-pointer group relative"
                 onClick={() => onProcedureClick(proc.id)}
               >
-                <CardHeader className="p-6">
-                  <div className="flex items-start justify-between gap-4 mb-3">
+                <CardHeader className="card-padding">
+                  <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex-1">
                       <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
                         {proc.name}
