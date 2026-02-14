@@ -1,52 +1,29 @@
-<<<<<<< Updated upstream
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-=======
-import { useMemo, useState } from 'react'
->>>>>>> Stashed changes
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
-<<<<<<< Updated upstream
 import { Separator } from '@/components/ui/separator'
 import { CaretDown, CaretUp, Printer, Baby, Warning, ShieldCheck, Globe, Syringe } from '@phosphor-icons/react'
-
-/* ------------------------------------------------------------------ */
-/*  DATA: International Vaccine Schedules                              */
-/* ------------------------------------------------------------------ */
-=======
-import { Card, CardContent } from '@/components/ui/card'
-import { CaretDown, CaretUp, Printer } from '@phosphor-icons/react'
->>>>>>> Stashed changes
 
 interface VaccineEntry {
   name: string
   timing: string
   doses: number
-<<<<<<< Updated upstream
-  /** if this vaccine has a birth dose in this country */
   birthDose?: boolean
-  /** age in weeks when first dose is given (0 = birth) */
   firstDoseWeeks?: number
-=======
->>>>>>> Stashed changes
 }
 
 interface CountrySchedule {
   country: string
   code: string
-<<<<<<< Updated upstream
   flag: string
   approach: 'comprehensive' | 'balanced' | 'selective'
   totalDosesByAge6: number
-  /** Number of antigens given at birth (day 0-1) */
   birthDoseCount: number
-  /** Descriptive label for what happens at birth */
   birthLabel: string
-  /** Number of antigens given in the first 8 weeks */
   first8WeeksCount: number
-  /** Age when routine vaccination begins (weeks) */
   firstVaccineWeeks: number
   philosophy: string
   vaccines: VaccineEntry[]
@@ -55,14 +32,6 @@ interface CountrySchedule {
   lastUpdated: string
   infantMortality: string
   neonatalMortality: string
-=======
-  approach: 'comprehensive' | 'balanced' | 'selective'
-  totalDoses: number
-  philosophy: string
-  vaccines: VaccineEntry[]
-  source: string
-  lastUpdated: string
->>>>>>> Stashed changes
 }
 
 const scheduleData: CountrySchedule[] = [
@@ -78,7 +47,6 @@ const scheduleData: CountrySchedule[] = [
     firstVaccineWeeks: 0,
     philosophy: 'Front-loaded schedule providing maximum early protection. The US is one of the only developed nations that administers a vaccine within 24 hours of birth to all newborns regardless of maternal HepB status.',
     vaccines: [
-<<<<<<< Updated upstream
       { name: 'Hepatitis B (HepB)', timing: 'Birth (within 24h), 1 month, 6-18 months', doses: 3, birthDose: true, firstDoseWeeks: 0 },
       { name: 'Rotavirus (RV)', timing: '2 months, 4 months, 6 months', doses: 3, firstDoseWeeks: 8 },
       { name: 'Diphtheria-Tetanus-Pertussis (DTaP)', timing: '2m, 4m, 6m, 15-18m, 4-6y', doses: 5, firstDoseWeeks: 8 },
@@ -96,113 +64,6 @@ const scheduleData: CountrySchedule[] = [
     lastUpdated: '2025',
     infantMortality: '5.4 per 1,000',
     neonatalMortality: '3.5 per 1,000',
-=======
-      { name: 'Hepatitis B', timing: 'Birth, 1-2m, 6-18m', doses: 3 },
-      { name: 'DTaP', timing: '2m, 4m, 6m, 15-18m, 4-6y', doses: 5 },
-      { name: 'Hib', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
-      { name: 'Polio (IPV)', timing: '2m, 4m, 6-18m, 4-6y', doses: 4 },
-      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
-      { name: 'Rotavirus', timing: '2m, 4m, 6m', doses: 3 },
-      { name: 'MMR', timing: '12-15m, 4-6y', doses: 2 },
-      { name: 'Varicella', timing: '12-15m, 4-6y', doses: 2 }
-    ],
-    source: 'CDC',
-    lastUpdated: '2024'
-  },
-  {
-    code: 'UK',
-    country: 'United Kingdom',
-    approach: 'balanced',
-    totalDoses: 19,
-    philosophy: 'Evidence-based schedule prioritizing most significant disease threats',
-    vaccines: [
-      { name: 'Pneumococcal (PCV)', timing: '12w, 1y', doses: 2 },
-      { name: 'Rotavirus', timing: '8w, 12w', doses: 2 },
-      { name: 'MenB', timing: '8w, 16w, 1y', doses: 3 },
-      { name: 'Hib/MenC', timing: '1y', doses: 1 },
-      { name: 'MMR', timing: '1y, 3y4m', doses: 2 }
-    ],
-    source: 'NHS',
-    lastUpdated: '2024'
-  },
-  {
-    code: 'CA',
-    country: 'Canada',
-    approach: 'comprehensive',
-    totalDoses: 24,
-    philosophy: 'Evidence-based schedule balancing early protection with healthcare system capacity',
-    vaccines: [
-      { name: 'Hepatitis B', timing: 'Birth, 2m, 6m', doses: 3 },
-      { name: 'DTaP-IPV-Hib', timing: '2m, 4m, 6m, 18m', doses: 4 },
-      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 12m', doses: 3 },
-      { name: 'Meningococcal C', timing: '12m', doses: 1 },
-      { name: 'Rotavirus', timing: '2m, 4m, 6m', doses: 3 },
-      { name: 'MMR', timing: '12m, 4-6y', doses: 2 },
-      { name: 'Varicella', timing: '12m, 4-6y', doses: 2 }
-    ],
-    source: 'Public Health Agency of Canada',
-    lastUpdated: '2024'
-  },
-  {
-    code: 'NL',
-    country: 'Netherlands',
-    approach: 'selective',
-    totalDoses: 20,
-    philosophy: 'Structured schedule focusing on diseases with highest local burden',
-    vaccines: [
-      { name: 'DTaP-IPV-Hib-HepB', timing: '6w, 3m, 5m, 11m', doses: 4 },
-      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 11m', doses: 3 },
-      { name: 'MMR', timing: '14m, 9y', doses: 2 },
-      { name: 'MenC', timing: '14m', doses: 1 }
-    ],
-    source: 'RIVM',
-    lastUpdated: '2024'
-  },
-  {
-    code: 'SE',
-    country: 'Sweden',
-    approach: 'selective',
-    totalDoses: 18,
-    philosophy: 'Conservative approach prioritizing essential vaccines with proven long-term benefit',
-    vaccines: [
-      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
-      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
-      { name: 'MMR', timing: '18m, 6-8y', doses: 2 }
-    ],
-    source: 'Folkhälsomyndigheten',
-    lastUpdated: '2024'
-  },
-  {
-    code: 'NO',
-    country: 'Norway',
-    approach: 'selective',
-    totalDoses: 17,
-    philosophy: 'Focused approach on diseases with highest risk-benefit ratio',
-    vaccines: [
-      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
-      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
-      { name: 'MMR', timing: '15m, 11-12y', doses: 2 },
-      { name: 'Rotavirus', timing: '6w, 3m, 5m', doses: 3 }
-    ],
-    source: 'Folkehelseinstituttet',
-    lastUpdated: '2024'
-  },
-  {
-    code: 'JP',
-    country: 'Japan',
-    approach: 'balanced',
-    totalDoses: 19,
-    philosophy: 'Systematic approach emphasizing disease prevention with cultural acceptance',
-    vaccines: [
-      { name: 'Hib', timing: '2m, 3m, 4m, 12m', doses: 4 },
-      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
-      { name: 'DPT', timing: '3m, 4m, 5m, 12-18m', doses: 4 },
-      { name: 'Polio (IPV)', timing: '3m, 4m, 5m, 4-6y', doses: 4 },
-      { name: 'MR', timing: '12m, 5-7y', doses: 2 }
-    ],
-    source: 'MHLW',
-    lastUpdated: '2024'
->>>>>>> Stashed changes
   },
   {
     code: 'DK',
@@ -216,7 +77,6 @@ const scheduleData: CountrySchedule[] = [
     firstVaccineWeeks: 13,
     philosophy: 'Denmark gives zero vaccines at birth and waits until 3 months for the first dose. With universal healthcare and a population-level focus, Denmark achieves excellent childhood disease outcomes with one of the lowest vaccine counts in the developed world.',
     vaccines: [
-<<<<<<< Updated upstream
       { name: 'DTaP-IPV-Hib-HepB (6-in-1)', timing: '3 months, 5 months, 12 months', doses: 3, firstDoseWeeks: 13 },
       { name: 'Pneumococcal (PCV13)', timing: '3 months, 5 months, 12 months', doses: 3, firstDoseWeeks: 13 },
       { name: 'MMR', timing: '15 months, 4 years', doses: 2, firstDoseWeeks: 65 },
@@ -400,23 +260,10 @@ const scheduleData: CountrySchedule[] = [
     infantMortality: '1.5 per 1,000',
     neonatalMortality: '1.0 per 1,000',
   },
-=======
-      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
-      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
-      { name: 'MMR', timing: '15m, 4y', doses: 2 }
-    ],
-    source: 'Statens Serum Institut',
-    lastUpdated: '2024'
-  }
->>>>>>> Stashed changes
 ]
 
 type FilterBy = 'all' | 'comprehensive' | 'balanced' | 'selective'
 type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach' | 'birth-doses' | 'infant-mortality'
-
-/* ------------------------------------------------------------------ */
-/*  COMPONENT                                                          */
-/* ------------------------------------------------------------------ */
 
 export function ComprehensiveVaccineSchedule() {
   const [sortBy, setSortBy] = useState<SortBy>('birth-doses')
@@ -435,11 +282,6 @@ export function ComprehensiveVaccineSchedule() {
   const expandAll = () => setExpandedCountries(new Set(scheduleData.map((s) => s.code)))
   const collapseAll = () => setExpandedCountries(new Set())
   const handlePrint = () => window.print()
-
-<<<<<<< Updated upstream
-  const collapseAll = () => {
-    setExpandedCountries(new Set())
-  }
 
   const filteredData = scheduleData.filter(schedule => {
     if (filterBy === 'all') return true
@@ -469,34 +311,9 @@ export function ComprehensiveVaccineSchedule() {
   const nordicCountries = scheduleData.filter(s => ['DK', 'SE', 'NO', 'FI', 'IS'].includes(s.code))
   const avgNordicDoses = Math.round(nordicCountries.reduce((a, c) => a + c.totalDosesByAge6, 0) / nordicCountries.length)
 
-  const handlePrint = () => {
-    window.print()
-  }
-=======
-  const sortedData = useMemo(() => {
-    const filtered = scheduleData.filter((s) => (filterBy === 'all' ? true : s.approach === filterBy))
-    return [...filtered].sort((a, b) => {
-      switch (sortBy) {
-        case 'country':
-          return a.country.localeCompare(b.country)
-        case 'doses-desc':
-          return b.totalDoses - a.totalDoses
-        case 'doses-asc':
-          return a.totalDoses - b.totalDoses
-        case 'approach':
-          return a.approach.localeCompare(b.approach)
-        default:
-          return 0
-      }
-    })
-  }, [filterBy, sortBy])
->>>>>>> Stashed changes
-
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
-      {/* Header */}
       <div className="space-y-2">
-<<<<<<< Updated upstream
         <div className="flex items-center gap-3">
           <Globe size={32} weight="duotone" className="text-primary" />
           <h1 className="text-3xl font-semibold text-foreground">
@@ -506,15 +323,8 @@ export function ComprehensiveVaccineSchedule() {
         <p className="text-muted-foreground text-lg">
           How the United States compares to other developed nations in childhood vaccination timing, quantity, and newborn protocols
         </p>
-=======
-        <h1 className="text-3xl font-semibold text-foreground">International Vaccine Schedule Comparison</h1>
-        <p className="text-muted-foreground">Compare recommended childhood vaccination schedules across different countries</p>
->>>>>>> Stashed changes
       </div>
 
-      {/* ================================================================ */}
-      {/*  NEWBORN PERIOD SPOTLIGHT                                        */}
-      {/* ================================================================ */}
       <Card className="border-2 border-destructive/30 bg-destructive/5">
         <CardHeader>
           <div className="flex items-center gap-3">
@@ -529,7 +339,6 @@ export function ComprehensiveVaccineSchedule() {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* US column */}
             <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🇺🇸</span>
@@ -559,7 +368,6 @@ export function ComprehensiveVaccineSchedule() {
               </div>
             </div>
 
-            {/* Nordic/international column */}
             <div className="bg-evidence/10 border border-evidence/20 rounded-lg p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🇩🇰🇸🇪🇳🇴🇫🇮🇮🇸🇳🇿</span>
@@ -591,7 +399,6 @@ export function ComprehensiveVaccineSchedule() {
             </div>
           </div>
 
-          {/* Key question */}
           <Alert className="border-caution bg-caution/10">
             <Warning size={20} weight="fill" className="text-caution-foreground" />
             <AlertDescription className="ml-2 space-y-2">
@@ -609,9 +416,6 @@ export function ComprehensiveVaccineSchedule() {
         </CardContent>
       </Card>
 
-      {/* ================================================================ */}
-      {/*  TOTAL DOSES COMPARISON BAR                                       */}
-      {/* ================================================================ */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Total Vaccine Doses by Age 6 (by Country)</CardTitle>
@@ -648,9 +452,6 @@ export function ComprehensiveVaccineSchedule() {
         </CardContent>
       </Card>
 
-      {/* ================================================================ */}
-      {/*  INFANT MORTALITY COMPARISON                                      */}
-      {/* ================================================================ */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Infant Mortality Rates (Deaths per 1,000 Live Births)</CardTitle>
@@ -689,32 +490,19 @@ export function ComprehensiveVaccineSchedule() {
         </CardContent>
       </Card>
 
-      {/* ================================================================ */}
-      {/*  EDUCATIONAL DISCLAIMER                                           */}
-      {/* ================================================================ */}
       <Alert>
         <AlertDescription>
-<<<<<<< Updated upstream
           <strong>Educational Resource:</strong> This comparison uses official data from each country's public health authority.
           All schedules are developed by qualified medical professionals. Differences reflect local disease patterns,
           healthcare infrastructure, cultural values, and public health philosophy.
           This information is provided to support informed consent — not to provide medical advice.
           Always discuss your child's vaccination plan with a healthcare provider you trust.
-=======
-          <strong>Educational Resource:</strong> This comparison shows the diversity in international vaccination approaches.
-          Schedules are developed by qualified public health authorities. Differences can reflect local disease patterns,
-          healthcare infrastructure, and population health priorities. Consult a qualified clinician for personalized guidance.
->>>>>>> Stashed changes
         </AlertDescription>
       </Alert>
 
-      {/* ================================================================ */}
-      {/*  CONTROLS                                                         */}
-      {/* ================================================================ */}
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <div className="flex flex-wrap gap-2">
           <Button variant="outline" size="sm" onClick={expandAll}>
-<<<<<<< Updated upstream
             <CaretDown className="mr-2" /> Expand All
           </Button>
           <Button variant="outline" size="sm" onClick={collapseAll}>
@@ -722,18 +510,6 @@ export function ComprehensiveVaccineSchedule() {
           </Button>
           <Button variant="outline" size="sm" onClick={handlePrint}>
             <Printer className="mr-2" /> Print
-=======
-            <CaretDown className="mr-2" />
-            Expand All
-          </Button>
-          <Button variant="outline" size="sm" onClick={collapseAll}>
-            <CaretUp className="mr-2" />
-            Collapse All
-          </Button>
-          <Button variant="outline" size="sm" onClick={handlePrint}>
-            <Printer className="mr-2" />
-            Print
->>>>>>> Stashed changes
           </Button>
         </div>
 
@@ -766,19 +542,13 @@ export function ComprehensiveVaccineSchedule() {
         </div>
       </div>
 
-      {/* ================================================================ */}
-      {/*  PER-COUNTRY DETAIL CARDS                                         */}
-      {/* ================================================================ */}
       <div className="space-y-4">
         {sortedData.map((schedule) => {
           const isExpanded = expandedCountries.has(schedule.code)
-<<<<<<< Updated upstream
           const isUS = schedule.code === 'US'
-=======
->>>>>>> Stashed changes
 
           return (
-            <Card key={schedule.code} className={`overflow-hidden ${isUS ? 'border-destructive/30' : ''}`}>
+            <Card key={schedule.code} className={`overflow-hidden transition-colors ${isUS ? 'border-destructive/30 bg-destructive/5' : 'hover:border-primary/30'}`}>
               <button
                 type="button"
                 onClick={() => toggleCountry(schedule.code)}
@@ -788,16 +558,11 @@ export function ComprehensiveVaccineSchedule() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 space-y-2">
-<<<<<<< Updated upstream
                     <div className="flex items-center gap-3 flex-wrap">
                       <span className="text-xl">{schedule.flag}</span>
                       <h3 className="text-xl font-semibold text-foreground">
                         {schedule.country}
                       </h3>
-=======
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-xl font-semibold text-foreground">{schedule.country}</h3>
->>>>>>> Stashed changes
                       <Badge
                         variant={
                           schedule.approach === 'comprehensive'
@@ -821,7 +586,6 @@ export function ComprehensiveVaccineSchedule() {
                         </Badge>
                       )}
                     </div>
-<<<<<<< Updated upstream
                     <p className="text-sm text-muted-foreground">
                       {schedule.philosophy}
                     </p>
@@ -833,15 +597,6 @@ export function ComprehensiveVaccineSchedule() {
                       <span>Infant mortality: {schedule.infantMortality}</span>
                       <span>•</span>
                       <span>Source: <a href={schedule.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{schedule.source}</a></span>
-=======
-                    <p className="text-sm text-muted-foreground">{schedule.philosophy}</p>
-                    <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                      <span>{schedule.totalDoses} total doses</span>
-                      <span aria-hidden="true">•</span>
-                      <span>Source: {schedule.source}</span>
-                      <span aria-hidden="true">•</span>
-                      <span>Updated: {schedule.lastUpdated}</span>
->>>>>>> Stashed changes
                     </div>
                   </div>
                   <div className="flex-shrink-0 pt-1">
@@ -857,7 +612,6 @@ export function ComprehensiveVaccineSchedule() {
               {isExpanded && (
                 <CardContent id={`schedule-${schedule.code}`} className="pt-0 pb-6 px-6 border-t">
                   <div className="space-y-3 mt-4">
-                    {/* Birth/Newborn highlight */}
                     <div className={`p-4 rounded-lg ${schedule.birthDoseCount > 0 ? 'bg-destructive/10 border border-destructive/20' : 'bg-evidence/10 border border-evidence/20'}`}>
                       <div className="flex items-center gap-2 mb-1">
                         <Baby size={18} weight="fill" className={schedule.birthDoseCount > 0 ? 'text-destructive' : 'text-evidence'} />
@@ -872,7 +626,6 @@ export function ComprehensiveVaccineSchedule() {
                       Full Vaccine Schedule
                     </h4>
                     {schedule.vaccines.map((vaccine, idx) => (
-<<<<<<< Updated upstream
                       <div
                         key={idx}
                         className={`flex items-start gap-4 p-3 rounded-lg ${vaccine.birthDose ? 'bg-destructive/10 border border-destructive/20' : 'bg-muted/30'}`}
@@ -887,12 +640,6 @@ export function ComprehensiveVaccineSchedule() {
                           <div className="text-sm text-muted-foreground mt-1">
                             {vaccine.timing}
                           </div>
-=======
-                      <div key={`${vaccine.name}-${idx}`} className="flex items-start gap-4 p-3 rounded-lg bg-muted/30">
-                        <div className="flex-1">
-                          <div className="font-medium text-foreground">{vaccine.name}</div>
-                          <div className="text-sm text-muted-foreground mt-1">{vaccine.timing}</div>
->>>>>>> Stashed changes
                         </div>
                         <div className="flex-shrink-0 text-right">
                           <div className="text-sm font-medium text-foreground">
@@ -902,7 +649,6 @@ export function ComprehensiveVaccineSchedule() {
                       </div>
                     ))}
 
-                    {/* Mortality stats */}
                     <Separator className="my-3" />
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 rounded-lg bg-muted/30">
@@ -922,9 +668,6 @@ export function ComprehensiveVaccineSchedule() {
         })}
       </div>
 
-      {/* ================================================================ */}
-      {/*  FOOTER                                                           */}
-      {/* ================================================================ */}
       <Card className="border-caution/30 bg-caution/5">
         <CardContent className="p-6 space-y-4">
           <h3 className="font-bold text-lg flex items-center gap-2">
