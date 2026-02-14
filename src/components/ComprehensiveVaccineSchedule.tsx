@@ -11,19 +11,29 @@ interface VaccineEntry {
   name: string
   timing: string
   doses: number
+<<<<<<< Updated upstream
+  /** if this vaccine has a birth dose in this country */
   birthDose?: boolean
+  /** age in weeks when first dose is given (0 = birth) */
   firstDoseWeeks?: number
+=======
+>>>>>>> Stashed changes
 }
 
 interface CountrySchedule {
   country: string
   code: string
+<<<<<<< Updated upstream
   flag: string
   approach: 'comprehensive' | 'balanced' | 'selective'
   totalDosesByAge6: number
+  /** Number of antigens given at birth (day 0-1) */
   birthDoseCount: number
+  /** Descriptive label for what happens at birth */
   birthLabel: string
+  /** Number of antigens given in the first 8 weeks */
   first8WeeksCount: number
+  /** Age when routine vaccination begins (weeks) */
   firstVaccineWeeks: number
   philosophy: string
   vaccines: VaccineEntry[]
@@ -32,6 +42,14 @@ interface CountrySchedule {
   lastUpdated: string
   infantMortality: string
   neonatalMortality: string
+=======
+  approach: 'comprehensive' | 'balanced' | 'selective'
+  totalDoses: number
+  philosophy: string
+  vaccines: VaccineEntry[]
+  source: string
+  lastUpdated: string
+>>>>>>> Stashed changes
 }
 
 const scheduleData: CountrySchedule[] = [
@@ -47,6 +65,7 @@ const scheduleData: CountrySchedule[] = [
     firstVaccineWeeks: 0,
     philosophy: 'Front-loaded schedule providing maximum early protection. The US is one of the only developed nations that administers a vaccine within 24 hours of birth to all newborns regardless of maternal HepB status.',
     vaccines: [
+<<<<<<< Updated upstream
       { name: 'Hepatitis B (HepB)', timing: 'Birth (within 24h), 1 month, 6-18 months', doses: 3, birthDose: true, firstDoseWeeks: 0 },
       { name: 'Rotavirus (RV)', timing: '2 months, 4 months, 6 months', doses: 3, firstDoseWeeks: 8 },
       { name: 'Diphtheria-Tetanus-Pertussis (DTaP)', timing: '2m, 4m, 6m, 15-18m, 4-6y', doses: 5, firstDoseWeeks: 8 },
@@ -64,6 +83,113 @@ const scheduleData: CountrySchedule[] = [
     lastUpdated: '2025',
     infantMortality: '5.4 per 1,000',
     neonatalMortality: '3.5 per 1,000',
+=======
+      { name: 'Hepatitis B', timing: 'Birth, 1-2m, 6-18m', doses: 3 },
+      { name: 'DTaP', timing: '2m, 4m, 6m, 15-18m, 4-6y', doses: 5 },
+      { name: 'Hib', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
+      { name: 'Polio (IPV)', timing: '2m, 4m, 6-18m, 4-6y', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
+      { name: 'Rotavirus', timing: '2m, 4m, 6m', doses: 3 },
+      { name: 'MMR', timing: '12-15m, 4-6y', doses: 2 },
+      { name: 'Varicella', timing: '12-15m, 4-6y', doses: 2 }
+    ],
+    source: 'CDC',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'UK',
+    country: 'United Kingdom',
+    approach: 'balanced',
+    totalDoses: 19,
+    philosophy: 'Evidence-based schedule prioritizing most significant disease threats',
+    vaccines: [
+      { name: 'Pneumococcal (PCV)', timing: '12w, 1y', doses: 2 },
+      { name: 'Rotavirus', timing: '8w, 12w', doses: 2 },
+      { name: 'MenB', timing: '8w, 16w, 1y', doses: 3 },
+      { name: 'Hib/MenC', timing: '1y', doses: 1 },
+      { name: 'MMR', timing: '1y, 3y4m', doses: 2 }
+    ],
+    source: 'NHS',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'CA',
+    country: 'Canada',
+    approach: 'comprehensive',
+    totalDoses: 24,
+    philosophy: 'Evidence-based schedule balancing early protection with healthcare system capacity',
+    vaccines: [
+      { name: 'Hepatitis B', timing: 'Birth, 2m, 6m', doses: 3 },
+      { name: 'DTaP-IPV-Hib', timing: '2m, 4m, 6m, 18m', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 12m', doses: 3 },
+      { name: 'Meningococcal C', timing: '12m', doses: 1 },
+      { name: 'Rotavirus', timing: '2m, 4m, 6m', doses: 3 },
+      { name: 'MMR', timing: '12m, 4-6y', doses: 2 },
+      { name: 'Varicella', timing: '12m, 4-6y', doses: 2 }
+    ],
+    source: 'Public Health Agency of Canada',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'NL',
+    country: 'Netherlands',
+    approach: 'selective',
+    totalDoses: 20,
+    philosophy: 'Structured schedule focusing on diseases with highest local burden',
+    vaccines: [
+      { name: 'DTaP-IPV-Hib-HepB', timing: '6w, 3m, 5m, 11m', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 11m', doses: 3 },
+      { name: 'MMR', timing: '14m, 9y', doses: 2 },
+      { name: 'MenC', timing: '14m', doses: 1 }
+    ],
+    source: 'RIVM',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'SE',
+    country: 'Sweden',
+    approach: 'selective',
+    totalDoses: 18,
+    philosophy: 'Conservative approach prioritizing essential vaccines with proven long-term benefit',
+    vaccines: [
+      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'MMR', timing: '18m, 6-8y', doses: 2 }
+    ],
+    source: 'Folkhälsomyndigheten',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'NO',
+    country: 'Norway',
+    approach: 'selective',
+    totalDoses: 17,
+    philosophy: 'Focused approach on diseases with highest risk-benefit ratio',
+    vaccines: [
+      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'MMR', timing: '15m, 11-12y', doses: 2 },
+      { name: 'Rotavirus', timing: '6w, 3m, 5m', doses: 3 }
+    ],
+    source: 'Folkehelseinstituttet',
+    lastUpdated: '2024'
+  },
+  {
+    code: 'JP',
+    country: 'Japan',
+    approach: 'balanced',
+    totalDoses: 19,
+    philosophy: 'Systematic approach emphasizing disease prevention with cultural acceptance',
+    vaccines: [
+      { name: 'Hib', timing: '2m, 3m, 4m, 12m', doses: 4 },
+      { name: 'Pneumococcal (PCV)', timing: '2m, 4m, 6m, 12-15m', doses: 4 },
+      { name: 'DPT', timing: '3m, 4m, 5m, 12-18m', doses: 4 },
+      { name: 'Polio (IPV)', timing: '3m, 4m, 5m, 4-6y', doses: 4 },
+      { name: 'MR', timing: '12m, 5-7y', doses: 2 }
+    ],
+    source: 'MHLW',
+    lastUpdated: '2024'
+>>>>>>> Stashed changes
   },
   {
     code: 'DK',
@@ -77,6 +203,7 @@ const scheduleData: CountrySchedule[] = [
     firstVaccineWeeks: 13,
     philosophy: 'Denmark gives zero vaccines at birth and waits until 3 months for the first dose. With universal healthcare and a population-level focus, Denmark achieves excellent childhood disease outcomes with one of the lowest vaccine counts in the developed world.',
     vaccines: [
+<<<<<<< Updated upstream
       { name: 'DTaP-IPV-Hib-HepB (6-in-1)', timing: '3 months, 5 months, 12 months', doses: 3, firstDoseWeeks: 13 },
       { name: 'Pneumococcal (PCV13)', timing: '3 months, 5 months, 12 months', doses: 3, firstDoseWeeks: 13 },
       { name: 'MMR', timing: '15 months, 4 years', doses: 2, firstDoseWeeks: 65 },
@@ -260,10 +387,23 @@ const scheduleData: CountrySchedule[] = [
     infantMortality: '1.5 per 1,000',
     neonatalMortality: '1.0 per 1,000',
   },
+=======
+      { name: 'DTaP-IPV-Hib-HepB', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'Pneumococcal (PCV)', timing: '3m, 5m, 12m', doses: 3 },
+      { name: 'MMR', timing: '15m, 4y', doses: 2 }
+    ],
+    source: 'Statens Serum Institut',
+    lastUpdated: '2024'
+  }
+>>>>>>> Stashed changes
 ]
 
 type FilterBy = 'all' | 'comprehensive' | 'balanced' | 'selective'
 type SortBy = 'country' | 'doses-desc' | 'doses-asc' | 'approach' | 'birth-doses' | 'infant-mortality'
+
+/* ------------------------------------------------------------------ */
+/*  COMPONENT                                                          */
+/* ------------------------------------------------------------------ */
 
 export function ComprehensiveVaccineSchedule() {
   const [sortBy, setSortBy] = useState<SortBy>('birth-doses')
@@ -282,6 +422,11 @@ export function ComprehensiveVaccineSchedule() {
   const expandAll = () => setExpandedCountries(new Set(scheduleData.map((s) => s.code)))
   const collapseAll = () => setExpandedCountries(new Set())
   const handlePrint = () => window.print()
+
+<<<<<<< Updated upstream
+  const collapseAll = () => {
+    setExpandedCountries(new Set())
+  }
 
   const filteredData = scheduleData.filter(schedule => {
     if (filterBy === 'all') return true
@@ -311,9 +456,34 @@ export function ComprehensiveVaccineSchedule() {
   const nordicCountries = scheduleData.filter(s => ['DK', 'SE', 'NO', 'FI', 'IS'].includes(s.code))
   const avgNordicDoses = Math.round(nordicCountries.reduce((a, c) => a + c.totalDosesByAge6, 0) / nordicCountries.length)
 
+  const handlePrint = () => {
+    window.print()
+  }
+=======
+  const sortedData = useMemo(() => {
+    const filtered = scheduleData.filter((s) => (filterBy === 'all' ? true : s.approach === filterBy))
+    return [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case 'country':
+          return a.country.localeCompare(b.country)
+        case 'doses-desc':
+          return b.totalDoses - a.totalDoses
+        case 'doses-asc':
+          return a.totalDoses - b.totalDoses
+        case 'approach':
+          return a.approach.localeCompare(b.approach)
+        default:
+          return 0
+      }
+    })
+  }, [filterBy, sortBy])
+>>>>>>> Stashed changes
+
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+      {/* Header */}
       <div className="space-y-2">
+<<<<<<< Updated upstream
         <div className="flex items-center gap-3">
           <Globe size={32} weight="duotone" className="text-primary" />
           <h1 className="text-3xl font-semibold text-foreground">
@@ -323,8 +493,15 @@ export function ComprehensiveVaccineSchedule() {
         <p className="text-muted-foreground text-lg">
           How the United States compares to other developed nations in childhood vaccination timing, quantity, and newborn protocols
         </p>
+=======
+        <h1 className="text-3xl font-semibold text-foreground">International Vaccine Schedule Comparison</h1>
+        <p className="text-muted-foreground">Compare recommended childhood vaccination schedules across different countries</p>
+>>>>>>> Stashed changes
       </div>
 
+      {/* ================================================================ */}
+      {/*  NEWBORN PERIOD SPOTLIGHT                                        */}
+      {/* ================================================================ */}
       <Card className="border-2 border-destructive/30 bg-destructive/5">
         <CardHeader>
           <div className="flex items-center gap-3">
@@ -339,6 +516,7 @@ export function ComprehensiveVaccineSchedule() {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* US column */}
             <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🇺🇸</span>
@@ -368,6 +546,7 @@ export function ComprehensiveVaccineSchedule() {
               </div>
             </div>
 
+            {/* Nordic/international column */}
             <div className="bg-evidence/10 border border-evidence/20 rounded-lg p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🇩🇰🇸🇪🇳🇴🇫🇮🇮🇸🇳🇿</span>
@@ -399,6 +578,7 @@ export function ComprehensiveVaccineSchedule() {
             </div>
           </div>
 
+          {/* Key question */}
           <Alert className="border-caution bg-caution/10">
             <Warning size={20} weight="fill" className="text-caution-foreground" />
             <AlertDescription className="ml-2 space-y-2">
@@ -416,6 +596,9 @@ export function ComprehensiveVaccineSchedule() {
         </CardContent>
       </Card>
 
+      {/* ================================================================ */}
+      {/*  TOTAL DOSES COMPARISON BAR                                       */}
+      {/* ================================================================ */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Total Vaccine Doses by Age 6 (by Country)</CardTitle>
@@ -452,6 +635,9 @@ export function ComprehensiveVaccineSchedule() {
         </CardContent>
       </Card>
 
+      {/* ================================================================ */}
+      {/*  INFANT MORTALITY COMPARISON                                      */}
+      {/* ================================================================ */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Infant Mortality Rates (Deaths per 1,000 Live Births)</CardTitle>
@@ -490,211 +676,22 @@ export function ComprehensiveVaccineSchedule() {
         </CardContent>
       </Card>
 
-      <Alert>
-        <AlertDescription>
-          <strong>Educational Resource:</strong> This comparison uses official data from each country's public health authority.
-          All schedules are developed by qualified medical professionals. Differences reflect local disease patterns,
-          healthcare infrastructure, cultural values, and public health philosophy.
-          This information is provided to support informed consent — not to provide medical advice.
-          Always discuss your child's vaccination plan with a healthcare provider you trust.
-        </AlertDescription>
-      </Alert>
-
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" onClick={expandAll}>
-            <CaretDown className="mr-2" /> Expand All
-          </Button>
-          <Button variant="outline" size="sm" onClick={collapseAll}>
-            <CaretUp className="mr-2" /> Collapse All
-          </Button>
-          <Button variant="outline" size="sm" onClick={handlePrint}>
-            <Printer className="mr-2" /> Print
-          </Button>
-        </div>
-
-        <div className="flex flex-wrap gap-2 w-full md:w-auto">
-          <Select value={filterBy} onValueChange={(value) => setFilterBy(value as FilterBy)}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by approach" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Approaches</SelectItem>
-              <SelectItem value="comprehensive">Comprehensive</SelectItem>
-              <SelectItem value="balanced">Balanced</SelectItem>
-              <SelectItem value="selective">Selective</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortBy)}>
-            <SelectTrigger className="w-[200px]">
-              <SelectValue placeholder="Sort by" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="birth-doses">Birth Doses (Most First)</SelectItem>
-              <SelectItem value="doses-desc">Total Doses (High → Low)</SelectItem>
-              <SelectItem value="doses-asc">Total Doses (Low → High)</SelectItem>
-              <SelectItem value="infant-mortality">Infant Mortality (Best First)</SelectItem>
-              <SelectItem value="country">Country (A-Z)</SelectItem>
-              <SelectItem value="approach">Approach</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        {sortedData.map((schedule) => {
-          const isExpanded = expandedCountries.has(schedule.code)
-          const isUS = schedule.code === 'US'
-
-          return (
-            <Card key={schedule.code} className={`overflow-hidden transition-colors ${isUS ? 'border-destructive/30 bg-destructive/5' : 'hover:border-primary/30'}`}>
-              <button
-                type="button"
-                onClick={() => toggleCountry(schedule.code)}
-                className="w-full text-left p-6 hover:bg-muted/50 transition-colors"
-                aria-expanded={isExpanded}
-                aria-controls={`schedule-${schedule.code}`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <span className="text-xl">{schedule.flag}</span>
-                      <h3 className="text-xl font-semibold text-foreground">
-                        {schedule.country}
-                      </h3>
-                      <Badge
-                        variant={
-                          schedule.approach === 'comprehensive'
-                            ? 'destructive'
-                            : schedule.approach === 'balanced'
-                            ? 'secondary'
-                            : 'outline'
-                        }
-                      >
-                        {schedule.approach.charAt(0).toUpperCase() + schedule.approach.slice(1)}
-                      </Badge>
-                      {schedule.birthDoseCount > 0 ? (
-                        <Badge variant="destructive" className="text-xs">
-                          <Syringe size={12} weight="fill" className="mr-1" />
-                          {schedule.birthDoseCount} birth dose{schedule.birthDoseCount > 1 ? 's' : ''}
-                        </Badge>
-                      ) : (
-                        <Badge variant="outline" className="text-xs border-evidence text-evidence">
-                          <ShieldCheck size={12} weight="fill" className="mr-1" />
-                          No birth doses
-                        </Badge>
-                      )}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {schedule.philosophy}
-                    </p>
-                    <div className="flex items-center gap-3 text-sm text-muted-foreground flex-wrap">
-                      <span className="font-semibold text-foreground">{schedule.totalDosesByAge6} doses by age 6</span>
-                      <span>•</span>
-                      <span>First vaccine: {schedule.firstVaccineWeeks === 0 ? 'Birth' : `${schedule.firstVaccineWeeks} weeks`}</span>
-                      <span>•</span>
-                      <span>Infant mortality: {schedule.infantMortality}</span>
-                      <span>•</span>
-                      <span>Source: <a href={schedule.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{schedule.source}</a></span>
-                    </div>
-                  </div>
-                  <div className="flex-shrink-0 pt-1">
-                    {isExpanded ? (
-                      <CaretUp className="w-5 h-5 text-muted-foreground" />
-                    ) : (
-                      <CaretDown className="w-5 h-5 text-muted-foreground" />
-                    )}
-                  </div>
-                </div>
-              </button>
-
-              {isExpanded && (
-                <CardContent id={`schedule-${schedule.code}`} className="pt-0 pb-6 px-6 border-t">
-                  <div className="space-y-3 mt-4">
-                    <div className={`p-4 rounded-lg ${schedule.birthDoseCount > 0 ? 'bg-destructive/10 border border-destructive/20' : 'bg-evidence/10 border border-evidence/20'}`}>
-                      <div className="flex items-center gap-2 mb-1">
-                        <Baby size={18} weight="fill" className={schedule.birthDoseCount > 0 ? 'text-destructive' : 'text-evidence'} />
-                        <span className="font-semibold text-sm">At Birth (Day 1)</span>
-                      </div>
-                      <p className={`text-sm ${schedule.birthDoseCount > 0 ? 'text-destructive' : 'text-evidence'} font-medium`}>
-                        {schedule.birthLabel}
-                      </p>
-                    </div>
-
-                    <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide pt-2">
-                      Full Vaccine Schedule
-                    </h4>
-                    {schedule.vaccines.map((vaccine, idx) => (
-                      <div
-                        key={idx}
-                        className={`flex items-start gap-4 p-3 rounded-lg ${vaccine.birthDose ? 'bg-destructive/10 border border-destructive/20' : 'bg-muted/30'}`}
-                      >
-                        <div className="flex-1">
-                          <div className="font-medium text-foreground flex items-center gap-2">
-                            {vaccine.name}
-                            {vaccine.birthDose && (
-                              <Badge variant="destructive" className="text-xs">Birth dose</Badge>
-                            )}
-                          </div>
-                          <div className="text-sm text-muted-foreground mt-1">
-                            {vaccine.timing}
-                          </div>
-                        </div>
-                        <div className="flex-shrink-0 text-right">
-                          <div className="text-sm font-medium text-foreground">
-                            {vaccine.doses} {vaccine.doses === 1 ? 'dose' : 'doses'}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-
-                    <Separator className="my-3" />
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-3 rounded-lg bg-muted/30">
-                        <p className="text-xs text-muted-foreground font-medium">Infant Mortality Rate</p>
-                        <p className={`text-xl font-bold ${isUS ? 'text-destructive' : 'text-foreground'}`}>{schedule.infantMortality}</p>
-                      </div>
-                      <div className="text-center p-3 rounded-lg bg-muted/30">
-                        <p className="text-xs text-muted-foreground font-medium">Neonatal Mortality Rate</p>
-                        <p className={`text-xl font-bold ${isUS ? 'text-destructive' : 'text-foreground'}`}>{schedule.neonatalMortality}</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              )}
-            </Card>
-          )
-        })}
-      </div>
-
-      <Card className="border-caution/30 bg-caution/5">
-        <CardContent className="p-6 space-y-4">
-          <h3 className="font-bold text-lg flex items-center gap-2">
-            <Warning size={22} weight="fill" className="text-caution-foreground" />
-            Key Takeaways for US Parents
-          </h3>
-          <div className="space-y-3 text-sm">
-            <p>
-              <strong>The US is an outlier.</strong> It is the only developed nation profiled here that gives a vaccine within 24 hours of birth to all newborns. 
+      {/* ================================================================ */}
               Denmark, Sweden, Norway, Finland, Iceland, Japan, the UK, and New Zealand all wait at least 6 weeks — often 3 months — before the first injection.
             </p>
             <p>
               <strong>More is not necessarily better.</strong> The US gives roughly {Math.round(usSchedule.totalDosesByAge6 / avgNordicDoses)}× more vaccine doses than the average Nordic country by age 6, yet has an infant mortality rate ({usSchedule.infantMortality}) that is 2-3× higher than countries like Japan ({scheduleData.find(s => s.code === 'JP')?.infantMortality}), Iceland ({scheduleData.find(s => s.code === 'IS')?.infantMortality}), and Finland ({scheduleData.find(s => s.code === 'FI')?.infantMortality}).
             </p>
-            <p>
               <strong>You have the right to informed consent.</strong> In most US states, parents can legally request a delayed or alternative schedule. 
               Many pediatricians are willing to work with families on spacing out vaccines. You are not required to give all recommended doses at the recommended times.
             </p>
             <p>
               <strong>Consider the Nordic model.</strong> The Scandinavian countries demonstrate that waiting to vaccinate — and giving fewer total doses — is a well-tested, evidence-based approach 
-              used by nations with excellent pediatric healthcare and the best infant survival rates in the world. You can use these schedules as conversation starters with your pediatrician.
-            </p>
+       
           </div>
         </CardContent>
       </Card>
 
-      <Alert>
         <AlertDescription className="space-y-2">
           <p><strong>Approach Definitions:</strong></p>
           <p>• <strong>Comprehensive:</strong> Extensive early protection with higher total dose counts, including birth doses</p>
@@ -704,9 +701,22 @@ export function ComprehensiveVaccineSchedule() {
       </Alert>
 
       <p className="text-xs text-muted-foreground text-center">
-        Data sourced from each country's official public health authority. Last verified: 2025. 
-        Infant mortality data: WHO / World Bank. This is educational information, not medical advice.
+        Data sourced fro
       </p>
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
