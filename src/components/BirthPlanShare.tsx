@@ -126,7 +126,7 @@ export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName, 
           {!shareId ? (
             <>
               <Card className="bg-accent/10">
-                <CardContent className="pt-6">
+                <CardContent className="card-padding-mobile md:card-padding">
                   <div className="flex items-start gap-3">
                     <div className="mt-0.5">
                       <LinkIcon className="h-5 w-5 text-accent-foreground" />
@@ -188,7 +188,7 @@ export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName, 
           ) : (
             <>
               <Card className="bg-evidence/10">
-                <CardContent className="pt-6">
+                <CardContent className="card-padding-mobile md:card-padding">
                   <div className="flex items-start gap-3">
                     <div className="mt-0.5">
                       <Check className="h-5 w-5 text-evidence" />
@@ -246,7 +246,7 @@ export function BirthPlanShare({ open, onOpenChange, birthPlanData, parentName, 
               </div>
 
               <Card className="bg-muted/50">
-                <CardContent className="pt-6">
+                <CardContent className="card-padding-mobile md:card-padding">
                   <p className="text-sm text-muted-foreground">
                     <strong>Tip:</strong> You can create multiple share links if needed. Each link works independently and can be shared with different people.
                   </p>

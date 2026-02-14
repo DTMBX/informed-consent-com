@@ -61,13 +61,13 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
               <div className="space-y-3">
                 {vaccineInfo.ingredients.map((ingredient) => (
                   <Card key={ingredient.id} className="border-border/50">
-                    <CardHeader className="pb-3">
+                    <CardHeader className="card-padding-mobile md:card-padding pb-3">
                       <CardTitle className="text-base">{ingredient.name}</CardTitle>
                       <CardDescription className="text-sm">
                         <span className="font-medium">Purpose:</span> {ingredient.purpose}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-2">
+                    <CardContent className="card-padding-mobile md:card-padding space-y-2">
                       {ingredient.amount && (
                         <p className="text-sm">
                           <span className="font-medium">Amount:</span> {ingredient.amount}
@@ -108,7 +108,7 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
                 </Alert>
 
                 <Card className="border-destructive/30">
-                  <CardHeader>
+                  <CardHeader className="card-padding-mobile md:card-padding">
                     <CardTitle className="text-lg">
                       {vaccineName} — {vaccineInfo.vaersData.reportYear}
                     </CardTitle>
@@ -116,7 +116,7 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
                       Adverse event reports submitted to VAERS. Source: Official VAERS data files.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="card-padding-mobile md:card-padding space-y-4">
                     {/* Primary Stats Grid */}
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1 bg-destructive/5 p-3 rounded-md border border-destructive/20">
@@ -297,13 +297,13 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
                 </Alert>
 
                 <Card>
-                  <CardHeader>
+                  <CardHeader className="card-padding-mobile md:card-padding">
                     <CardTitle className="text-lg">{vaccineInfo.vicpInfo.vaccineName}</CardTitle>
                     <CardDescription>
                       {vaccineInfo.vicpInfo.timeframe}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="card-padding-mobile md:card-padding space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <p className="text-sm text-muted-foreground">Total Cases Compensated</p>
@@ -367,7 +367,7 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
                 <div className="grid gap-4">
                   {vaccineInfo.internationalComparison.map((schedule, idx) => (
                     <Card key={idx}>
-                      <CardHeader>
+                      <CardHeader className="card-padding-mobile md:card-padding">
                         <CardTitle className="text-base flex items-center justify-between">
                           {schedule.country}
                           <Badge variant="outline">
@@ -375,7 +375,7 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
                           </Badge>
                         </CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-3">
+                      <CardContent className="card-padding-mobile md:card-padding space-y-3">
                         <div>
                           <h4 className="font-semibold text-sm mb-2">Vaccines at Birth</h4>
                           {schedule.vaccinesAtBirth.length > 0 ? (
@@ -419,13 +419,13 @@ export function VaccineInformation({ vaccineInfo, vaccineName }: VaccineInformat
               <div className="space-y-4 pt-4">
                 {vaccineInfo.alternativeSchedules.map((schedule, idx) => (
                   <Card key={idx}>
-                    <CardHeader>
+                    <CardHeader className="card-padding-mobile md:card-padding">
                       <CardTitle className="text-base">{schedule.name}</CardTitle>
                       <div className="flex gap-2">
                         <Badge variant="outline">{schedule.evidenceLevel}</Badge>
                       </div>
                     </CardHeader>
-                    <CardContent className="space-y-3">
+                    <CardContent className="card-padding-mobile md:card-padding space-y-3">
                       <p className="text-sm">{schedule.description}</p>
                       <div className="bg-muted p-3 rounded-md">
                         <p className="text-xs text-muted-foreground mb-1">Citation:</p>

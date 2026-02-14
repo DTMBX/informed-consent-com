@@ -250,7 +250,7 @@ export function BirthPlanHistory({ onClose, onRestoreVersion }: BirthPlanHistory
             <div className="space-y-4">
               {selectedVersion.changeNotes && (
                 <Card className="bg-accent/10">
-                  <CardContent className="pt-4">
+                  <CardContent className="card-padding-mobile md:card-padding">
                     <p className="text-sm">
                       <span className="font-medium">Changes: </span>
                       {selectedVersion.changeNotes}

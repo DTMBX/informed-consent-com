@@ -261,7 +261,7 @@ export function BirthPlanComments({ shareId, isOwner, ownerName, onCommentsRead 
                   <div className="space-y-3">
                     {questions.map((comment) => (
                       <Card key={comment.id} className="bg-accent/5">
-                        <CardContent className="pt-4">
+                        <CardContent className="card-padding-mobile md:card-padding">
                           <div className="space-y-3">
                             <div className="flex items-start justify-between gap-3">
                               <div className="flex items-center gap-2">
@@ -304,7 +304,7 @@ export function BirthPlanComments({ shareId, isOwner, ownerName, onCommentsRead 
                   <div className="space-y-3">
                     {generalComments.map((comment) => (
                       <Card key={comment.id}>
-                        <CardContent className="pt-4">
+                        <CardContent className="card-padding-mobile md:card-padding">
                           <div className="space-y-2">
                             <div className="flex items-start justify-between gap-3">
                               <div className="flex items-center gap-2">
@@ -335,7 +335,7 @@ export function BirthPlanComments({ shareId, isOwner, ownerName, onCommentsRead 
                   <div className="space-y-3">
                     {resolvedQuestions.map((comment) => (
                       <Card key={comment.id} className="opacity-60">
-                        <CardContent className="pt-4">
+                        <CardContent className="card-padding-mobile md:card-padding">
                           <div className="space-y-2">
                             <div className="flex items-start justify-between gap-3">
                               <div className="flex items-center gap-2">

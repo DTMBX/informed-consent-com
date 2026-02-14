@@ -142,7 +142,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Card>
-                <CardContent className="pt-6">
+                <CardContent className="card-padding-mobile md:card-padding">
                   <div className="flex items-center gap-3">
                     <div className="p-3 bg-primary/10 rounded-full">
                       <ChatCircle className="h-6 w-6 text-primary" weight="fill" />
@@ -156,7 +156,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
               </Card>
 
               <Card className={totalUnreadComments > 0 ? 'border-accent' : ''}>
-                <CardContent className="pt-6">
+                <CardContent className="card-padding-mobile md:card-padding">
                   <div className="flex items-center gap-3">
                     <div className="p-3 bg-accent/10 rounded-full">
                       <Bell className="h-6 w-6 text-accent" weight="fill" />
@@ -170,7 +170,7 @@ export function ViewAllComments({ onClose, parentName }: ViewAllCommentsProps) {
               </Card>
 
               <Card>
-                <CardContent className="pt-6">
+                <CardContent className="card-padding-mobile md:card-padding">
                   <div className="flex items-center gap-3">
                     <div className="p-3 bg-accent/10 rounded-full">
                       <Question className="h-6 w-6 text-accent" weight="fill" />
