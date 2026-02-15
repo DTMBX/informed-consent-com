@@ -2,26 +2,26 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-interface CardProps extends ComponentProps<"div"> {
-  variant?: "default" | "glass" | "glass-subtle" | "glass-strong"
 }
+function Card({ className, variant = "default", ...props }: CardP
+ 
 
-function Card({ className, variant = "default", ...props }: CardProps) {
-  return (
-    <div
-      data-slot="card"
-      className={cn(
-        "text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
         variant === "default" && "bg-card",
-        variant === "glass" && "glass-panel",
+        va
+        
+      {...props}
+  )
+
+  return (
+      data-slot="card-header"
         variant === "glass-subtle" && "glass-subtle",
         variant === "glass-strong" && "glass-strong",
-        className
       )}
-      {...props}
     />
-  )
 }
+functi
+   
+ 
 
 function CardHeader({ className, ...props }: ComponentProps<"div">) {
   return (
@@ -69,32 +69,32 @@ function CardAction({ className, ...props }: ComponentProps<"div">) {
   )
 }
 
-function CardContent({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-content"
-      className={cn("px-6", className)}
-      {...props}
-    />
-  )
-}
-
-function CardFooter({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-footer"
-      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
-      {...props}
-    />
-  )
-}
-
-export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
+  CardFoot
+  CardAc
   CardContent,
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
