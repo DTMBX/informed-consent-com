@@ -2,41 +2,42 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-type CardVariant = "default" | "glass" | "glass-subtle" | "glass-strong"
+type CardVariant = "default" | "glass" | "glass-subtle" | "glass-strong" | "glass-minimal"
 
 interface CardProps extends ComponentProps<"div"> {
   variant?: CardVariant
- 
+}
 
-        variant === "glass-minimal" && "glass-minimal",
-        cl
-      {.
-  )
-
+function Card({ className, variant = "default", ...props }: CardProps) {
   return (
+    <div
+      data-slot="card"
+      className={cn(
+        "rounded-lg border text-card-foreground shadow-sm",
         variant === "default" && "bg-card",
         variant === "glass" && "glass-panel",
         variant === "glass-subtle" && "glass-subtle",
         variant === "glass-strong" && "glass-strong",
+        variant === "glass-minimal" && "glass-minimal",
         className
-    />
+      )}
       {...props}
-
+    />
   )
- 
+}
 
 function CardHeader({ className, ...props }: ComponentProps<"div">) {
   return (
-}
+    <div
       data-slot="card-header"
       className={cn(
         "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
         className
       )}
       {...props}
+    />
   )
-  )
-f
+}
 
 function CardTitle({ className, ...props }: ComponentProps<"div">) {
   return (
@@ -52,23 +53,23 @@ function CardDescription({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       data-slot="card-description"
-    />
+      className={cn("text-sm text-muted-foreground", className)}
       {...props}
-
+    />
   )
- 
+}
 
 function CardAction({ className, ...props }: ComponentProps<"div">) {
   return (
-}
+    <div
       data-slot="card-action"
-  Card,
+      className={cn(
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
-  CardTitle,
+        className
       )}
       {...props}
     />
-
+  )
 }
 
 function CardContent({ className, ...props }: ComponentProps<"div">) {
@@ -78,7 +79,7 @@ function CardContent({ className, ...props }: ComponentProps<"div">) {
       className={cn("px-6 pb-6", className)}
       {...props}
     />
-
+  )
 }
 
 function CardFooter({ className, ...props }: ComponentProps<"div">) {
@@ -86,9 +87,9 @@ function CardFooter({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="card-footer"
       className={cn("flex items-center px-6 pb-6 pt-0", className)}
-
+      {...props}
     />
-
+  )
 }
 
 export {
@@ -98,5 +99,5 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
-
+  CardAction,
 }

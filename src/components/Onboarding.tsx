@@ -2,16 +2,15 @@ import { Stage } from '@/lib/types'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Info, Baby, FirstAid, Heartbeat, Users } from '@phosphor-icons/react'
+import { Info, Baby, FirstAid, Heartbeat, Users, type Icon } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { DISCLAIMER_TEXT } from '@/lib/constants'
-import type { ComponentType } from 'react'
 
 interface JourneyOption {
   stage: Stage
   label: string
   description: string
-  icon: ComponentType<{ className?: string; size?: number; weight?: string }>
+  icon: Icon
 }
 
 const journeyOptions: JourneyOption[] = [
