@@ -105,7 +105,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
       </div>
 
       <div className="card-stack card-stack-mobile">
-        <Card variant="glass">
+        <Card variant="glass-subtle">
           <CardHeader>
             <CardTitle>Current Stage</CardTitle>
           </CardHeader>
@@ -128,7 +128,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
           </CardContent>
         </Card>
 
-        <Card variant="glass">
+        <Card variant="glass-subtle">
           <CardHeader>
             <CardTitle>Language</CardTitle>
           </CardHeader>
@@ -151,7 +151,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
           </CardContent>
         </Card>
 
-        <Card variant="glass">
+        <Card variant="glass-subtle">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Eye className="h-5 w-5" />
@@ -180,7 +180,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
           </CardContent>
         </Card>
 
-        <Card variant="glass">
+        <Card variant="glass-subtle">
           <CardHeader>
             <CardTitle>Saved Procedures</CardTitle>
           </CardHeader>

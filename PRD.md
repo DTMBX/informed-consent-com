@@ -208,7 +208,14 @@ A **high-contrast dark theme with deep neutral backgrounds** and slightly elevat
   - Muted Secondary `oklch(0.28 0.03 180)` - For de-emphasized UI elements
   - Glass Overlay `oklch(0.20 0.02 250 / 0.4)` - For restrained glassmorphism effects
 
-**Glassmorphism Discipline**: Apply subtle glass panels only to primary containers (header navigation, key summary cards, comparison table headers). Use low-opacity surface + light blur (12px) + 1px border. Never blur large scrolling backgrounds.
+**Glassmorphism Discipline**: Apply glassmorphism strategically based on card hierarchy and purpose:
+- `glass-minimal` (blur 6px, opacity 0.15): For interactive homepage feature cards and low-emphasis supporting content
+- `glass-subtle` (blur 8px, opacity 0.3): For benefits/risks cards in procedure details and general content cards
+- `glass-panel` (blur 16px, opacity 0.5): For header navigation and primary containers that need moderate prominence
+- `glass-strong` (blur 28px, opacity 0.7): For important callout cards (RSV warnings, critical alerts) that need emphasis
+- `glass-intense` (blur 32px, opacity 0.85): For modal overlays and floating panels requiring maximum distinction from page content
+
+Never blur large scrolling backgrounds.
 
 **Extra Contrast Mode**: Optional toggle that increases text brightness to `oklch(0.98 0.005 250)` and reduces translucency for users who need maximum readability.
 

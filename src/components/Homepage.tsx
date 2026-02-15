@@ -40,7 +40,7 @@ export function Homepage({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <Card 
-            variant="glass"
+            variant="glass-minimal"
             className="card-padding cursor-pointer group hover:border-primary/40 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('library')}
           >
@@ -65,7 +65,7 @@ export function Homepage({
           </Card>
 
           <Card 
-            variant="glass"
+            variant="glass-minimal"
             className="card-padding cursor-pointer group hover:border-secondary/60 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('reflection')}
           >
@@ -90,7 +90,7 @@ export function Homepage({
           </Card>
 
           <Card 
-            variant="glass"
+            variant="glass-minimal"
             className="card-padding cursor-pointer group hover:border-accent/50 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('birth-plan')}
           >
@@ -115,7 +115,7 @@ export function Homepage({
           </Card>
 
           <Card 
-            variant="glass"
+            variant="glass-minimal"
             className="card-padding cursor-pointer group hover:border-evidence/50 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('vaccine-schedule')}
           >
