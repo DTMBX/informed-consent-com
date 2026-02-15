@@ -122,7 +122,7 @@ export function ProcedureDetail({
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <Card className="bg-evidence/10 border-evidence/20">
+        <Card variant="glass-subtle" className="border-evidence/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-evidence-foreground">
               <CheckCircle className="h-5 w-5 text-evidence" weight="fill" />
@@ -152,7 +152,7 @@ export function ProcedureDetail({
           </CardContent>
         </Card>
 
-        <Card className="bg-destructive/5 border-destructive/20">
+        <Card variant="glass-subtle" className="border-destructive/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <WarningOctagon className="h-5 w-5 text-destructive" weight="fill" />
@@ -197,7 +197,7 @@ export function ProcedureDetail({
         </div>
       )}
 
-      <Card className="mb-8">
+      <Card variant="glass" className="mb-8">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Clock className="h-5 w-5" />
@@ -210,7 +210,7 @@ export function ProcedureDetail({
       </Card>
 
       {procedure.alternatives.length > 0 && (
-        <Card className="mb-8">
+        <Card variant="glass" className="mb-8">
           <CardHeader>
             <CardTitle>Alternatives</CardTitle>
           </CardHeader>

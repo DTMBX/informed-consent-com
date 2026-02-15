@@ -111,7 +111,7 @@ export function ProcedureLibrary({
       </div>
 
       {(stage === 'prenatal' || stage === 'postpartum' || stage === 'all') && !showSavedOnly && !search && (
-        <Card className="mb-8 border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <Card variant="glass-strong" className="mb-8 border-2 border-primary/30">
           <CardHeader className="card-padding">
             <div className="flex items-start gap-4">
               <div className="p-3 bg-primary/10 rounded-lg shrink-0">
@@ -154,7 +154,7 @@ export function ProcedureLibrary({
       )}
 
       {filteredProcedures.length === 0 ? (
-        <Card className="card-padding text-center">
+        <Card variant="glass-subtle" className="card-padding text-center">
           <p className="text-muted-foreground mb-3 text-base">No procedures found</p>
           <p className="text-sm text-muted-foreground">
             Try adjusting your filters or search terms
@@ -169,7 +169,8 @@ export function ProcedureLibrary({
             return (
               <Card
                 key={proc.id}
-                className="hover:shadow-lg transition-all duration-150 cursor-pointer group relative"
+                variant="glass"
+                className="hover:shadow-lg transition-all duration-200 cursor-pointer group relative hover:border-primary/40"
                 onClick={() => onProcedureClick(proc.id)}
               >
                 <CardHeader className="card-padding">

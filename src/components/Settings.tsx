@@ -105,7 +105,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
       </div>
 
       <div className="card-stack card-stack-mobile">
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle>Current Stage</CardTitle>
           </CardHeader>
@@ -128,7 +128,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
           </CardContent>
         </Card>
 
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle>Language</CardTitle>
           </CardHeader>
@@ -151,7 +151,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
           </CardContent>
         </Card>
 
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Eye className="h-5 w-5" />
@@ -180,7 +180,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
           </CardContent>
         </Card>
 
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle>Saved Procedures</CardTitle>
           </CardHeader>
@@ -195,7 +195,7 @@ export function Settings({ preferences, onUpdatePreferences, onClose, onBirthPla
         </Card>
 
         {onBirthPlan && (
-          <Card className="bg-accent/10 border-accent/20">
+          <Card variant="glass-strong" className="border-accent/30">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FirstAid className="h-5 w-5" />

@@ -105,7 +105,7 @@ export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: Refl
       </div>
 
       <div className="card-stack card-stack-mobile">
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Timer className="h-5 w-5" />
@@ -157,7 +157,7 @@ export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: Refl
           </CardContent>
         </Card>
 
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle>Related Procedures</CardTitle>
           </CardHeader>
@@ -193,7 +193,7 @@ export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: Refl
           </CardContent>
         </Card>
 
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle>Questions to Ask</CardTitle>
           </CardHeader>
@@ -234,7 +234,7 @@ export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: Refl
           </CardContent>
         </Card>
 
-        <Card>
+        <Card variant="glass">
           <CardHeader>
             <CardTitle>My Notes</CardTitle>
           </CardHeader>
@@ -266,7 +266,7 @@ export function ReflectionNotes({ savedProcedures, onExport, onBirthPlan }: Refl
         </div>
 
         {reflections && reflections.length > 0 && (
-          <Card>
+          <Card variant="glass">
             <CardHeader>
               <CardTitle>Past Reflections</CardTitle>
             </CardHeader>

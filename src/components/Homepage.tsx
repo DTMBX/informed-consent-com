@@ -40,7 +40,8 @@ export function Homepage({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <Card 
-            className="card-padding cursor-pointer group border-border hover:border-primary/40 transition-all duration-150 tap-target"
+            variant="glass"
+            className="card-padding cursor-pointer group hover:border-primary/40 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('library')}
           >
             <div className="flex items-start gap-4">
@@ -64,7 +65,8 @@ export function Homepage({
           </Card>
 
           <Card 
-            className="card-padding cursor-pointer group border-border hover:border-secondary/60 transition-all duration-150 tap-target"
+            variant="glass"
+            className="card-padding cursor-pointer group hover:border-secondary/60 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('reflection')}
           >
             <div className="flex items-start gap-4">
@@ -88,7 +90,8 @@ export function Homepage({
           </Card>
 
           <Card 
-            className="card-padding cursor-pointer group border-border hover:border-accent/50 transition-all duration-150 tap-target"
+            variant="glass"
+            className="card-padding cursor-pointer group hover:border-accent/50 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('birth-plan')}
           >
             <div className="flex items-start gap-4">
@@ -112,7 +115,8 @@ export function Homepage({
           </Card>
 
           <Card 
-            className="card-padding cursor-pointer group border-border hover:border-evidence/50 transition-all duration-150 tap-target"
+            variant="glass"
+            className="card-padding cursor-pointer group hover:border-evidence/50 transition-all duration-200 hover:shadow-lg tap-target"
             onClick={() => onNavigate('vaccine-schedule')}
           >
             <div className="flex items-start gap-4">
@@ -192,7 +196,7 @@ export function Homepage({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <Card className="card-padding bg-primary/5 border-primary/20">
+          <Card variant="glass-subtle" className="card-padding">
             <h3 className="ui-text mb-4">Getting Started</h3>
             <ul className="space-y-3 text-sm text-muted-foreground mb-6">
               <li className="flex items-start gap-2">
@@ -221,7 +225,7 @@ export function Homepage({
             </Button>
           </Card>
 
-          <Card className="card-padding bg-muted/20 border-border">
+          <Card variant="glass-subtle" className="card-padding">
             <h3 className="ui-text mb-4">Important Disclaimer</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
               This platform provides educational information only and is not a substitute for medical advice. 
